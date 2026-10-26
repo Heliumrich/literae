@@ -118,6 +118,8 @@ Les réglages et la progression restent dans le `localStorage` du navigateur. Ch
 
 `books-server.ts` lit les métadonnées du CMS pour les pages statiques ; `books-client.ts` gère le catalogue ; `src/lib/reader/` et `EpubReader.astro` isolent la lecture. Validation : `npm run test:server` et `npm run test:pwa` (avec un navigateur Playwright installé). Les tests du vrai EPUB servent le build local sous l’origine de production et téléchargent réellement l’asset public Directus : le navigateur vérifie le CORS et les tests contrôlent l’absence d’authentification. Deux petits EPUB de test vérifient séparément l’indépendance des signets entre traductions.
 
+La préparation des pages de couverture et leur dimensionnement sont documentés dans [Couvertures EPUB](docs/EPUB-COVERS.md). Le lecteur préserve leurs styles et leur donne une hauteur égale à sa zone de lecture.
+
 ## Comparateur sur smartphone et hors ligne
 
 Le comparateur est une PWA installable : invitation native sur Android lorsque le navigateur le permet, instructions Safari sur iPhone/iPad. Le panneau **Emporter le comparateur** permet de télécharger toutes les traductions (environ 51 Mo pour la version 2.1.1), suivre le transfert et supprimer la copie locale. Après téléchargement, le lecteur fonctionne sans connexion, y compris pour des passages jamais consultés.

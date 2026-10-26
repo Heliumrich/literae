@@ -8,7 +8,7 @@
 .reader-navigation > label { flex: 1 1 18rem; }
 .reader-navigation > label select { width: 12rem; flex: 1; }
 .reader-settings { flex: 1 1 100%; }
-.reader-settings summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--text); padding-block: .2rem; }
+.reader-settings summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; color: var(--text); padding: .6rem .75rem; border: 1px solid var(--border); border-radius: 2px; background: var(--bg); }
 .reader-settings summary > span { font-family: Georgia, serif; font-size: 1.15rem; color: var(--gold); }
 .reader-settings-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; padding: 1rem 0 .3rem; }
 .reader-settings-grid label { flex-direction: column; align-items: stretch; }
@@ -17,7 +17,7 @@
 .reader-settings-grid output { min-width: 3.4rem; text-align: right; font-variant-numeric: tabular-nums; }
 .reader-settings-grid .reader-check { flex-direction: row; align-items: center; }
 .reader-check input { accent-color: var(--accent); }
-.reader-viewport { height: clamp(26rem, 72dvh, 58rem); width: 100%; overflow: hidden; background: var(--reader-bg); color: var(--reader-fg); }
+.reader-viewport { height: clamp(26rem, 72svh, 58rem); width: 100%; overflow: hidden; background: var(--reader-bg); color: var(--reader-fg); }
 .reader-viewport:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
 .reader-viewport .epub-container { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .reader-viewport iframe { border: 0; }
@@ -38,6 +38,12 @@
   .reader-settings-grid { grid-template-columns: 1fr; gap: .85rem; }
   .reader-footer > p { flex-basis: 100%; order: 3; }
   .reader-edition { flex-basis: 100%; }
-  .reader-viewport { height: 68dvh; min-height: 18rem; }
+  .reader-viewport { height: 68svh; min-height: 18rem; }
 }
-@media (max-height: 500px) and (orientation: landscape) { .reader-viewport { height: 80dvh; min-height: 12rem; } }
+@media (max-height: 500px) and (orientation: landscape) { .reader-viewport { height: 80svh; min-height: 12rem; } }
+
+.reader-settings summary:hover { border-color: var(--gold); }
+.reader-settings summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.reader-settings[open] summary { border-color: var(--gold); }
+.epub-reader:fullscreen > :not(.reader-viewport):not(.reader-footer) { display: none !important; }
+.epub-reader:fullscreen .reader-viewport { min-height: 0; }

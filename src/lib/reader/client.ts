@@ -57,7 +57,17 @@ async function initReader(root: HTMLElement) {
       style.id = 'literae-reader-style';
       doc.head.appendChild(style);
     }
-    style.textContent = readerCss(settings, dark(), location.origin);
+    const cover = /(?:^|\/)titlepage\.xhtml(?:[?#]|$)/i.test(doc.URL)
+      || !!doc.querySelector('meta[name="calibre:cover"][content="true"], .literae-cover')
+      || sections.some(section => section.index === contents.sectionIndex && /(?:^|\/)titlepage\.xhtml$/i.test(section.href));
+    // Graphic pages retain their own typography and colours. Their viewport must
+    // have a real height before EPUB.js measures absolutely positioned content.
+    style.textContent = cover ? `
+      html, body { height: ${viewport.clientHeight}px !important; min-height: ${viewport.clientHeight}px !important;
+        margin: 0 !important; padding: 0 !important; max-width: none !important; }
+      html body svg { max-height: none !important; max-width: 100% !important; }
+      .literae-cover { height: 100%; position: relative; }
+    ` : readerCss(settings, dark(), location.origin);
     doc.documentElement.lang ||= 'fr';
   }
   function updatePalette() {
@@ -106,7 +116,7 @@ async function initReader(root: HTMLElement) {
     bookmark = { cfi: location.start.cfi, updated: Date.now() };
     storageAvailable = writeLocal(progressKey(selected.id), bookmark);
     const percent = Math.min(100, Math.round((index + fraction) / Math.max(1, sections.length) * 100));
-    progressLabel.textContent = `${percent} % · ${storageAvailable ? 'Position enregistrée sur cet appareil' : 'Sauvegarde indisponible dans ce navigateur'}`;
+    progressLabel.textContent = `${percent} %${storageAvailable ? '' : ' · Sauvegarde indisponible'}`;
     previous.disabled = location.atStart;
     next.disabled = location.atEnd;
     const chapter = chapters.find(chapter => chapter.href.split('#')[0] === location.start.href.split('#')[0]);
@@ -176,7 +186,8 @@ async function initReader(root: HTMLElement) {
       if (!chapters.length) chapters = sections.map((section, index) => ({ href: section.href, label: `Section ${index + 1}`, depth: 0 }));
       toc.replaceChildren(...chapters.map(chapter => new Option(`${'　'.repeat(chapter.depth)}${chapter.label}`, chapter.href)));
       const active = book.renderTo(viewport, {
-        manager: 'continuous', flow: 'scrolled', spread: 'none', width: '100%', height: viewport.clientHeight,
+        manager: 'continuous', flow: 'scrolled', spread: 'none', width: viewport.clientWidth, height: viewport.clientHeight,
+        resizeOnOrientationChange: false,
         allowScriptedContent: false,
       }) as ContinuousRendition;
       rendition = active;
@@ -273,7 +284,18 @@ async function initReader(root: HTMLElement) {
   document.addEventListener('fullscreenchange', () => {
     fullscreen.textContent = document.fullscreenElement === root ? 'Quitter le plein écran' : 'Plein écran';
   });
-  const resizeObserver = new ResizeObserver(() => { if (rendition && canSave) rendition.resize(viewport.clientWidth, viewport.clientHeight); });
+  let measuredWidth = viewport.clientWidth;
+  let measuredHeight = viewport.clientHeight;
+  const resizeObserver = new ResizeObserver(() => {
+    const width = viewport.clientWidth, height = viewport.clientHeight;
+    if (width === measuredWidth && height === measuredHeight) return;
+    measuredWidth = width;
+    measuredHeight = height;
+    if (rendition && canSave) {
+      for (const view of rendition.manager.views.all()) if (view.contents) styleDocument(view.contents);
+      rendition.resize(width, height);
+    }
+  });
   resizeObserver.observe(viewport);
   document.addEventListener('visibilitychange', () => { if (document.hidden && bookmark && canSave) writeLocal(progressKey(selected.id), bookmark); });
   window.addEventListener('pagehide', () => { if (bookmark) writeLocal(progressKey(selected.id), bookmark); });

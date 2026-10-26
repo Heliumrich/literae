@@ -15,7 +15,7 @@ const { bookId, title, editions } = Astro.props;
   <div class="reader-navigation">
     <label>Sommaire <select data-reader="toc" aria-label="Sommaire" disabled><option>Chargement du sommaire…</option></select></label>
     <details class="reader-settings">
-      <summary>Réglages de lecture <span aria-hidden="true">Aa</span></summary>
+      <summary>Réglages de lecture <span aria-hidden="true">Aa ▾</span></summary>
       <div class="reader-settings-grid">
         <label>Police <select data-reader="font">{Object.entries(READER_FONTS).map(([key, font]) => <option value={key}>{font.label}</option>)}</select></label>
         <label>Taille du texte <span><input type="range" data-reader="size" min="16" max="32" step="1" value="20" /><output data-reader="size-label">20 px</output></span></label>
@@ -30,11 +30,11 @@ const { bookId, title, editions } = Astro.props;
   <div class="reader-viewport" data-reader="viewport" tabindex="0" aria-label="Texte du livre" aria-busy="true"></div>
   <div class="reader-footer">
     <button type="button" class="reader-button" data-reader="previous" disabled>← Précédent</button>
-    <p data-reader="progress" aria-live="off">La progression est sauvegardée sur cet appareil.</p>
+    <p data-reader="progress" aria-live="off">0 %</p>
     <button type="button" class="reader-button" data-reader="next" disabled>Suivant →</button>
   </div>
   <noscript><p>Activez JavaScript pour lire cet EPUB dans le navigateur.</p></noscript>
-  <p class="reader-download"><a data-reader="download" href={editions[0].url} download>Télécharger l’EPUB</a> <span>· Reprise de lecture locale, sans compte.</span></p>
+  <p class="reader-download"><a data-reader="download" href={editions[0].url} download>Télécharger l’EPUB</a></p>
 </section>
 <script>
   import { initEpubReaders } from '../../lib/reader/client';

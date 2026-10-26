@@ -86,6 +86,30 @@ test('navigation, nouveautés, filtres, grille/liste et tri', async ({ page }) =
   expect(await person.text()).toContain(`https://literae.ch${bookPath}`);
 });
 
+test('préserve la couverture et épure le plein écran sans recréer les pages au scroll', async ({ page }) => {
+  await openBook(page);
+  let cover: Frame | undefined;
+  for (const f of page.frames().slice(1)) if (await f.locator('.cover-bg').count()) cover = f;
+  expect(cover).toBeTruthy();
+  const height = await page.locator('[data-reader="viewport"]').evaluate(el => el.clientHeight);
+  await expect.poll(() => cover!.locator('body').evaluate(el => el.getBoundingClientRect().height)).toBe(height);
+  await expect(cover!.locator('.title-top')).toHaveCSS('color', 'rgb(255, 255, 255)');
+  await expect(cover!.locator('.title-top')).toHaveCSS('text-align', 'center');
+  const boxes = await cover!.locator('h1').evaluateAll(els => els.map(el => ({top: el.getBoundingClientRect().top, bottom: el.getBoundingClientRect().bottom})));
+  expect(boxes[1].top).toBeGreaterThan(boxes[0].bottom);
+  await cover!.evaluate(() => { (window as any).__coverRetained = true; });
+  await page.evaluate(() => { window.scrollBy(0, 100); window.dispatchEvent(new Event('resize')); });
+  await page.waitForTimeout(250); // EPUB.js previously throttled its window resize handler.
+  expect(await cover!.evaluate(() => (window as any).__coverRetained)).toBe(true);
+  await page.locator('[data-reader="fullscreen"]').click();
+  await expect(page.locator('.reader-toolbar')).toBeHidden();
+  await expect(page.locator('.reader-navigation')).toBeHidden();
+  await expect(page.locator('.reader-download')).toBeHidden();
+  await expect(page.locator('.reader-footer')).toBeVisible();
+  await page.evaluate(() => document.exitFullscreen());
+  await expect(page.locator('.reader-toolbar')).toBeVisible();
+});
+
 test('permet de réessayer après un échec de téléchargement de l’EPUB', async ({ page }) => {
   await page.route('https://api.literae.ch/assets/**', route => route.abort('internetdisconnected'));
   await page.goto(bookPath);
@@ -182,7 +206,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await openBook(reopened);
       await expect(reopened.locator('[data-reader="toc"]')).toHaveValue(/livre_cinquieme/);
       await expect(reopened.locator('[data-reader="size"]')).toHaveValue('24');
-      await expect(reopened.locator('[data-reader="progress"]')).toContainText('Position enregistrée');
+      await expect(reopened.locator('[data-reader="progress"]')).toContainText('%');
     });
 
     test('garde un signet distinct par fichier, même avec des noms et des UUID partiellement identiques', async ({ page }) => {
