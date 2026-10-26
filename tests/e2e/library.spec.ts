@@ -103,11 +103,31 @@ test('préserve la couverture et épure le plein écran sans recréer les pages 
   expect(await cover!.evaluate(() => (window as any).__coverRetained)).toBe(true);
   await page.locator('[data-reader="fullscreen"]').click();
   await expect(page.locator('.reader-toolbar')).toBeHidden();
-  await expect(page.locator('.reader-navigation')).toBeHidden();
   await expect(page.locator('.reader-download')).toBeHidden();
   await expect(page.locator('.reader-footer')).toBeVisible();
   await page.evaluate(() => document.exitFullscreen());
   await expect(page.locator('.reader-toolbar')).toBeVisible();
+});
+
+test('aligne les outils et contient les intitulés longs sur mobile et ordinateur', async ({ page }) => {
+  await openBook(page);
+  await page.locator('[data-reader="toc"] option').first().evaluate(el => { el.textContent = 'Livre premier — ' + 'Un très long intitulé de chapitre '.repeat(20); });
+  for (const width of [360, 393, 768, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    const edition = await page.locator('[data-reader="edition"]').boundingBox();
+    const toc = await page.locator('[data-reader="toc"]').boundingBox();
+    const settings = await page.locator('.reader-settings summary').boundingBox();
+    expect(edition!.height).toBe(toc!.height);
+    expect(settings!.height).toBe(toc!.height);
+    if (width <= 600) expect(edition!.x).toBe(toc!.x);
+    else expect(edition!.y).toBe(toc!.y);
+    const bar = await page.locator('.reader-toolbar').boundingBox();
+    expect(bar!.height).toBeLessThan(width <= 600 ? 150 : 90);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+    await page.locator('.reader-toolbar').screenshot({ path: `/tmp/reader-toolbar-${width}.png` });
+  }
+  await page.locator('.reader-settings summary').click();
+  await expect(page.locator('[data-reader="font"]')).toBeVisible();
 });
 
 test('permet de réessayer après un échec de téléchargement de l’EPUB', async ({ page }) => {
@@ -165,7 +185,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await expect(frame.locator('body')).toContainText('notre coeur est inquiet');
       expect(fontRequests).toHaveLength(0);
       const headingFont = await frame.locator('h2').first().evaluate(node => getComputedStyle(node).fontFamily);
-      await page.getByText('Réglages de lecture', { exact: false }).click();
+      await page.getByLabel('Réglages de lecture', { exact: true }).click();
       await page.locator('[data-reader="font"]').selectOption('literata');
       await expect.poll(() => frame.locator('p').first().evaluate(node => getComputedStyle(node).fontFamily)).toContain('Literae Literata');
       expect(fontRequests.some(url => url.includes('literata'))).toBe(true);
@@ -196,7 +216,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await openBook(page);
       await goToSection(page, 'Livre cinquième');
       await textFrame(page, 'Livre cinquième');
-      await page.getByText('Réglages de lecture', { exact: false }).click();
+      await page.getByLabel('Réglages de lecture', { exact: true }).click();
       await page.locator('[data-reader="size"]').fill('24');
       await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('literae-reader-settings-v1') || '{}').size)).toBe(24);
       const id = await page.locator('[data-reader="edition"]').inputValue();

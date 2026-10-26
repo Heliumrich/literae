@@ -7,15 +7,12 @@ const { bookId, title, editions } = Astro.props;
 ---
 <section class="epub-reader" data-book-id={bookId} data-editions={JSON.stringify(editions)} aria-label={`Lecture de ${title}`}>
   <div class="reader-toolbar">
-    <label class="reader-edition">Édition / traduction
+    <label class="reader-field reader-edition"><span>Édition / traduction</span>
       <select data-reader="edition" aria-label="Édition ou traduction">{editions.map(edition => <option value={edition.id}>{edition.label}</option>)}</select>
     </label>
-    <button type="button" data-reader="fullscreen" class="reader-button" hidden>Plein écran</button>
-  </div>
-  <div class="reader-navigation">
-    <label>Sommaire <select data-reader="toc" aria-label="Sommaire" disabled><option>Chargement du sommaire…</option></select></label>
+    <label class="reader-field reader-toc"><span>Sommaire</span> <select data-reader="toc" aria-label="Sommaire" disabled><option>Chargement du sommaire…</option></select></label>
     <details class="reader-settings">
-      <summary>Réglages de lecture <span aria-hidden="true">Aa ▾</span></summary>
+      <summary aria-label="Réglages de lecture"><span>Réglages de lecture</span><span aria-hidden="true">Aa ▾</span></summary>
       <div class="reader-settings-grid">
         <label>Police <select data-reader="font">{Object.entries(READER_FONTS).map(([key, font]) => <option value={key}>{font.label}</option>)}</select></label>
         <label>Taille du texte <span><input type="range" data-reader="size" min="16" max="32" step="1" value="20" /><output data-reader="size-label">20 px</output></span></label>
@@ -24,6 +21,7 @@ const { bookId, title, editions } = Astro.props;
         <label class="reader-check"><input data-reader="justify" type="checkbox" /> Justifier le texte</label>
       </div>
     </details>
+    <button type="button" data-reader="fullscreen" class="reader-button" aria-label="Plein écran" title="Plein écran" hidden>⛶</button>
   </div>
   <div class="reader-message" data-reader="message" role="status">Ouverture du livre…</div>
   <p class="reader-error" data-reader="error" role="alert" hidden><span></span> <button type="button" data-reader="retry">Réessayer</button></p>

@@ -208,7 +208,7 @@ async function initReader(root: HTMLElement) {
       writeLocal(editionKey, selected.id);
       toc.disabled = false;
       viewport.setAttribute('aria-busy', 'false');
-      message.textContent = bookmark ? 'Reprise de votre lecture.' : '';
+      message.textContent = '';
       await active.reportLocation();
     } catch (cause) {
       if (currentEpoch !== epoch) { openingBook?.destroy(); return; }
@@ -282,7 +282,9 @@ async function initReader(root: HTMLElement) {
     try { if (document.fullscreenElement === root) await document.exitFullscreen(); else await root.requestFullscreen(); } catch { /* Unavailable in some embedded browsers. */ }
   });
   document.addEventListener('fullscreenchange', () => {
-    fullscreen.textContent = document.fullscreenElement === root ? 'Quitter le plein écran' : 'Plein écran';
+    const label = document.fullscreenElement === root ? 'Quitter le plein écran' : 'Plein écran';
+    fullscreen.setAttribute('aria-label', label);
+    fullscreen.title = label;
   });
   let measuredWidth = viewport.clientWidth;
   let measuredHeight = viewport.clientHeight;
