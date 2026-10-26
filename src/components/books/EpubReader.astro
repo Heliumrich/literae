@@ -19,6 +19,7 @@ const { bookId, title, editions } = Astro.props;
         <label>Marges <span><input type="range" data-reader="margin" min="8" max="80" step="4" value="32" /><output data-reader="margin-label">32 px</output></span></label>
         <label>Fond <select data-reader="palette"><option value="auto">Selon le thème du site</option><option value="paper">Blanc</option><option value="cream">Crème</option><option value="night">Nuit</option><option value="oled">Noir OLED</option></select></label>
         <label class="reader-check"><input data-reader="justify" type="checkbox" /> Justifier le texte</label>
+        <label class="reader-check"><input data-reader="hyphenate" type="checkbox" checked /> Césure automatique</label>
       </div>
     </details>
     <button type="button" data-reader="fullscreen" class="reader-button" aria-label="Plein écran" title="Plein écran" hidden>⛶</button>

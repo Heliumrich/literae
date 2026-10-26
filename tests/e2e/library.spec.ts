@@ -194,6 +194,9 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await page.locator('[data-reader="size"]').fill('25');
       await page.locator('[data-reader="margin"]').fill('48');
       await page.locator('[data-reader="justify"]').check();
+      await expect(page.locator('[data-reader="hyphenate"]')).toBeChecked();
+      await page.locator('[data-reader="hyphenate"]').uncheck();
+      await expect.poll(() => frame.locator('p').first().evaluate(node => getComputedStyle(node).hyphens)).toBe('none');
       await page.locator('[data-reader="palette"]').selectOption('oled');
       await expect.poll(() => frame.locator('body').evaluate(node => {
         const s = getComputedStyle(node); return [s.backgroundColor, s.color, s.fontSize, s.paddingLeft];
@@ -218,6 +221,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await textFrame(page, 'Livre cinquième');
       await page.getByLabel('Réglages de lecture', { exact: true }).click();
       await page.locator('[data-reader="size"]').fill('24');
+      await page.locator('[data-reader="hyphenate"]').uncheck();
       await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem('literae-reader-settings-v1') || '{}').size)).toBe(24);
       const id = await page.locator('[data-reader="edition"]').inputValue();
       await expect.poll(() => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id)).toMatch(/^epubcfi\(/);
@@ -226,6 +230,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await openBook(reopened);
       await expect(reopened.locator('[data-reader="toc"]')).toHaveValue(/livre_cinquieme/);
       await expect(reopened.locator('[data-reader="size"]')).toHaveValue('24');
+      await expect(reopened.locator('[data-reader="hyphenate"]')).not.toBeChecked();
       await expect(reopened.locator('[data-reader="progress"]')).toContainText('%');
     });
 

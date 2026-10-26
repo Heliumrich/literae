@@ -11,18 +11,18 @@ export const PALETTES = {
   oled: { bg: '#000000', fg: '#e7e1d7', link: '#e4a1ae' },
 };
 export type ReaderSettings = {
-  font: keyof typeof READER_FONTS; size: number; margin: number; justify: boolean;
+  font: keyof typeof READER_FONTS; size: number; margin: number; justify: boolean; hyphenate: boolean;
   palette: 'auto' | keyof typeof PALETTES;
 };
 export const SETTINGS_KEY = 'literae-reader-settings-v1';
-export const DEFAULT_SETTINGS: ReaderSettings = { font: 'site', size: 20, margin: 32, justify: false, palette: 'auto' };
+export const DEFAULT_SETTINGS: ReaderSettings = { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, palette: 'auto' };
 export function parseSettings(value: unknown): ReaderSettings {
   const row = value && typeof value === 'object' ? value as Record<string, unknown> : {};
   const bounded = (v: unknown, min: number, max: number, fallback: number) => typeof v === 'number' && Number.isFinite(v) ? Math.max(min, Math.min(max, v)) : fallback;
   return {
     font: typeof row.font === 'string' && Object.hasOwn(READER_FONTS, row.font) ? row.font as ReaderSettings['font'] : 'site',
     palette: row.palette === 'auto' || typeof row.palette === 'string' && Object.hasOwn(PALETTES, row.palette) ? row.palette as ReaderSettings['palette'] : 'auto',
-    size: bounded(row.size, 16, 32, 20), margin: bounded(row.margin, 8, 80, 32), justify: row.justify === true,
+    size: bounded(row.size, 16, 32, 20), margin: bounded(row.margin, 8, 80, 32), justify: row.justify === true, hyphenate: row.hyphenate !== false,
   };
 }
 
@@ -43,7 +43,7 @@ export function readerCss(settings: ReaderSettings, dark: boolean, origin: strin
       font-family: ${font.family} !important; font-size: ${settings.size}px !important; line-height: 1.7 !important; overflow-wrap: break-word; }
     body * { color: inherit !important; background-color: transparent !important; }
     body *:not(h1,h2,h3,h4,h5,h6):not(h1 *,h2 *,h3 *,h4 *,h5 *,h6 *) { font-family: ${font.family} !important; }
-    p, li, blockquote, dd, dt, td { font-size: inherit !important; line-height: 1.7 !important; text-align: ${settings.justify ? 'justify' : 'start'} !important; hyphens: auto; }
+    p, li, blockquote, dd, dt, td { font-size: inherit !important; line-height: 1.7 !important; text-align: ${settings.justify ? 'justify' : 'start'} !important; -webkit-hyphens: ${settings.hyphenate ? 'auto' : 'none'} !important; hyphens: ${settings.hyphenate ? 'auto' : 'none'} !important; }
     p { margin-block: .7em !important; text-indent: 0 !important; }
     p *, li *, blockquote * { font-size: inherit !important; }
     h1, h2, h3, h4, h5, h6 { font-family: Georgia, serif !important; line-height: 1.3 !important; text-align: start !important; }

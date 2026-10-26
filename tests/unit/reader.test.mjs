@@ -4,9 +4,9 @@ import { parseSettings, readerCss } from '../../src/lib/reader/preferences.ts';
 import { lastEditionKey, legacyProgressForFile, parseProgress, progressKey } from '../../src/lib/reader/progress.ts';
 
 test('ignore les réglages corrompus et borne la typographie', () => {
-  assert.deepEqual(parseSettings(null), { font: 'site', size: 20, margin: 32, justify: false, palette: 'auto' });
+  assert.deepEqual(parseSettings(null), { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, palette: 'auto' });
   assert.deepEqual(parseSettings({ font: 'url(evil)', size: 999, margin: -2, palette: '__proto__', justify: true }),
-    { font: 'site', size: 32, margin: 8, palette: 'auto', justify: true });
+    { font: 'site', size: 32, margin: 8, palette: 'auto', justify: true, hyphenate: true });
 });
 test('chaque UUID de fichier conserve son signet, sans tronquer les identifiants', () => {
   const a = '11111111-1111-4111-8111-111111111111';
@@ -35,4 +35,11 @@ test('le thème automatique suit le site et les polices supplémentaires sont co
   assert.match(lora, /reader-fonts\/lora-latin-400-normal.woff2/);
   assert.doesNotMatch(lora, /reader-fonts\/(literata|libre-baskerville)/);
   assert.match(lora, /background: #000000 !important; color: #e7e1d7/);
+});
+
+test('la césure est active par défaut, y compris pour les anciens réglages, et peut être désactivée', () => {
+  assert.equal(parseSettings({ justify: true }).hyphenate, true);
+  const disabled = parseSettings({ hyphenate: false });
+  assert.equal(disabled.hyphenate, false);
+  assert.match(readerCss(disabled, false, 'https://literae.ch'), /hyphens: none !important/);
 });

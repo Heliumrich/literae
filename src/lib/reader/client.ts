@@ -78,6 +78,7 @@ async function initReader(root: HTMLElement) {
   function showSettings() {
     for (const name of ['font', 'size', 'margin', 'palette'] as const) el<HTMLInputElement | HTMLSelectElement>(name).value = String(settings[name]);
     el<HTMLInputElement>('justify').checked = settings.justify;
+    el<HTMLInputElement>('hyphenate').checked = settings.hyphenate;
     el<HTMLOutputElement>('size-label').value = `${settings.size} px`;
     el<HTMLOutputElement>('margin-label').value = `${settings.margin} px`;
     updatePalette();
@@ -261,9 +262,9 @@ async function initReader(root: HTMLElement) {
     }, 160);
   }
 
-  for (const name of ['font', 'size', 'margin', 'palette', 'justify'] as const) {
+  for (const name of ['font', 'size', 'margin', 'palette', 'justify', 'hyphenate'] as const) {
     el<HTMLInputElement | HTMLSelectElement>(name).addEventListener('input', () => {
-      settings = parseSettings({ ...settings, [name]: name === 'justify' ? el<HTMLInputElement>(name).checked
+      settings = parseSettings({ ...settings, [name]: name === 'justify' || name === 'hyphenate' ? el<HTMLInputElement>(name).checked
         : name === 'size' || name === 'margin' ? Number(el<HTMLInputElement>(name).value) : el<HTMLSelectElement>(name).value });
       applySettings();
     });

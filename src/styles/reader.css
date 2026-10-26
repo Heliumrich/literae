@@ -16,7 +16,7 @@
 .reader-settings-grid label > span { display: flex; align-items: center; gap: .75rem; }
 .reader-settings-grid input[type="range"] { flex: 1; min-width: 0; accent-color: var(--accent); }
 .reader-settings-grid output { min-width: 3.4rem; text-align: right; font-variant-numeric: tabular-nums; }
-.reader-settings-grid .reader-check { display: flex; align-items: center; gap: .5rem; }
+.reader-settings-grid .reader-check { grid-column: 1 / -1; display: flex; align-items: center; gap: .5rem; }
 .reader-check input { accent-color: var(--accent); }
 .reader-viewport { height: clamp(26rem, 72svh, 58rem); width: 100%; overflow: hidden; background: var(--reader-bg); color: var(--reader-fg); }
 .reader-viewport:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }

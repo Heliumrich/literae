@@ -36,9 +36,9 @@ export async function fetchBooks(): Promise<LibraryBook[]> {
       if (!file?.id || !(file.type === 'application/epub+zip' || /\.epub$/i.test(file.filename_download || ''))) return [];
       // A changed asset gets a new URL even if its Directus UUID stays the same.
       const revision = createHash('sha256').update(`${file.id}:${file.modified_on}:${file.filesize}`).digest('hex').slice(0, 12);
-      const filename = (file.filename_download || file.title || 'Édition').replace(/\.epub$/i, '');
+      const displayName = (file.title || file.filename_download || 'Édition').replace(/\.epub$/i, '');
       return [{
-        id: String(file.id), label: (file.description || filename).replace(/<[^>]*>/g, '').trim(),
+        id: String(file.id), label: displayName.match(/\((.+)\)/)?.[1].trim() || displayName,
         url: `${getAssetURL(file.id)}?v=${revision}`, size: Number(file.filesize) || 0,
       }];
     }),
