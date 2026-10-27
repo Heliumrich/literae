@@ -53,3 +53,14 @@
 .reader-settings[open] summary { border-color: var(--gold); }
 .epub-reader:fullscreen > :not(.reader-viewport):not(.reader-footer) { display: none !important; }
 .epub-reader:fullscreen .reader-viewport { min-height: 0; }
+
+/* Native modal remains inside the fullscreen reader's top layer. */
+.reader-note-dialog { position: fixed; inset: 0; margin: auto; width: min(42rem, calc(100% - 1.5rem)); max-height: min(75svh, 42rem); padding: 0; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--text); }
+.reader-note-dialog::backdrop { background: rgb(0 0 0 / .45); }
+.reader-note-dialog > header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; border-bottom: 1px solid var(--border); }
+.reader-note-dialog h2 { font-size: 1.6rem; }
+.reader-note-body { padding: 1rem; max-height: 55svh; overflow: auto; overscroll-behavior: contain; font-size: 1rem; line-height: 1.65; }
+.reader-note-body p + p { margin-top: .75rem; }
+.reader-note-body table { max-width: 100%; }
+.reader-note-body a { color: var(--accent); text-decoration: underline; }
+.epub-reader:fullscreen > .reader-note-dialog[open] { display: block !important; }

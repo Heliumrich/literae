@@ -120,6 +120,8 @@ Les réglages et la progression restent dans le `localStorage` du navigateur. Ch
 
 La préparation des pages de couverture et leur dimensionnement sont documentés dans [Couvertures EPUB](docs/EPUB-COVERS.md). Le lecteur préserve leurs styles et leur donne une hauteur égale à sa zone de lecture.
 
+Les ouvrages portant le tag **Sainte Bible** disposent de [notes en surimpression](docs/BIBLE-NOTES.md), préchargées par livre biblique dans les EPUB préparés.
+
 ## Comparateur sur smartphone et hors ligne
 
 Le comparateur est une PWA installable : invitation native sur Android lorsque le navigateur le permet, instructions Safari sur iPhone/iPad. Le panneau **Emporter le comparateur** permet de télécharger toutes les traductions (environ 51 Mo pour la version 2.1.1), suivre le transfert et supprimer la copie locale. Après téléchargement, le lecteur fonctionne sans connexion, y compris pour des passages jamais consultés.

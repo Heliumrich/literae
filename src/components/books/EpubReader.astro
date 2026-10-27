@@ -2,10 +2,10 @@
 import type { BookEdition } from '../../lib/books';
 import { READER_FONTS } from '../../lib/reader/preferences';
 import '../../styles/reader.css';
-interface Props { bookId: string; title: string; editions: BookEdition[]; }
-const { bookId, title, editions } = Astro.props;
+interface Props { bookId: string; title: string; editions: BookEdition[]; bibleNotes?: boolean; }
+const { bookId, title, editions, bibleNotes = false } = Astro.props;
 ---
-<section class="epub-reader" data-book-id={bookId} data-editions={JSON.stringify(editions)} aria-label={`Lecture de ${title}`}>
+<section class="epub-reader" data-book-id={bookId} data-bible-notes={bibleNotes ? "true" : undefined} data-editions={JSON.stringify(editions)} aria-label={`Lecture de ${title}`}>
   <div class="reader-toolbar">
     <label class="reader-field reader-edition"><span>Édition / traduction</span>
       <select data-reader="edition" aria-label="Édition ou traduction">{editions.map(edition => <option value={edition.id}>{edition.label}</option>)}</select>
@@ -32,6 +32,10 @@ const { bookId, title, editions } = Astro.props;
     <p data-reader="progress" aria-live="off">0 %</p>
     <button type="button" class="reader-button" data-reader="next" disabled>Suivant →</button>
   </div>
+  {bibleNotes && <dialog class="reader-note-dialog" data-reader="note-dialog" aria-labelledby="reader-note-title">
+    <header><h2 id="reader-note-title" data-reader="note-title">Note</h2><button type="button" class="reader-button" aria-label="Fermer la note" autofocus>Fermer ×</button></header>
+    <div class="reader-note-body" data-reader="note-body" aria-live="polite"></div>
+  </dialog>}
   <noscript><p>Activez JavaScript pour lire cet EPUB dans le navigateur.</p></noscript>
   <p class="reader-download"><a data-reader="download" href={editions[0].url} download>Télécharger l’EPUB</a></p>
 </section>

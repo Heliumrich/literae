@@ -6,6 +6,8 @@ const MAIN_ORIGIN = 'https://literae.ch';
 const LOCAL_ORIGIN = 'http://127.0.0.1:4322';
 let bookPath: string;
 let bookId: string;
+let catalogCount: number;
+let theologyCount: number;
 
 // Keep the real production origin for CORS. Only the site's HTML/assets come
 // from our local build; EPUB requests reach the public Directus server unchanged.
@@ -28,8 +30,11 @@ test.beforeAll(async ({ request }) => {
   const response = await request.get(`${LOCAL_ORIGIN}${LIBRARY}.json`);
   const { items } = await response.json();
   expect(items.length).toBeGreaterThan(0);
-  bookPath = items[0].href;
-  bookId = items[0].id;
+  const confessions = items.find((item: { title: string }) => item.title === 'Confessions');
+  bookPath = confessions.href;
+  bookId = confessions.id;
+  catalogCount = items.length;
+  theologyCount = items.filter((item: { tags: string[] }) => item.tags.includes('Théologie')).length;
 });
 
 async function openBook(page: Page) {
@@ -37,6 +42,7 @@ async function openBook(page: Page) {
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
   await expect(page.locator('[data-reader="error"]')).toBeHidden();
   await expect(page.locator('[data-reader="toc"]')).toBeEnabled();
+  await expect(page.locator('[data-reader="note-dialog"]')).toHaveCount(0);
   const id = await page.locator('[data-reader="edition"]').inputValue();
   await expect.poll(() => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id)).toMatch(/^epubcfi\(/);
 }
@@ -62,25 +68,25 @@ async function textFrame(page: Page, heading: string): Promise<Frame> {
 test('navigation, nouveautés, filtres, grille/liste et tri', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#recent-books-title')).toBeVisible();
-  await expect(page.locator('.recent-books .book-card')).toHaveCount(1);
+  await expect(page.locator('.recent-books .book-card')).toHaveCount(Math.min(4, catalogCount));
   await page.getByRole('button', { name: 'Ouvrir le menu', exact: true }).click();
   const link = page.locator('#mobile-nav').getByRole('link', { name: 'Bibliothèque' });
   await expect(link).toHaveAttribute('href', `https://literae.ch${LIBRARY}`);
   await link.click();
   await expect(page).toHaveURL(new RegExp(`${LIBRARY}$`));
-  await expect(page.locator('#catalog-status')).toContainText('1 ouvrage');
+  await expect(page.locator('#catalog-status')).toContainText(`${catalogCount} ouvrage`);
   await page.getByRole('button', { name: 'Liste', exact: true }).click();
   await expect(page.locator('#catalog-grid')).toHaveClass(/is-list/);
   await page.locator('#book-sort').selectOption('author');
   await expect(page).toHaveURL(/sort=author/);
   await page.getByRole('button', { name: 'Filtrer', exact: true }).click();
   await page.getByLabel('Théologie', { exact: true }).check();
-  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(1);
+  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(theologyCount);
   await page.locator('#catalog-search').fill('aucun-livre');
   await expect(page.locator('#catalog-grid .book-card')).toHaveCount(0);
   await expect(page.locator('#catalog-empty')).toContainText('Aucun ouvrage');
   await page.getByRole('button', { name: 'Effacer les filtres', exact: true }).click();
-  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(1);
+  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(catalogCount);
   const person = await page.request.get(`${LOCAL_ORIGIN}/personalites/aurelius-augustinus`);
   expect(await person.text()).toContain('Ouvrages de Augustin');
   expect(await person.text()).toContain(`https://literae.ch${bookPath}`);

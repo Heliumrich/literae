@@ -1,4 +1,5 @@
 import type { Book, Contents, Location, NavItem, Rendition } from 'epubjs';
+import { BibleNotes } from './notes';
 import type Section from 'epubjs/types/section';
 import type { BookEdition } from '../books';
 import { PALETTES, SETTINGS_KEY, parseSettings, readerCss } from './preferences';
@@ -35,6 +36,7 @@ async function initReader(root: HTMLElement) {
   let settings = parseSettings(readLocal(SETTINGS_KEY));
   let bookmark: ReadingProgress | null = null;
   let book: Book | undefined;
+  let notes: BibleNotes | undefined;
   let rendition: ContinuousRendition | undefined;
   let sections: Section[] = [];
   let chapters: Chapter[] = [];
@@ -152,6 +154,8 @@ async function initReader(root: HTMLElement) {
     // A switch releases the old rendition and cancels any in-flight download.
     rendition?.q.stop();
     rendition?.manager?.q.stop();
+    notes?.destroy();
+    notes = undefined;
     book?.destroy();
     book = undefined;
     rendition = undefined;
@@ -180,8 +184,19 @@ async function initReader(root: HTMLElement) {
       await openingBook.ready;
       if (currentEpoch !== epoch) { openingBook.destroy(); return; }
       book = openingBook;
+      if (root.dataset.bibleNotes === 'true') {
+        notes = new BibleNotes(book, root, open => {
+          if (currentEpoch !== epoch) return;
+          canSave = !open;
+          if (!open && rendition) {
+            rendition.resize(viewport.clientWidth, viewport.clientHeight);
+          }
+        });
+        const currentNotes = notes;
+        book.spine.hooks.content.register((doc: Document, section: Section) => { currentNotes.prefetch(doc, section.href); });
+      }
       sections = [];
-      book.spine.each((section: Section) => { sections.push(section); });
+      book.spine.each((section: Section) => { if (!notes || section.linear) sections.push(section); });
       if (!sections.length) throw new Error('EPUB sans texte');
       chapters = flattenToc((await book.loaded.navigation).toc);
       if (!chapters.length) chapters = sections.map((section, index) => ({ href: section.href, label: `Section ${index + 1}`, depth: 0 }));
@@ -195,6 +210,8 @@ async function initReader(root: HTMLElement) {
       active.hooks.content.register((contents: Contents) => {
         if (currentEpoch !== epoch) return;
         styleDocument(contents);
+        const source = sections.find(section => section.index === contents.sectionIndex)?.href;
+        if (source) notes?.bind(contents, source);
         contents.on('keydown', onKeydown);
       });
       active.on('rendered', (_section: Section, view: { iframe?: HTMLIFrameElement }) => {
