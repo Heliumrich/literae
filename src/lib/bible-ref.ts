@@ -129,7 +129,7 @@ export function parseReference(ref: string): ParsedRef {
 
   const text = ref.trim().replace(/\s+/g, " ");
   const patterns = [
-    /^(.+?)\s+(\d+)\s*[:.,]\s*(\d+)\s*[-–—àa]\s*(\d+)$/i,
+    /^(.+?)\s+(\d+)\s*[:.,]\s*(\d+)\s*[-–\u2014àa]\s*(\d+)$/i,
     /^(.+?)\s+(\d+)\s*[:.,]\s*(\d+)$/i,
     /^(.+?)\s+(\d+)$/i,
   ];

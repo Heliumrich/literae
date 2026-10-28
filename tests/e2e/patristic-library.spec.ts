@@ -26,7 +26,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
     const profile = devices[device];
     test.use({ viewport: profile.viewport, userAgent: profile.userAgent, isMobile: profile.isMobile, hasTouch: profile.hasTouch, deviceScaleFactor: profile.deviceScaleFactor });
     for (const row of batch) {
-      test(row.author + ' — ' + row.title, async ({ page }) => {
+      test(row.author + ' – ' + row.title, async ({ page }) => {
         const errors: string[] = [];
         page.on('pageerror', error => errors.push(error.message));
         const item = catalogue.find(item => item.title === row.title);

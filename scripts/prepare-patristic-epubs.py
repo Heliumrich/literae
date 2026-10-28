@@ -108,7 +108,7 @@ def flatten(parent):
 def wrap_cover(row):
     """One scalable composition: typography stays together at any viewport ratio."""
     svg = ET.Element(f'{{{SVG}}}svg', nsmap={None: SVG}, viewBox='0 0 800 1120', role='img')
-    ET.SubElement(svg, f'{{{SVG}}}title').text = row['author'] + ' — ' + row['title']
+    ET.SubElement(svg, f'{{{SVG}}}title').text = row['author'] + ' – ' + row['title']
     ET.SubElement(svg, f'{{{SVG}}}rect', width='800', height='1120', fill='#f7f1e5')
     ET.SubElement(svg, f'{{{SVG}}}rect', x='38', y='38', width='724', height='1044', fill='none', stroke='#897044', **{'stroke-width': '2'})
     ET.SubElement(svg, f'{{{SVG}}}rect', x='47', y='47', width='706', height='1026', fill='none', stroke='#b5a27b')
@@ -127,7 +127,7 @@ def wrap_cover(row):
     ET.SubElement(svg, f'{{{SVG}}}path', d='M 335 680 H 465 M 400 665 V 695', stroke='#897044', fill='none')
     lines('Traduction française', 753, 22, 46)
     end = lines(row['translator'], 791, 21, 48, 29)
-    lines(row.get('edition_label', 'Œuvres complètes — édition ' + row['edition']), max(920, end + 30), 19, 52, 26)
+    lines(row.get('edition_label', 'Œuvres complètes – édition ' + row['edition']), max(920, end + 30), 19, 52, 26)
     lines(row['year'], 1003, 23, 50)
     return svg
 

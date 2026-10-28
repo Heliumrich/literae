@@ -30,7 +30,7 @@ const featured = albums[0];
           {featured.cover ? <img src={featured.cover} alt={`Pochette de ${featured.title}`} width="800" height="800" loading="eager" /> : <Fleur class="music-placeholder" />}
         </a>
         <div><p class="eyebrow">À découvrir</p><h2 id="featured-album-title"><a href={`/musique/albums/${encodeURIComponent(featured.slug)}`}>{featured.title}</a></h2>
-          <p class="music-featured-artists">{featured.credits.map((credit, index) => <>{index > 0 && ' · '}<a href={`/musique/artistes/${encodeURIComponent(credit.artist.slug)}`}>{credit.artist.name}</a></>)}{featured.year ? ` — ${featured.year}` : ''}</p>
+          <p class="music-featured-artists">{featured.credits.map((credit, index) => <>{index > 0 && ' · '}<a href={`/musique/artistes/${encodeURIComponent(credit.artist.slug)}`}>{credit.artist.name}</a></>)}{featured.year ? ` – ${featured.year}` : ''}</p>
           {featured.description && <p class="music-featured-excerpt">{musicExcerpt(featured.description, 230)}</p>}
           <MusicTags tags={featured.tags} base="/musique/albums" />
           <a class="editorial-button" href={`/musique/albums/${encodeURIComponent(featured.slug)}`}>Découvrir l’album <span aria-hidden="true">→</span></a>

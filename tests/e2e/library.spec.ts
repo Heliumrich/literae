@@ -122,7 +122,7 @@ test('préserve la couverture et épure le plein écran sans recréer les pages 
 
 test('aligne les outils et contient les intitulés longs sur mobile et ordinateur', async ({ page }) => {
   await openBook(page);
-  await page.locator('[data-reader="toc"] option').first().evaluate(el => { el.textContent = 'Livre premier — ' + 'Un très long intitulé de chapitre '.repeat(20); });
+  await page.locator('[data-reader="toc"] option').first().evaluate(el => { el.textContent = 'Livre premier – ' + 'Un très long intitulé de chapitre '.repeat(20); });
   for (const width of [360, 393, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     const edition = await page.locator('[data-reader="edition"]').boundingBox();

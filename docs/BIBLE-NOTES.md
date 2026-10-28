@@ -27,7 +27,7 @@ Sur les fichiers examinés :
 |---|---:|---:|---:|
 | Crampon | 8 887 | 79 | 288 003 octets |
 | Glaire | 13 898 | 92 | 608 826 octets |
-| Sacy | 0 | 0 | — |
+| Sacy | 0 | 0 | – |
 
 Sacy ne contient actuellement aucun appel de note ni notes identifiées : son fichier n’a pas à être modifié. Les nombres de fichiers incluent les notes des introductions et autres sections, en plus des livres bibliques.
 

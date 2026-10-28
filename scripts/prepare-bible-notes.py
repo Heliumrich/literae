@@ -28,7 +28,7 @@ def prepare(source, target):
         if dest not in grouped:
             root = E.Element('{%s}html' % X, nsmap={None:X, 'epub':EPUB}, lang='fr')
             head = E.SubElement(root, '{%s}head' % X)
-            E.SubElement(head, '{%s}title' % X).text = 'Notes — ' + group
+            E.SubElement(head, '{%s}title' % X).text = 'Notes – ' + group
             E.SubElement(root, '{%s}body' % X)
             grouped[dest] = root
         note_parents = set()

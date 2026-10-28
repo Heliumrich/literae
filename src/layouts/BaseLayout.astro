@@ -12,11 +12,11 @@ interface Props {
 
 const {
   title = "Literae",
-  description = "Literae — un lieu pour lire la Sainte Écriture, contempler l’art chrétien, prier avec les mots de l’Église, et marcher au rythme de l’année liturgique.",
+  description = "Literae – un lieu pour lire la Sainte Écriture, contempler l’art chrétien, prier avec les mots de l’Église, et marcher au rythme de l’année liturgique.",
   gallery = false,
 } = Astro.props;
 
-const fullTitle = title === "Literae" ? title : `${title} — Literae`;
+const fullTitle = title === "Literae" ? title : `${title} – Literae`;
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isArtPath =
   pathname === "/art" ||

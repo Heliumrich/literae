@@ -1,6 +1,6 @@
 # Literae
 
-> *Tolle, lege — prends et lis.*
+> *Tolle, lege – prends et lis.*
 
 Literae est un atelier catholique francophone pour lire la Sainte Écriture, contempler l’art chrétien et prier avec les mots de l’Église.
 
@@ -78,7 +78,7 @@ Toutes les variables sont facultatives avec les accès publics actuels. Un jeton
 | Variable | Valeur par défaut | Description |
 |---|---|---|
 | `DIRECTUS_URL` | `https://api.literae.ch` | URL publique de Directus |
-| `DIRECTUS_TOKEN` | — | Jeton de lecture facultatif du CMS au build ; jamais transmis au lecteur |
+| `DIRECTUS_TOKEN` | – | Jeton de lecture facultatif du CMS au build ; jamais transmis au lecteur |
 | `PUBLIC_MAIN_SITE_URL` | `https://literae.ch` | Origine publique du site principal |
 | `PUBLIC_ART_SITE_URL` | `https://art.literae.ch` | Origine publique de la galerie |
 

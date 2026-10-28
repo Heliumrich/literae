@@ -475,7 +475,7 @@
   color: var(--accent);
 }
 
-/* ——— Le livre vivant : langage éditorial partagé ——— */
+/* ––– Le livre vivant : langage éditorial partagé ––– */
 .site-header {
   background: color-mix(in oklab, var(--bg) 91%, transparent);
   backdrop-filter: blur(14px);
@@ -677,7 +677,7 @@
   background: var(--border);
 }
 
-/* ——— Collections et catalogues ——— */
+/* ––– Collections et catalogues ––– */
 .collection-header {
   max-width: 58rem;
   padding: var(--page-start) 0 var(--intro-end);
