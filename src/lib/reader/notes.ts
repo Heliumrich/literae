@@ -17,7 +17,7 @@ export class EpubNotes {
   private title: HTMLElement;
   private origin: HTMLAnchorElement | null = null;
   private sequence = 0;
-  constructor(private book: Book, private root: HTMLElement, private onToggle: (open: boolean) => void) {
+  constructor(private book: Book, private root: HTMLElement, private onToggle: (open: boolean) => void, private displayText: (text: string) => string = text => text) {
     this.dialog = root.querySelector<HTMLDialogElement>('[data-reader="note-dialog"]')!;
     this.body = this.dialog.querySelector('[data-reader="note-body"]')!;
     this.title = this.dialog.querySelector('[data-reader="note-title"]')!;
@@ -134,7 +134,7 @@ export class EpubNotes {
       // Copy text and a small set of formatting elements, without executable EPUB HTML.
       const allowed = new Set(['p','span','em','strong','b','i','u','sup','sub','br','ul','ol','li','blockquote','table','thead','tbody','tr','th','td','caption','abbr','small','a','section','aside','div']);
       const copy = (node: Node, parent: Node) => {
-        if (node.nodeType === 3) { parent.appendChild(document.createTextNode(node.textContent || '')); return; }
+        if (node.nodeType === 3) { parent.appendChild(document.createTextNode(this.displayText(node.textContent || ''))); return; }
         if (node.nodeType !== 1) return;
         const el = node as Element, tag = el.localName.toLowerCase();
         if (['script','style','iframe','object','embed','form'].includes(tag) || el.classList.contains('mw-cite-backlink')) return;

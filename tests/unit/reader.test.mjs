@@ -1,12 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { modernizeText } from '../../src/lib/reader/text.ts';
 import { parseSettings, readerCss } from '../../src/lib/reader/preferences.ts';
 import { lastEditionKey, legacyProgressForFile, parseProgress, progressKey } from '../../src/lib/reader/progress.ts';
 
 test('ignore les réglages corrompus et borne la typographie', () => {
-  assert.deepEqual(parseSettings(null), { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, palette: 'auto' });
+  assert.deepEqual(parseSettings(null), { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, modernize: true, palette: 'auto' });
   assert.deepEqual(parseSettings({ font: 'url(evil)', size: 999, margin: -2, palette: '__proto__', justify: true }),
-    { font: 'site', size: 32, margin: 8, palette: 'auto', justify: true, hyphenate: true });
+    { font: 'site', size: 32, margin: 8, palette: 'auto', justify: true, hyphenate: true, modernize: true });
 });
 test('chaque UUID de fichier conserve son signet, sans tronquer les identifiants', () => {
   const a = '11111111-1111-4111-8111-111111111111';
@@ -42,4 +43,13 @@ test('la césure est active par défaut, y compris pour les anciens réglages, e
   const disabled = parseSettings({ hyphenate: false });
   assert.equal(disabled.hyphenate, false);
   assert.match(readerCss(disabled, false, 'https://literae.ch'), /hyphens: none !important/);
+});
+
+test('les s longs sont modernisés par défaut, sans changer les autres graphies ni les positions', () => {
+  assert.equal(parseSettings({}).modernize, true);
+  const original = 'Penſées : le deſſein et les ſujets.';
+  assert.equal(modernizeText(original, true), 'Pensées : le dessein et les sujets.');
+  assert.equal(modernizeText(original, true).length, original.length);
+  assert.equal(modernizeText(original, false), original);
+  assert.equal(parseSettings({ modernize: false }).modernize, false);
 });

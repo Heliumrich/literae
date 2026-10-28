@@ -25,6 +25,7 @@ const { bookId, title, editions } = Astro.props;
         <label>Fond <select data-reader="palette"><option value="auto">Selon le thème du site</option><option value="paper">Blanc</option><option value="cream">Crème</option><option value="night">Nuit</option><option value="oled">Noir OLED</option></select></label>
         <label class="reader-check"><input data-reader="justify" type="checkbox" /> Justifier le texte</label>
         <label class="reader-check"><input data-reader="hyphenate" type="checkbox" checked /> Césure automatique</label>
+        <label class="reader-check"><input data-reader="modernize" type="checkbox" checked /> Orthographe modernisée</label>
       </div>
     </details>
     <button type="button" data-reader="fullscreen" class="reader-button" aria-label="Plein écran" title="Plein écran" hidden>⛶</button>

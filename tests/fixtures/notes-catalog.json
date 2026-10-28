@@ -2020,5 +2020,833 @@
         ]
       }
     ]
+  },
+  {
+    "bookId": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+    "title": "L’Imitation de Jésus-Christ",
+    "fileId": "4d832cd3-a6ae-4d83-aa29-4cb50b2cacff",
+    "notes": 734,
+    "noteFiles": 115,
+    "samples": [
+      {
+        "source": "EPUB/section-002.xhtml",
+        "href": "section-002.xhtml",
+        "group": "PRÉFACE",
+        "reference": {
+          "href": "literae-notes/section-002-d3eff81b.xhtml#n-a98b3ceb6a81ffdfd597debc-1ebe83c714c8",
+          "id": "n-a98b3ceb6a81ffdfd597debc-1ebe83c714c8",
+          "path": "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "label": "1"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-004.xhtml",
+        "href": "section-004.xhtml",
+        "group": "Livre PREMIER. AVIS UTILES POUR ENTRER DANS LA VIE INTÉRIEURE",
+        "reference": {
+          "href": "literae-notes/section-004-3d69ccfc.xhtml#n-077b88c26b523d43f7e5c2b8-ef69fa6701a2",
+          "id": "n-077b88c26b523d43f7e5c2b8-ef69fa6701a2",
+          "path": "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "label": "14"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-030.xhtml",
+        "href": "section-030.xhtml",
+        "group": "Livre DEUXIÈME. INSTRUCTION POUR AVANCER DANS LA VIE INTÉRIEURE",
+        "reference": {
+          "href": "literae-notes/section-030-8287ca2c.xhtml#n-89b02f0df534be84dcfae47f-c89474708dc4",
+          "id": "n-89b02f0df534be84dcfae47f-c89474708dc4",
+          "path": "EPUB/literae-notes/section-030-8287ca2c.xhtml",
+          "label": "93"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-030-8287ca2c.xhtml",
+          "EPUB/literae-notes/section-031-babcbb92.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-043.xhtml",
+        "href": "section-043.xhtml",
+        "group": "Livre TROISIÈME. DE LA VIE INTÉRIEURE",
+        "reference": {
+          "href": "literae-notes/section-043-a5725467.xhtml#n-d08a01e559a07d74ffb64c70-ac79372c296d",
+          "id": "n-d08a01e559a07d74ffb64c70-ac79372c296d",
+          "path": "EPUB/literae-notes/section-043-a5725467.xhtml",
+          "label": "153"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-043-a5725467.xhtml",
+          "EPUB/literae-notes/section-044-acd63cb7.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-102.xhtml",
+        "href": "section-102.xhtml",
+        "group": "Livre QUATRIÈME. DU SACREMENT DE L'EUCHARISTIE",
+        "reference": {
+          "href": "literae-notes/section-102-ed852ea8.xhtml#n-9c892bd14066bc90ad08c3ce-c339063c878e",
+          "id": "n-9c892bd14066bc90ad08c3ce-c339063c878e",
+          "path": "EPUB/literae-notes/section-102-ed852ea8.xhtml",
+          "label": "557"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-101-8be53e6f.xhtml",
+          "EPUB/literae-notes/section-102-ed852ea8.xhtml",
+          "EPUB/literae-notes/section-103-5bc5d7a8.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-063.xhtml",
+        "href": "section-063.xhtml",
+        "group": "Livre TROISIÈME. DE LA VIE INTÉRIEURE",
+        "reference": {
+          "href": "literae-notes/section-063-d8008d21.xhtml#n-13d24ff2b78dbb496bbba2e6-ebdca6da8f07",
+          "id": "n-13d24ff2b78dbb496bbba2e6-ebdca6da8f07",
+          "path": "EPUB/literae-notes/section-063-d8008d21.xhtml",
+          "label": "280"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-062-b22531f1.xhtml",
+          "EPUB/literae-notes/section-063-d8008d21.xhtml",
+          "EPUB/literae-notes/section-064-d47dca9c.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-120.xhtml",
+        "href": "section-120.xhtml",
+        "group": "Livre QUATRIÈME. DU SACREMENT DE L'EUCHARISTIE",
+        "reference": {
+          "href": "literae-notes/section-120-a834762a.xhtml#n-fcf1a52fc1470a0e0744f2e6-2d3278c72123",
+          "id": "n-fcf1a52fc1470a0e0744f2e6-2d3278c72123",
+          "path": "EPUB/literae-notes/section-120-a834762a.xhtml",
+          "label": "722"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-119-29056b13.xhtml",
+          "EPUB/literae-notes/section-120-a834762a.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "168709f2-594c-4c35-859e-9b5426d83838",
+    "title": "Pensées",
+    "fileId": "b167783c-8791-4fbe-9820-a8b10192431d",
+    "notes": 14,
+    "noteFiles": 6,
+    "samples": [
+      {
+        "source": "EPUB/section-002.xhtml",
+        "href": "section-002.xhtml",
+        "group": "Approbations",
+        "reference": {
+          "href": "literae-notes/section-002-d3eff81b.xhtml#n-497a4857dc0cd01ab4e058f7",
+          "id": "n-497a4857dc0cd01ab4e058f7",
+          "path": "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-014.xhtml",
+        "href": "section-014.xhtml",
+        "group": "X. Juifs",
+        "reference": {
+          "href": "literae-notes/section-014-f3ab95fa.xhtml#n-855df5f6b679343a1b169243",
+          "id": "n-855df5f6b679343a1b169243",
+          "path": "EPUB/literae-notes/section-014-f3ab95fa.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-014-f3ab95fa.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-019.xhtml",
+        "href": "section-019.xhtml",
+        "group": "XV. Preuves de Jésus-Christ par les prophéties",
+        "reference": {
+          "href": "literae-notes/section-019-547605db.xhtml#n-7c18650a74dc4aad574b03b0",
+          "id": "n-7c18650a74dc4aad574b03b0",
+          "path": "EPUB/literae-notes/section-019-547605db.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-019-547605db.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-022.xhtml",
+        "href": "section-022.xhtml",
+        "group": "XVIII. Dessein de Dieu de se cacher aux uns ; et de se découvrir aux autres",
+        "reference": {
+          "href": "literae-notes/section-022-0ce72cf3.xhtml#n-222961f368726d47feffe28e",
+          "id": "n-222961f368726d47feffe28e",
+          "path": "EPUB/literae-notes/section-022-0ce72cf3.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-022-0ce72cf3.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-024.xhtml",
+        "href": "section-024.xhtml",
+        "group": "XX. On ne connaît Dieu utilement que par Jésus-Christ",
+        "reference": {
+          "href": "literae-notes/section-024-e78ebb15.xhtml#n-06b1de41e667244b5028c697",
+          "id": "n-06b1de41e667244b5028c697",
+          "path": "EPUB/literae-notes/section-024-e78ebb15.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-024-e78ebb15.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-037.xhtml",
+        "href": "section-037.xhtml",
+        "group": "Sources et crédits",
+        "reference": {
+          "href": "literae-notes/section-037-f6952da2.xhtml#n-83b21f58783b2de956510d24",
+          "id": "n-83b21f58783b2de956510d24",
+          "path": "EPUB/literae-notes/section-037-f6952da2.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-037-f6952da2.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+    "title": "Traité de la concupiscence",
+    "fileId": "00d062c9-36a5-497c-ab35-e724e76a3e4e",
+    "notes": 241,
+    "noteFiles": 32,
+    "samples": [
+      {
+        "source": "EPUB/section-002.xhtml",
+        "href": "section-002.xhtml",
+        "group": "Chapitre I Paroles de l’Apôtre saint Jean contre le Monde, conférées avec d’autres paroles du même Apôtre et de Jésus-Christ . Ce que c’est que le Monde, que cet Apôtre nous défend d’aimer",
+        "reference": {
+          "href": "literae-notes/section-002-d3eff81b.xhtml#n-a98b3ceb6a81ffdfd597debc-4bd20ebe6d7a",
+          "id": "n-a98b3ceb6a81ffdfd597debc-4bd20ebe6d7a",
+          "path": "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-003.xhtml",
+        "href": "section-003.xhtml",
+        "group": "Chapitre II Ce que c’est que la Concupiscence de la chair : et combien le corps pèse à l’âme",
+        "reference": {
+          "href": "literae-notes/section-003-64143a8e.xhtml#n-86d309fa4124af0b86aef0a2-86050d5238d7",
+          "id": "n-86d309fa4124af0b86aef0a2-86050d5238d7",
+          "path": "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "label": "[12]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-012.xhtml",
+        "href": "section-012.xhtml",
+        "group": "Chapitre XI De l’Amour propre, qui est la racine de l’Orgueil",
+        "reference": {
+          "href": "literae-notes/section-012-ee991963.xhtml#n-549fe901cf0884a85f389c8a-611f0b1c410e",
+          "id": "n-549fe901cf0884a85f389c8a-611f0b1c410e",
+          "path": "EPUB/literae-notes/section-012-ee991963.xhtml",
+          "label": "[90]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-011-d2962f0d.xhtml",
+          "EPUB/literae-notes/section-012-ee991963.xhtml",
+          "EPUB/literae-notes/section-013-c56be010.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-018.xhtml",
+        "href": "section-018.xhtml",
+        "group": "Chapitre XVII Faiblesse orgueilleuse d’un homme qui aime les louanges, comparée avec celle d’une femme qui veut se croire belle",
+        "reference": {
+          "href": "literae-notes/section-018-439d927c.xhtml#n-7e3ce021b7061f001783433e-9f89235f0052",
+          "id": "n-7e3ce021b7061f001783433e-9f89235f0052",
+          "path": "EPUB/literae-notes/section-018-439d927c.xhtml",
+          "label": "[116]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-017-2c7a5e4b.xhtml",
+          "EPUB/literae-notes/section-018-439d927c.xhtml",
+          "EPUB/literae-notes/section-019-547605db.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-023.xhtml",
+        "href": "section-023.xhtml",
+        "group": "Chapitre XXII Si le Chrétien bien instruit des maximes de la foi peut craindre de tomber dans cette espèce d’orgueil ?",
+        "reference": {
+          "href": "literae-notes/section-023-186d9299.xhtml#n-e3087c741ba24cba30883b0d-75031f146cbd",
+          "id": "n-e3087c741ba24cba30883b0d-75031f146cbd",
+          "path": "EPUB/literae-notes/section-023-186d9299.xhtml",
+          "label": "[139]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-022-0ce72cf3.xhtml",
+          "EPUB/literae-notes/section-023-186d9299.xhtml",
+          "EPUB/literae-notes/section-024-e78ebb15.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-033.xhtml",
+        "href": "section-033.xhtml",
+        "group": "Chapitre XXXII De la racine de la triple Concupiscence, qui est l’amour de soi-même : à quoi il faut opposer le saint et pur amour de Dieu",
+        "reference": {
+          "href": "literae-notes/section-033-0d85dacc.xhtml#n-298f65a0fe2e0e24bebc8c4f-6485fe58dcef",
+          "id": "n-298f65a0fe2e0e24bebc8c4f-6485fe58dcef",
+          "path": "EPUB/literae-notes/section-033-0d85dacc.xhtml",
+          "label": "[227]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-032-e162ec2f.xhtml",
+          "EPUB/literae-notes/section-033-0d85dacc.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+    "title": "Oraisons funèbres",
+    "fileId": "0b28c8c3-7937-4f3c-afe2-309630acc018",
+    "notes": 227,
+    "noteFiles": 8,
+    "samples": [
+      {
+        "source": "EPUB/section-002.xhtml",
+        "href": "section-002.xhtml",
+        "group": "ORAISON FUNÈBRE DE HENRIETTE-MARIE DE FRANCE REINE DE LA GRANDE-BRETAGNE",
+        "reference": {
+          "href": "literae-notes/section-002-d3eff81b.xhtml#n-a98b3ceb6a81ffdfd597debc-f208774f0d30",
+          "id": "n-a98b3ceb6a81ffdfd597debc-f208774f0d30",
+          "path": "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-003.xhtml",
+        "href": "section-003.xhtml",
+        "group": "ORAISON FUNÈBRE DE HENRIETTE-ANNE D’ANGLETERRE DUCHESSE D’ORLÉANS",
+        "reference": {
+          "href": "literae-notes/section-003-64143a8e.xhtml#n-86d309fa4124af0b86aef0a2-e42171db7b63",
+          "id": "n-86d309fa4124af0b86aef0a2-e42171db7b63",
+          "path": "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "label": "[22]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-004.xhtml",
+        "href": "section-004.xhtml",
+        "group": "ORAISON FUNÈBRE DE MARIE-THÉRÈSE D’AUTRICHE INFANTE D’ESPAGNE REINE DE FRANCE ET DE NAVARRE",
+        "reference": {
+          "href": "literae-notes/section-004-3d69ccfc.xhtml#n-077b88c26b523d43f7e5c2b8-08ed3e0c5b32",
+          "id": "n-077b88c26b523d43f7e5c2b8-08ed3e0c5b32",
+          "path": "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "label": "[51]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-005.xhtml",
+        "href": "section-005.xhtml",
+        "group": "ORAISON FUNÈBRE DE TRÈS HAUTE ET TRÈS PUISSANTE PRINCESSE ANNE DE GONZAGUE DE CLÈVES PRINCESSE PALATINE",
+        "reference": {
+          "href": "literae-notes/section-005-b8ea8a96.xhtml#n-35529aa39e2681adc3659a43-6d41d600d323",
+          "id": "n-35529aa39e2681adc3659a43-6d41d600d323",
+          "path": "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "label": "[118]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "EPUB/literae-notes/section-006-930de80a.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-006.xhtml",
+        "href": "section-006.xhtml",
+        "group": "ORAISON FUNÈBRE DE TRÈS HAUT ET PUISSANT SEIGNEUR MESSIRE MICHEL LE TELLIER CHEVALIER, CHANCELIER DE FRANCE",
+        "reference": {
+          "href": "literae-notes/section-006-930de80a.xhtml#n-e97fda4b12fc829ba6301de5-c710ca46f847",
+          "id": "n-e97fda4b12fc829ba6301de5-c710ca46f847",
+          "path": "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "label": "[160]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "EPUB/literae-notes/section-007-3d0d5333.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-007.xhtml",
+        "href": "section-007.xhtml",
+        "group": "ORAISON FUNÈBRE DE TRÈS HAUT ET TRÈS PUISSANT PRINCE LOUIS DE BOURBON, PRINCE DE CONDÉ PREMIER PRINCE DU SANG",
+        "reference": {
+          "href": "literae-notes/section-007-3d0d5333.xhtml#n-a777d6552b3927c0ecc50040-8f37eaf536cf",
+          "id": "n-a777d6552b3927c0ecc50040-8f37eaf536cf",
+          "path": "EPUB/literae-notes/section-007-3d0d5333.xhtml",
+          "label": "[210]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "EPUB/literae-notes/section-007-3d0d5333.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-009.xhtml",
+        "href": "section-009.xhtml",
+        "group": "APPENDICE",
+        "reference": {
+          "href": "literae-notes/section-009-039e9513.xhtml#n-71b551a5abe3b1cad2cc2123-2d57cd7b08ca",
+          "id": "n-71b551a5abe3b1cad2cc2123-2d57cd7b08ca",
+          "path": "EPUB/literae-notes/section-009-039e9513.xhtml",
+          "label": "[226]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-009-039e9513.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-011.xhtml",
+        "href": "section-011.xhtml",
+        "group": "APPENDICE",
+        "reference": {
+          "href": "literae-notes/section-011-d2962f0d.xhtml#n-077c87084e2e0372d4cb7722-aebdab099fd9",
+          "id": "n-077c87084e2e0372d4cb7722-aebdab099fd9",
+          "path": "EPUB/literae-notes/section-011-d2962f0d.xhtml",
+          "label": "[227]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-011-d2962f0d.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "91d340a8-54f9-4182-b612-899030777152",
+    "title": "Le Blé qui lève",
+    "fileId": "47e2d4d1-52d6-451a-9419-d574da81c5da",
+    "notes": 0,
+    "noteFiles": 0,
+    "samples": [
+      {
+        "source": "EPUB/section-001.xhtml",
+        "href": "section-001.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-010.xhtml",
+        "href": "section-010.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-018.xhtml",
+        "href": "section-018.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      }
+    ]
+  },
+  {
+    "bookId": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+    "title": "La Terre qui meurt",
+    "fileId": "82a540ea-5760-4907-b41b-470b43c2ba7d",
+    "notes": 5,
+    "noteFiles": 3,
+    "samples": [
+      {
+        "source": "EPUB/section-001.xhtml",
+        "href": "section-001.xhtml",
+        "group": "I LA FROMENTIÈRE",
+        "reference": {
+          "href": "literae-notes/section-001-6ba4a118.xhtml#n-1753f811c6eca3b4bfe505ca-3f4b42ec88ef",
+          "id": "n-1753f811c6eca3b4bfe505ca-3f4b42ec88ef",
+          "path": "EPUB/literae-notes/section-001-6ba4a118.xhtml",
+          "label": "{1}"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-001-6ba4a118.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-004.xhtml",
+        "href": "section-004.xhtml",
+        "group": "IV LE PREMIER LABOUR DE SEPTEMBRE",
+        "reference": {
+          "href": "literae-notes/section-004-3d69ccfc.xhtml#n-09eac28577eac873264c40ad-20ebf0c8c764",
+          "id": "n-09eac28577eac873264c40ad-20ebf0c8c764",
+          "path": "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "label": "{4}"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-016.xhtml",
+        "href": "section-016.xhtml",
+        "group": "XVI LA NUIT DE FÉVRIER",
+        "reference": {
+          "href": "literae-notes/section-016-8e744fbd.xhtml#n-8a1a9bf40cf2467f88bd4ada-c741cdecd459",
+          "id": "n-8a1a9bf40cf2467f88bd4ada-c741cdecd459",
+          "path": "EPUB/literae-notes/section-016-8e744fbd.xhtml",
+          "label": "{5}"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-016-8e744fbd.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+    "title": "L’Isolée",
+    "fileId": "bbe1ffb9-2a57-4d7f-806e-e3803804d234",
+    "notes": 0,
+    "noteFiles": 0,
+    "samples": [
+      {
+        "source": "EPUB/section-001.xhtml",
+        "href": "section-001.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-006.xhtml",
+        "href": "section-006.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-010.xhtml",
+        "href": "section-010.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      }
+    ]
+  },
+  {
+    "bookId": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+    "title": "Considérations sur la France",
+    "fileId": "6c589eaa-0667-49f8-892f-e75ca2b1fa2d",
+    "notes": 82,
+    "noteFiles": 13,
+    "samples": [
+      {
+        "source": "EPUB/section-002.xhtml",
+        "href": "section-002.xhtml",
+        "group": "Chapitre PREMIER",
+        "reference": {
+          "href": "literae-notes/section-002-d3eff81b.xhtml#n-9d91e999f29277102424fab9",
+          "id": "n-9d91e999f29277102424fab9",
+          "path": "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-003.xhtml",
+        "href": "section-003.xhtml",
+        "group": "Chapitre II",
+        "reference": {
+          "href": "literae-notes/section-003-64143a8e.xhtml#n-652e6e452ccda7787d895ca7",
+          "id": "n-652e6e452ccda7787d895ca7",
+          "path": "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-002-d3eff81b.xhtml",
+          "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-004.xhtml",
+        "href": "section-004.xhtml",
+        "group": "Chapitre III",
+        "reference": {
+          "href": "literae-notes/section-004-3d69ccfc.xhtml#n-2de672d02a17998e74fee181",
+          "id": "n-2de672d02a17998e74fee181",
+          "path": "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-003-64143a8e.xhtml",
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-005.xhtml",
+        "href": "section-005.xhtml",
+        "group": "Chapitre IV",
+        "reference": {
+          "href": "literae-notes/section-005-b8ea8a96.xhtml#n-df2874e738aa9a6c4b85e48f",
+          "id": "n-df2874e738aa9a6c4b85e48f",
+          "path": "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-004-3d69ccfc.xhtml",
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "EPUB/literae-notes/section-006-930de80a.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-006.xhtml",
+        "href": "section-006.xhtml",
+        "group": "Chapitre V",
+        "reference": {
+          "href": "literae-notes/section-006-930de80a.xhtml#n-ee1107a41f719aa7efb7f115",
+          "id": "n-ee1107a41f719aa7efb7f115",
+          "path": "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-005-b8ea8a96.xhtml",
+          "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "EPUB/literae-notes/section-007-3d0d5333.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-007.xhtml",
+        "href": "section-007.xhtml",
+        "group": "Chapitre VI",
+        "reference": {
+          "href": "literae-notes/section-007-3d0d5333.xhtml#n-d1d594eaf3bd584e62d550b9",
+          "id": "n-d1d594eaf3bd584e62d550b9",
+          "path": "EPUB/literae-notes/section-007-3d0d5333.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-006-930de80a.xhtml",
+          "EPUB/literae-notes/section-007-3d0d5333.xhtml",
+          "EPUB/literae-notes/section-008-638ba92c.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-008.xhtml",
+        "href": "section-008.xhtml",
+        "group": "Chapitre VII",
+        "reference": {
+          "href": "literae-notes/section-008-638ba92c.xhtml#n-290894811f76be73b9b93c26",
+          "id": "n-290894811f76be73b9b93c26",
+          "path": "EPUB/literae-notes/section-008-638ba92c.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-007-3d0d5333.xhtml",
+          "EPUB/literae-notes/section-008-638ba92c.xhtml",
+          "EPUB/literae-notes/section-009-039e9513.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-009.xhtml",
+        "href": "section-009.xhtml",
+        "group": "Chapitre VIII",
+        "reference": {
+          "href": "literae-notes/section-009-039e9513.xhtml#n-fc438f8abf35a53247045020",
+          "id": "n-fc438f8abf35a53247045020",
+          "path": "EPUB/literae-notes/section-009-039e9513.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-008-638ba92c.xhtml",
+          "EPUB/literae-notes/section-009-039e9513.xhtml",
+          "EPUB/literae-notes/section-010-5d7c8d80.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-010.xhtml",
+        "href": "section-010.xhtml",
+        "group": "Chapitre IX",
+        "reference": {
+          "href": "literae-notes/section-010-5d7c8d80.xhtml#n-2f024c1e8f574a20b0f54ac3",
+          "id": "n-2f024c1e8f574a20b0f54ac3",
+          "path": "EPUB/literae-notes/section-010-5d7c8d80.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-009-039e9513.xhtml",
+          "EPUB/literae-notes/section-010-5d7c8d80.xhtml",
+          "EPUB/literae-notes/section-011-d2962f0d.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-011.xhtml",
+        "href": "section-011.xhtml",
+        "group": "Chapitre X",
+        "reference": {
+          "href": "literae-notes/section-011-d2962f0d.xhtml#n-a5077f9e934a905ea9a2403f",
+          "id": "n-a5077f9e934a905ea9a2403f",
+          "path": "EPUB/literae-notes/section-011-d2962f0d.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-010-5d7c8d80.xhtml",
+          "EPUB/literae-notes/section-011-d2962f0d.xhtml",
+          "EPUB/literae-notes/section-012-ee991963.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-012.xhtml",
+        "href": "section-012.xhtml",
+        "group": "Chapitre XI",
+        "reference": {
+          "href": "literae-notes/section-012-ee991963.xhtml#n-f8a3e44987914c8b463db048",
+          "id": "n-f8a3e44987914c8b463db048",
+          "path": "EPUB/literae-notes/section-012-ee991963.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-011-d2962f0d.xhtml",
+          "EPUB/literae-notes/section-012-ee991963.xhtml",
+          "EPUB/literae-notes/section-013-c56be010.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-013.xhtml",
+        "href": "section-013.xhtml",
+        "group": "Post-Scriptum,",
+        "reference": {
+          "href": "literae-notes/section-013-c56be010.xhtml#n-ac7fc0ff0d86c446976f36e0",
+          "id": "n-ac7fc0ff0d86c446976f36e0",
+          "path": "EPUB/literae-notes/section-013-c56be010.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-012-ee991963.xhtml",
+          "EPUB/literae-notes/section-013-c56be010.xhtml",
+          "EPUB/literae-notes/section-014-f3ab95fa.xhtml"
+        ]
+      },
+      {
+        "source": "EPUB/section-014.xhtml",
+        "href": "section-014.xhtml",
+        "group": "Sources et crédits",
+        "reference": {
+          "href": "literae-notes/section-014-f3ab95fa.xhtml#n-2655179f62309d3338994662",
+          "id": "n-2655179f62309d3338994662",
+          "path": "EPUB/literae-notes/section-014-f3ab95fa.xhtml",
+          "label": "[1]"
+        },
+        "allowedPaths": [
+          "EPUB/literae-notes/section-013-c56be010.xhtml",
+          "EPUB/literae-notes/section-014-f3ab95fa.xhtml"
+        ]
+      }
+    ]
+  },
+  {
+    "bookId": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+    "title": "La Barrière",
+    "fileId": "c928533c-a958-45ab-bb22-713d03545a6c",
+    "notes": 0,
+    "noteFiles": 0,
+    "samples": [
+      {
+        "source": "EPUB/section-001.xhtml",
+        "href": "section-001.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-003.xhtml",
+        "href": "section-003.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-005.xhtml",
+        "href": "section-005.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      }
+    ]
+  },
+  {
+    "bookId": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+    "title": "Les Oberlé",
+    "fileId": "2b873569-9272-4f5c-b875-9d5830509370",
+    "notes": 0,
+    "noteFiles": 0,
+    "samples": [
+      {
+        "source": "EPUB/section-001.xhtml",
+        "href": "section-001.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-009.xhtml",
+        "href": "section-009.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      },
+      {
+        "source": "EPUB/section-017.xhtml",
+        "href": "section-017.xhtml",
+        "group": "",
+        "reference": null,
+        "allowedPaths": []
+      }
+    ]
   }
 ]

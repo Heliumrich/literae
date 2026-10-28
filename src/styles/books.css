@@ -1,9 +1,8 @@
 .book-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3rem 2rem; margin-top: 2.5rem; }
 .book-card { min-width: 0; }
 .book-card > a { display: block; color: inherit; text-decoration: none; }
-.book-card-cover { display: grid; place-items: center; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg-secondary); }
-.book-card-cover > img { width: 100%; height: 100%; object-fit: contain; transition: transform .25s; }
-.book-card a:hover .book-card-cover > img { transform: scale(1.025); }
+.book-card-cover { position: relative; display: grid; place-items: center; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg-secondary); }
+.book-card-cover > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
 .book-cover-empty { display: grid; place-items: center; height: 100%; opacity: .4; }
 .book-card-copy { padding-top: 1rem; }
 .book-card-copy h2 { margin-top: .35rem; font-size: clamp(1.8rem, 2.5vw, 2.4rem); line-height: 1.1; }

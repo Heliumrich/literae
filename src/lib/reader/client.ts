@@ -1,14 +1,15 @@
 import type { Book, Contents, Location, Rendition } from 'epubjs';
 import { EpubNotes } from './notes';
 import { ReaderToc } from './toc';
+import { modernizeDocument, modernizeText } from './text';
 import type Section from 'epubjs/types/section';
 import type { BookEdition } from '../books';
 import { PALETTES, SETTINGS_KEY, parseSettings, readerCss } from './preferences';
 import { lastEditionKey, legacyProgressForFile, parseProgress, progressKey, type ReadingProgress } from './progress';
 
-type SectionView = { index: number; element: HTMLElement; displayed: boolean; contents?: Contents };
+type SectionView = { index: number; element: HTMLElement; displayed: boolean; expand(): void; contents?: Contents };
 // EPUB.js exposes these at runtime but omits them from its declaration files.
-type ContinuousRendition = Rendition & { manager: { container: HTMLElement; views: { all(): SectionView[] }; q: Rendition['q'] } };
+type ContinuousRendition = Rendition & { manager: { container: HTMLElement; scrollTo(x: number, y: number, silent?: boolean): void; views: { all(): SectionView[] }; q: Rendition['q'] } };
 
 function readLocal(key: string): unknown {
   try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
@@ -22,7 +23,7 @@ async function initReader(root: HTMLElement) {
   const el = <T extends HTMLElement>(name: string) => root.querySelector<T>(`[data-reader="${name}"]`)!;
   const viewport = el<HTMLDivElement>('viewport');
   const selectEdition = el<HTMLSelectElement>('edition');
-  const toc = new ReaderToc(root, href => { void navigate(() => rendition!.display(href)); });
+  const toc = new ReaderToc(root, href => { void navigate(() => displayChapter(href)); });
   const previous = el<HTMLButtonElement>('previous');
   const next = el<HTMLButtonElement>('next');
   const message = el<HTMLDivElement>('message');
@@ -43,6 +44,8 @@ async function initReader(root: HTMLElement) {
   let canSave = false;
   let settingsTimer = 0;
   let settingsEpoch = 0;
+  let navigationEpoch = 0;
+  let navigationController: AbortController | undefined;
   let storageAvailable = true;
   const prefetched = new Set<number>();
 
@@ -66,6 +69,7 @@ async function initReader(root: HTMLElement) {
       html body svg { max-height: none !important; max-width: 100% !important; }
       .literae-cover { height: 100%; position: relative; }
     ` : readerCss(settings, dark(), location.origin);
+    modernizeDocument(doc, settings.modernize);
     doc.documentElement.lang ||= 'fr';
   }
   function updatePalette() {
@@ -77,6 +81,7 @@ async function initReader(root: HTMLElement) {
     for (const name of ['font', 'size', 'margin', 'palette'] as const) el<HTMLInputElement | HTMLSelectElement>(name).value = String(settings[name]);
     el<HTMLInputElement>('justify').checked = settings.justify;
     el<HTMLInputElement>('hyphenate').checked = settings.hyphenate;
+    el<HTMLInputElement>('modernize').checked = settings.modernize;
     el<HTMLOutputElement>('size-label').value = `${settings.size} px`;
     el<HTMLOutputElement>('margin-label').value = `${settings.margin} px`;
     updatePalette();
@@ -132,6 +137,7 @@ async function initReader(root: HTMLElement) {
   }
 
   function requestEdition(id: string) {
+    navigationController?.abort();
     const requested = editions.find(edition => edition.id === id);
     if (requested) el<HTMLAnchorElement>('download').href = requested.downloadUrl;
     const currentEpoch = ++epoch;
@@ -190,7 +196,7 @@ async function initReader(root: HTMLElement) {
         if (!open && rendition) {
           rendition.resize(viewport.clientWidth, viewport.clientHeight);
         }
-      });
+      }, text => modernizeText(text, settings.modernize));
       const currentNotes = notes;
       book.spine.hooks.content.register((doc: Document, section: Section) => { currentNotes.register(doc, section.href); });
       sections = [];
@@ -239,11 +245,55 @@ async function initReader(root: HTMLElement) {
     message.textContent = '';
     try { await action(); } catch { fail(); }
   }
+  /** EPUB.js resolves display before injected typography has finished resizing its frames. */
+  async function displayChapter(href: string) {
+    const active = rendition!, openingEpoch = epoch, navigation = ++navigationEpoch;
+    navigationController?.abort();
+    const input = navigationController = new AbortController();
+    const cancelled = new Promise<void>(resolve => input.signal.addEventListener('abort', () => resolve(), {once: true}));
+    const watchInput = (target: EventTarget) => {
+      for (const name of ['wheel', 'touchstart', 'keydown', 'pointerdown']) target.addEventListener(name, () => input.abort(), {signal: input.signal, passive: true});
+    };
+    watchInput(viewport);
+    try {
+      await active.display(href);
+      const section = book!.spine.get(href);
+      const targetView = section && active.manager.views.all().find(view => view.index === section.index && view.contents);
+      const targetDoc = targetView?.contents?.document;
+      if (!targetDoc || input.signal.aborted) return;
+      watchInput(targetDoc);
+      // Adjacent views may be discarded while their FontFaceSet is loading;
+      // waiting on those detached documents would never finish.
+      void targetDoc.body.offsetHeight;
+      await Promise.race([targetDoc.fonts.ready, cancelled]);
+      if (input.signal.aborted || active !== rendition || openingEpoch !== epoch || navigation !== navigationEpoch) return;
+      for (const view of active.manager.views.all()) if (view.contents) view.expand();
+      await nextFrame();
+      await nextFrame();
+      if (input.signal.aborted || active !== rendition || openingEpoch !== epoch || navigation !== navigationEpoch) return;
+      const view = active.manager.views.all().find(view => view.index === section.index && view.contents);
+      const doc = view?.contents?.document;
+      const frame = view?.element.querySelector('iframe');
+      if (!doc || !frame) return;
+      const id = decodeURIComponent(href.split('#')[1] || '');
+      const target = id ? doc.getElementById(id) : null;
+      if (id && !target) return;
+      const container = active.manager.container;
+      const delta = frame.getBoundingClientRect().top + (target?.getBoundingClientRect().top || 0) - container.getBoundingClientRect().top;
+      // A silent no-op leaves EPUB.js waiting for a scroll event that never fires,
+      // causing it to ignore the next real scroll and miss the next section.
+      if (Math.abs(delta) > .5) active.manager.scrollTo(container.scrollLeft, container.scrollTop + delta, false);
+      await active.reportLocation();
+      root.dispatchEvent(new CustomEvent('reader:chapter-positioned', {detail: {href}, bubbles: true}));
+    } finally { input.abort(); if (navigationController === input) navigationController = undefined; }
+  }
+
   function onKeydown(event: KeyboardEvent) {
     const target = event.target as HTMLElement | null;
     if (event.altKey || event.ctrlKey || event.metaKey || target?.closest('input,select,textarea,button,[contenteditable]')) return;
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
       event.preventDefault();
+      navigationController?.abort();
       void navigate(() => event.key === 'ArrowRight' ? rendition!.next() : rendition!.prev());
     }
   }
@@ -277,16 +327,16 @@ async function initReader(root: HTMLElement) {
     }, 160);
   }
 
-  for (const name of ['font', 'size', 'margin', 'palette', 'justify', 'hyphenate'] as const) {
+  for (const name of ['font', 'size', 'margin', 'palette', 'justify', 'hyphenate', 'modernize'] as const) {
     el<HTMLInputElement | HTMLSelectElement>(name).addEventListener('input', () => {
-      settings = parseSettings({ ...settings, [name]: name === 'justify' || name === 'hyphenate' ? el<HTMLInputElement>(name).checked
+      settings = parseSettings({ ...settings, [name]: name === 'justify' || name === 'hyphenate' || name === 'modernize' ? el<HTMLInputElement>(name).checked
         : name === 'size' || name === 'margin' ? Number(el<HTMLInputElement>(name).value) : el<HTMLSelectElement>(name).value });
       applySettings();
     });
   }
   selectEdition.addEventListener('change', () => { void requestEdition(selectEdition.value); });
-  previous.addEventListener('click', () => { void navigate(() => rendition!.prev()); });
-  next.addEventListener('click', () => { void navigate(() => rendition!.next()); });
+  previous.addEventListener('click', () => { navigationController?.abort(); void navigate(() => rendition!.prev()); });
+  next.addEventListener('click', () => { navigationController?.abort(); void navigate(() => rendition!.next()); });
   viewport.addEventListener('keydown', onKeydown);
   el('retry').addEventListener('click', () => { void requestEdition(selected.id); });
   const themeObserver = new MutationObserver(() => { if (settings.palette === 'auto') applySettings(); });

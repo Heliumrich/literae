@@ -125,7 +125,7 @@ def wrap_cover(row):
     title_lines = textwrap.wrap(row['title'], width=26)
     lines(row['title'], 430 - max(0, len(title_lines) - 2) * 14, 43, 26, 61)
     ET.SubElement(svg, f'{{{SVG}}}path', d='M 335 680 H 465 M 400 665 V 695', stroke='#897044', fill='none')
-    lines('Traduction française', 753, 22, 46)
+    lines(row.get('credit_role', 'Traduction française'), 753, 22, 46)
     end = lines(row['translator'], 791, 21, 48, 29)
     lines(row.get('edition_label', 'Œuvres complètes – édition ' + row['edition']), max(920, end + 30), 19, 52, 26)
     lines(row['year'], 1003, 23, 50)

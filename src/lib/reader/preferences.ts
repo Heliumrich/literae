@@ -11,18 +11,18 @@ export const PALETTES = {
   oled: { bg: '#000000', fg: '#e7e1d7', link: '#e4a1ae' },
 };
 export type ReaderSettings = {
-  font: keyof typeof READER_FONTS; size: number; margin: number; justify: boolean; hyphenate: boolean;
+  font: keyof typeof READER_FONTS; size: number; margin: number; justify: boolean; hyphenate: boolean; modernize: boolean;
   palette: 'auto' | keyof typeof PALETTES;
 };
 export const SETTINGS_KEY = 'literae-reader-settings-v1';
-export const DEFAULT_SETTINGS: ReaderSettings = { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, palette: 'auto' };
+export const DEFAULT_SETTINGS: ReaderSettings = { font: 'site', size: 20, margin: 32, justify: false, hyphenate: true, modernize: true, palette: 'auto' };
 export function parseSettings(value: unknown): ReaderSettings {
   const row = value && typeof value === 'object' ? value as Record<string, unknown> : {};
   const bounded = (v: unknown, min: number, max: number, fallback: number) => typeof v === 'number' && Number.isFinite(v) ? Math.max(min, Math.min(max, v)) : fallback;
   return {
     font: typeof row.font === 'string' && Object.hasOwn(READER_FONTS, row.font) ? row.font as ReaderSettings['font'] : 'site',
     palette: row.palette === 'auto' || typeof row.palette === 'string' && Object.hasOwn(PALETTES, row.palette) ? row.palette as ReaderSettings['palette'] : 'auto',
-    size: bounded(row.size, 16, 32, 20), margin: bounded(row.margin, 8, 80, 32), justify: row.justify === true, hyphenate: row.hyphenate !== false,
+    size: bounded(row.size, 16, 32, 20), margin: bounded(row.margin, 8, 80, 32), justify: row.justify === true, hyphenate: row.hyphenate !== false, modernize: row.modernize !== false,
   };
 }
 
