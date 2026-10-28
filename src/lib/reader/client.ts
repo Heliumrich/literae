@@ -1,5 +1,6 @@
-import type { Book, Contents, Location, NavItem, Rendition } from 'epubjs';
+import type { Book, Contents, Location, Rendition } from 'epubjs';
 import { BibleNotes } from './notes';
+import { ReaderToc } from './toc';
 import type Section from 'epubjs/types/section';
 import type { BookEdition } from '../books';
 import { PALETTES, SETTINGS_KEY, parseSettings, readerCss } from './preferences';
@@ -8,7 +9,6 @@ import { lastEditionKey, legacyProgressForFile, parseProgress, progressKey, type
 type SectionView = { index: number; element: HTMLElement; displayed: boolean; contents?: Contents };
 // EPUB.js exposes these at runtime but omits them from its declaration files.
 type ContinuousRendition = Rendition & { manager: { container: HTMLElement; views: { all(): SectionView[] }; q: Rendition['q'] } };
-type Chapter = { href: string; label: string; depth: number };
 
 function readLocal(key: string): unknown {
   try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
@@ -16,16 +16,13 @@ function readLocal(key: string): unknown {
 function writeLocal(key: string, value: unknown): boolean {
   try { localStorage.setItem(key, JSON.stringify(value)); return true; } catch { return false; }
 }
-function flattenToc(items: NavItem[], depth = 0): Chapter[] {
-  return items.flatMap(item => [{ href: item.href, label: item.label.trim(), depth }, ...flattenToc(item.subitems || [], depth + 1)]);
-}
 const nextFrame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
 
 async function initReader(root: HTMLElement) {
   const el = <T extends HTMLElement>(name: string) => root.querySelector<T>(`[data-reader="${name}"]`)!;
   const viewport = el<HTMLDivElement>('viewport');
   const selectEdition = el<HTMLSelectElement>('edition');
-  const toc = el<HTMLSelectElement>('toc');
+  const toc = new ReaderToc(root, href => { void navigate(() => rendition!.display(href)); });
   const previous = el<HTMLButtonElement>('previous');
   const next = el<HTMLButtonElement>('next');
   const message = el<HTMLDivElement>('message');
@@ -39,7 +36,6 @@ async function initReader(root: HTMLElement) {
   let notes: BibleNotes | undefined;
   let rendition: ContinuousRendition | undefined;
   let sections: Section[] = [];
-  let chapters: Chapter[] = [];
   let selected = editions.find(edition => edition.id === readLocal(editionKey)) || editions[0];
   let epoch = 0;
   let controller: AbortController | undefined;
@@ -122,8 +118,7 @@ async function initReader(root: HTMLElement) {
     progressLabel.textContent = `${percent} %${storageAvailable ? '' : ' · Sauvegarde indisponible'}`;
     previous.disabled = location.atStart;
     next.disabled = location.atEnd;
-    const chapter = chapters.find(chapter => chapter.href.split('#')[0] === location.start.href.split('#')[0]);
-    if (chapter) toc.value = chapter.href;
+    toc.setCurrent(location.start.href);
     preloadNeighbours(index);
   }
 
@@ -165,7 +160,7 @@ async function initReader(root: HTMLElement) {
     bookmark = parseProgress(readLocal(progressKey(selected.id)))
       || legacyProgressForFile(readLocal(`literae-book-progress-v1:${root.dataset.bookId}`), selected.id);
     selectEdition.value = id;
-    toc.disabled = true;
+    toc.loading();
     previous.disabled = next.disabled = true;
     el<HTMLAnchorElement>('download').href = selected.url;
     error.hidden = true;
@@ -198,9 +193,10 @@ async function initReader(root: HTMLElement) {
       sections = [];
       book.spine.each((section: Section) => { if (!notes || section.linear) sections.push(section); });
       if (!sections.length) throw new Error('EPUB sans texte');
-      chapters = flattenToc((await book.loaded.navigation).toc);
-      if (!chapters.length) chapters = sections.map((section, index) => ({ href: section.href, label: `Section ${index + 1}`, depth: 0 }));
-      toc.replaceChildren(...chapters.map(chapter => new Option(`${'　'.repeat(chapter.depth)}${chapter.label}`, chapter.href)));
+      const navigation = (await book.loaded.navigation).toc;
+      toc.setItems(navigation.length ? navigation : sections.map((section, index) => ({
+        id: `section-${index}`, href: section.href, label: `Section ${index + 1}`, subitems: [], parent: undefined,
+      })), selected.id);
       const active = book.renderTo(viewport, {
         manager: 'continuous', flow: 'scrolled', spread: 'none', width: viewport.clientWidth, height: viewport.clientHeight,
         resizeOnOrientationChange: false,
@@ -224,7 +220,6 @@ async function initReader(root: HTMLElement) {
       if (currentEpoch !== epoch) return;
       canSave = true;
       writeLocal(editionKey, selected.id);
-      toc.disabled = false;
       viewport.setAttribute('aria-busy', 'false');
       message.textContent = '';
       await active.reportLocation();
@@ -287,7 +282,6 @@ async function initReader(root: HTMLElement) {
     });
   }
   selectEdition.addEventListener('change', () => { void requestEdition(selectEdition.value); });
-  toc.addEventListener('change', () => { void navigate(() => rendition!.display(toc.value)); });
   previous.addEventListener('click', () => { void navigate(() => rendition!.prev()); });
   next.addEventListener('click', () => { void navigate(() => rendition!.next()); });
   viewport.addEventListener('keydown', onKeydown);

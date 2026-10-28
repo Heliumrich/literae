@@ -1,3 +1,5 @@
+import { withPersonTitles } from './people';
+
 export const DIRECTUS_URL =
   import.meta.env.DIRECTUS_URL || "https://api.literae.ch";
 
@@ -34,7 +36,7 @@ async function requestFromDirectus<T>(endpoint: string): Promise<T | null> {
       return null;
     }
     const json = (await res.json()) as { data: T };
-    return json.data;
+    return withPersonTitles(json.data);
   } catch (error) {
     console.error("Erreur Directus:", error);
     return null;

@@ -36,7 +36,7 @@ export async function getStaticPaths() {
       "artists?filter[status][_eq]=published&fields=*&sort=name",
     ),
     fetchAllFromDirectus<any>(
-      "artworks?filter[status][_eq]=published&fields=id,slug,title_original,title_french,title_english,year,image,artist.id,artist.name,artist.slug,depicted.artists_id.id&sort=-year",
+      "artworks?filter[status][_eq]=published&fields=id,slug,title_original,title_french,title_english,year,image,artist.id,artist.name,artist.type,artist.slug,depicted.artists_id.id&sort=-year",
     ),
     fetchBooks(),
   ]);
@@ -131,17 +131,14 @@ const dates =
 
       {
         person.biography && (
-          <section class="biography" aria-labelledby="biography-title">
-            <div>
-              <p class="eyebrow">Parcours</p>
-              <h2 id="biography-title">Biographie</h2>
-            </div>
+          <details class="biography">
+            <summary><span><span class="eyebrow">Parcours</span><span class="biography-heading">Biographie</span></span><span class="biography-arrow" aria-hidden="true">⌄</span></summary>
             {looksLikeHtml(person.biography) ? (
               <div class="rich-text biography-text" set:html={person.biography} />
             ) : (
               <p class="rich-text biography-text whitespace-pre-line">{person.biography}</p>
             )}
-          </section>
+          </details>
         )
       }
     </div>
@@ -317,17 +314,26 @@ const dates =
   }
 
   .biography {
-    display: grid;
-    grid-template-columns: minmax(13rem, 0.6fr) minmax(0, 1.4fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    padding: clamp(4rem, 8vw, 7rem) 0;
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
     border-top: 1px solid var(--border);
   }
 
-  .biography h2 {
-    margin-top: 0.6rem;
-    font-size: clamp(2.6rem, 4.5vw, 4rem);
+  .biography summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    list-style: none;
   }
+
+  .biography summary::-webkit-details-marker { display: none; }
+  .biography summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+  .biography summary:hover { color: var(--accent); }
+  .biography-heading { display: block; margin-top: .4rem; font-size: clamp(2.2rem, 4vw, 3.5rem); }
+  .biography-arrow { color: var(--gold); font-size: 1.7rem; transition: transform .15s; }
+  .biography[open] .biography-arrow { transform: rotate(180deg); }
+  .biography[open] .biography-text { margin-top: 2rem; }
 
   .biography-text {
     max-width: 47rem;
@@ -370,8 +376,7 @@ const dates =
   }
 
   @media (max-width: 760px) {
-    .person-hero,
-    .biography {
+    .person-hero {
       grid-template-columns: 1fr;
     }
 

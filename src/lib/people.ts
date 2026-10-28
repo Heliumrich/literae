@@ -48,3 +48,20 @@ export function formatPersonRoles(keys: PersonTypeKey[]) {
   if (labels.length === 2) return `${labels[0]} et ${labels[1]}`;
   return `${labels.slice(0, -1).join(", ")} et ${labels.at(-1)}`;
 }
+
+/** Display titles come from the person type; CMS names and slugs stay unchanged. */
+export function personName(name: string, type: unknown): string {
+  if (!parsePersonTypes(type).includes('saint')) return name;
+  if (/^saint(?:e)?[\s-]/i.test(name)) return name.replace(/^saint(e)?/i, (_, ending: string | undefined) => `saint${ending?.toLowerCase() || ''}`);
+  if (/^ste?\.?[\s-]/i.test(name)) return name.replace(/^s(te|t)\.?(?=[\s-])/i, (_, ending: string) => ending.toLowerCase() === 'te' ? 'sainte' : 'saint');
+  return `saint ${name}`;
+}
+
+/** Normalize root people and joined authors/depicted people once, before rendering. */
+export function withPersonTitles<T>(value: T): T {
+  if (Array.isArray(value)) return value.map(item => withPersonTitles(item)) as T;
+  if (!value || typeof value !== 'object') return value;
+  const row = Object.fromEntries(Object.entries(value).map(([key, item]) => [key, withPersonTitles(item)]));
+  if (typeof row.name === 'string') row.name = personName(row.name, row.type);
+  return row as T;
+}

@@ -1,3 +1,4 @@
+import { chooseChapter, openToc, expectCurrentChapter } from './reader-helpers';
 import { test, expect, devices, type Page, type Frame } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 
@@ -41,7 +42,7 @@ async function openBook(page: Page) {
   await page.goto(bookPath);
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
   await expect(page.locator('[data-reader="error"]')).toBeHidden();
-  await expect(page.locator('[data-reader="toc"]')).toBeEnabled();
+  await expect(page.locator('[data-reader="toc-toggle"]')).toHaveAttribute('aria-disabled', 'false');
   await expect(page.locator('[data-reader="note-dialog"]')).toHaveCount(0);
   const id = await page.locator('[data-reader="edition"]').inputValue();
   await expect.poll(() => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id)).toMatch(/^epubcfi\(/);
@@ -50,8 +51,7 @@ async function goToSection(page: Page, text: string) {
   const id = await page.locator('[data-reader="edition"]').inputValue();
   const savedCfi = () => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id);
   const previous = await savedCfi();
-  const option = page.locator('[data-reader="toc"] option').filter({ hasText: new RegExp(`^${text}$`) });
-  await page.locator('[data-reader="toc"]').selectOption((await option.getAttribute('value'))!);
+  await chooseChapter(page, text);
   await expect.poll(savedCfi).not.toBe(previous);
 }
 async function textFrame(page: Page, heading: string): Promise<Frame> {
@@ -88,7 +88,7 @@ test('navigation, nouveautés, filtres, grille/liste et tri', async ({ page }) =
   await page.getByRole('button', { name: 'Effacer les filtres', exact: true }).click();
   await expect(page.locator('#catalog-grid .book-card')).toHaveCount(catalogCount);
   const person = await page.request.get(`${LOCAL_ORIGIN}/personalites/aurelius-augustinus`);
-  expect(await person.text()).toContain('Ouvrages de Augustin');
+  expect(await person.text()).toContain('Ouvrages de saint Augustin');
   expect(await person.text()).toContain(`https://literae.ch${bookPath}`);
 });
 
@@ -122,11 +122,12 @@ test('préserve la couverture et épure le plein écran sans recréer les pages 
 
 test('aligne les outils et contient les intitulés longs sur mobile et ordinateur', async ({ page }) => {
   await openBook(page);
-  await page.locator('[data-reader="toc"] option').first().evaluate(el => { el.textContent = 'Livre premier – ' + 'Un très long intitulé de chapitre '.repeat(20); });
+  await page.locator('[data-reader="toc-current"]').evaluate(el => { el.textContent = 'Livre premier – ' + 'Un très long intitulé de chapitre '.repeat(20); });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   for (const width of [360, 393, 768, 1280]) {
     await page.setViewportSize({ width, height: 900 });
     const edition = await page.locator('[data-reader="edition"]').boundingBox();
-    const toc = await page.locator('[data-reader="toc"]').boundingBox();
+    const toc = await page.locator('[data-reader="toc-toggle"]').boundingBox();
     const settings = await page.locator('.reader-settings summary').boundingBox();
     expect(edition!.height).toBe(toc!.height);
     expect(settings!.height).toBe(toc!.height);
@@ -141,6 +142,46 @@ test('aligne les outils et contient les intitulés longs sur mobile et ordinateu
   await expect(page.locator('[data-reader="font"]')).toBeVisible();
 });
 
+test('sommaire hiérarchique : lecture directe, branches mémorisées sur la page et titres longs', async ({ page }) => {
+  await openBook(page);
+  await openToc(page);
+  const branch = page.locator('[data-reader="toc-list"] > li').filter({ has: page.getByRole('button', { name: 'Livre premier', exact: true }) });
+  const expand = branch.locator(':scope > .reader-toc-row > [data-reader="toc-expand"]');
+  const children = branch.locator(':scope > ul');
+  await expect(expand).toHaveAttribute('aria-expanded', 'false');
+  await expect(children).toBeHidden();
+  const before = await page.locator('[data-reader="toc"]').getAttribute('data-current-href');
+  await expand.click();
+  await expect(children).toBeVisible();
+  expect(await page.locator('[data-reader="toc"]').getAttribute('data-current-href')).toBe(before);
+  const child = children.locator('[data-reader="toc-link"]').first();
+  await child.evaluate(element => { element.textContent = 'Chapitre premier : ' + 'Un intitulé particulièrement long '.repeat(12); });
+  await expect(child).toBeVisible();
+  const parentBox = await branch.locator(':scope > .reader-toc-row').boundingBox();
+  const childBox = await child.boundingBox();
+  expect(childBox!.x).toBeGreaterThan(parentBox!.x);
+  expect(childBox!.height).toBeGreaterThan(50);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+  await child.click();
+  await expect(page.locator('[data-reader="toc-panel"]')).toBeHidden();
+  await openToc(page);
+  await expect(expand).toHaveAttribute('aria-expanded', 'true');
+  await page.keyboard.press('Escape');
+  await expect(page.locator('[data-reader="toc-toggle"]')).toBeFocused();
+  await openToc(page);
+  await expect(children).toBeVisible();
+  await expand.click();
+  await branch.getByRole('button', { name: 'Livre premier', exact: true }).click();
+  await expect(page.locator('[data-reader="toc-current"]')).toHaveText('Livre premier');
+  await openToc(page);
+  await expect(expand).toHaveAttribute('aria-expanded', 'false');
+  await expand.click();
+  await page.reload();
+  await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
+  await openToc(page);
+  await expect(expand).toHaveAttribute('aria-expanded', 'false');
+});
+
 test('permet de réessayer après un échec de téléchargement de l’EPUB', async ({ page }) => {
   await page.route('https://api.literae.ch/assets/**', route => route.abort('internetdisconnected'));
   await page.goto(bookPath);
@@ -149,7 +190,7 @@ test('permet de réessayer après un échec de téléchargement de l’EPUB', as
   await page.getByRole('button', { name: 'Réessayer', exact: true }).click();
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
   await expect(page.locator('[data-reader="error"]')).toBeHidden();
-  await expect(page.locator('[data-reader="toc"]')).toBeEnabled();
+  await expect(page.locator('[data-reader="toc-toggle"]')).toHaveAttribute('aria-disabled', 'false');
 });
 
 test('récupère l’ancien signet uniquement pour son fichier d’origine', async ({ page }) => {
@@ -168,7 +209,7 @@ test('récupère l’ancien signet uniquement pour son fichier d’origine', asy
   }, { id, bookId, progress });
   await page.reload();
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
-  await expect(page.locator('[data-reader="toc"] option:checked')).toHaveText('Livre troisième');
+  await expect(page.locator('[data-reader="toc-current"]')).toHaveText('Livre troisième');
 });
 
 for (const device of ['Desktop Chrome', 'Pixel 7']) {
@@ -190,7 +231,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       expect(headers.origin).toBe(MAIN_ORIGIN);
       expect(headers.authorization).toBeUndefined();
       expect(headers.cookie).toBeUndefined();
-      await expect(page.locator('[data-reader="toc"] option').filter({ hasText: /^Livre / })).toHaveCount(13);
+      await expect(page.locator('[data-reader="toc-link"]').filter({ hasText: /^Livre / })).toHaveCount(13);
       await goToSection(page, 'Livre premier');
       const frame = await textFrame(page, 'Livre premier');
       await expect(frame.locator('body')).toContainText('notre coeur est inquiet');
@@ -239,7 +280,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await page.close();
       const reopened = await context.newPage();
       await openBook(reopened);
-      await expect(reopened.locator('[data-reader="toc"] option:checked')).toHaveText('Livre cinquième');
+      await expect(reopened.locator('[data-reader="toc-current"]')).toHaveText('Livre cinquième');
       await expect(reopened.locator('[data-reader="size"]')).toHaveValue('24');
       await expect(reopened.locator('[data-reader="hyphenate"]')).not.toBeChecked();
       await expect(reopened.locator('[data-reader="progress"]')).toContainText('%');
@@ -280,7 +321,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       const aPosition = await savedCfi(a.id);
       await page.locator('[data-reader="edition"]').selectOption(b.id);
       await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
-      await expect(page.locator('[data-reader="toc"]')).toHaveValue('preface.xhtml');
+      await expectCurrentChapter(page, 'preface.xhtml');
       const translated = await textFrame(page, 'Préface');
       await expect(translated.locator('p').first()).toContainText('Édition B');
       expect(await savedCfi(a.id)).toBe(aPosition);
@@ -288,20 +329,20 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await goToSection(page, 'Livre premier');
       await textFrame(page, 'Livre premier');
       await expect.poll(() => savedCfi(b.id)).toMatch(/^epubcfi\(/);
-      await expect(page.locator('[data-reader="toc"]')).toHaveValue('premier.xhtml');
+      await expectCurrentChapter(page, 'premier.xhtml');
       const bPosition = await savedCfi(b.id);
       await page.locator('[data-reader="edition"]').selectOption(a.id);
       await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
-      await expect(page.locator('[data-reader="toc"]')).toHaveValue('deuxieme.xhtml');
+      await expectCurrentChapter(page, 'deuxieme.xhtml');
       expect(await savedCfi(b.id)).toBe(bPosition);
       await page.locator('[data-reader="edition"]').selectOption(b.id);
       await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
-      await expect(page.locator('[data-reader="toc"]')).toHaveValue('premier.xhtml');
+      await expectCurrentChapter(page, 'premier.xhtml');
       b.url = b.url.replace('meme-nom.epub?v=test', 'nom-modifie.epub?v=test2');
       await page.reload();
       await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
       await expect(page.locator('[data-reader="edition"]')).toHaveValue(b.id);
-      await expect(page.locator('[data-reader="toc"]')).toHaveValue('premier.xhtml');
+      await expectCurrentChapter(page, 'premier.xhtml');
       await page.locator('[data-reader="edition"]').selectOption(a.id);
       await page.locator('[data-reader="edition"]').selectOption(b.id);
       await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');

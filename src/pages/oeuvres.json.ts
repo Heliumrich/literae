@@ -12,7 +12,7 @@ export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const artworks = alternateArtists(await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.id,artist.name,artist.slug&sort=-date_created,id",
+    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.id,artist.name,artist.type,artist.slug&sort=-date_created,id",
   ), artworkArtistKey, (work) => work.artist?.name);
 
   const items = artworks.map((work) => {

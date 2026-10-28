@@ -14,7 +14,7 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   const works = await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=*,artist.id,artist.slug,artist.name,depicted.artists_id.id,depicted.artists_id.slug,depicted.artists_id.name&sort=-date_created",
+    "artworks?filter[status][_eq]=published&fields=*,artist.id,artist.slug,artist.name,artist.type,depicted.artists_id.id,depicted.artists_id.slug,depicted.artists_id.name,depicted.artists_id.type&sort=-date_created",
   );
   return works
     .filter((work) => work?.slug)

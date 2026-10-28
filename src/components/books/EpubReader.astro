@@ -10,7 +10,12 @@ const { bookId, title, editions, bibleNotes = false } = Astro.props;
     <label class="reader-field reader-edition"><span>Édition / traduction</span>
       <select data-reader="edition" aria-label="Édition ou traduction">{editions.map(edition => <option value={edition.id}>{edition.label}</option>)}</select>
     </label>
-    <label class="reader-field reader-toc"><span>Sommaire</span> <select data-reader="toc" aria-label="Sommaire" disabled><option>Chargement du sommaire…</option></select></label>
+    <div class="reader-field reader-toc"><span>Sommaire</span>
+      <details data-reader="toc">
+        <summary data-reader="toc-toggle" aria-label="Sommaire" aria-disabled="true"><span data-reader="toc-current">Chargement du sommaire…</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <nav class="reader-toc-panel" data-reader="toc-panel" aria-label="Chapitres de l’ouvrage"><ul data-reader="toc-list"></ul></nav>
+      </details>
+    </div>
     <details class="reader-settings">
       <summary aria-label="Réglages de lecture"><span>Réglages de lecture</span><span aria-hidden="true">Aa ▾</span></summary>
       <div class="reader-settings-grid">

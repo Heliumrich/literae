@@ -1,3 +1,4 @@
+import { openToc } from './reader-helpers';
 import { test, expect, devices } from '@playwright/test';
 import batch from '../../scripts/catalogs/patristic-2026-10.json' with { type: 'json' };
 
@@ -52,10 +53,11 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
         expect(dimensions).toBeTruthy();
         expect(dimensions!.height).toBe(dimensions!.expectedHeight);
         expect(dimensions!.overflow).toBe(false);
-        const toc = page.locator('[data-reader="toc"]');
-        expect(await toc.locator('option').count()).toBeGreaterThan(2);
-        const firstSection = await toc.locator('option').nth(1).getAttribute('value');
-        await toc.selectOption(firstSection!);
+        await openToc(page);
+        const chapters = page.locator('[data-reader="toc-link"]');
+        expect(await chapters.count()).toBeGreaterThan(2);
+        await chapters.nth(1).click();
+        expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
         await page.locator('.reader-settings summary').click();
         await page.locator('[data-reader="font"]').selectOption('lora');
         await page.locator('[data-reader="size"]').fill('24');

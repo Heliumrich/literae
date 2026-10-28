@@ -11,7 +11,7 @@ import { alternateArtists, artworkArtistKey } from "../../lib/artworks";
 export const prerender = true;
 
 const artworks = alternateArtists(await fetchAllFromDirectus<any>(
-  "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.id,artist.name,artist.slug&sort=-date_created,id",
+  "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.id,artist.name,artist.type,artist.slug&sort=-date_created,id",
 ), artworkArtistKey, (work) => work.artist?.name);
 const allTags = [...new Set(artworks.flatMap((work) => parseTags(work.tags)))].sort((a, b) =>
   a.localeCompare(b, "fr"),

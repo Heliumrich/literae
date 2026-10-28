@@ -10,12 +10,12 @@ type BookFile = {
 type BookRow = {
   id: string; archived: boolean; title: string; short_description: string | null;
   cover_image: unknown; tags: unknown; date_created: string | null;
-  author: { id: string; name: string; slug: string; status: string } | null;
+  author: { id: string; name: string; slug: string; status: string; type: unknown } | null;
   ebook_files: { directus_files_id: BookFile | null }[];
 };
 const BOOK_FIELDS = [
   'id', 'archived', 'title', 'short_description', 'cover_image', 'tags', 'date_created',
-  'author.id', 'author.name', 'author.slug', 'author.status',
+  'author.id', 'author.name', 'author.type', 'author.slug', 'author.status',
   ...['id', 'title', 'description', 'filename_download', 'type', 'filesize', 'modified_on']
     .map(field => `ebook_files.directus_files_id.${field}`),
 ].join(',');

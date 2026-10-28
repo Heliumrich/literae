@@ -2,7 +2,7 @@
 /* One grid aligns the labels, selects and actions, without intrinsic select widths. */
 .reader-toolbar { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto auto; align-items: end; gap: .65rem; padding: .75rem; border-bottom: 1px solid var(--border); font-family: var(--type-ui); font-size: .8rem; }
 .epub-reader label { min-width: 0; color: var(--text-muted); }
-.reader-field { display: grid; gap: .25rem; grid-row: 1; }
+.reader-field { display: grid; grid-template-columns: minmax(0, 1fr); gap: .25rem; grid-row: 1; }
 .reader-field > span { font-size: .7rem; line-height: 1.2; }
 .epub-reader select { box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; height: 2.5rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: 0 .65rem; border-radius: 2px; font: inherit; text-overflow: ellipsis; }
 .reader-settings { grid-column: 3; grid-row: 1; min-width: 0; }
@@ -64,3 +64,26 @@
 .reader-note-body table { max-width: 100%; }
 .reader-note-body a { color: var(--accent); text-decoration: underline; }
 .epub-reader:fullscreen > .reader-note-dialog[open] { display: block !important; }
+
+/* Chapter navigation shares the catalog filter panel's border, surface and tools. */
+.reader-toc > span { color: var(--text-muted); }
+/* Native details must shrink to the grid track even for a very long heading. */
+.reader-toc details { min-width: 0; }
+.reader-toc summary { min-width: 0; max-width: 100%; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: .65rem; box-sizing: border-box; height: 2.5rem; padding: 0 .65rem; border: 1px solid var(--border); border-radius: 2px; background: var(--bg); color: var(--text); list-style: none; cursor: pointer; }
+.reader-toc summary::-webkit-details-marker { display: none; }
+.reader-toc summary > span { min-width: 0; flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.reader-toc summary > svg { flex: none; color: var(--gold); }
+.reader-toc summary[aria-disabled="true"] { opacity: .5; cursor: default; }
+.reader-toc summary:focus-visible, .reader-toc-panel button:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.reader-toc summary:hover, .reader-toc details[open] summary { border-color: var(--gold); }
+.reader-toc-panel { position: absolute; z-index: 6; top: calc(100% - .1rem); left: .75rem; right: .75rem; max-height: min(60svh, 28rem); overflow: auto; overscroll-behavior: contain; padding: .5rem; border: 1px solid var(--border); background: var(--card); color: var(--text); box-shadow: var(--shadow-border); }
+.reader-toc-panel ul { list-style: none; margin: 0; padding: 0; }
+.reader-toc-panel ul ul { margin-left: .8rem; padding-left: .65rem; border-left: 1px solid var(--border); }
+.reader-toc-row { display: flex; min-width: 0; border-bottom: 1px solid var(--border); }
+.reader-toc-panel button { border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.reader-toc-link { flex: 1; min-width: 0; text-align: left; padding: .7rem .55rem; line-height: 1.5; overflow-wrap: anywhere; }
+.reader-toc-link:hover, .reader-toc-expand:hover { background: var(--bg-secondary); }
+.reader-toc-link[aria-current="location"] { color: var(--accent); font-weight: 600; }
+.reader-toc-expand { flex: none; width: 2.75rem; min-height: 2.75rem; align-self: start; }
+.reader-toc-expand span { display: inline-block; color: var(--gold); font: 1.6rem Georgia, serif; }
+.reader-toc-expand[aria-expanded="true"] span { transform: rotate(90deg); }

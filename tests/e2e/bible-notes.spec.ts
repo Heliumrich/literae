@@ -1,3 +1,4 @@
+import { chooseChapterHref } from './reader-helpers';
 import { test, expect, devices } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 const MAIN = 'https://literae.ch', LOCAL = 'http://127.0.0.1:4322';
@@ -23,8 +24,8 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
         const item = items.find((b: {title:string}) => b.title.includes(bible.name));
         const errors: string[] = []; page.on('pageerror', e=>errors.push(e.message));
         await page.goto(item.href);
-        await expect(page.locator('[data-reader="toc"]')).toBeEnabled({timeout:30000});
-        await page.locator('[data-reader="toc"]').selectOption(bible.chapter);
+        await expect(page.locator('[data-reader="toc-toggle"]')).toHaveAttribute('aria-disabled', 'false', {timeout:30000});
+        await chooseChapterHref(page, bible.chapter);
         let frame;
         await expect.poll(async () => {
           for (const f of page.frames().slice(1)) {
@@ -54,7 +55,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
         await expect(page.locator('[data-reader="note-body"]')).not.toContainText('ne peut pas être chargée');
         expect((await page.locator('[data-reader="note-body"]').textContent())!.length).toBeGreaterThan(10);
         expect(await frame!.locator('[epub\\:type="footnote"]').count()).toBe(0);
-        expect(await page.locator('[data-reader="toc"] option').evaluateAll(opts=>opts.some(o=>(o as HTMLOptionElement).value.includes('literae-notes/')))).toBe(false);
+        expect(await page.locator('[data-reader="toc-link"]').evaluateAll(links=>links.some(link=>(link as HTMLElement).dataset.href?.includes('literae-notes/')))).toBe(false);
         await page.getByRole('button',{name:'Fermer la note'}).click();
         expect(await page.evaluate(id=>JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`)||'{}').cfi,id)).toBe(await page.evaluate(() => (window as any).__noteBookmark));
         await page.locator('[data-reader="fullscreen"]').click();

@@ -11,7 +11,7 @@ export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const artworks = await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.name,artist.slug&sort=-date_created",
+    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.name,artist.type,artist.slug&sort=-date_created",
   );
 
   const items = artworks.map((work) => {

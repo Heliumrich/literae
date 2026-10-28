@@ -13,7 +13,7 @@ import {
 
 const people = await fetchArtistsList();
 const artworks = await fetchAllFromDirectus<any>(
-  "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.name,artist.slug&sort=-date_created",
+  "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.name,artist.type,artist.slug&sort=-date_created",
 );
 const featured = artworks.find((work) => fileIdOf(work.image));
 const latest = artworks.filter((work) => work.id !== featured?.id).slice(0, 8);
