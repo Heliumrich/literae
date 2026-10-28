@@ -95,14 +95,19 @@ test('navigation, nouveautés, filtres, grille/liste et tri', async ({ page }) =
 test('préserve la couverture et épure le plein écran sans recréer les pages au scroll', async ({ page }) => {
   await openBook(page);
   let cover: Frame | undefined;
-  for (const f of page.frames().slice(1)) if (await f.locator('.cover-bg').count()) cover = f;
+  for (const f of page.frames().slice(1)) if (await f.locator('.cover-bg, .literae-cover').count()) cover = f;
   expect(cover).toBeTruthy();
   const height = await page.locator('[data-reader="viewport"]').evaluate(el => el.clientHeight);
   await expect.poll(() => cover!.locator('body').evaluate(el => el.getBoundingClientRect().height)).toBe(height);
-  await expect(cover!.locator('.title-top')).toHaveCSS('color', 'rgb(255, 255, 255)');
-  await expect(cover!.locator('.title-top')).toHaveCSS('text-align', 'center');
-  const boxes = await cover!.locator('h1').evaluateAll(els => els.map(el => ({top: el.getBoundingClientRect().top, bottom: el.getBoundingClientRect().bottom})));
-  expect(boxes[1].top).toBeGreaterThan(boxes[0].bottom);
+  if (await cover!.locator('.literae-cover').count()) {
+    await expect(cover!.locator('svg text').first()).toHaveAttribute('fill', '#302719');
+    await expect(cover!.locator('svg text').first()).toHaveAttribute('text-anchor', 'middle');
+    const boxes = await cover!.locator('svg text').evaluateAll(els => els.slice(0, 2).map(el => ({ top: el.getBoundingClientRect().top, bottom: el.getBoundingClientRect().bottom })));
+    expect(boxes[1].top).toBeGreaterThan(boxes[0].bottom);
+  } else {
+    await expect(cover!.locator('.title-top')).toHaveCSS('color', 'rgb(255, 255, 255)');
+    await expect(cover!.locator('.title-top')).toHaveCSS('text-align', 'center');
+  }
   await cover!.evaluate(() => { (window as any).__coverRetained = true; });
   await page.evaluate(() => { window.scrollBy(0, 100); window.dispatchEvent(new Event('resize')); });
   await page.waitForTimeout(250); // EPUB.js previously throttled its window resize handler.
@@ -163,7 +168,7 @@ test('récupère l’ancien signet uniquement pour son fichier d’origine', asy
   }, { id, bookId, progress });
   await page.reload();
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
-  await expect(page.locator('[data-reader="toc"]')).toHaveValue(/livre_troisieme/);
+  await expect(page.locator('[data-reader="toc"] option:checked')).toHaveText('Livre troisième');
 });
 
 for (const device of ['Desktop Chrome', 'Pixel 7']) {
@@ -234,7 +239,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await page.close();
       const reopened = await context.newPage();
       await openBook(reopened);
-      await expect(reopened.locator('[data-reader="toc"]')).toHaveValue(/livre_cinquieme/);
+      await expect(reopened.locator('[data-reader="toc"] option:checked')).toHaveText('Livre cinquième');
       await expect(reopened.locator('[data-reader="size"]')).toHaveValue('24');
       await expect(reopened.locator('[data-reader="hyphenate"]')).not.toBeChecked();
       await expect(reopened.locator('[data-reader="progress"]')).toContainText('%');

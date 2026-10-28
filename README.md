@@ -203,3 +203,5 @@ sudo systemctl restart scriptorium.service
 Le build inclut le chemin absolu du snapshot SQLite utilisé pour générer le comparateur ; le serveur retrouve sa base quel que soit son dossier de lancement. Reconstruire puis redémarrer applique une nouvelle base. Si le projet est déplacé, reconstruire pour enregistrer son nouveau chemin. Un `git pull` seul ne déclenche pas le build. Après chaque changement dans Directus, reconstruisez puis redéployez le site.
 
 La CI GitHub exécute automatiquement les contrôles TypeScript, la vérification de la frontière statique et le build sur les pushes vers `main` et les pull requests.
+
+Préparation et références du lot patristique : [docs/PATRISTIC-EPUBS.md](docs/PATRISTIC-EPUBS.md).
