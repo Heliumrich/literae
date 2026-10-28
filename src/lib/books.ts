@@ -3,7 +3,7 @@ import { escapeHtml } from './catalog-ui';
 
 export const LIBRARY_PATH = '/scriptorium/bibliotheque';
 
-export type BookEdition = { id: string; label: string; url: string; size: number };
+export type BookEdition = { id: string; label: string; url: string; downloadUrl: string; size: number };
 export type LibraryBook = {
   id: string; slug: string; title: string; description: string; cover: string | null;
   author: { id: string; name: string; slug: string } | null;

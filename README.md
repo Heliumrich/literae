@@ -93,7 +93,7 @@ Les collections actuellement consommées sont :
   les noms affichés sont normalisés au build par `withPersonTitles` (`people.ts`) : le type `saint` ajoute le titre sans modifier la fiche ni le slug. Toute requête de nom lié doit aussi sélectionner son champ `type` (par exemple `author.type` ou `depicted.artists_id.type`). Les biographies des fiches sont repliées par défaut ;
 - `prayers` pour les titres, textes français et latins, descriptions et étiquettes.
 - `albums` et `musical_artists` pour la collection musicale ; la relation `albums.artists` expose les participations et leurs `roles`.
-- `books` pour les ouvrages, avec leur auteur (`artists`) et leurs éditions (`ebook_files.directus_files_id`). Cette collection utilise `archived`, sans champ `status`.
+- `books` pour les ouvrages, avec leur auteur (`artists`) et leurs éditions de lecture et de téléchargement (`ebook_files` et `ebook_download_files`). Cette collection utilise `archived`, sans champ `status`.
 
 Les fiches musicales affichent les descriptions Markdown, les tags et les liens externes renseignés dans le CMS. Les types généraux des artistes sont distincts de leurs rôles sur chaque album. Seuls les albums et artistes `published` sont exposés, y compris dans les relations. Les filtres (recherche, tags, types et artiste associé) utilisent `/musique/albums.json` et `/musique/artistes.json`, générés au build. Aucun lecteur embarqué ou import de pistes n’est utilisé.
 
@@ -109,9 +109,11 @@ La visionneuse navigable du catalogue et des collections d’une personnalité p
 
 Le catalogue `/scriptorium/bibliotheque` propose la recherche, les vues grille/liste, le tri par titre, auteur ou étiquettes et les mêmes filtres par tags que la galerie. L’accueil présente les quatre derniers ajouts et les personnalités présentent leurs ouvrages après leurs collections d’art.
 
+Les versions web sont reliées par `ebook_files` et les téléchargements pour liseuses par `ebook_download_files`, dans le même ordre. Les correspondances sont vérifiées au build pour éviter de mélanger les traductions. Les dossiers Directus `books/ebooks`, `books/dl_ebooks` et `books/images` distinguent ces fichiers.
+
 Les notices des livres non archivés sont générées au build. En l’absence de champ `slug` dans `books`, l’URL combine le titre normalisé et les huit premiers caractères de l’UUID (`confessions-a758f0c9`). Changer le titre change l’URL de la fiche, mais conserve la progression des fichiers EPUB.
 
-Le navigateur télécharge directement l’EPUB sélectionné depuis `/assets/<UUID>` sur Directus, en accès public et sans cookie ni jeton. Aucun EPUB n’est téléchargé ou copié pendant le build. Un paramètre de révision issu des métadonnées du fichier renouvelle le cache HTTP si l’asset est modifié. Le CMS doit autoriser l’origine exacte du site dans son CORS (`https://literae.ch` en production, avec `Vary: Origin`). En développement local, autorisez aussi l’origine locale utilisée. Les libellés utilisent le contenu entre parenthèses du titre du fichier dans Directus (ou du nom de téléchargement si le titre manque). Sans parenthèses, le nom complet sans extension est affiché.
+Le navigateur charge directement l’EPUB de lecture sélectionné depuis `/assets/<UUID>` sur Directus, en accès public et sans cookie ni jeton. Aucun EPUB n’est téléchargé ou copié pendant le build. Un paramètre de révision issu des métadonnées du fichier renouvelle le cache HTTP si l’asset est modifié. Le CMS doit autoriser l’origine exacte du site dans son CORS (`https://literae.ch` en production, avec `Vary: Origin`). En développement local, autorisez aussi l’origine locale utilisée. Les libellés utilisent le contenu entre parenthèses du titre du fichier dans Directus (ou du nom de téléchargement si le titre manque). Sans parenthèses, le nom complet sans extension est affiché.
 
 Le lecteur EPUB.js utilise le défilement continu et le sommaire de l’ouvrage. Le sommaire utilise un panneau hiérarchique : le titre ouvre directement le passage et une flèche distincte déplie les enfants. Les branches ouvertes sont conservées en mémoire par édition pendant la visite de la page, sans stockage persistant. Les XHTML voisin précédent et suivant sont préchargés ; les vues éloignées sont libérées par le gestionnaire continu. Les scripts contenus dans les EPUB restent désactivés. La police du corps, la taille, les marges, la justification et le fond sont réglables. Le fond automatique suit le thème du site ; Blanc, Crème, Nuit et Noir OLED fixent aussi une couleur de texte lisible. Les titres conservent leur police. Literata, Lora et Libre Baskerville sont auto-hébergées en WOFF2, avec variantes latines normale/italique et licences OFL ; leurs fichiers ne sont demandés qu’à la sélection, hors du précache du comparateur.
 
@@ -121,7 +123,7 @@ Les réglages et la progression restent dans le `localStorage` du navigateur. Ch
 
 La préparation des pages de couverture et leur dimensionnement sont documentés dans [Couvertures EPUB](docs/EPUB-COVERS.md). Le lecteur préserve leurs styles et leur donne une hauteur égale à sa zone de lecture.
 
-Les ouvrages portant le tag **Sainte Bible** disposent de [notes en surimpression](docs/BIBLE-NOTES.md), préchargées par livre biblique dans les EPUB préparés.
+Les [notes en surimpression](docs/EPUB-NOTES.md) sont disponibles pour tous les ouvrages préparés, avec appels en exposant et préchargement limité à la partie courante et ses voisines. Les espaces avant `: ; ? !` sont insécables dans les versions web et pour liseuses.
 
 ## Comparateur sur smartphone et hors ligne
 

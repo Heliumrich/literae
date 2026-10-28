@@ -3,9 +3,15 @@ const EPUB = 'http://www.idpf.org/2007/ops';
 const BASE = 'https://epub.invalid';
 const notePath = (path: string) => path.includes('/literae-notes/');
 
-/** Only constructed for Sainte Bible books. All documents stay inside the EPUB archive. */
-export class BibleNotes {
-  private cache = new Map<string, Promise<Document>>();
+type CachedNote = { promise: Promise<Document>; ready: boolean };
+
+/** Prepared notes for any book; only the active section and its neighbours preload. */
+export class EpubNotes {
+  private cache = new Map<string, CachedNote>();
+  private links = new Map<string, string[]>();
+  private context: string[] = [];
+  private current = '';
+  private pinned = new Set<string>();
   private dialog: HTMLDialogElement;
   private body: HTMLElement;
   private title: HTMLElement;
@@ -27,25 +33,74 @@ export class BibleNotes {
     if (url.origin !== BASE) throw new Error('Lien extérieur à l’EPUB');
     return { path: decodeURIComponent(url.pathname), id: decodeURIComponent(url.hash.slice(1)) };
   }
-  private document(path: string): Promise<Document> {
-    let pending = this.cache.get(path);
-    if (!pending) {
-      pending = this.book.load(path).then(doc => doc as Document);
-      this.cache.set(path, pending);
-      pending.catch(() => this.cache.delete(path));
-      // A few biblical books, never all the notes of the Bible.
-      while (this.cache.size > 3) this.cache.delete(this.cache.keys().next().value!);
-    }
-    return pending;
+  private emit(name: string, detail: Record<string, unknown>) {
+    this.root.dispatchEvent(new CustomEvent(`reader:${name}`, { detail, bubbles: true }));
   }
-  prefetch(doc: Document, source: string) {
-    const link = doc.querySelector('link[rel="literae-notes"]')?.getAttribute('href');
-    if (!link) return;
-    const { path } = this.resolve(link, source);
-    void this.document(path).catch(() => {}); // Failure is retried and reported on click.
+  private canonical(source: string) { return this.resolve('', source).path; }
+  private document(path: string, source = '', reason = 'click'): Promise<Document> {
+    let entry = this.cache.get(path);
+    if (!entry) {
+      const start = performance.now();
+      entry = { promise: this.book.load(path).then(doc => doc as Document), ready: false };
+      this.cache.set(path, entry);
+      this.emit('notes-load', { path, source, reason, state: 'start', context: [...this.context] });
+      const current = entry;
+      entry.promise.then(() => {
+        current.ready = true;
+        if (this.cache.get(path) !== current) return;
+        this.emit('notes-load', { path, source, reason, state: 'ready', elapsedMs: performance.now() - start });
+        this.reportContext();
+      }).catch(() => {
+        if (this.cache.get(path) === current) this.cache.delete(path);
+        this.emit('notes-load', { path, source, reason, state: 'error' });
+      });
+    } else {
+      this.cache.delete(path);
+      this.cache.set(path, entry);
+    }
+    // Keep the requested neighbourhood warm, plus a few recent note documents.
+    const limit = Math.max(6, this.pinned.size);
+    for (const key of this.cache.keys()) {
+      if (this.cache.size <= limit) break;
+      if (key !== path && !this.pinned.has(key)) this.cache.delete(key);
+    }
+    return entry.promise;
+  }
+  private reportContext() {
+    this.emit('notes-context', {
+      current: this.current, sources: this.context, paths: [...this.pinned],
+      ready: [...this.pinned].filter(path => this.cache.get(path)?.ready), cached: [...this.cache.keys()],
+    });
+  }
+  private refresh() {
+    this.pinned = new Set(this.context.flatMap(source => this.links.get(source) || []));
+    for (const source of this.context) {
+      for (const path of this.links.get(source) || []) {
+        void this.document(path, source, source === this.current ? 'current' : 'adjacent').catch(() => {});
+      }
+    }
+    this.reportContext();
+  }
+  /** Recording a far-away rendered section never preloads its notes. */
+  register(doc: Document, source: string) {
+    const key = this.canonical(source);
+    const paths = [...doc.querySelectorAll('link[rel~="literae-notes"]')].flatMap(link => {
+      try { return [this.resolve(link.getAttribute('href') || '', source).path]; } catch { return []; }
+    });
+    this.links.set(key, [...new Set(paths)]);
+    if (this.context.includes(key)) this.refresh();
+  }
+  setContext(current: string, nearby: string[]) {
+    const sources = nearby.map(source => this.canonical(source));
+    const key = this.canonical(current);
+    if (key === this.current && sources.join('|') === this.context.join('|')) return;
+    this.current = key;
+    this.context = sources;
+    this.refresh();
   }
   bind(contents: Contents, source: string) {
-    this.prefetch(contents.document, source);
+    contents.document.documentElement.dataset.readerSource = this.canonical(source);
+    this.register(contents.document, source);
     contents.document.addEventListener('click', event => {
       const anchor = (event.target as Element)?.closest?.('a[href]') as HTMLAnchorElement | null;
       if (!anchor) return;
@@ -64,6 +119,8 @@ export class BibleNotes {
   }
   private async open(path: string, id: string, label: string) {
     const sequence = ++this.sequence;
+    const start = performance.now();
+    const cached = this.cache.get(path)?.ready === true;
     this.title.textContent = `Note ${label.replace(/[\[\]]/g, '').trim()}`;
     this.body.textContent = 'Chargement de la note…';
     if (!this.dialog.open) { this.onToggle(true); this.dialog.showModal(); }
@@ -82,7 +139,7 @@ export class BibleNotes {
         const el = node as Element, tag = el.localName.toLowerCase();
         if (['script','style','iframe','object','embed','form'].includes(tag) || el.classList.contains('mw-cite-backlink')) return;
         const out = allowed.has(tag) ? document.createElement(tag) : document.createElement('span');
-        if (tag === 'a' && (el.getAttribute('role') === 'doc-backlink' || (el.getAttribute('href') || '').includes('#cite_ref'))) return;
+        if (tag === 'a' && (el.getAttribute('role') === 'doc-backlink' || el.classList.contains('footnote-back') || el.classList.contains('backref') || (el.getAttribute('href') || '').includes('#cite_ref'))) return;
         if (tag === 'a') {
           const href = el.getAttribute('href') || '';
           try {
@@ -99,10 +156,12 @@ export class BibleNotes {
         for (const child of el.childNodes) copy(child, out);
       };
       for (const child of target.childNodes) copy(child, this.body);
+      for (const paragraph of this.body.querySelectorAll('p')) if (!paragraph.textContent?.trim() && !paragraph.children.length) paragraph.remove();
       this.body.scrollTop = 0;
+      this.emit('note-opened', { path, id, cached, elapsedMs: performance.now() - start });
     } catch {
       if (sequence === this.sequence) this.body.textContent = 'Cette note ne peut pas être chargée. Fermez puis réessayez.';
     }
   }
-  destroy() { this.sequence++; if (this.dialog.open) this.dialog.close(); this.origin = null; this.cache.clear(); }
+  destroy() { this.sequence++; if (this.dialog.open) this.dialog.close(); this.origin = null; this.cache.clear(); this.links.clear(); this.context = []; this.pinned.clear(); }
 }

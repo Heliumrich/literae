@@ -1,5 +1,5 @@
 import type { Book, Contents, Location, Rendition } from 'epubjs';
-import { BibleNotes } from './notes';
+import { EpubNotes } from './notes';
 import { ReaderToc } from './toc';
 import type Section from 'epubjs/types/section';
 import type { BookEdition } from '../books';
@@ -33,7 +33,7 @@ async function initReader(root: HTMLElement) {
   let settings = parseSettings(readLocal(SETTINGS_KEY));
   let bookmark: ReadingProgress | null = null;
   let book: Book | undefined;
-  let notes: BibleNotes | undefined;
+  let notes: EpubNotes | undefined;
   let rendition: ContinuousRendition | undefined;
   let sections: Section[] = [];
   let selected = editions.find(edition => edition.id === readLocal(editionKey)) || editions[0];
@@ -91,7 +91,10 @@ async function initReader(root: HTMLElement) {
   function preloadNeighbours(index: number) {
     const currentBook = book;
     if (!currentBook) return;
-    const nearby = new Set([index - 1, index, index + 1]);
+    const position = sections.findIndex(section => section.index === index);
+    const neighbours = sections.slice(Math.max(0, position - 1), position + 2);
+    const nearby = new Set(neighbours.map(section => section.index));
+    if (position >= 0) notes?.setContext(sections[position].href, neighbours.map(section => section.href));
     for (const section of sections.filter(section => nearby.has(section.index))) {
       if (prefetched.has(section.index)) continue;
       prefetched.add(section.index);
@@ -129,6 +132,8 @@ async function initReader(root: HTMLElement) {
   }
 
   function requestEdition(id: string) {
+    const requested = editions.find(edition => edition.id === id);
+    if (requested) el<HTMLAnchorElement>('download').href = requested.downloadUrl;
     const currentEpoch = ++epoch;
     canSave = false;
     controller?.abort();
@@ -162,7 +167,7 @@ async function initReader(root: HTMLElement) {
     selectEdition.value = id;
     toc.loading();
     previous.disabled = next.disabled = true;
-    el<HTMLAnchorElement>('download').href = selected.url;
+    el<HTMLAnchorElement>('download').href = selected.downloadUrl;
     error.hidden = true;
     message.textContent = 'Ouverture du livre…';
     viewport.setAttribute('aria-busy', 'true');
@@ -179,19 +184,17 @@ async function initReader(root: HTMLElement) {
       await openingBook.ready;
       if (currentEpoch !== epoch) { openingBook.destroy(); return; }
       book = openingBook;
-      if (root.dataset.bibleNotes === 'true') {
-        notes = new BibleNotes(book, root, open => {
-          if (currentEpoch !== epoch) return;
-          canSave = !open;
-          if (!open && rendition) {
-            rendition.resize(viewport.clientWidth, viewport.clientHeight);
-          }
-        });
-        const currentNotes = notes;
-        book.spine.hooks.content.register((doc: Document, section: Section) => { currentNotes.prefetch(doc, section.href); });
-      }
+      notes = new EpubNotes(book, root, open => {
+        if (currentEpoch !== epoch) return;
+        canSave = !open;
+        if (!open && rendition) {
+          rendition.resize(viewport.clientWidth, viewport.clientHeight);
+        }
+      });
+      const currentNotes = notes;
+      book.spine.hooks.content.register((doc: Document, section: Section) => { currentNotes.register(doc, section.href); });
       sections = [];
-      book.spine.each((section: Section) => { if (!notes || section.linear) sections.push(section); });
+      book.spine.each((section: Section) => { if (section.linear) sections.push(section); });
       if (!sections.length) throw new Error('EPUB sans texte');
       const navigation = (await book.loaded.navigation).toc;
       toc.setItems(navigation.length ? navigation : sections.map((section, index) => ({

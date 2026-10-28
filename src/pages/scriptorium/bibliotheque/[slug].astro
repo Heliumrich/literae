@@ -22,7 +22,7 @@ const { book } = Astro.props;
         {book.description && <p class="book-lead">{book.description}</p>}
         {book.tags.length > 0 && <ul class="book-tags">{book.tags.map(tag => <li><a class="tag-pill" href={`/scriptorium/bibliotheque?tags=${encodeURIComponent(tag)}`}>{tag}</a></li>)}</ul>}
       </header>
-      {book.editions.length > 0 ? <EpubReader bookId={book.id} title={book.title} editions={book.editions} bibleNotes={book.tags.includes("Sainte Bible")} /> : <p class="book-unavailable">Le fichier de lecture de cet ouvrage sera bientôt disponible.</p>}
+      {book.editions.length > 0 ? <EpubReader bookId={book.id} title={book.title} editions={book.editions} /> : <p class="book-unavailable">Le fichier de lecture de cet ouvrage sera bientôt disponible.</p>}
     </article>
   </main>
 </BaseLayout>

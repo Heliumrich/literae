@@ -20,7 +20,8 @@
 .reader-check input { accent-color: var(--accent); }
 .reader-viewport { height: clamp(26rem, 72svh, 58rem); width: 100%; overflow: hidden; background: var(--reader-bg); color: var(--reader-fg); }
 .reader-viewport:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
-.reader-viewport .epub-container { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+/* EPUB.js compensates view insertion itself; browser anchoring would move short chapters twice. */
+.reader-viewport .epub-container { overflow-anchor: none; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .reader-viewport iframe { border: 0; }
 .reader-message, .reader-error { padding: .8rem 1.25rem; font-family: var(--type-ui); font-size: .9rem; }
 .reader-message:empty { display: none; }

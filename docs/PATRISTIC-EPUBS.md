@@ -68,8 +68,9 @@ Le lecteur reconnaît déjà `titlepage.xhtml` et `.literae-cover`, fixe la haut
 au viewport du lecteur, et préserve la composition originale de la couverture.
 Aucune exception supplémentaire dans le code du site n’a été nécessaire.
 Les autres pages suivent les réglages existants : police, taille, marges,
-justification, césure et palette. Ce lot n’a pas le tag « Sainte Bible » ; le
-traitement spécifique des notes en fenêtre des Bibles ne lui est pas appliqué.
+justification, césure et palette. Les [notes en surimpression](EPUB-NOTES.md) sont
+désormais appliquées à ces ouvrages également, sans dépendre du tag « Sainte Bible ».
+Les téléchargements pour liseuses conservent les notes dans leur disposition normale.
 
 ## Validation et publication
 

@@ -43,7 +43,7 @@ async function openBook(page: Page) {
   await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
   await expect(page.locator('[data-reader="error"]')).toBeHidden();
   await expect(page.locator('[data-reader="toc-toggle"]')).toHaveAttribute('aria-disabled', 'false');
-  await expect(page.locator('[data-reader="note-dialog"]')).toHaveCount(0);
+  await expect(page.locator('[data-reader="note-dialog"]')).toHaveCount(1);
   const id = await page.locator('[data-reader="edition"]').inputValue();
   await expect.poll(() => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id)).toMatch(/^epubcfi\(/);
 }
@@ -291,7 +291,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       const errors: string[] = [];
       page.on('pageerror', error => errors.push(error.message));
       const editions = ['11111111-1111-4111-8111-111111111111', '11111111-1111-4111-8111-111111111112'].map((id, index) => ({
-        id, label: `Traduction ${index === 0 ? 'A' : 'B'}`, url: `https://api.literae.ch/assets/${id}/meme-nom.epub?v=test`, size: 1000,
+        id, label: `Traduction ${index === 0 ? 'A' : 'B'}`, downloadUrl: `https://api.literae.ch/assets/download-${id}.epub`, url: `https://api.literae.ch/assets/${id}/meme-nom.epub?v=test`, size: 1000,
       }));
       const [a, b] = editions;
       const savedCfi = (id: string) => page.evaluate(id => JSON.parse(localStorage.getItem(`literae-epub-progress-v2:${id}`) || '{}').cfi, id);
@@ -310,6 +310,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       });
       await openBook(page);
       expect(downloads).toEqual(['a']);
+      await expect(page.locator('[data-reader="download"]')).toHaveAttribute('href', a.downloadUrl);
       await goToSection(page, 'Livre deuxième');
       const frame = await textFrame(page, 'Livre deuxième');
       await expect(frame.locator('p').first()).toContainText('Édition A');
@@ -326,6 +327,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
       await expect(translated.locator('p').first()).toContainText('Édition B');
       expect(await savedCfi(a.id)).toBe(aPosition);
       expect(downloads).toEqual(['a', 'b']);
+      await expect(page.locator('[data-reader="download"]')).toHaveAttribute('href', b.downloadUrl);
       await goToSection(page, 'Livre premier');
       await textFrame(page, 'Livre premier');
       await expect.poll(() => savedCfi(b.id)).toMatch(/^epubcfi\(/);

@@ -29,7 +29,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
         let frame;
         await expect.poll(async () => {
           for (const f of page.frames().slice(1)) {
-            try { if (await f.locator(`a[href*="literae-notes/${bible.chapter.split('-')[0]}.xhtml"]`).count()) { frame=f; return true; } } catch { /* continuous reader disposed an old frame */ }
+            try { if (await f.locator(`a[href*="literae-notes/${bible.chapter.replace('.xhtml','')}"]`).count()) { frame=f; return true; } } catch { /* continuous reader disposed an old frame */ }
           }
           return false;
         },{timeout:20000}).toBe(true);
@@ -45,7 +45,7 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
         }, id);
         await expect.poll(async () => {
           for (const f of page.frames().slice(1)) { try {
-            const a=f.locator(`a[href*="literae-notes/${bible.chapter.split('-')[0]}.xhtml"]`).first();
+            const a=f.locator(`a[href*="literae-notes/${bible.chapter.replace('.xhtml','')}"]`).first();
             if(await a.count()) { await f.evaluate(() => document.fonts.ready); await a.click(); frame=f; return await page.getByRole('dialog').isVisible(); }
           } catch {} }
           return false;

@@ -2,22 +2,22 @@ import { createHash } from 'node:crypto';
 import { fetchAllFromDirectus, fileIdOf, getAssetURL } from './directus';
 import { normalizeText, parseTags } from './catalog';
 import type { LibraryBook } from './books';
+import { bookEditions, type EditionLink } from './book-editions';
 
-type BookFile = {
-  id: string; title: string | null; description: string | null; filename_download: string | null;
-  type: string | null; filesize: number | string | null; modified_on: string | null;
-};
 type BookRow = {
   id: string; archived: boolean; title: string; short_description: string | null;
   cover_image: unknown; tags: unknown; date_created: string | null;
   author: { id: string; name: string; slug: string; status: string; type: unknown } | null;
-  ebook_files: { directus_files_id: BookFile | null }[];
+  ebook_files: EditionLink[];
+  ebook_download_files: EditionLink[];
 };
 const BOOK_FIELDS = [
   'id', 'archived', 'title', 'short_description', 'cover_image', 'tags', 'date_created',
   'author.id', 'author.name', 'author.type', 'author.slug', 'author.status',
-  ...['id', 'title', 'description', 'filename_download', 'type', 'filesize', 'modified_on']
-    .map(field => `ebook_files.directus_files_id.${field}`),
+  ...['ebook_files', 'ebook_download_files'].flatMap(relation => [
+    `${relation}.*`,
+    ...['id', 'title', 'filename_download', 'type', 'filesize', 'modified_on', 'metadata'].map(field => `${relation}.directus_files_id.${field}`),
+  ]),
 ].join(',');
 
 /** books has an archived flag, not the status/slug fields used by artworks. */
@@ -31,16 +31,9 @@ export async function fetchBooks(): Promise<LibraryBook[]> {
     author: row.author?.status === 'published' && row.author.slug
       ? { id: String(row.author.id), name: row.author.name, slug: row.author.slug } : null,
     tags: [...new Set(parseTags(row.tags))], created: row.date_created || '',
-    editions: (Array.isArray(row.ebook_files) ? row.ebook_files : []).flatMap(link => {
-      const file = link.directus_files_id;
-      if (!file?.id || !(file.type === 'application/epub+zip' || /\.epub$/i.test(file.filename_download || ''))) return [];
-      // A changed asset gets a new URL even if its Directus UUID stays the same.
+    editions: bookEditions(row.ebook_files, row.ebook_download_files, file => {
       const revision = createHash('sha256').update(`${file.id}:${file.modified_on}:${file.filesize}`).digest('hex').slice(0, 12);
-      const displayName = (file.title || file.filename_download || 'Édition').replace(/\.epub$/i, '');
-      return [{
-        id: String(file.id), label: displayName.match(/\((.+)\)/)?.[1].trim() || displayName,
-        url: `${getAssetURL(file.id)}?v=${revision}`, size: Number(file.filesize) || 0,
-      }];
-    }),
+      return `${getAssetURL(file.id)}?v=${revision}`;
+    }, row.title),
   }));
 }

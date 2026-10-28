@@ -50,6 +50,10 @@ export function readerCss(settings: ReaderSettings, dark: boolean, origin: strin
     h1 { font-size: 2em !important; } h2 { font-size: 1.5em !important; } h3 { font-size: 1.2em !important; }
     a, a * { color: ${palette.link} !important; } a { text-decoration: underline !important; }
     img, svg { max-width: 100% !important; height: auto; } table { max-width: 100%; }
+    /* A raised number, including EPUBs which already wrap the call in a sup. */
+    sup:has(a.literae-noteref) { vertical-align: baseline !important; font-size: inherit !important; }
+    html body a.literae-noteref { font-size: .72em !important; line-height: 0 !important; vertical-align: super !important; margin-inline-start: .12em; white-space: nowrap; text-decoration: none !important; }
+    html body a.literae-noteref * { font-size: 1em !important; line-height: inherit !important; vertical-align: baseline !important; }
     ::selection { background: ${palette.link}; color: ${palette.bg}; }
   `;
 }
