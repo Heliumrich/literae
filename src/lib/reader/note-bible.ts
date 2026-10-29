@@ -104,7 +104,9 @@ export class NoteBible {
     const map = referenceText(body), { text, nodes } = map;
     const refs = single ? [{ ...single, start: nodes[0].start, end: nodes[0].start + single.label.length }] : findNoteBibleReferences(text, this.context);
     const generation = this.generation;
-    const automatic = isBibleReferenceOnly(text, refs);
+    // Only replace the source when every citation can actually be displayed.
+    const automatic = isBibleReferenceOnly(text, refs) && refs.every(ref =>
+      referenceRange(map, ref.start, ref.end) && !nodes.some(n => n.start < ref.end && n.end > ref.start && n.node.parentElement?.closest('a[href]')));
     const panels = document.createElement('div');
     panels.className = 'reader-bible-passages';
     const activate: (() => void)[] = [];
@@ -133,7 +135,9 @@ export class NoteBible {
       const content = document.createElement('div');
       const status = document.createElement('p'); status.className = 'reader-bible-status'; status.setAttribute('role', 'status');
       const action = document.createElement('button'); action.type = 'button'; action.className = 'reader-button';
-      panel.append(heading, coordinates, edition, content, status, action);
+      const jump = document.createElement('button'); jump.type = 'button'; jump.className = 'reader-bible-jump';
+      jump.textContent = 'Aller au passage cité'; jump.hidden = true;
+      panel.append(heading, coordinates, edition, jump, content, status, action);
       panels.prepend(panel);
       let started = false, sequence = 0, wholeChapter = false, jumpAfterLoad = false;
       const scrollToReference = () => {
@@ -155,7 +159,7 @@ export class NoteBible {
         wholeChapter = whole; jumpAfterLoad = false; panel.style.paddingBottom = '';
         coordinates.textContent = biblePassageLocation(targets, whole);
         status.textContent = whole ? 'Chapitre en cours de chargement…' : 'Verset en cours de chargement…';
-        panel.setAttribute('aria-busy', 'true'); action.hidden = true;
+        panel.setAttribute('aria-busy', 'true'); action.hidden = true; jump.hidden = true;
         try {
           const passage = await this.passage(ref, whole);
           const verses = passage.verses;
@@ -170,6 +174,7 @@ export class NoteBible {
             return p;
           }));
           status.textContent = '';
+          jump.hidden = !automatic || !whole || !ref.ranges.length;
           action.textContent = whole ? 'Revenir au passage cité' : targets.length > 1 ? 'Lire les chapitres entiers' : 'Lire le chapitre entier';
           action.onclick = () => { content.replaceChildren(); body.scrollTop = 0; void show(!whole); };
         } catch {
@@ -182,6 +187,7 @@ export class NoteBible {
           if (jumpAfterLoad) scrollToReference();
         }
       };
+      jump.onclick = scrollToReference;
       const open = () => {
         panel.hidden = false; button.setAttribute('aria-expanded', 'true');
         if (!started) { started = true; void show(false); }
@@ -193,7 +199,12 @@ export class NoteBible {
       };
       activate.unshift(open);
     }
-    if (panels.childElementCount) body.append(panels);
+    if (panels.childElementCount) {
+      if (automatic) {
+        panels.classList.add('reader-bible-passages-only');
+        body.replaceChildren(panels);
+      } else body.append(panels);
+    }
     if (automatic) for (const open of activate) open();
   }
 }

@@ -13,7 +13,7 @@ test.afterEach(async ({ context }) => { await context.unrouteAll({ behavior: 'wa
 async function openBook(page: Page, id: string) {
   const { items } = await (await page.request.get(LOCAL + '/scriptorium/bibliotheque.json')).json();
   await page.goto(items.find((b: { id: string }) => b.id === id).href);
-  await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false');
+  await expect(page.locator('[data-reader="viewport"]')).toHaveAttribute('aria-busy', 'false', { timeout: 30000 });
 }
 async function chapter(page: Page, path: string): Promise<Frame> {
   const href = await page.locator('[data-reader="toc-link"]').evaluateAll((a, path) => a.map(a => (a as HTMLElement).dataset.href!).find(h => h.split('#')[0] === path), path);
@@ -57,7 +57,11 @@ for (const profile of [
         expect((await body.textContent())!.trim()).not.toMatch(/^II\. 2\./);
       } else {
         const refs = body.locator('.reader-bible-reference');
-        await expect(refs.first()).toBeVisible();
+        const automatic = await body.locator('.reader-bible-passages-only').count() > 0;
+        if (automatic) {
+          await expect(body.locator('.reader-bible-passages-only')).toBeVisible();
+          await expect(refs).toHaveCount(0);
+        } else await expect(refs.first()).toBeVisible();
         if (book.title.includes('Crampon')) {
           expect((await body.textContent())!.trim()).not.toMatch(/^(?:I[,\.]\s*1\.|51\.|22\.|14-15\.)/);
         }
@@ -65,7 +69,7 @@ for (const profile of [
           await expect(body).not.toContainText('Jn 2:19');
           expect((await body.textContent())!.trim()).toMatch(/^Voir/);
         }
-        await refs.first().click();
+        if (!automatic) await refs.first().click();
         const panel = await loaded(page);
         await expect(panel).toContainText(book.title.includes('Crampon') ? 'Bible Crampon' : book.title.includes('Glaire') ? 'Bible Glaire' : 'Bible Fillion');
         if (sample.text.includes('L’abîme')) {

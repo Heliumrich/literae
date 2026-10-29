@@ -65,11 +65,15 @@
 .reader-note-body table { max-width: 100%; }
 .reader-note-body a { color: var(--accent); text-decoration: underline; }
 .reader-note-body { overflow-wrap: anywhere; }
-.reader-bible-reference { display: inline; padding: .1em 0; border: 0; background: transparent; color: var(--accent); font: inherit; text-align: inherit; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
-.reader-bible-reference:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.reader-bible-reference, .reader-bible-jump { display: inline; padding: .1em 0; border: 0; background: transparent; color: var(--accent); font: inherit; text-align: inherit; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.reader-bible-reference:focus-visible, .reader-bible-jump:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .reader-bible-passages { margin-top: 1rem; }
 .reader-bible-passage { padding-top: 1rem; border-top: 1px solid var(--border); }
 .reader-bible-passage + .reader-bible-passage { margin-top: 1rem; }
+.reader-bible-passages-only { margin-top: 0; }
+.reader-bible-passages-only > .reader-bible-passage:first-child { border-top: 0; padding-top: 0; }
+.reader-bible-jump { margin-bottom: .75rem; }
+.reader-bible-jump[hidden] { display: none; }
 .reader-bible-passage h3 { margin: 0; font-size: 1.2rem; line-height: 1.4; text-wrap: balance; }
 .reader-note-body .reader-bible-location { margin: .2rem 0 0; font: .875rem/1.5 var(--type-ui); }
 .reader-note-body .reader-bible-edition { margin: .15rem 0 .8rem; font: .75rem/1.5 var(--type-ui); color: var(--text-muted); }

@@ -58,15 +58,26 @@ for (const profile of [
       await openNote(page, sample);
       const body = page.locator('[data-reader="note-body"]');
       const refs = body.locator('.reader-bible-reference');
-      expect(await refs.count()).toBeGreaterThan(0);
       const mixed = book.title === 'Pensées' || book.title.includes('Glaire') || book.title.includes('Crampon');
       if (mixed) {
+        expect(await refs.count()).toBeGreaterThan(0);
         await expect(body.locator('.reader-bible-passage:not([hidden])')).toHaveCount(0);
         expect(requests.length).toBe(countBefore);
         await expect(refs.first()).toHaveCSS('text-decoration-line', 'underline');
         await refs.first().click();
+      } else {
+        await expect(body.locator('.reader-bible-passages-only')).toHaveCount(1);
+        await expect(refs).toHaveCount(0);
+        expect(await body.evaluate(el => el.children.length)).toBe(1);
+        await expect(body.locator('.reader-bible-passage').first()).toHaveCSS('border-top-width', '0px');
       }
       await settled(page);
+      if (sample.text.includes('Heb., XI, 35')) {
+        const passages = body.locator('.reader-bible-passage');
+        await expect(passages).toHaveCount(2);
+        await expect(passages.nth(1).locator('.reader-bible-location')).toHaveText('Chapitre 12, versets 1 à 2.');
+        await expect(passages.nth(1)).toHaveCSS('border-top-width', '1px');
+      }
       await expect(body.locator('.reader-bible-passage:not([hidden])').first()).toContainText(book.title.includes('Crampon') ? 'Bible Crampon' : book.title.includes('Glaire') ? 'Bible Glaire' : 'Bible Fillion');
       const panel = body.locator('.reader-bible-passage:not([hidden])').first();
       expect(await panel.locator('sup').count()).toBeGreaterThan(0);
@@ -167,7 +178,7 @@ for (const profile of [
         bookmarks: Object.entries(localStorage).filter(([k]) => k.startsWith('literae-epub-progress-v2:')),
       }));
       const before = await background();
-      await body.locator('.reader-bible-reference').first().click();
+      await panel.getByRole('button', { name: 'Aller au passage cité', exact: true }).click();
       const cited = panel.locator('.reader-bible-cited').first();
       await expect(cited.locator('sup')).toHaveText(citedVerse);
       await expect.poll(() => cited.evaluate(el => {

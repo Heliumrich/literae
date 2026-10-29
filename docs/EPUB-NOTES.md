@@ -115,7 +115,12 @@ enrichissement.
 - `Heb., XI, 35–38; XII, 1, 2.` donne deux passages, dans deux chapitres.
 
 Une note composée uniquement de références explicites affiche automatiquement
-les passages sous son texte. Dans une note accompagnée d’un commentaire, les
+les passages à la place de son texte : la liste abrégée et le premier délimiteur
+sont supprimés. Plusieurs passages restent séparés entre eux. Le nom complet,
+les coordonnées et la traduction identifient chaque passage, même en cas
+d’échec réseau. Dans le chapitre entier, « Aller au passage cité » permet de
+retrouver les premiers versets cités sans réintroduire le texte de la note.
+Dans une note accompagnée d’un commentaire, les
 références deviennent des boutons soulignés ; chaque passage est chargé au clic.
 Le texte autour des références et les emphases sont conservés. Le remplacement
 accepte les références réparties entre plusieurs balises en ligne et les retours
@@ -134,7 +139,7 @@ La base reste ouverte en lecture seule avec `immutable=1`.
 Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapitre
 entier » remplace le passage dans le même bloc et marque les versets cités.
 Le bloc du passage porte le nom catholique complet du livre, distinct de la
-référence abrégée cliquable de la note. Un sous-titre indique « Chapitre 8,
+référence abrégée cliquable conservée dans les notes commentées. Un sous-titre indique « Chapitre 8,
 verset 12. », « Chapitre 8, versets 8 à 12. » ou les versets discontinus ; il
 devient « Chapitre 8. » à l’ouverture du chapitre entier. Ces coordonnées sont
 celles du texte affiché après concordance, y compris lorsqu’un psaume source
@@ -143,7 +148,7 @@ et ce formatage. Le titre, les coordonnées et la traduction ont trois tailles
 décroissantes et peuvent revenir à la ligne, dans les deux thèmes.
 « Revenir au passage cité » restaure la sélection. Le défilement reste dans le
 dialogue, y compris en plein écran et en orientation paysage sur mobile.
-Dans le chapitre entier, cliquer sur la référence soulignée aligne le premier
+Dans une note commentée affichant le chapitre entier, cliquer sur la référence soulignée aligne le premier
 verset cité en haut de la zone de lecture, sans rechargement ni réduction du
 chapitre. Un espace final est ajouté uniquement si nécessaire pour permettre
 cet alignement près de la fin du chapitre.
