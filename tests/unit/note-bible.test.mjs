@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import Database from 'better-sqlite3';
 import { findNoteBibleReferences as refs, isBibleReferenceOnly as pure } from '../../src/lib/reader/bible-references.ts';
 import { readBiblePassage } from '../../src/lib/bible-query.ts';
+import { bibleTargets } from '../../src/lib/reader/bible-concordance.ts';
+import { readerBibleProfile, bibleContextForSource } from '../../src/lib/reader/bible-profile.ts';
 
 test('normalise les références réelles, y compris les lettres latines et les livres numérotés', () => {
   for (const [source, label, book] of [
@@ -19,6 +21,11 @@ test('normalise les références réelles, y compris les lettres latines et les 
     ['1 Rois, 28, 7.', '1 S 28:7', '1SA'],
     ['2 Esdras, 9, 19.', 'Néh. 9:19', 'NEH'],
     ['Eccl., XL, 1.', 'Si 40:1', 'SIR'],
+    ['Eccl. 1:2.', 'Qo 1:2', 'ECC'],
+    ['Eccl. 1:8.', 'Qo 1:8', 'ECC'],
+    ['Eccl. 8:22.', 'Si 8:22', 'SIR'],
+    ['Ps. II, v. 10.', 'Ps. 2:10', 'PSA'],
+    ['Lc. 1,4', 'Lc 1:4', 'LUK'],
   ]) {
     const [ref] = refs(source);
     assert.equal(ref?.label, label, source); assert.equal(ref?.book, book, source);
@@ -47,10 +54,41 @@ test('le commentaire reste manuel, sans perdre le texte autour des renvois', () 
 test('ne devine pas les renvois ambigus, transchapitres, bibliographiques ou tronqués', () => {
   for (const s of ['Ibid., VIII, 21.', 'Conf., lib. II, cap. II.', 'S. Aug. de lib. arbitr., lib. III, cap. XXIV.', 'Plin. jun. Ep. 8. l.5.', 'III Esdr. ix, 16.', 'Jn 3:16–4:2', 'Jean\n3:16', 'Matth. IIX, 3.']) assert.deepEqual(refs(s), [], s);
   const s = 'Eccl., XI, 1.';
-  assert.equal(refs(s)[0].book, null);
-  assert.equal(pure(s, refs(s)), false);
-  assert.equal(refs('Ps. li, 12.', { oldTestament: 'unmapped' })[0].book, null);
-  assert.equal(refs('Jean 19, 15.', { oldTestament: 'unmapped' })[0].book, 'JHN');
+  assert.equal(refs(s)[0].book, 'ECC');
+  assert.equal(pure(s, refs(s)), true);
+  assert.equal(refs('Ps. li, 12.', { psalms: 'hebrew' })[0].numbering, 'hebrew');
+  assert.equal(refs('Jean 19, 15.', { psalms: 'hebrew' })[0].book, 'JHN');
+});
+
+test('concordance des psaumes : références explicites, chapitres fusionnés et séparés', () => {
+  const targets = text => bibleTargets(refs(text, { psalms: 'hebrew' })[0]);
+  assert.deepEqual(targets('Ps. civ, 6.'), [{ book: 'PSA', chapter: 103, ranges: [{ first: 6, last: 6 }] }]);
+  assert.deepEqual(targets('Ps. xvi (héb.) 10.'), [{ book: 'PSA', chapter: 15, ranges: [{ first: 10, last: 10 }] }]);
+  assert.deepEqual(targets('Ps. 10:1.'), [{ book: 'PSA', chapter: 9, ranges: [{ first: 22, last: 22 }] }]);
+  assert.deepEqual(targets('Ps. 115:1.'), [{ book: 'PSA', chapter: 113, ranges: [{ first: 9, last: 9 }] }]);
+  assert.deepEqual(targets('Ps. 116:8–12.'), [
+    { book: 'PSA', chapter: 114, ranges: [{ first: 8, last: 9 }] },
+    { book: 'PSA', chapter: 115, ranges: [{ first: 1, last: 3 }] },
+  ]);
+  assert.deepEqual(targets('Ps. 147:12–20.'), [{ book: 'PSA', chapter: 147, ranges: [{ first: 1, last: 9 }] }]);
+  assert.deepEqual(targets('Ps. 11:1–2.'), [{ book: 'PSA', chapter: 10, ranges: [{ first: 1, last: 3 }] }]);
+  assert.equal(refs('Ps. xxi ; Is. liii')[0].ranges.length, 0);
+  assert.equal(refs('Ps. 103 (Vulg.), 6.', { psalms: 'hebrew' })[0].numbering, 'vulgate');
+  assert.deepEqual(targets('Ps. 68 (67), 19.'), [{ book: 'PSA', chapter: 67, ranges: [{ first: 19, last: 19 }] }]);
+  assert.deepEqual(targets('Joël 3:1.'), [{ book: 'JOL', chapter: 2, ranges: [{ first: 28, last: 28 }] }]);
+  assert.deepEqual(targets('Mal. 3:23–24.'), [{ book: 'MAL', chapter: 4, ranges: [{ first: 5, last: 6 }] }]);
+});
+
+test('le profil de chaque Bible et le contexte des notes restent explicites', () => {
+  const profile = readerBibleProfile('70b9ede4-bffe-4558-b98d-6dff010686cc');
+  assert.equal(profile.translation, 'CRA');
+  const nt = bibleContextForSource(profile, '/OPS/literae-notes/p056-001-123.xhtml');
+  assert.equal(nt.psalms, 'vulgate');
+  assert.equal(refs('Ps. xxi.', nt)[0].numbering, 'vulgate');
+  assert.equal(refs('Ps. xvi (héb.) 10.', nt)[0].numbering, 'hebrew');
+  assert.equal(refs('I Rois, xiii, 14.', nt)[0].book, '1SA');
+  assert.equal(readerBibleProfile('94e52d29-20a5-47eb-bbad-ae90633c1534').translation, 'GLA');
+  assert.equal(readerBibleProfile('86f0f9de-c72d-418a-97c5-df9bffc9d83f').translation, 'SAC');
 });
 
 test('l’API sélectionne Fillion par code stable, tout en gardant les ID du comparateur', () => {

@@ -1,0 +1,94 @@
+[
+  {
+    "title": "L’Imitation de Jésus-Christ",
+    "bookId": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+    "examples": [
+      {
+        "path": "section-004.xhtml",
+        "href": "literae-notes/section-004-3d69ccfc.xhtml#n-15ff18c7b408c0899c951f31-2ab09dffa964",
+        "text": "[15] Eccl., I, 2."
+      },
+      {
+        "path": "section-004.xhtml",
+        "href": "literae-notes/section-004-3d69ccfc.xhtml#n-207d379489d8cea8a4f64041-21216ea7da44",
+        "text": "[16] Eccl., I, 8."
+      },
+      {
+        "path": "section-011.xhtml",
+        "href": "literae-notes/section-011-d2962f0d.xhtml#n-077c87084e2e0372d4cb7722-db2a4ff16b49",
+        "text": "[34] Eccl., VIII, 22."
+      }
+    ]
+  },
+  {
+    "title": "Sainte Bible traduite par A. Crampon",
+    "bookId": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+    "examples": [
+      {
+        "path": "p002-000.xhtml",
+        "href": "literae-notes/p002-000-aadf0305.xhtml#n-fe12a7a116ac3210b711a4f8",
+        "text": "↑ L’abîme, Ps. civ, 6."
+      },
+      {
+        "path": "p056-000.xhtml",
+        "href": "literae-notes/p056-000-c40d1028.xhtml#n-9a9175df3fdf0effa4355b29",
+        "text": "↑ I, 1. Les versets 1-18 servent de prologue ou d’introduction au quatrième Évangile. — Ce prologue n’est pas en vers, mais il est composé d’après un certain rythme dans la coupure et l’agencement des membres de phrases, qui sera rendu plus sensible par la disposition typographique.Au commencement (Ἐν ἀρχῇ). Cf. Gen. i, 1.En Dieu, plus littéralement, vers Dieu, en grec : πρὸς τὸν θεόν, construction qui paraît exprimer l’activité ad intra et les relations personnelles du Verbe."
+      },
+      {
+        "path": "p056-000.xhtml",
+        "href": "literae-notes/p056-000-c40d1028.xhtml#n-2b6ab76f6462cfae0cb8f624",
+        "text": "↑ 51. Cf Gen. xxviii, 12."
+      },
+      {
+        "path": "p056-001.xhtml",
+        "href": "literae-notes/p056-001-1615b6dd.xhtml#n-58d670d601e057742ec868c4",
+        "text": "↑ 22. À l’Écriture, où la résurrection de J.-C. est annoncée, par ex. Ps. xvi (héb.) 10 ; Ps. xxi ; Is. liii, etc. Comp. Luc, xxiv, 26."
+      },
+      {
+        "path": "p056-002.xhtml",
+        "href": "literae-notes/p056-002-d6f0ed89.xhtml#n-481a2b3e1b5ff3042f98ce27",
+        "text": "↑ 14-15. Nombr. xxi, 9."
+      },
+      {
+        "path": "p056-001.xhtml",
+        "href": "literae-notes/p056-001-1615b6dd.xhtml#n-d74c87dee2eac5b9e5c9e8c3",
+        "text": "↑ II. 2. Avec ses disciples, nommés à la fin du ch. 1 ; Nathanaël était de Cana (xxi, 2)."
+      }
+    ]
+  },
+  {
+    "title": "Sainte Bible traduite par J.-B. Glaire",
+    "bookId": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+    "examples": [
+      {
+        "path": "p111-001.xhtml",
+        "href": "literae-notes/p111-001-c8765dfc.xhtml#n-7345bd6629ee49b22688e66d",
+        "text": "↑ Jean 2,19 : Voir Matthieu, 26, 61 ; Marc, 14, 58 ; 15, 29. ― Le Sauveur répond aux Juifs d’une manière énigmatique, parce qu’il connaît leur incrédulité et la malice de leur cœur. ― Voilà le signe que donne le Christ : sa victoire sur la mort (saint Chrysostome). ― * Ce temple, en grec naos. Voir note sur Matthieu, 21, 12 et 27, 40."
+      }
+    ]
+  },
+  {
+    "title": "Confessions",
+    "bookId": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+    "inline": {
+      "path": "section-006.xhtml",
+      "text": "Prov. VI, 26"
+    }
+  },
+  {
+    "title": "Oraisons funèbres",
+    "bookId": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+    "inline": {
+      "path": "section-002.xhtml",
+      "text": "v. 10"
+    }
+  },
+  {
+    "title": "Commentaire sur l’Évangile selon saint Matthieu",
+    "bookId": "23be59ae-879f-494a-90c7-a31f70878fa9",
+    "inline": {
+      "path": "section-002.xhtml",
+      "text": "Lc. 1,4"
+    }
+  }
+]

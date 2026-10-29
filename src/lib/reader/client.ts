@@ -2,6 +2,7 @@ import type { Book, Contents, Location, Rendition } from 'epubjs';
 import { EpubNotes } from './notes';
 import { ReaderToc } from './toc';
 import { modernizeDocument, modernizeText } from './text';
+import { readerBibleProfile } from './bible-profile';
 import type Section from 'epubjs/types/section';
 import type { BookEdition } from '../books';
 import { PALETTES, SETTINGS_KEY, parseSettings, readerCss } from './preferences';
@@ -70,6 +71,19 @@ async function initReader(root: HTMLElement) {
       .literae-cover { height: 100%; position: relative; }
     ` : readerCss(settings, dark(), location.origin);
     modernizeDocument(doc, settings.modernize);
+    const pages = readerBibleProfile(root.dataset.bookId || '').pageMarkers;
+    if (pages) {
+      // Printed pagination, not footnotes. Equal UTF-16 lengths preserve CFI
+      // offsets; downloading the source EPUB still retains the page references.
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode as Text;
+        if (node.parentElement?.closest('script, style')) continue;
+        const displayed = node.data.replace(/\((\d{3})\)/g, (text, n) => Number(n) >= pages[0] && Number(n) <= pages[1] ? '\u200b'.repeat(text.length) : text);
+        if (displayed !== node.data) node.data = displayed;
+      }
+    }
+    notes?.refreshInline(doc);
     doc.documentElement.lang ||= 'fr';
   }
   function updatePalette() {

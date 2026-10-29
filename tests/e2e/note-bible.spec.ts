@@ -57,16 +57,9 @@ for (const profile of [
       const countBefore = requests.length;
       await openNote(page, sample);
       const body = page.locator('[data-reader="note-body"]');
-      if (book.title.includes('Crampon')) {
-        await expect(body).toContainText('Ps. 51:12');
-        await expect(body.locator('.reader-bible-reference')).toHaveCount(0);
-        expect(requests.length).toBe(countBefore);
-        await page.getByRole('button', { name: 'Fermer la note' }).click();
-        continue;
-      }
       const refs = body.locator('.reader-bible-reference');
       expect(await refs.count()).toBeGreaterThan(0);
-      const mixed = book.title === 'Pensées' || book.title.includes('Glaire');
+      const mixed = book.title === 'Pensées' || book.title.includes('Glaire') || book.title.includes('Crampon');
       if (mixed) {
         await expect(body.locator('.reader-bible-passage:not([hidden])')).toHaveCount(0);
         expect(requests.length).toBe(countBefore);
@@ -74,7 +67,7 @@ for (const profile of [
         await refs.first().click();
       }
       await settled(page);
-      await expect(body.locator('.reader-bible-passage:not([hidden])').first()).toContainText('Bible Fillion');
+      await expect(body.locator('.reader-bible-passage:not([hidden])').first()).toContainText(book.title.includes('Crampon') ? 'Bible Crampon' : book.title.includes('Glaire') ? 'Bible Glaire' : 'Bible Fillion');
       const panel = body.locator('.reader-bible-passage:not([hidden])').first();
       expect(await panel.locator('sup').count()).toBeGreaterThan(0);
       if (book.title.includes('Imitation') && index === 0) {
@@ -98,8 +91,8 @@ for (const profile of [
       await page.getByRole('button', { name: 'Fermer la note' }).click();
       expect(await page.evaluate(() => Object.entries(localStorage).filter(([k]) => k.startsWith('literae-epub-progress-v2:')))).toEqual(bookmark);
     }
-    if (!book.title.includes('Crampon')) expect(requests.length).toBeGreaterThan(0);
-    expect(requests.every(url => new URL(url).searchParams.get('translation') === 'FIL')).toBe(true);
+    expect(requests.length).toBeGreaterThan(0);
+    expect(requests.every(url => new URL(url).searchParams.get('translation') === (book.title.includes('Crampon') ? 'CRA' : book.title.includes('Glaire') ? 'GLA' : 'FIL'))).toBe(true);
     expect(errors).toEqual([]);
     await info.attach('real-comparator-requests', { body: JSON.stringify(requests, null, 2), contentType: 'application/json' });
   });

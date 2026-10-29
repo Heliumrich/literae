@@ -101,7 +101,7 @@ transmission réseau : `reader:notes-load`, `reader:notes-context` et
 `reader:note-opened`. Ils exposent les chemins, l’état du cache et les durées de
 préparation du contenu, sans reproduire le texte des notes.
 
-## Citations bibliques dans les notes
+## Citations bibliques dans les notes et le texte
 
 Le dialogue normalise les références lors de l’affichage, dans tous les ouvrages.
 Les EPUB web et les téléchargements Directus ne sont pas réécrits. Les signets
@@ -123,8 +123,12 @@ accepte les références réparties entre plusieurs balises en ligne et les reto
 
 Les passages proviennent de l’API existante du comparateur :
 `/api/bible/verses?translation=FIL&book=1CO&chapter=8&verse=1`.
-`FIL` sélectionne Fillion par son code stable, sans supposer son identifiant
-numérique. Les paramètres `t=<ID>` du comparateur continuent à fonctionner.
+Les Bibles de la bibliothèque utilisent leur propre traduction : `CRA`, `GLA`
+ou `SAC`. Les autres ouvrages utilisent `FIL`. Ces codes sont stables, indépendants
+des identifiants numériques SQLite. Si une traduction ou un passage manque dans
+la version préférée, Fillion est essayé pour tout le passage (pas de mélange de
+traductions entre les versets). La mention « traduction de secours » le signale.
+Un échec réseau ne masque jamais la note elle-même. Les paramètres `t=<ID>` du comparateur continuent à fonctionner.
 La base reste ouverte en lecture seule avec `immutable=1`.
 
 Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapitre
@@ -145,29 +149,77 @@ Les erreurs réseau sont réessayables et ne sont pas mises en cache.
 Cet enrichissement nécessite le réseau ; la note originale reste lisible si
 le comparateur est indisponible.
 
-### Conventions et limites éditoriales
+### Citations dans le corps et conservation des signets
 
-`bible-references.ts` contient le vocabulaire et l’analyse ; `note-bible.ts`
-gère les remplacements dans le dialogue, les requêtes et leur cache.
+`inline-bible.ts` repère aussi les citations dans les pages de lecture :
+`(Prov. IX, 8)`, `(Prov. VI, 26)`, `Ps. II, v. 10.`, `(Lc. 1,4)`, etc.
+Elles ouvrent le même dialogue. Une ancienne balise `a` sans `href` n’empêche
+pas l’enrichissement ; les liens existants ayant déjà une destination restent
+prioritaires.
 
-- La numérotation des chapitres et versets de l’édition citée est conservée.
-  Les références historiques à `Regum` / aux quatre livres des Rois sont
-  transcrites vers Samuel / Rois dans la nomenclature moderne.
-- `Eccl.` / `Eccles.` peut désigner l’Ecclésiaste ou l’Ecclésiastique.
-  Au-delà de douze chapitres, l’Ecclésiastique est identifiable ; dans les cas
-  ambigus, la notation numérique est modernisée sans bouton de chargement.
-- Les `Ib.` / `Ibid.` isolés, les références sans verset et les plages traversant
-  deux chapitres dans une seule notation ne sont pas devinés. Les indications
-  « et suivants » restent dans le texte ; aucun terme de plage n’est inventé.
-- La Bible Crampon utilise une numérotation hébraïque de l’Ancien Testament,
-  différente de celle de Fillion. `EpubReader.astro` déclare ce contexte via
-  `data-note-numbering="hebrew"` pour le titre Crampon. Ses références de
-  l’Ancien Testament sont normalisées sans interrogation de Fillion en attendant
-  une concordance vérifiée. Les références du Nouveau Testament restent actives.
-  Une future édition utilisant une autre numérotation doit déclarer son contexte.
-- Certaines références sources sont erronées : par exemple `Joann., XXXV, 69.`
-  dans l’Imitation. Une réponse vide ou incomplète affiche une indisponibilité ;
-  aucun verset voisin ni autre traduction n’est substitué.
+Des liens positionnés sont ajoutés dans un conteneur vide à la fin du body.
+Ils suivent les rectangles des citations après chargement des polices,
+redimensionnement et modification des réglages. Aucun texte original n’est
+entouré, déplacé ou découpé en nouveaux nœuds. C’est nécessaire : le mapping
+CFI automatique d’EPUB.js ne respecte pas systématiquement `ignoreClass`.
+Les tests résolvent des CFI issus d’un DOM sans les liens dans le DOM enrichi.
+Aucune requête biblique n’est faite avant un clic dans le texte.
+
+### Conventions, profils et concordance
+
+Les responsabilités sont séparées :
+
+- `bible-references.ts` : abréviations, nombres romains, listes, plages et chapitres ;
+- `bible-profile.ts` : identité des trois Bibles et conventions de l’édition,
+  indexées par l’UUID stable du livre, sans dépendre de son titre affiché ;
+- `bible-concordance.ts` : conversion des références vers les coordonnées de SQLite ;
+- `reference-dom.ts` : correspondance des offsets et des nœuds de texte ;
+- `note-bible.ts` : affichage, choix de traduction, requêtes et cache.
+
+`Eccl.` / `Eccles.` désigne normalement l’Ecclésiaste, `Eccli.`
+l’Ecclésiastique. Les références impossibles dans l’Ecclésiaste (douze chapitres,
+et dix-sept versets au chapitre huit) identifient l’Ecclésiastique : les notes
+15 et 16 de l’Imitation ouvrent Qo 1:2 et 1:8 ; la note 34 ouvre Si 8:22.
+
+La numérotation source des psaumes reste affichée avec « héb. » lorsqu’elle est
+hébraïque ; le bloc du passage indique séparément sa correspondance dans le
+comparateur. Exemples Crampon : Ps 104:6 → 103:6, Ps 16:10 → 15:10 ; les
+psaumes 9/10, 114/115/116 et 147 demandent des fusions, séparations et offsets.
+La concordance tient aussi compte des versets scindés/fusionnés du texte
+Crampon réellement publié dans SQLite (notamment 11, 13, 44 et 56).
+Joël 3/4 et Malachie 3:19–24 ont également une correspondance explicite.
+
+Dans l’EPUB Crampon actuel, les notes de l’Ancien Testament utilisent par défaut
+la numérotation hébraïque. À partir de `p053` (Matthieu), les notes du Nouveau
+Testament emploient aussi la numérotation traditionnelle ; les indications
+explicites « héb. », « Vulg. » ou une double numérotation comme `(67)` priment.
+Ainsi, dans la note de Jean 2, Ps XVI (héb.) 10 est résolu en 15:10 tandis que
+le renvoi non marqué à Ps XXI reste 21. Ces conventions sont propres à cette
+édition et doivent être revues lors d’un changement de source ou de découpage.
+Les quatre livres traditionnels des Rois sont distingués de Samuel/Rois modernes.
+
+Les références sans verset ouvrent le chapitre complet. Une plage qui traverse
+une séparation de psaume peut afficher deux chapitres, avec un numéro de chapitre
+sur chaque verset. Les `Ib.` / `Ibid.` isolés et les expressions indéterminées
+« et suivants » ne sont pas complétés arbitrairement. Une référence erronée dans
+la source, comme `Joann., XXXV, 69.`, reste indisponible.
+
+### Préfixes des notes et pagination imprimée
+
+Le nettoyage est appliqué uniquement aux copies des notes affichées :
+
+- Glaire : retrait du préfixe initial « Jean 2,19 : », qui identifie le verset
+  commenté et n’est pas un nouveau renvoi. Le commentaire et ses vrais renvois
+  (Matthieu, Marc, etc.) sont conservés ;
+- Crampon : retrait des préfixes de verset commenté comme `51.`, `14-15.` ou
+  `II. 2.`. Le numéro de note de l’EPUB reste un identifiant distinct ;
+- Confessions : 147 repères de pagination imprimée entre `(363)` et `(516)`,
+  dont `(410)`, sont masqués par substitution de même longueur UTF-16 dans
+  le seul profil de cet ouvrage. Ce ne sont pas des appels de notes manquants.
+  Les offsets CFI sont conservés, ainsi que la pagination de l’EPUB téléchargé.
+
+Aucune réécriture ni réimportation CMS n’est nécessaire. Les fichiers web,
+les versions de téléchargement et leurs relations restent inchangés.
 
 ### Vérification du lot
 
@@ -188,7 +240,7 @@ chargement différé, le chapitre entier, le cache, le réessai et la fermeture
 pendant une requête. Les régressions des notes bibliques et de la navigation
 du sommaire sont exécutées séparément.
 
-Pour cette évolution : 32 scénarios navigateur réussis, 20 tests Node réussis,
+Pour la première évolution : 32 scénarios navigateur réussis, 20 tests Node réussis,
 contrôle TypeScript et build réussis. Les captures des deux thèmes et du plein
 écran ont également été contrôlées.
 
@@ -230,3 +282,18 @@ et sont consignées dans les rapports de test.
 
 La suite complète exécutée après publication CMS compte 142 scénarios navigateur
 réussis, complétés par 14 tests Node et 5 tests Python réussis.
+
+Les régressions `bible-citation-cases.spec.ts` couvrent les notes signalées de
+l’Imitation, Crampon et Glaire, les citations dans les Confessions, les Oraisons
+et le commentaire de Matthieu, sur ordinateur et mobile portrait/paysage.
+Elles vérifient les vraies réponses du comparateur, les traductions CRA/GLA,
+la correspondance 104→103 et 16→15, les chapitres seuls, le repli vers Fillion,
+l’annulation pendant une requête et les CFI avant/après enrichissement.
+
+Pour cette correction : 67 scénarios navigateur distincts réussis, dont les
+20 cas ciblés rejoués sur le build final, 22 tests Node réussis, contrôle
+TypeScript et build réussis sous Node 26.13.0. La concordance des psaumes a
+également été confrontée à 2 306 correspondances textuelles uniques entre
+l’EPUB Crampon public et la base SQLite, puis aux versets scindés ou fusionnés.
+La Bible de Sacy n’a pas de notes dans son EPUB actuel ; son profil `SAC` est
+couvert par le test des profils d’édition.

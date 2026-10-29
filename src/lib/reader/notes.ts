@@ -1,5 +1,8 @@
 import type { Book, Contents } from 'epubjs';
 import { NoteBible } from './note-bible';
+import { readerBibleProfile, bibleContextForSource } from './bible-profile';
+import { inlineBibleLinks } from './inline-bible';
+import type { NoteBibleReference, NoteBibleContext } from './bible-references';
 const EPUB = 'http://www.idpf.org/2007/ops';
 const BASE = 'https://epub.invalid';
 const notePath = (path: string) => path.includes('/literae-notes/');
@@ -19,10 +22,11 @@ export class EpubNotes {
   private origin: HTMLAnchorElement | null = null;
   private sequence = 0;
   private bible: NoteBible;
+  private profile: NoteBibleContext;
+  private inline = new WeakMap<Document, ReturnType<typeof inlineBibleLinks>>();
   constructor(private book: Book, private root: HTMLElement, private onToggle: (open: boolean) => void, private displayText: (text: string) => string = text => text) {
-    // Crampon's Hebrew OT numbering needs an explicit concordance before it can
-    // safely query Fillion's Vulgate numbering (notably for the Psalms).
-    this.bible = new NoteBible({ oldTestament: root.dataset.noteNumbering === 'hebrew' ? 'unmapped' : 'vulgate' });
+    this.profile = readerBibleProfile(root.dataset.bookId || '');
+    this.bible = new NoteBible(this.profile);
     this.dialog = root.querySelector<HTMLDialogElement>('[data-reader="note-dialog"]')!;
     this.body = this.dialog.querySelector('[data-reader="note-body"]')!;
     this.title = this.dialog.querySelector('[data-reader="note-title"]')!;
@@ -106,6 +110,12 @@ export class EpubNotes {
   bind(contents: Contents, source: string) {
     contents.document.documentElement.dataset.readerSource = this.canonical(source);
     this.register(contents.document, source);
+    const links = inlineBibleLinks(contents.document, bibleContextForSource(this.profile, source), (ref, origin) => {
+      this.origin = origin;
+      this.openReference(ref);
+    });
+    this.inline.set(contents.document, links);
+    contents.on('resize', links.refresh);
     contents.document.addEventListener('click', event => {
       const anchor = (event.target as Element)?.closest?.('a[href]') as HTMLAnchorElement | null;
       if (!anchor) return;
@@ -122,9 +132,20 @@ export class EpubNotes {
       void this.open(target.path, target.id, anchor.textContent || '');
     }, true);
   }
+  refreshInline(doc: Document) { this.inline.get(doc)?.refresh(); }
+  private openReference(ref: NoteBibleReference) {
+    this.sequence++; this.bible.reset();
+    this.title.textContent = ref.label;
+    this.body.textContent = ref.label;
+    if (!this.dialog.open) { this.onToggle(true); this.dialog.showModal(); }
+    this.bible.enhance(this.body, ref);
+    this.body.scrollTop = 0;
+    this.emit('reference-opened', { reference: ref.label });
+  }
   private async open(path: string, id: string, label: string) {
     const sequence = ++this.sequence;
     this.bible.reset();
+    this.bible.setContext(bibleContextForSource(this.profile, path));
     const start = performance.now();
     const cached = this.cache.get(path)?.ready === true;
     this.title.textContent = `Note ${label.replace(/[\[\]]/g, '').trim()}`;
