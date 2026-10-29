@@ -2,6 +2,7 @@ import { bookTitle } from '../bible-ref';
 import { findNoteBibleReferences, isBibleReferenceOnly, type NoteBibleReference, type NoteBibleContext } from './bible-references';
 
 import { bibleTargets, type BibleTarget } from './bible-concordance';
+import { catholicBibleBookTitle, biblePassageLocation } from './bible-heading';
 import { referenceText, referenceRange, removeNotePrefix } from './reference-dom';
 
 type Verse = { chapter: number; verse: number; text: string };
@@ -125,12 +126,14 @@ export class NoteBible {
       panel.id = `reader-bible-${generation}-${index}`;
       button.setAttribute('aria-controls', panel.id);
       const heading = document.createElement('h3');
+      heading.textContent = catholicBibleBookTitle(ref.book);
+      const coordinates = document.createElement('p'); coordinates.className = 'reader-bible-location';
       const edition = document.createElement('p'); edition.className = 'reader-bible-edition'; edition.textContent = '';
       const targets = bibleTargets(ref);
       const content = document.createElement('div');
       const status = document.createElement('p'); status.className = 'reader-bible-status'; status.setAttribute('role', 'status');
       const action = document.createElement('button'); action.type = 'button'; action.className = 'reader-button';
-      panel.append(heading, edition, content, status, action);
+      panel.append(heading, coordinates, edition, content, status, action);
       panels.prepend(panel);
       let started = false, sequence = 0, wholeChapter = false, jumpAfterLoad = false;
       const scrollToReference = () => {
@@ -150,7 +153,7 @@ export class NoteBible {
       const show = async (whole: boolean) => {
         const current = ++sequence;
         wholeChapter = whole; jumpAfterLoad = false; panel.style.paddingBottom = '';
-        heading.textContent = whole ? `${bookTitle(ref.book!)} ${targets.map(t => t.chapter).join(', ')}` : ref.label;
+        coordinates.textContent = biblePassageLocation(targets, whole);
         status.textContent = whole ? 'Chapitre en cours de chargement…' : 'Verset en cours de chargement…';
         panel.setAttribute('aria-busy', 'true'); action.hidden = true;
         try {

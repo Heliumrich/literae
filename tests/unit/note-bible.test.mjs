@@ -4,6 +4,7 @@ import Database from 'better-sqlite3';
 import { findNoteBibleReferences as refs, isBibleReferenceOnly as pure } from '../../src/lib/reader/bible-references.ts';
 import { readBiblePassage } from '../../src/lib/bible-query.ts';
 import { bibleTargets } from '../../src/lib/reader/bible-concordance.ts';
+import { catholicBibleBookTitle, biblePassageLocation } from '../../src/lib/reader/bible-heading.ts';
 import { readerBibleProfile, bibleContextForSource } from '../../src/lib/reader/bible-profile.ts';
 
 test('normalise les références réelles, y compris les lettres latines et les livres numérotés', () => {
@@ -89,6 +90,29 @@ test('le profil de chaque Bible et le contexte des notes restent explicites', ()
   assert.equal(refs('I Rois, xiii, 14.', nt)[0].book, '1SA');
   assert.equal(readerBibleProfile('94e52d29-20a5-47eb-bbad-ae90633c1534').translation, 'GLA');
   assert.equal(readerBibleProfile('86f0f9de-c72d-418a-97c5-df9bffc9d83f').translation, 'SAC');
+});
+
+test('le titre catholique complet distingue les livres et les auteurs des épîtres', () => {
+  assert.equal(catholicBibleBookTitle('JHN'), 'Évangile de saint Jean');
+  assert.equal(catholicBibleBookTitle('1JN'), 'Première épître de saint Jean');
+  assert.equal(catholicBibleBookTitle('1CO'), 'Première épître de saint Paul aux Corinthiens');
+  assert.equal(catholicBibleBookTitle('2TH'), 'Deuxième épître de saint Paul aux Thessaloniciens');
+  assert.equal(catholicBibleBookTitle('ECC'), 'Livre de l’Ecclésiaste');
+  assert.equal(catholicBibleBookTitle('SIR'), 'Livre de l’Ecclésiastique');
+  assert.equal(catholicBibleBookTitle('1SA'), 'Premier livre de Samuel');
+  assert.equal(catholicBibleBookTitle('1KI'), 'Premier livre des Rois');
+});
+
+test('le sous-titre décrit un verset, une plage, une liste ou les chapitres entiers', () => {
+  const location = (text, whole = false, context = {}) => biblePassageLocation(bibleTargets(refs(text, context)[0]), whole);
+  assert.equal(location('Jn 8:12'), 'Chapitre 8, verset 12.');
+  assert.equal(location('Jn 8:8–12'), 'Chapitre 8, versets 8 à 12.');
+  assert.equal(location('Jn 8:8–12', true), 'Chapitre 8.');
+  assert.equal(location('Jn 8'), 'Chapitre 8.');
+  assert.equal(location('Ap 22:17, 20'), 'Chapitre 22, versets 17 et 20.');
+  assert.equal(location('Jn 8:1–3, 5, 8–12'), 'Chapitre 8, versets 1 à 3, 5 et 8 à 12.');
+  assert.equal(location('Ps 116:8–12', false, { psalms: 'hebrew' }), 'Chapitre 114, versets 8 à 9 ; chapitre 115, versets 1 à 3.');
+  assert.equal(location('Ps 116:8–12', true, { psalms: 'hebrew' }), 'Chapitres 114 et 115.');
 });
 
 test('l’API sélectionne Fillion par code stable, tout en gardant les ID du comparateur', () => {

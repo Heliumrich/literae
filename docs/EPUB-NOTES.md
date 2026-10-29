@@ -133,6 +133,14 @@ La base reste ouverte en lecture seule avec `immutable=1`.
 
 Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapitre
 entier » remplace le passage dans le même bloc et marque les versets cités.
+Le bloc du passage porte le nom catholique complet du livre, distinct de la
+référence abrégée cliquable de la note. Un sous-titre indique « Chapitre 8,
+verset 12. », « Chapitre 8, versets 8 à 12. » ou les versets discontinus ; il
+devient « Chapitre 8. » à l’ouverture du chapitre entier. Ces coordonnées sont
+celles du texte affiché après concordance, y compris lorsqu’un psaume source
+correspond à deux chapitres. `bible-heading.ts` rassemble les noms des 73 livres
+et ce formatage. Le titre, les coordonnées et la traduction ont trois tailles
+décroissantes et peuvent revenir à la ligne, dans les deux thèmes.
 « Revenir au passage cité » restaure la sélection. Le défilement reste dans le
 dialogue, y compris en plein écran et en orientation paysage sur mobile.
 Dans le chapitre entier, cliquer sur la référence soulignée aligne le premier
@@ -297,3 +305,12 @@ TypeScript et build réussis sous Node 26.13.0. La concordance des psaumes a
 l’EPUB Crampon public et la base SQLite, puis aux versets scindés ou fusionnés.
 La Bible de Sacy n’a pas de notes dans son EPUB actuel ; son profil `SAC` est
 couvert par le test des profils d’édition.
+
+L’évolution des titres complets a été vérifiée par 54 scénarios navigateur et
+24 tests Node réussis, avec contrôle TypeScript et build réussis. La note 14 de
+l’Imitation (Jn 8:12), une épître au titre long, une plage dans les Hébreux et
+une liste discontinue dans l’Apocalypse sont contrôlées dans les deux thèmes,
+sur ordinateur et mobile portrait/paysage, avant et après ouverture du chapitre.
+Les captures en portrait à 320 pixels confirment le retour à la ligne des
+titres longs sans débordement dans les deux thèmes.
+Les 73 codes de livres de SQLite possèdent chacun un nom complet.

@@ -70,8 +70,9 @@
 .reader-bible-passages { margin-top: 1rem; }
 .reader-bible-passage { padding-top: 1rem; border-top: 1px solid var(--border); }
 .reader-bible-passage + .reader-bible-passage { margin-top: 1rem; }
-.reader-bible-passage h3 { font-size: 1.2rem; line-height: 1.4; }
-.reader-note-body .reader-bible-edition { margin: .15rem 0 .8rem; font: .75rem var(--type-ui); color: var(--text-muted); }
+.reader-bible-passage h3 { margin: 0; font-size: 1.2rem; line-height: 1.4; text-wrap: balance; }
+.reader-note-body .reader-bible-location { margin: .2rem 0 0; font: .875rem/1.5 var(--type-ui); }
+.reader-note-body .reader-bible-edition { margin: .15rem 0 .8rem; font: .75rem/1.5 var(--type-ui); color: var(--text-muted); }
 .reader-bible-passage sup { color: var(--text-muted); font-size: .7em; }
 .reader-bible-cited { border-left: 2px solid var(--gold); padding-left: .65rem; }
 .reader-bible-status { color: var(--text-muted); }

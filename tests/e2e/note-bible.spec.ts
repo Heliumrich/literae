@@ -96,6 +96,54 @@ for (const profile of [
     expect(errors).toEqual([]);
     await info.attach('real-comparator-requests', { body: JSON.stringify(requests, null, 2), contentType: 'application/json' });
   });
+  for (const theme of ['light', 'dark']) test('titres complets, sous-titres et retour à la sélection : ' + theme, async ({ page }, info) => {
+    test.setTimeout(150000);
+    if (profile.name === 'mobile portrait') await page.setViewportSize({ width: 320, height: 700 });
+    await page.addInitScript(theme => localStorage.setItem('scriptorium-theme', theme), theme);
+    const book = samples[0];
+    await openBook(page, book.bookId);
+    for (const sample of [
+      { path: 'section-004.xhtml', href: 'literae-notes/section-004-3d69ccfc.xhtml#n-077b88c26b523d43f7e5c2b8-ef69fa6701a2',
+        title: 'Évangile de saint Jean', location: 'Chapitre 8, verset 12.', chapter: 'Chapitre 8.' },
+      { ...book.examples[1], title: 'Première épître de saint Paul aux Corinthiens', location: 'Chapitre 8, verset 1.', chapter: 'Chapitre 8.' },
+      { ...book.examples[3], title: 'Épître aux Hébreux', location: 'Chapitre 11, versets 35 à 38.', chapter: 'Chapitre 11.' },
+      { ...book.examples[0], title: 'Apocalypse de saint Jean', location: 'Chapitre 22, versets 17 et 20.', chapter: 'Chapitre 22.' },
+    ]) {
+      await openNote(page, sample);
+      await settled(page);
+      const body = page.locator('[data-reader="note-body"]');
+      const panel = body.locator('.reader-bible-passage:not([hidden])').first();
+      const heading = panel.getByRole('heading', { level: 3 });
+      const coordinates = panel.locator('.reader-bible-location'), edition = panel.locator('.reader-bible-edition');
+      await expect(heading).toHaveText(sample.title);
+      await expect(coordinates).toHaveText(sample.location);
+      await expect(edition).toHaveText('Bible Fillion');
+      expect(await heading.locator('a, button').count()).toBe(0);
+      const sizes = await Promise.all([heading, coordinates, edition].map(el => el.evaluate(el => parseFloat(getComputedStyle(el).fontSize))));
+      expect(sizes[0]).toBeGreaterThan(sizes[1]); expect(sizes[1]).toBeGreaterThan(sizes[2]);
+      for (const element of [heading, coordinates, edition]) {
+        expect(await element.evaluate(el => {
+          const body = el.closest('[data-reader="note-body"]')!, rect = el.getBoundingClientRect(), parent = body.getBoundingClientRect();
+          return el.scrollWidth <= el.clientWidth + 1 && rect.left >= parent.left && rect.right <= parent.right;
+        })).toBe(true);
+      }
+      if (sample.title.includes('Corinthiens')) {
+        if (profile.name === 'mobile portrait') expect(await heading.evaluate(el => el.getBoundingClientRect().height / parseFloat(getComputedStyle(el).lineHeight))).toBeGreaterThan(1.5);
+        const path = info.outputPath('titre-long-' + theme + '.png');
+        await page.getByRole('dialog').screenshot({ path });
+        await info.attach('titre-long-' + theme, { path, contentType: 'image/png' });
+      }
+      await panel.getByRole('button', { name: 'Lire le chapitre entier', exact: true }).click();
+      await settled(page);
+      await expect(heading).toHaveText(sample.title);
+      await expect(coordinates).toHaveText(sample.chapter);
+      await panel.getByRole('button', { name: 'Revenir au passage cité' }).click();
+      await settled(page);
+      await expect(heading).toHaveText(sample.title);
+      await expect(coordinates).toHaveText(sample.location);
+      await page.getByRole('button', { name: 'Fermer la note' }).click();
+    }
+  });
   test('la référence aligne le premier verset cité dans le chapitre entier', async ({ page }) => {
     test.setTimeout(90000);
     const book = samples[0], requests: string[] = [];
@@ -161,5 +209,6 @@ test('échec réseau, réessai, cache et fermeture pendant le chargement', async
   await openNote(page, sample);
   await settled(page);
   await expect(page.getByRole('dialog')).toBeVisible();
-  await expect(page.locator('.reader-bible-passage h3')).toHaveText('1 Cor. 8:1');
+  await expect(page.locator('.reader-bible-passage h3')).toHaveText('Première épître de saint Paul aux Corinthiens');
+  await expect(page.locator('.reader-bible-location')).toHaveText('Chapitre 8, verset 1.');
 });
