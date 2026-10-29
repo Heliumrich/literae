@@ -40,7 +40,7 @@ Le script `npm run check:static` protège cette frontière : il échoue si une s
 
 ## Prérequis
 
-- Node.js `22.12` ou plus récent ;
+- Node.js `22.23.4` ou plus récent (validation sous `26.13.0`, version indiquée dans `.nvmrc`) ;
 - npm et Git ;
 - un accès à GitHub pour synchroniser automatiquement la base [French-Bibles](https://github.com/Heliumrich/French-Bibles) au build.
 
@@ -210,3 +210,6 @@ Le build inclut le chemin absolu du snapshot SQLite utilisé pour générer le c
 La CI GitHub exécute automatiquement les contrôles TypeScript, la vérification de la frontière statique et le build sur les pushes vers `main` et les pull requests.
 
 Préparation et références du lot patristique : [docs/PATRISTIC-EPUBS.md](docs/PATRISTIC-EPUBS.md).
+
+Le relevé de mise à jour et l’inventaire comparé au registre npm sont dans
+[docs/NPM-UPGRADE-2026-10.md](docs/NPM-UPGRADE-2026-10.md).
