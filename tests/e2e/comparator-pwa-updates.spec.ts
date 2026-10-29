@@ -1,3 +1,4 @@
+import { openOfflinePanel, closeOfflinePanel } from './comparator-helpers';
 import { test, expect, type BrowserContext, type Page } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { copyFileSync, mkdtempSync, readFileSync, rmSync, writeFileSync, readdirSync } from 'node:fs';
@@ -38,9 +39,10 @@ async function installed(context: BrowserContext) {
 }
 async function baseline(page: Page) {
   await page.goto(PAGE);
-  await page.getByText('Emporter le comparateur', { exact: true }).click();
+  await openOfflinePanel(page);
   await page.getByRole('button', { name: 'Télécharger la Bible', exact: true }).click();
   await expect(page.locator('.offline-body [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.', { timeout: 60000 });
+  await closeOfflinePanel(page);
 }
 async function github(context: BrowserContext, same = false, version = '2.1.1') {
   const calls = { metadata: 0, downloads: 0 };
@@ -90,9 +92,9 @@ test('la release est vérifiée à l’ouverture et au retour au premier plan, a
   }
   await notice.getByRole('button', {name:'Plus tard',exact:true}).click();
   await expect(notice).toHaveCount(0);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await expect(page.getByRole('button',{name:'Mettre à jour la Bible',exact:true})).toBeVisible();
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await closeOfflinePanel(page);
   await resume(page);
   await expect.poll(() => calls.metadata).toBe(2);
   await expect(notice).toBeVisible();
@@ -140,7 +142,7 @@ test('le hash fait foi : une autre étiquette de release ne force pas de téléc
   await installed(context);
   await page.reload();
   await expect.poll(() => calls.metadata).toBe(1);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await expect(page.getByRole('button',{name:'Vérifier les mises à jour de la Bible',exact:true})).toBeEnabled();
   await expect(page.getByRole('status',{name:'Mise à jour de la Bible'})).toHaveCount(0);
   await expect(page.getByRole('button',{name:'Mettre à jour la Bible',exact:true})).toHaveCount(0);
@@ -168,13 +170,13 @@ test('corrige une ancienne étiquette 1.1.0 et la conserve hors ligne sans reté
   });
   await installed(context);
   await page.reload();
-  await page.getByText('Emporter le comparateur', { exact: true }).click();
+  await openOfflinePanel(page);
   await expect(page.locator('.offline-body')).toContainText('Version locale : 2.1.1');
   await expect(page.getByRole('button', {name:'Mettre à jour la Bible', exact:true})).toHaveCount(0);
   expect(calls.downloads).toBe(0);
   await context.setOffline(true);
   await page.reload();
-  await page.getByText('Emporter le comparateur', { exact: true }).click();
+  await openOfflinePanel(page);
   await expect(page.locator('.offline-body')).toContainText('Version locale : 2.1.1');
   await expect(page.locator('.verse p').first()).toContainText('Dieu');
 });
@@ -247,7 +249,7 @@ test('actualiser l’interface recharge les onglets et conserve la Bible sans tr
     writeFileSync(workerPath, originalWorker.replace(/literae-comparator-[a-f0-9]+/,`literae-comparator-test-${Date.now()}`));
     await page.evaluate(async()=>{const registration=await navigator.serviceWorker.getRegistration();await registration!.update();});
     await expect(page.locator('.offline-state')).toHaveText('Actualiser',{timeout:30000});
-    await page.getByText('Emporter le comparateur',{exact:true}).click();
+    await openOfflinePanel(page);
     const button=page.getByRole('button',{name:'Actualiser l’application',exact:true});
     await expect(button).toBeVisible({timeout:30000});
     await Promise.all([page.waitForEvent('load'),other.waitForEvent('load'),button.click()]);
@@ -268,7 +270,7 @@ test('premier téléchargement directement dans une PWA sans copie du navigateur
   });
   await installed(context);
   await page.goto(PAGE);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await expect(page.getByRole('button',{name:'Télécharger la Bible',exact:true})).toBeEnabled();
   await page.getByRole('button',{name:'Télécharger la Bible',exact:true}).click();
   await expect(page.locator('.offline-body [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.',{timeout:60000});
@@ -291,7 +293,7 @@ test('annuler dans le navigateur ne bloque pas le téléchargement depuis la PWA
     requested(); await held; await route.abort().catch(() => {});
   });
   await page.goto(PAGE);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await page.getByRole('button',{name:'Télécharger la Bible',exact:true}).click();
   await started;
   await page.getByRole('button',{name:'Annuler',exact:true}).click();
@@ -300,7 +302,7 @@ test('annuler dans le navigateur ne bloque pas le téléchargement depuis la PWA
   await context.unroute('**/scriptorium/donnees/*.db');
   await installed(context);
   await page.reload();
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await page.getByRole('button',{name:'Télécharger la Bible',exact:true}).click();
   await expect(page.locator('.offline-body [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.',{timeout:60000});
   expect(calls.downloads).toBe(1);
@@ -309,11 +311,12 @@ test('annuler dans le navigateur ne bloque pas le téléchargement depuis la PWA
   await expect(page.locator('.verse p').first()).toContainText('Dieu');
 });
 
-test('un seul panneau compact regroupe téléchargement puis installation', async ({ page }) => {
+test('la disquette ouvre téléchargement puis installation dans une fenêtre', async ({ page }) => {
   await page.goto(PAGE);
   await expect(page.getByText('Le comparateur sur votre écran d’accueil',{exact:true})).toHaveCount(0);
-  expect(await page.locator('.offline-panel').evaluate(element => element.getBoundingClientRect().height)).toBeLessThanOrEqual(50);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await expect(page.getByRole('dialog')).toBeHidden();
+  expect(await page.locator('.offline-button').evaluate(element => element.getBoundingClientRect().height)).toBeGreaterThanOrEqual(44);
+  await openOfflinePanel(page);
   const steps = page.locator('.setup-steps > li');
   await expect(steps).toHaveCount(2);
   await expect(steps.nth(0).getByRole('button',{name:'Télécharger la Bible',exact:true})).toBeVisible();
@@ -331,7 +334,7 @@ test('les anciennes métadonnées GitHub enregistrées utilisent désormais le r
     }));
   }, {sha256:updatedHash,bytes:updated.length});
   await page.goto(PAGE);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await page.getByRole('button',{name:'Télécharger la Bible',exact:true}).click();
   await expect(page.locator('.offline-body [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.',{timeout:60000});
   expect(calls.downloads).toBe(1);

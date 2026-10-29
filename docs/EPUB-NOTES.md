@@ -10,6 +10,11 @@ associés à la même édition.
 - `books/dl_ebooks` : fichiers pour liseuses, associés à `books.ebook_download_files`.
 - `books/images` : images de couverture uniquement.
 
+L’ordre par défaut de la bibliothèque suit le champ système `books.sort`, repris
+au build dans le catalogue statique. Les tris explicites par titre, auteur et
+étiquettes restent disponibles et sont conservés dans l’URL. Les notices
+d’auteurs reprennent également l’ordre Directus pour leurs ouvrages.
+
 Les deux relations de fichiers ont le **même nombre d’éléments et le même ordre**.
 `book-editions.ts` utilise `sort` lorsqu’il existe, sinon l’identifiant de la ligne
 intermédiaire, qui donne l’ordre de création. Les relations actuelles n’ont pas de

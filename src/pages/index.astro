@@ -31,7 +31,18 @@ const featured = artworks.find((work) => fileIdOf(work.image));
 const featuredImage = featured
   ? getAssetURL(fileIdOf(featured.image), "large")
   : null;
-const recent = artworks.filter((work) => work.id !== featured?.id).slice(0, 4);
+const selectedSlugs = [
+  'fra-angelico-annonciation-prado',
+  'the-vision-of-the-blessed-hermann-joseph',
+  'veronese-noces-cana',
+  'claude-vignon-saint-ambroise',
+  'destruction-of-leviathan',
+];
+const selectedArtworks = (await fetchFromDirectus<Artwork[]>(
+  `artworks?filter[status][_eq]=published&filter[slug][_in]=${selectedSlugs.join(',')}&fields=id,slug,title_french,title_original,title_english,year,image&limit=${selectedSlugs.length}`,
+)) || [];
+// Directus' response order is independent of this ordered home-page selection.
+const selection = selectedSlugs.flatMap(slug => selectedArtworks.filter(work => work.slug === slug));
 const recentBooks = (await fetchBooks()).sort((a, b) => b.created.localeCompare(a.created)).slice(0, 4);
 
 const gestures = [
@@ -170,18 +181,18 @@ const gestures = [
     </section>
 
     {
-      recent.length > 0 && (
-        <section class="art-preview" aria-labelledby="recent-title">
+      selection.length > 0 && (
+        <section class="art-preview" aria-labelledby="selection-title">
           <div class="page-wrap">
             <div class="section-heading compact">
               <div>
                 <p class="eyebrow">Contempler</p>
-                <h2 id="recent-title">Dernières œuvres déposées</h2>
+                <h2 id="selection-title">Sélections d’œuvres intemporelles</h2>
               </div>
               <a href={`${ART_BASE}/oeuvres`} class="editorial-link">Voir toute la collection →</a>
             </div>
             <div class="art-row">
-              {recent.map((work, index) => {
+              {selection.map((work, index) => {
                 const image = getAssetURL(fileIdOf(work.image), "medium");
                 return (
                   <a href={`${ART_BASE}/oeuvres/${work.slug}`} class="art-card">
@@ -482,7 +493,7 @@ const gestures = [
 
   .art-row {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 2.5rem;
   }

@@ -18,7 +18,7 @@ const tags = [...new Set(books.flatMap(book => book.tags))].sort((a, b) => a.loc
     <section class="catalog-section" aria-label="Catalogue des ouvrages" id="book-catalog">
       <div class="page-wrap">
         <label class="book-sort">Trier par
-          <select id="book-sort"><option value="title">Titre · A à Z</option><option value="author">Auteur · A à Z</option><option value="tags">Étiquettes · A à Z</option></select>
+          <select id="book-sort"><option value="default">Ordre de la bibliothèque</option><option value="title">Titre · A à Z</option><option value="author">Auteur · A à Z</option><option value="tags">Étiquettes · A à Z</option></select>
         </label>
         <CatalogToolbar tags={tags} showView searchPlaceholder="Rechercher un titre, un auteur, une étiquette…" />
         <p id="catalog-status" class="catalog-status" aria-live="polite">{books.length} ouvrage{books.length > 1 ? 's' : ''}</p>

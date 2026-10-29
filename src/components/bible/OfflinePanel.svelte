@@ -9,6 +9,7 @@
   export let onready: () => void;
   type InstallEvent = Event & { prompt(): Promise<void>; userChoice: Promise<{ outcome: string }> };
   let expanded = false;
+  let dialog: HTMLDialogElement;
   let saved: OfflineBible | null = null;
   let latest: OfflineBible | null = null;
   let dismissed = false;
@@ -33,6 +34,23 @@
   const megabytes = (bytes: number) => (bytes / 1_000_000).toLocaleString('fr-FR', { maximumFractionDigits: 1 });
   $: target = standalone && latest ? latest : metadata;
   $: outdated = standalone && saved && latest && saved.sha256 !== latest.sha256;
+  $: showUpdateNotice = standalone && outdated && !dismissed && !busy;
+  $: if (dialog && showUpdateNotice && !expanded && navigator.onLine) openPanel();
+
+  function openPanel() {
+    if (!dialog || dialog.open) return;
+    dialog.showModal(); expanded = true;
+  }
+  function closePanel() { dialog.close(); }
+  function closed() {
+    if (outdated) dismissed = true;
+    expanded = false;
+  }
+  function clickBackdrop(event: MouseEvent) {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closePanel();
+  }
 
   onMount(() => {
     supported = window.isSecureContext && 'serviceWorker' in navigator && 'indexedDB' in window && 'WebAssembly' in window && 'Worker' in window;
@@ -133,7 +151,7 @@
 
   async function download() {
     const downloadMetadata = { ...target };
-    expanded = true;
+    openPanel();
     busy = true; cancelled = false; progress = 0; problem = ''; message = 'Préparation du lecteur…';
     try {
       if (!shell) throw new Error('Le mode hors ligne nécessite le site en HTTPS.');
@@ -174,18 +192,26 @@
   }
 </script>
 
-<section class="offline-panel" aria-label="Installer et lire hors ligne">
-  {#if standalone && outdated && !dismissed && !busy && !expanded}
+<div class="offline-panel">
+  <button type="button" class="offline-button" aria-label="Emporter le comparateur" title="Emporter le comparateur"
+    aria-haspopup="dialog" aria-controls="comparator-offline-dialog" aria-expanded={expanded} aria-describedby="comparator-offline-state" on:click={openPanel}>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12l4 4v12a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8V3"/>
+    </svg>
+    {#if updateAvailable || outdated}<span class="offline-indicator" aria-hidden="true"></span>{/if}
+    <span id="comparator-offline-state" class="offline-state">{updateAvailable ? 'Actualiser' : outdated ? 'Mise à jour de la Bible disponible' : saved ? 'Bible téléchargée' : `${megabytes(target.bytes)} Mo`}</span>
+  </button>
+  <dialog id="comparator-offline-dialog" bind:this={dialog} aria-labelledby="comparator-offline-title" on:close={closed} on:click={clickBackdrop} on:keydown={(event) => { if (event.key === 'Escape') closePanel(); }}>
+    <header><h2 id="comparator-offline-title">Emporter le comparateur</h2><button type="button" aria-label="Fermer Emporter le comparateur" on:click={closePanel} autofocus>Fermer ×</button></header>
+  {#if showUpdateNotice}
     <aside class="bible-update-notice" role="status" aria-label="Mise à jour de la Bible">
       <div><strong>Une nouvelle Bible est disponible</strong><p>Version {target.version} · {megabytes(target.bytes)} Mo à télécharger.</p></div>
       <div class="offline-actions">
         <button type="button" on:click={download}>Mettre à jour la Bible</button>
-        <button type="button" on:click={() => dismissed = true}>Plus tard</button>
+        <button type="button" on:click={closePanel}>Plus tard</button>
       </div>
     </aside>
   {/if}
-  <details bind:open={expanded}>
-    <summary><span>Emporter le comparateur</span><span class="offline-state">{updateAvailable ? 'Actualiser' : saved ? 'Bible téléchargée' : `${megabytes(target.bytes)} Mo`}</span></summary>
     <div class="offline-body">
       {#if import.meta.env.DEV}
         <p>Le mode hors ligne s’active sur le build de production.</p>
@@ -198,7 +224,7 @@
             <p>Toutes les traductions · {megabytes(target.bytes)} Mo · de préférence en Wi-Fi.</p>
             {#if outdated}<p>Une nouvelle version est disponible. Votre copie actuelle reste utilisable pendant la mise à jour.</p>{/if}
             <div class="offline-actions">
-              {#if !saved || outdated}<button type="button" disabled={busy} on:click={download}>{saved ? 'Mettre à jour la Bible' : 'Télécharger la Bible'}</button>{/if}
+              {#if !saved || (outdated && !showUpdateNotice)}<button type="button" disabled={busy} on:click={download}>{saved ? 'Mettre à jour la Bible' : 'Télécharger la Bible'}</button>{/if}
               {#if busy}<button type="button" disabled={progress === 1} on:click={cancel}>Annuler</button>{/if}
               {#if saved}<button type="button" disabled={busy} on:click={remove}>Supprimer la copie locale</button>{/if}
             </div>
@@ -232,30 +258,34 @@
       <p role="status">{message}</p>
       {#if problem}<p role="alert">{problem}</p>{/if}
     </div>
-  </details>
-</section>
+  </dialog>
+</div>
 
 <style>
   .bible-update-notice { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding: .75rem 1rem; border-bottom: 1px solid var(--border); font-size: .9rem; line-height: 1.4; }
   .bible-update-notice p { margin: .25rem 0 0; }
   .bible-update-notice .offline-actions { margin-top: 0; }
-  :global(html[data-comparator-mode="standalone"]) .offline-panel { margin-bottom: .5rem; }
-  .offline-panel { max-width: 120rem; margin: 0 auto 1.25rem; border: 1px solid var(--border); background: var(--card); color: var(--text-muted); }
-  summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; min-height: 2.75rem; padding: .5rem .75rem; cursor: pointer; font-family: var(--type-ui); font-size: .85rem; }
-  summary::after { content: '+'; color: var(--accent); }
-  details[open] summary::after { content: '−'; }
-  .offline-state { margin-left: auto; color: var(--accent); font-size: .75rem; }
+  .offline-panel { display: flex; color: var(--text-muted); }
+  .offline-button { position: relative; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; background: var(--bg); }
+  .offline-button:hover { border-color: var(--accent); }
+  .offline-indicator { position: absolute; top: .25rem; right: .25rem; width: .4rem; height: .4rem; border-radius: 50%; background: var(--accent); }
+  .offline-state { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  dialog { position: fixed; inset: 0; margin: auto; width: min(38rem, calc(100vw - 1.5rem)); max-height: min(42rem, calc(100svh - 2rem)); overflow: auto; padding: 0; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--text-muted); }
+  dialog::backdrop { background: rgb(0 0 0 / .45); }
+  dialog > header { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; border-bottom: 1px solid var(--border); background: var(--card); }
+  dialog h2 { margin: 0; color: var(--text); font-size: 1.6rem; line-height: 1.2; }
+  dialog > header button { flex: none; }
   .setup-steps { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
   .setup-steps h3 { margin-bottom: .4rem; color: var(--text); font-size: 1rem; line-height: 1.3; }
   .setup-steps h3 + button { margin-top: .35rem; }
-  .offline-body { padding: 0 1rem 1rem; font-size: .95rem; line-height: 1.55; }
+  .offline-body { padding: 1rem; font-size: .95rem; line-height: 1.55; }
   p + p, button + p, .offline-actions { margin-top: .75rem; }
   p:empty { display: none; }
   button { min-height: 2.75rem; border: 1px solid var(--border); padding: .5rem .85rem; color: var(--accent); font-family: var(--type-ui); font-size: .8rem; cursor: pointer; }
   button:disabled { opacity: .5; cursor: wait; }
-  button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .offline-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
   progress { display: block; width: 100%; margin-top: 1rem; accent-color: var(--accent); }
   [role="alert"] { color: var(--accent); }
-  @media (max-width: 600px) { summary { font-size: .8rem; } .offline-state { margin-left: 0; } }
+  @media (max-width: 600px) { dialog h2 { font-size: 1.3rem; } }
 </style>

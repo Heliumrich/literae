@@ -19,7 +19,9 @@ export async function initBookCatalog() {
   let items: BookItem[] = [];
   const collator = new Intl.Collator('fr', { sensitivity: 'base', numeric: true });
   function render() {
-    const list = filterCatalog(items, search?.value || '', selectedTags(), mode).sort((a, b) => {
+    const list = filterCatalog(items, search?.value || '', selectedTags(), mode);
+    // The static catalogue already follows Directus' editorial order.
+    if (sort.value !== 'default') list.sort((a, b) => {
       const key = sort.value === 'author' ? 'author' : sort.value === 'tags' ? 'tags' : 'title';
       return collator.compare(String(a[key]), String(b[key])) || collator.compare(a.title, b.title);
     });
@@ -31,7 +33,7 @@ export async function initBookCatalog() {
     markActiveButtons('.mode-btn', 'mode', mode);
     updateFilterStatus(status, empty, list.length, 'Aucun ouvrage ne correspond.', `${list.length} ouvrage${list.length > 1 ? 's' : ''}`);
     renderPager(pager, pages, page);
-    writeFilterParams({ search, mode, page, extra: { view: view === 'list' ? view : null, sort: sort.value === 'title' ? null : sort.value } });
+    writeFilterParams({ search, mode, page, extra: { view: view === 'list' ? view : null, sort: sort.value === 'default' ? null : sort.value } });
   }
   function resetPage() { page = 1; render(); }
   bindCatalogChrome({ search, pager, status, empty, onResetPage: resetPage,

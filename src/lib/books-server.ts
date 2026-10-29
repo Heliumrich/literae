@@ -5,14 +5,14 @@ import type { LibraryBook } from './books';
 import { bookEditions, type EditionLink } from './book-editions';
 
 type BookRow = {
-  id: string; archived: boolean; title: string; short_description: string | null;
+  id: string; archived: boolean; sort: number | null; title: string; short_description: string | null;
   cover_image: unknown; tags: unknown; date_created: string | null;
   author: { id: string; name: string; slug: string; status: string; type: unknown } | null;
   ebook_files: EditionLink[];
   ebook_download_files: EditionLink[];
 };
 const BOOK_FIELDS = [
-  'id', 'archived', 'title', 'short_description', 'cover_image', 'tags', 'date_created',
+  'id', 'archived', 'sort', 'title', 'short_description', 'cover_image', 'tags', 'date_created',
   'author.id', 'author.name', 'author.type', 'author.slug', 'author.status',
   ...['ebook_files', 'ebook_download_files'].flatMap(relation => [
     `${relation}.*`,
@@ -22,7 +22,7 @@ const BOOK_FIELDS = [
 
 /** books has an archived flag, not the status/slug fields used by artworks. */
 export async function fetchBooks(): Promise<LibraryBook[]> {
-  const rows = await fetchAllFromDirectus<BookRow>(`books?filter[archived][_eq]=false&fields=${BOOK_FIELDS}&sort=title`, 100, { required: true });
+  const rows = await fetchAllFromDirectus<BookRow>(`books?filter[archived][_eq]=false&fields=${BOOK_FIELDS}&sort=sort,title,id`, 100, { required: true });
   return rows.filter(row => !row.archived && row.id && row.title).map(row => ({
     id: String(row.id),
     slug: `${normalizeText(row.title).replaceAll(' ', '-') || 'livre'}-${String(row.id).slice(0, 8)}`,

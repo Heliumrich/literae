@@ -1,3 +1,4 @@
+import { openOfflinePanel, closeOfflinePanel } from './comparator-helpers';
 import { test, expect, devices, type Page } from '@playwright/test';
 
 const PAGE = '/scriptorium/comparateur';
@@ -5,9 +6,10 @@ const PAGE = '/scriptorium/comparateur';
 async function download(page: Page) {
   await page.goto(PAGE);
   await expect(page.locator('.verse p').first()).toContainText('Dieu');
-  await page.getByText('Emporter le comparateur', { exact: true }).click();
+  await openOfflinePanel(page);
   await page.getByRole('button', { name: 'Télécharger la Bible', exact: true }).click();
   await expect(page.locator('.offline-body [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.', { timeout: 60000 });
+  await closeOfflinePanel(page);
 }
 
 async function readUnvisitedPassage(page: Page) {

@@ -190,8 +190,6 @@
   }
 </script>
 
-<OfflinePanel metadata={offlineBible} onready={() => load()} />
-
 <div class="comparator" aria-busy={loading} style={`--text-scale: ${textScale}`}>
   <section class="comparator-controls" style={`--column-count: ${columns.length || numCols}`} aria-label="Choisir un passage et des traductions">
     <div class="controls-top">
@@ -220,6 +218,8 @@
           <button on:click={load} aria-label="Charger ce passage">Lire <span aria-hidden="true">→</span></button>
         </div>
       </div>
+
+      <div class="offline-control"><OfflinePanel metadata={offlineBible} onready={() => load()} /></div>
 
       <fieldset class="text-size-control">
         <legend>Taille du texte</legend>
@@ -406,6 +406,8 @@
     flex: 1 1 16.75rem;
     min-width: min(100%, 16.75rem);
   }
+
+  .offline-control { flex: none; order: 1; }
 
   .text-size-control,
   .column-count {
@@ -874,6 +876,9 @@
     .controls-top {
       gap: 0.75rem 0.5rem;
     }
+
+    .reference-field { flex: 1 1 calc(100% - 3.25rem); min-width: 0; }
+    .offline-control { order: 0; }
 
     .loading-mark {
       display: none;

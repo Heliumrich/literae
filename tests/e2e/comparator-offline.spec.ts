@@ -1,3 +1,4 @@
+import { openOfflinePanel, closeOfflinePanel } from './comparator-helpers';
 import { test, expect, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -7,11 +8,12 @@ const route = '/scriptorium/comparateur';
 async function open(page: Page) {
   await page.goto(route);
   await expect(page.locator('.verse p').first()).toContainText('Dieu');
-  await page.getByText('Emporter le comparateur', { exact: true }).click();
+  await openOfflinePanel(page);
 }
 async function download(page: Page) {
   await page.getByRole('button', { name: 'Télécharger la Bible', exact: true }).click();
   await expect(page.locator('.offline-panel [role="status"]')).toHaveText('La Bible et le lecteur sont disponibles hors ligne sur cet appareil.', { timeout: 60000 });
+  await closeOfflinePanel(page);
 }
 
 test('toute la Bible reste lisible après fermeture de la page et réouverture hors ligne', async ({ page, context }) => {
@@ -57,6 +59,7 @@ test('un téléchargement interrompu peut être repris et la copie supprimée', 
   await expect(page.locator('.verse p').first()).toContainText('Dieu');
   await context.unroute('**/scriptorium/donnees/*.db');
   await download(page);
+  await openOfflinePanel(page);
   page.on('dialog', dialog => dialog.accept());
   await page.getByRole('button', { name: 'Supprimer la copie locale', exact: true }).click();
   await expect(page.locator('.offline-panel [role="status"]')).toHaveText('La copie locale a été supprimée.');
@@ -89,7 +92,7 @@ test('iPhone affiche les étapes d’installation Safari', async ({ browser }) =
   });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4322' + route);
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await page.getByRole('button', {name:'Installer le comparateur',exact:true}).click();
   await expect(page.getByText('Sur iPhone ou iPad :',{exact:true})).toBeVisible();
   await expect(page.getByText('Partager',{exact:true})).toBeVisible();
@@ -123,17 +126,17 @@ test('une mise à jour échouée conserve la copie précédente et ses passages 
     json: {version:'2.1.1',bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),url:'/api/bible/verses?pwa=download&asset=999'},
   }));
   await page.reload();
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
-  await expect(page.locator('.offline-body').getByRole('button',{name:'Mettre à jour la Bible',exact:true})).toBeVisible();
+  await openOfflinePanel(page);
+  await expect(page.getByRole('dialog').getByRole('button',{name:'Mettre à jour la Bible',exact:true})).toBeVisible();
   await context.route('**/api/bible/verses?pwa=download&asset=999', route => route.fulfill({status:200,headers:{'Access-Control-Allow-Origin':'*'},body:'interrupted'}));
-  await page.locator('.offline-body').getByRole('button',{name:'Mettre à jour la Bible',exact:true}).click();
+  await page.getByRole('dialog').getByRole('button',{name:'Mettre à jour la Bible',exact:true}).click();
   await expect(page.getByRole('alert')).toContainText('Téléchargement incomplet');
   await context.setOffline(true);
   await page.reload();
   await page.locator('#cmp-ref').fill('Psaume 22');
   await page.getByRole('button',{name:'Charger ce passage',exact:true}).click();
   await expect(page.locator('.translation-page').first().locator('.verse p').first()).toContainText('C’est le Seigneur qui me conduit');
-  await page.getByText('Emporter le comparateur',{exact:true}).click();
+  await openOfflinePanel(page);
   await expect(page.locator('.offline-body')).toContainText('Version locale : previous');
 });
 
