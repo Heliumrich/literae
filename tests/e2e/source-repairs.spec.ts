@@ -29,6 +29,7 @@ for(const profile of [{name:'desktop',...devices['Desktop Chrome']},{name:'mobil
  test('Sacerdoce : pagination supprimée et Timothée corrigé',async({page})=>{
   const frame=await chapter(page,'17d0f5b4-f373-4ce8-ba03-9234dc1667ce','section-002.xhtml');
   await expect(frame.locator('body')).not.toContainText('(574)');
+  expect(await frame.locator('body').evaluate(el=>el.textContent!.includes('\u200b'))).toBe(false);
   await frame.locator('.reader-inline-bible[data-reference="2 Tm 2:25–26"]').first().click();
   await expect(page.getByRole('dialog')).toContainText('Bible Fillion');
   await expect(page.locator('.reader-bible-location')).toHaveText('Chapitre 2, versets 25 à 26.');
@@ -37,6 +38,7 @@ for(const profile of [{name:'desktop',...devices['Desktop Chrome']},{name:'mobil
  test('Philippiens : versets entre parenthèses conservés',async({page})=>{
   const frame=await chapter(page,'03d15abc-45a1-45bc-a078-7a1741b7b85c','section-002.xhtml');
   await expect(frame.locator('body')).toContainText('(6)');
+  expect(await frame.locator('body').evaluate(el=>el.textContent!.includes('\u200b'))).toBe(false);
   await expect(frame.locator('body')).not.toContainText('(10)');
  });
 });

@@ -10,7 +10,8 @@
         "kind": "web",
         "id": "6ff4c85b-811f-4289-ae8f-c363c26d0022",
         "original_sha256": "d6eba31174ce00ed8a14fe2eff46664d43bad9e7a5bd9970887afd02f0eada46",
-        "corrected_sha256": "e9fb7622a492e15247a2a4d0348948b9c13eaa2086b9cba56f5f7ad9db6b7747"
+        "corrected_sha256": "5179178c21c1ad4194d91822c0bbfc0fa58561d819f35aea6e6480afb5eeb206",
+        "removed_placeholder_characters": 735
       },
       {
         "kind": "download",
@@ -31,7 +32,8 @@
         "kind": "web",
         "id": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4",
         "original_sha256": "af5f4d5d74ad29ec7a09c41f3b4904b00e473016aadef35b8dadd1a81b6582b7",
-        "corrected_sha256": "6e1ab19996ea550fc6a434a7a83e479256dab2224af5d69850756ca440bfc687"
+        "corrected_sha256": "3bf74110de051b5846aec1d5f9ec1dad53798e1d60ae993bebb8fa920ebd9b2a",
+        "removed_placeholder_characters": 373
       },
       {
         "kind": "download",
@@ -73,7 +75,8 @@
         "kind": "web",
         "id": "fcce9770-f941-4bcb-8109-68053359fa72",
         "original_sha256": "0948baeb69a3bea72f7cf406f116e981a2d31e622a88758ad47e38bbdf65f43f",
-        "corrected_sha256": "1be33a2a41a3e07b4e8c6f1bacb0329f4556fab234c23a0d8c280675829b8f3e"
+        "corrected_sha256": "458f0b6dfa9d5b1a0fbf3520acb1c16cbe57b6492fc8cb032d787ad08204ee52",
+        "removed_placeholder_characters": 60
       },
       {
         "kind": "download",
@@ -94,7 +97,8 @@
         "kind": "web",
         "id": "faef3586-1c50-4a8d-907c-d493a56af11a",
         "original_sha256": "213d4a40f462fe0828199602a0616d69c4e924edc325d742264e0e4a2a760219",
-        "corrected_sha256": "c9d82033b1c2f557bc1a844c277d12877983edaa58a32ed119214e37313558cb"
+        "corrected_sha256": "16e3c8a05e9f6d58683cdfb2d4721ee6495659e6bf0a706b7908b5370f5aaa1a",
+        "removed_placeholder_characters": 5
       },
       {
         "kind": "download",
@@ -115,7 +119,8 @@
         "kind": "web",
         "id": "af466133-4235-48f4-b93c-540772db5bff",
         "original_sha256": "4722524da120023f1b89c29de21106894cc82059d5546f6a00de116b0f12ee5b",
-        "corrected_sha256": "5f697b5b3c8145977d5579ed09a92325bce28524040f2236e83440f5a47687b4"
+        "corrected_sha256": "c5dcd0db0a4ac33e51e8d200f558097f325f8a3c06a59458cc3029608bf6522d",
+        "removed_placeholder_characters": 312
       },
       {
         "kind": "download",
@@ -136,7 +141,8 @@
         "kind": "web",
         "id": "428155e0-6dc4-4cd0-979c-32688d08211c",
         "original_sha256": "c75cca82d3e60c42751f8ba1c320c5ee88b4c4277584a3712321ab626d18ee52",
-        "corrected_sha256": "2faaa290ebc9d2e1fee431ac34e40ab28b050526de2c392b2d81c77edd8b23f4"
+        "corrected_sha256": "74c1aaf1f044ae5d758aa92db68cbd8564d7588cdfe96ce3bfca0cb07f2ed7b2",
+        "removed_placeholder_characters": 1050
       },
       {
         "kind": "download",
@@ -157,7 +163,8 @@
         "kind": "web",
         "id": "cfd3706a-185c-458f-8ddd-7aeeadb3e487",
         "original_sha256": "bc1f488849ea264b2a2293e750ce88fdcf0db92c9d0943438b7da19e94b8a63c",
-        "corrected_sha256": "842496c15be162e6c3158444ede66423849320ccb7f193632b569d342fd40a8e"
+        "corrected_sha256": "6919f6dba312420d85208f10c948230e695f34745b151c43048b8f8773b92ba4",
+        "removed_placeholder_characters": 560
       },
       {
         "kind": "download",
@@ -178,7 +185,8 @@
         "kind": "web",
         "id": "86842fe4-c383-444c-a146-ed09065c516a",
         "original_sha256": "bddb04fbec301789d7c4e56483deae9aa65b0e1f41c72025bbd511cba67f0d5e",
-        "corrected_sha256": "49be3e0196147fef1c303b640361ab9b90c165639bdd01e2144cb9ef59a737a4"
+        "corrected_sha256": "d250621d55f2047aa0a1d115eed5507584ebfc080a8bed066cb848368691adb5",
+        "removed_placeholder_characters": 620
       },
       {
         "kind": "download",
@@ -199,7 +207,8 @@
         "kind": "web",
         "id": "d6a8c726-e4f2-4244-9800-5acd112e1874",
         "original_sha256": "4af0e7b24b0abe4621d4adcc25ec397ba3efecd29978d6393b5bbf04a8fd4227",
-        "corrected_sha256": "dd1998f3404c5b26000e5169dc878c1b65353199fcc278cd539e59e1dc29a9ed"
+        "corrected_sha256": "d0210c61e84c2070fdd056d1522af48d437d8413ed6f9ae99a178a6216247072",
+        "removed_placeholder_characters": 60
       },
       {
         "kind": "download",
@@ -220,7 +229,8 @@
         "kind": "web",
         "id": "20b12649-7e98-42f9-b152-c69af2a4d2f5",
         "original_sha256": "654bf66e3400ae2b0fe0076d1841ef6693a3212f5db42df16e300732d582d44a",
-        "corrected_sha256": "6d58ecedeb7b469c587d8cafe4316e13a2142d2402214a30bce3a70b8f712795"
+        "corrected_sha256": "ebbe04d279f074477688a8688c8d311744d0d890d9a44fcdd26ef32a0f4df2bd",
+        "removed_placeholder_characters": 265
       },
       {
         "kind": "download",
@@ -241,7 +251,8 @@
         "kind": "web",
         "id": "f277155c-6d85-4994-b600-c82638da8490",
         "original_sha256": "a4def365c1f6d6d908afac96a98513046f13ee9b0056a5f90b5c35eb529cd8db",
-        "corrected_sha256": "6a54a3eeba07e91828db7b93251b28b4ec5d05a49d790304c7c2019eabf90a89"
+        "corrected_sha256": "9847e3f64887df2b9ae1e22aaa4e8a93247a0f871e3668e386164408f665ca6e",
+        "removed_placeholder_characters": 260
       },
       {
         "kind": "download",
@@ -262,7 +273,8 @@
         "kind": "web",
         "id": "77b9d554-1292-40cf-bf27-98201bd907fe",
         "original_sha256": "d248a379b548e387279f10216dc1790ea73b6fd9ca067d446cfd235082dfdc22",
-        "corrected_sha256": "2f86ed00121fdcc703421e66d125a9504089deda9fea007961351d8a5ba71f2f"
+        "corrected_sha256": "2c1b9ac586ed5b9624f8bdb3ccc650eaf6a593dabc56a63071c9baea2fa620fa",
+        "removed_placeholder_characters": 140
       },
       {
         "kind": "download",
@@ -283,7 +295,8 @@
         "kind": "web",
         "id": "c2b5b95d-91f2-43b3-a5f1-2c249bf4b858",
         "original_sha256": "98f76af1935e94080dbac46a3fecba755d9f3701f08e27e2bd47c2391abf6760",
-        "corrected_sha256": "c2ffe61285bd71c6ebce9ca22954419b33b73909ccafd361e44c95fa6303020c"
+        "corrected_sha256": "d93a48533d227f439c065ef6a4b43dc2cb4824717446e79282e4805ca2fdec13",
+        "removed_placeholder_characters": 1355
       },
       {
         "kind": "download",
@@ -304,7 +317,8 @@
         "kind": "web",
         "id": "a3e842e0-cce5-4dd7-a497-718e0df92e92",
         "original_sha256": "272c913e585a293dc75efc14312bc1421dcdd1726dd0a128d2abe34c9426ac28",
-        "corrected_sha256": "6579945cf21ca4692534a6dd265940d94ca755bd7c39a5c30be7bb2488c36dc8"
+        "corrected_sha256": "d77902f87a4ad6fc7cdf03427505da9c69264fe8f453f0ee2018a126347332cf",
+        "removed_placeholder_characters": 298
       },
       {
         "kind": "download",
@@ -325,7 +339,8 @@
         "kind": "web",
         "id": "1d19870f-d464-449c-abb6-4e750e1435a4",
         "original_sha256": "bad07a1ddd67b908d6ed8da978d84dc6448b95b8e7344aa0b292cd29e118a579",
-        "corrected_sha256": "e9b9aea59e74f3ab014f8e4a4fb5fcd621068ed0bc170a479d401e943f388c05"
+        "corrected_sha256": "0d8c458be451fe4390d4e2c709e562ad3b36ee8763555f5669ef7a76750ca114",
+        "removed_placeholder_characters": 265
       },
       {
         "kind": "download",
@@ -346,7 +361,8 @@
         "kind": "web",
         "id": "3b590ab9-498f-4223-a7f7-fd17e37ba078",
         "original_sha256": "e4e305531181972e3ecc857171d2b20fd14b7dff52cfb3e86635fb1b9d933942",
-        "corrected_sha256": "004767c02b757d8e7ec2acc50536f10564415014689c4795f7004b5e2939b67e"
+        "corrected_sha256": "ab47551e06e48ef021f9aad14dd928e6ca3593dd558db65c85cd7cce4a8df0ca",
+        "removed_placeholder_characters": 733
       },
       {
         "kind": "download",
@@ -367,7 +383,8 @@
         "kind": "web",
         "id": "99fac3db-05da-45bc-a9a7-739a84a4d0fe",
         "original_sha256": "5a757bd851a12c9c834455a6ffc23b34705b3760e14ff92f954a5aedc7f48eb3",
-        "corrected_sha256": "f2d62a8f7385ee70d9870993c9804ab2b379a36c4b49696c0924c1698303f3ff"
+        "corrected_sha256": "91a6d1924376fd21379bd461e84be2c1990ea704ca27643d1d42398a32b88108",
+        "removed_placeholder_characters": 110
       },
       {
         "kind": "download",
@@ -388,7 +405,8 @@
         "kind": "web",
         "id": "eec8d173-ba17-4588-8ba7-496d7f17adae",
         "original_sha256": "51ac7d9975bece958fc168bd8f72f067e0b767ca1ab0e2a3e9ef14369f5cdf1b",
-        "corrected_sha256": "6359212b53e7c0c46da27ccccfef315b278796fd34eb672717044b1dd803d551"
+        "corrected_sha256": "9b25e1e459e10f9b1f2975d6ca6effd3d32e018eb981d441a49c72f8fa260bff",
+        "removed_placeholder_characters": 233
       },
       {
         "kind": "download",
@@ -486,7 +504,8 @@
         "kind": "web",
         "id": "b767e7b1-d213-45eb-a89a-bf43e6d9af31",
         "original_sha256": "d75cf775af48d90f29891e0a4563f1ac7343ef08c770e3de88cfba6f846eb44b",
-        "corrected_sha256": "7399400067dcda0a1d86e80c9b2ffa711756e1fdc3effa92fe81fab7aa1c4e25"
+        "corrected_sha256": "c61691c99e71ad9b34eb40137c2e8436d201e5bc539f68b1026412c9cafae5d2",
+        "removed_placeholder_characters": 280
       },
       {
         "kind": "download",

@@ -262,13 +262,12 @@ Le nettoyage est appliqué uniquement aux copies des notes affichées :
   (Matthieu, Marc, etc.) sont conservés ;
 - Crampon : retrait des préfixes de verset commenté comme `51.`, `14-15.` ou
   `II. 2.`. Le numéro de note de l’EPUB reste un identifiant distinct ;
-- Confessions : 147 repères de pagination imprimée entre `(363)` et `(516)`,
-  dont `(410)`, sont masqués par substitution de même longueur UTF-16 dans
-  le seul profil de cet ouvrage. Ce ne sont pas des appels de notes manquants.
-  Les offsets CFI sont conservés, ainsi que la pagination de l’EPUB téléchargé.
+- Confessions : les 147 repères de pagination imprimée entre `(363)` et `(516)`,
+  dont `(410)`, ont été supprimés dans les EPUB. Ce ne sont pas des appels de
+  notes manquants. Le lecteur ne contient plus de masquage pour cet ouvrage.
 
-Aucune réécriture ni réimportation CMS n’est nécessaire. Les fichiers web,
-les versions de téléchargement et leurs relations restent inchangés.
+Les préfixes Glaire et Crampon sont traités à l’affichage. La pagination est
+corrigée dans les fichiers eux-mêmes, en conservant leurs associations d’éditions.
 
 ### Vérification du lot
 
@@ -389,10 +388,13 @@ plusieurs appels légitimes dans un autre ouvrage.
 L’audit du lot Augustin/Chrysostome et de Maistre couvre 24 ouvrages ; 20 ont
 reçu une correction, soit 40 fichiers web/téléchargement. Les 1 583 repères de
 pagination identifiés sont retirés. Les courts numéros de versets des commentaires
-et les nombres ambigus sont conservés. La version web remplace les repères par
-des caractères invisibles U+200B de même longueur pour préserver les offsets CFI ;
-le téléchargement les retire normalement. Aucune suppression générale du contenu
+et les nombres ambigus sont conservés. Les repères sont supprimés réellement
+dans les versions web comme dans les téléchargements, sans caractères de remplacement.
+Les anciens signets peuvent donc changer de position. Aucune suppression générale du contenu
 entre parenthèses n’est appliquée.
+Les 7 714 caractères de remplacement initialement introduits dans 19 EPUB web
+ont été retirés. Le lecteur ne contient plus de profil ni de routine de masquage
+de la pagination. Les téléchargements étaient déjà nettoyés sans remplacement.
 
 Dans le livre II du Sacerdoce, `II Timoth. XI, 25.` était un renvoi erroné :
 la deuxième épître ne possède pas de chapitre XI. Le texte cité correspond

@@ -6,7 +6,7 @@ export type NoteBibleReference = {
 };
 export type NoteBibleContext = {
   translation?: string; psalms?: 'hebrew' | 'vulgate'; modernKings?: boolean;
-  noteHeadings?: 'crampon' | 'glaire'; pageMarkers?: [number, number];
+  noteHeadings?: 'crampon' | 'glaire';
 };
 
 // Keep this vocabulary separate from the comparator's free-form search. In
