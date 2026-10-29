@@ -23,12 +23,15 @@
   },
   "dependencies": {
     "@astrojs/node": "11.1.4",
-    "@astrojs/svelte": "9.0.1",
+    "@astrojs/svelte": "^9.1.2",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "7.2.9",
+    "approve": "^0.0.12",
+    "astro": "^7.4.4",
     "better-sqlite3": "13.0.3",
     "epubjs": "0.3.93",
+    "es5-ext": "^0.10.64",
     "micromark": "4.0.2",
+    "scripts": "^0.1.0",
     "sql.js": "1.15.0",
     "svelte": "5.57.0",
     "tailwindcss": "4.3.3",
@@ -40,7 +43,11 @@
     "@types/sql.js": "1.4.11"
   },
   "allowScripts": {
-    "better-sqlite3@13.0.3": true
+    "better-sqlite3@13.0.3": true,
+    "core-js@3.51.0": true,
+    "es5-ext@0.10.64": true,
+    "esbuild@0.15.18": true,
+    "svelte-preprocess@4.10.7": true
   },
   "overrides": {
     "epubjs": {
