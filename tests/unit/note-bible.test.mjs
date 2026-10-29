@@ -7,6 +7,14 @@ import { bibleTargets } from '../../src/lib/reader/bible-concordance.ts';
 import { catholicBibleBookTitle, biblePassageLocation } from '../../src/lib/reader/bible-heading.ts';
 import { readerBibleProfile, bibleContextForSource } from '../../src/lib/reader/bible-profile.ts';
 
+test('ne transforme pas les élisions françaises et numéros de verset en chapitres', () => {
+  for (const text of ['est l’époux', "est l'époux", 'Si l’on répond', "Si l'on répond", 'le mal, c’est-à-dire', 'plus que Jean, 2. – toutefois', 'Est. L', 'Mal. C'])
+    assert.deepEqual(refs(text), [], text);
+  assert.equal(refs('(Philip. II, 6-11)')[0].label, 'Ph 2:6–11');
+  assert.equal(refs('Ps. xxi ; Is. liii').length, 2);
+  assert.equal(refs('Jean, II, 1')[0].label, 'Jn 2:1');
+});
+
 test('normalise les références réelles, y compris les lettres latines et les livres numérotés', () => {
   for (const [source, label, book] of [
     ['I Cor., VIII, 1.', '1 Cor. 8:1', '1CO'],

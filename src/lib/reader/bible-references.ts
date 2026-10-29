@@ -53,7 +53,7 @@ const BOOKS: [string, string, string][] = [
   ['2CO', '2 Cor.', '2 cor|2 corinth|2 corinthiens'],
   ['GAL', 'Ga', 'gal|galat|galates|ga'],
   ['EPH', 'Éph.', 'eph|éph|ephes|éphés|éphésiens|ephesiens'],
-  ['PHP', 'Ph', 'phil|philipp|philippiens|ph'], ['COL', 'Col.', 'col|coloss|colossiens'],
+  ['PHP', 'Ph', 'phil|philip|philipp|philippiens|ph'], ['COL', 'Col.', 'col|coloss|colossiens'],
   ['1TH', '1 Th', '1 thes|1 thess|1 thessal|1 thessaloniciens|1 th'],
   ['2TH', '2 Th', '2 thes|2 thess|2 thessal|2 thessaloniciens|2 th'],
   ['1TI', '1 Tm', '1 tim|1 timoth|1 timothée|1 timothee|1 tm'],
@@ -68,6 +68,18 @@ const BOOKS: [string, string, string][] = [
   ['JUD', 'Jude', 'jude'], ['REV', 'Ap', 'apoc|apocal|apocalypse|ap'],
 ];
 const ordinals: Record<string, number> = { i: 1, ii: 2, iii: 3, iv: 4 };
+// Catholic canon, allowing either Hebrew or Vulgate chapter divisions.
+const chapters: Record<string, number> = {
+  GEN: 50, EXO: 40, LEV: 27, NUM: 36, DEU: 34, JOS: 24, JDG: 21, RUT: 4,
+  '1SA': 31, '2SA': 24, '1KI': 22, '2KI': 25, '1CH': 29, '2CH': 36,
+  EZR: 10, NEH: 13, TOB: 14, JDT: 16, EST: 16, '1MA': 16, '2MA': 15,
+  JOB: 42, PSA: 150, PRO: 31, ECC: 12, SNG: 8, WIS: 19, SIR: 51,
+  ISA: 66, JER: 52, LAM: 5, BAR: 6, EZK: 48, DAN: 14, HOS: 14, JOL: 4,
+  AMO: 9, OBA: 1, JON: 4, MIC: 7, NAM: 3, HAB: 3, ZEP: 3, HAG: 2, ZEC: 14, MAL: 4,
+  MAT: 28, MRK: 16, LUK: 24, JHN: 21, ACT: 28, ROM: 16, '1CO': 16, '2CO': 13,
+  GAL: 6, EPH: 6, PHP: 4, COL: 4, '1TH': 5, '2TH': 3, '1TI': 6, '2TI': 4,
+  TIT: 3, PHM: 1, HEB: 13, JAS: 5, '1PE': 5, '2PE': 3, '1JN': 5, '2JN': 1, '3JN': 1, JUD: 1, REV: 22,
+};
 const fold = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f.]/g, '').toLowerCase()
   .replace(/\s+/g, ' ').trim().replace(/^(iv|iii|ii|i)\s+/, n => `${ordinals[n.trim()]} `);
 const aliases = new Map<string, { book: string; label: string }>();
@@ -112,6 +124,7 @@ function makeReference(start: number, end: number, name: { book: string; label: 
     book = chapter <= 12 && ranges.every(r => r.last <= ecclesiastes[chapter - 1]) ? 'ECC' : chapter <= 51 ? 'SIR' : '';
     label = book === 'ECC' ? 'Qo' : book === 'SIR' ? 'Si' : label;
   }
+  if (book && chapter > chapters[book]) return null;
   return { start, end, book: book || null, chapter, ranges,
     label: `${label} ${chapter}${ranges.length ? ':' + ranges.map(r => r.first === r.last ? r.first : `${r.first}–${r.last}`).join(', ') : ''}` };
 
@@ -123,6 +136,11 @@ export function findNoteBibleReferences(text: string, context: NoteBibleContext 
   citation.lastIndex = 0;
   let match: RegExpExecArray | null;
   while ((match = citation.exec(text))) {
+    // A French elision is never a chapter: “Si l’on”, “est l’époux”, “mal, c’est”.
+    if (/^[’']/.test(text.slice(citation.lastIndex))) continue;
+    // A name followed by a verse number at the next sentence is not a
+    // chapter-only reference (“plus que Jean, 2. – toutefois…”).
+    if (!match[4] && !match[5] && /^,\s*\d+$/.test(match[0].slice(match[1].length))) continue;
     // A cross-chapter range must not become a different, same-chapter range.
     if (/^\s*(?::\s*\d|[-–]\s*\d)/.test(text.slice(citation.lastIndex))) continue;
     let name = aliases.get(fold(match[1]));

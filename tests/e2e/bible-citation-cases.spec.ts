@@ -40,6 +40,23 @@ for (const profile of [
   { name: 'mobile paysage', ...devices['Pixel 7 landscape'] },
 ]) test.describe('Cas signalés : ' + profile.name, () => {
   test.use({ viewport: profile.viewport, isMobile: profile.isMobile, hasTouch: profile.hasTouch, userAgent: profile.userAgent });
+  test('élisions françaises et citations corrigées des Confessions', async ({ page }) => {
+    await openBook(page, 'a758f0c9-c999-4d8a-ae1d-42f8a7c66c92');
+    const frame = await chapter(page, 'section-007.xhtml');
+    await expect(frame.locator('.reader-inline-bible[data-reference="Si 50"], .reader-inline-bible[data-reference="Est. 50"], .reader-inline-bible[data-reference="Ml 100"]')).toHaveCount(0);
+    await expect(frame.locator('body')).not.toContainText('((Ps.');
+    await expect(frame.locator('body')).not.toContainText('( Philip.');
+    for (const label of ['Ph 2:6–11', 'Ex. 32:1–6']) {
+      await frame.locator(`.reader-inline-bible[data-reference="${label}"]`).first().click();
+      await loaded(page);
+      await page.getByRole('button', { name: 'Fermer la note' }).click();
+    }
+    await openBook(page, '70b9ede4-bffe-4558-b98d-6dff010686cc');
+    for (const path of ['p056-002.xhtml', 'p056-003.xhtml']) {
+      const frame = await chapter(page, path);
+      await expect(frame.locator('.reader-inline-bible[data-reference="Est. 50"], .reader-inline-bible[data-reference="Jn 2"]')).toHaveCount(0);
+    }
+  });
   for (const book of cases) test(book.title, async ({ page }) => {
     test.setTimeout(180000);
     const requests: string[] = [], errors: string[] = [];

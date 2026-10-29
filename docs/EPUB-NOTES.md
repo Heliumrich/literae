@@ -185,6 +185,12 @@ Aucune requête biblique n’est faite avant un clic dans le texte.
 
 ### Conventions, profils et concordance
 
+La détection refuse les élisions françaises (`Si l’on`, `est l’époux`,
+`mal, c’est`), un nom suivi d’une virgule et d’un numéro arabe seul
+(`Jean, 2. – toutefois`), et les chapitres dépassant les limites
+du livre. Les références complètes comme `Jean, II, 1` et les chapitres seuls
+comme `Ps. XXI` restent reconnus. `Philip.` désigne les Philippiens.
+
 Les responsabilités sont séparées :
 
 - `bible-references.ts` : abréviations, nombres romains, listes, plages et chapitres ;
@@ -324,3 +330,23 @@ sur ordinateur et mobile portrait/paysage, avant et après ouverture du chapitre
 Les captures en portrait à 320 pixels confirment le retour à la ligne des
 titres longs sans débordement dans les deux thèmes.
 Les 73 codes de livres de SQLite possèdent chacun un nom complet.
+
+### Corrections éditoriales des Confessions (Moreau, 1864)
+
+`scripts/fix-confessions-citations.py` corrige uniquement les espaces après une
+parenthèse ouvrant un renvoi biblique identifié (208 occurrences), deux doubles
+parenthèses précisément repérées dans le livre VII et le renvoi Exode 32:1–6
+accidentellement partagé entre une fin de liste et le paragraphe suivant.
+Le script ne recherche pas arbitrairement du contenu entre parenthèses : les
+deux doublons et la coupure HTML ont des remplacements littéraux, avec contrôle
+du nombre d’occurrences. Le texte de chaque document est comparé avant/après :
+tous les mots et signes autres que ces deux parenthèses sont conservés dans le
+même ordre. Le fichier de sortie est écrit seulement après ces contrôles.
+
+Les versions web et téléchargement ont été remplacées dans Directus sous leurs
+UUID existants, avec leurs noms, dossiers et associations conservés. Les deux
+EPUB passent EPUBCheck sans erreur ni avertissement. Le défaut HTML n’est pas
+compensé dans le lecteur. Le build renouvelle les URL des fichiers à partir de
+leur date de modification et de leur taille, comme pour les autres éditions.
+Validation de cette correction : 25 tests Node et six scénarios navigateur
+réussis sur les EPUB publics, avec contrôle TypeScript et build réussis.
