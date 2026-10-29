@@ -88,7 +88,7 @@ export class NoteBible {
     throw new Error('Passage indisponible');
   }
 
-  enhance(body: HTMLElement, single?: NoteBibleReference) {
+  enhance(body: HTMLElement, single?: NoteBibleReference, preview = false) {
     if (!single) {
       const map = referenceText(body);
       if (this.context.noteHeadings === 'glaire') {
@@ -137,7 +137,7 @@ export class NoteBible {
       const action = document.createElement('button'); action.type = 'button'; action.className = 'reader-button';
       const jump = document.createElement('button'); jump.type = 'button'; jump.className = 'reader-bible-jump';
       jump.textContent = 'Aller au passage cité'; jump.hidden = true;
-      panel.append(heading, coordinates, edition, jump, content, status, action);
+      panel.append(heading, coordinates, edition, ...(preview ? [] : [jump]), content, status, ...(preview ? [] : [action]));
       panels.prepend(panel);
       let started = false, sequence = 0, wholeChapter = false, jumpAfterLoad = false;
       const scrollToReference = () => {

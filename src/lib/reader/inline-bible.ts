@@ -5,7 +5,7 @@ import { referenceText, referenceRange } from './reference-dom';
  * EPUB.js' automatic CFI mapping does not consistently honour ignoreClass, so
  * wrapping citations in <a> would invalidate existing and newly saved bookmarks.
  */
-export function inlineBibleLinks(doc: Document, context: NoteBibleContext, open: (ref: NoteBibleReference, link: HTMLAnchorElement) => void) {
+export function inlineBibleLinks(doc: Document, context: NoteBibleContext, open: (ref: NoteBibleReference, link: HTMLAnchorElement) => void, hover?: (event: PointerEvent, ref: NoteBibleReference, link: HTMLAnchorElement) => void, leave?: () => void) {
   const map = referenceText(doc.body);
   const entries = findNoteBibleReferences(map.text, context).flatMap(ref => {
     if (!ref.book || map.nodes.some(n => n.start < ref.end && n.end > ref.start && n.node.parentElement?.closest('a[href], button, h1, h2, h3'))) return [];
@@ -35,6 +35,9 @@ export function inlineBibleLinks(doc: Document, context: NoteBibleContext, open:
             link.dataset.reference = entry.ref.label;
             link.tabIndex = index === 0 ? 0 : -1;
             link.addEventListener('click', event => { event.preventDefault(); event.stopImmediatePropagation(); open(entry.ref, link); }, true);
+            link.addEventListener('pointerenter', event => hover?.(event, entry.ref, link));
+            link.addEventListener('pointermove', event => hover?.(event, entry.ref, link));
+            link.addEventListener('pointerleave', () => leave?.());
             layer.append(link); entry.links.push(link);
           }
           link.style.cssText = `position:absolute;display:block;box-sizing:border-box;pointer-events:auto;background:transparent;border-bottom:1px solid currentColor;text-decoration:none;left:${rect.left + doc.defaultView!.scrollX}px;top:${rect.top + doc.defaultView!.scrollY}px;width:${rect.width}px;height:${rect.height}px;`;

@@ -1,4 +1,5 @@
 import type { Book, Contents } from 'epubjs';
+import { NotePreview } from './note-preview';
 import { NoteBible } from './note-bible';
 import { readerBibleProfile, bibleContextForSource } from './bible-profile';
 import { inlineBibleLinks } from './inline-bible';
@@ -23,8 +24,11 @@ export class EpubNotes {
   private sequence = 0;
   private bible: NoteBible;
   private profile: NoteBibleContext;
+  private previewBible = new NoteBible();
+  private preview: NotePreview;
   private inline = new WeakMap<Document, ReturnType<typeof inlineBibleLinks>>();
   constructor(private book: Book, private root: HTMLElement, private onToggle: (open: boolean) => void, private displayText: (text: string) => string = text => text) {
+    this.preview = new NotePreview(root, () => this.previewBible.reset());
     this.profile = readerBibleProfile(root.dataset.bookId || '');
     this.bible = new NoteBible(this.profile);
     this.dialog = root.querySelector<HTMLDialogElement>('[data-reader="note-dialog"]')!;
@@ -113,9 +117,41 @@ export class EpubNotes {
     const links = inlineBibleLinks(contents.document, bibleContextForSource(this.profile, source), (ref, origin) => {
       this.origin = origin;
       this.openReference(ref);
-    });
+    }, (event, ref, origin) => {
+      if (this.dialog.open) return;
+      this.preview.enter(event, origin, body => {
+        this.previewBible.setContext(bibleContextForSource(this.profile, source));
+        body.textContent = ref.label;
+        this.previewBible.enhance(body, ref, true);
+      });
+    }, () => this.preview.leave());
     this.inline.set(contents.document, links);
     contents.on('resize', links.refresh);
+    const hover = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse') return;
+      const anchor = (event.target as Element)?.closest?.('a[href*="literae-notes/"]') as HTMLAnchorElement | null;
+      if (!anchor || this.dialog.open) return;
+      let target;
+      try { target = this.resolve(anchor.getAttribute('href')!, source); } catch { return; }
+      if (!target.id) return;
+      this.preview.enter(event, anchor, async (body, current) => {
+        try {
+          const doc = await this.document(target.path, source, 'hover');
+          if (!current()) return;
+          this.copyNote(doc, target.id, target.path, body);
+          this.previewBible.setContext(bibleContextForSource(this.profile, target.path));
+          this.previewBible.enhance(body, undefined, true);
+        } catch { if (current()) body.textContent = 'Ouvrez la note pour réessayer.'; }
+      });
+    };
+    contents.document.addEventListener('pointerover', hover);
+    contents.document.addEventListener('pointermove', hover);
+    contents.document.addEventListener('pointerout', event => {
+      if ((event.target as Element)?.closest?.('a[href*="literae-notes/"]')) this.preview.leave();
+    });
+    contents.document.addEventListener('pointerdown', () => this.preview.close());
+    contents.document.addEventListener('keydown', event => { if (event.key === 'Escape') this.preview.close(); });
+    contents.document.addEventListener('scroll', () => this.preview.close(), true);
     contents.document.addEventListener('click', event => {
       const anchor = (event.target as Element)?.closest?.('a[href]') as HTMLAnchorElement | null;
       if (!anchor) return;
@@ -134,6 +170,7 @@ export class EpubNotes {
   }
   refreshInline(doc: Document) { this.inline.get(doc)?.refresh(); }
   private openReference(ref: NoteBibleReference) {
+    this.preview.close();
     this.sequence++; this.bible.reset();
     this.title.textContent = ref.label;
     this.body.textContent = ref.label;
@@ -143,6 +180,7 @@ export class EpubNotes {
     this.emit('reference-opened', { reference: ref.label });
   }
   private async open(path: string, id: string, label: string) {
+    this.preview.close();
     const sequence = ++this.sequence;
     this.bible.reset();
     this.bible.setContext(bibleContextForSource(this.profile, path));
@@ -154,36 +192,7 @@ export class EpubNotes {
     try {
       const doc = await this.document(path);
       if (sequence !== this.sequence) return;
-      const anchor = doc.getElementById(id);
-      const target = anchor?.closest('aside') || anchor;
-      if (!target) throw new Error('Note absente');
-      this.body.replaceChildren();
-      // Copy text and a small set of formatting elements, without executable EPUB HTML.
-      const allowed = new Set(['p','span','em','strong','b','i','u','sup','sub','br','ul','ol','li','blockquote','table','thead','tbody','tr','th','td','caption','abbr','small','a','section','aside','div']);
-      const copy = (node: Node, parent: Node) => {
-        if (node.nodeType === 3) { parent.appendChild(document.createTextNode(this.displayText(node.textContent || ''))); return; }
-        if (node.nodeType !== 1) return;
-        const el = node as Element, tag = el.localName.toLowerCase();
-        if (['script','style','iframe','object','embed','form'].includes(tag) || el.classList.contains('mw-cite-backlink')) return;
-        const out = allowed.has(tag) ? document.createElement(tag) : document.createElement('span');
-        if (tag === 'a' && (el.getAttribute('role') === 'doc-backlink' || el.classList.contains('footnote-back') || el.classList.contains('backref') || (el.getAttribute('href') || '').includes('#cite_ref'))) return;
-        if (tag === 'a') {
-          const href = el.getAttribute('href') || '';
-          try {
-            const target = this.resolve(href, path);
-            if (notePath(target.path) && target.id) {
-              out.setAttribute('href', '#');
-              out.addEventListener('click', event => { event.preventDefault(); void this.open(target.path, target.id, el.textContent || ''); });
-            }
-          } catch {
-            if (/^https?:\/\//i.test(href)) { out.setAttribute('href', href); out.setAttribute('target','_blank'); out.setAttribute('rel','noopener noreferrer'); }
-          }
-        }
-        parent.appendChild(out);
-        for (const child of el.childNodes) copy(child, out);
-      };
-      for (const child of target.childNodes) copy(child, this.body);
-      for (const paragraph of this.body.querySelectorAll('p')) if (!paragraph.textContent?.trim() && !paragraph.children.length) paragraph.remove();
+      this.copyNote(doc, id, path, this.body);
       this.bible.enhance(this.body);
       this.body.scrollTop = 0;
       this.emit('note-opened', { path, id, cached, elapsedMs: performance.now() - start });
@@ -191,5 +200,37 @@ export class EpubNotes {
       if (sequence === this.sequence) this.body.textContent = 'Cette note ne peut pas être chargée. Fermez puis réessayez.';
     }
   }
-  destroy() { this.sequence++; if (this.dialog.open) this.dialog.close(); this.bible.destroy(); this.origin = null; this.cache.clear(); this.links.clear(); this.context = []; this.pinned.clear(); }
+  private copyNote(doc: Document, id: string, path: string, body: HTMLElement) {
+    const anchor = doc.getElementById(id);
+    const target = anchor?.closest('aside') || anchor;
+    if (!target) throw new Error('Note absente');
+    body.replaceChildren();
+    // Copy text and a small set of formatting elements, without executable EPUB HTML.
+    const allowed = new Set(['p','span','em','strong','b','i','u','sup','sub','br','ul','ol','li','blockquote','table','thead','tbody','tr','th','td','caption','abbr','small','a','section','aside','div']);
+    const copy = (node: Node, parent: Node) => {
+      if (node.nodeType === 3) { parent.appendChild(document.createTextNode(this.displayText(node.textContent || ''))); return; }
+      if (node.nodeType !== 1) return;
+      const el = node as Element, tag = el.localName.toLowerCase();
+      if (['script','style','iframe','object','embed','form'].includes(tag) || el.classList.contains('mw-cite-backlink')) return;
+      const out = allowed.has(tag) ? document.createElement(tag) : document.createElement('span');
+      if (tag === 'a' && (el.getAttribute('role') === 'doc-backlink' || el.classList.contains('footnote-back') || el.classList.contains('backref') || (el.getAttribute('href') || '').includes('#cite_ref'))) return;
+      if (tag === 'a') {
+        const href = el.getAttribute('href') || '';
+        try {
+          const target = this.resolve(href, path);
+          if (notePath(target.path) && target.id) {
+            out.setAttribute('href', '#');
+            out.addEventListener('click', event => { event.preventDefault(); void this.open(target.path, target.id, el.textContent || ''); });
+          }
+        } catch {
+          if (/^https?:\/\//i.test(href)) { out.setAttribute('href', href); out.setAttribute('target','_blank'); out.setAttribute('rel','noopener noreferrer'); }
+        }
+      }
+      parent.appendChild(out);
+      for (const child of el.childNodes) copy(child, out);
+    };
+    for (const child of target.childNodes) copy(child, body);
+    for (const paragraph of body.querySelectorAll('p')) if (!paragraph.textContent?.trim() && !paragraph.children.length) paragraph.remove();
+  }
+  destroy() { this.preview.destroy(); this.previewBible.destroy(); this.sequence++; if (this.dialog.open) this.dialog.close(); this.bible.destroy(); this.origin = null; this.cache.clear(); this.links.clear(); this.context = []; this.pinned.clear(); }
 }

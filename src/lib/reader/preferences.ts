@@ -54,6 +54,10 @@ export function readerCss(settings: ReaderSettings, dark: boolean, origin: strin
     sup:has(a.literae-noteref) { vertical-align: baseline !important; font-size: inherit !important; }
     html body a.literae-noteref { font-size: .72em !important; line-height: 0 !important; vertical-align: super !important; margin-inline-start: .12em; white-space: nowrap; text-decoration: none !important; }
     html body a.literae-noteref * { font-size: 1em !important; line-height: inherit !important; vertical-align: baseline !important; }
+    @media (any-hover: hover) and (any-pointer: fine) {
+      a.literae-noteref, a.reader-inline-bible { position: relative; }
+      a.literae-noteref::after, a.reader-inline-bible::after { content: ''; position: absolute; inset: -4px; }
+    }
     ::selection { background: ${palette.link}; color: ${palette.bg}; }
   `;
 }

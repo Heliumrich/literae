@@ -107,3 +107,9 @@
 .reader-toc-expand { flex: none; width: 2.75rem; min-height: 2.75rem; align-self: start; }
 .reader-toc-expand span { display: inline-block; color: var(--gold); font: 1.6rem Georgia, serif; }
 .reader-toc-expand[aria-expanded="true"] span { transform: rotate(90deg); }
+
+/* Mouse preview lives in the top layer, including inside a fullscreen reader. */
+.reader-note-preview { position: fixed; inset: auto; box-sizing: border-box; width: min(26rem, calc(100vw - 16px)); margin: 0; padding: .85rem; border: 1px solid var(--border); border-radius: 3px; background: var(--card); color: var(--text); box-shadow: 0 4px 20px rgb(0 0 0 / .2); overflow: auto; overscroll-behavior: contain; font-size: .9rem; line-height: 1.55; }
+.reader-note-preview .reader-bible-passage h3 { font-size: 1.05rem; }
+.reader-note-preview .reader-bible-location { font-size: .8rem; }
+.epub-reader:fullscreen > .reader-note-preview:popover-open { display: block !important; }

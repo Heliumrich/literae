@@ -1,0 +1,499 @@
+[
+  {
+    "book": "Confessions",
+    "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+    "changes": {
+      "page": 147
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "6ff4c85b-811f-4289-ae8f-c363c26d0022",
+        "original_sha256": "d6eba31174ce00ed8a14fe2eff46664d43bad9e7a5bd9970887afd02f0eada46",
+        "corrected_sha256": "e9fb7622a492e15247a2a4d0348948b9c13eaa2086b9cba56f5f7ad9db6b7747"
+      },
+      {
+        "kind": "download",
+        "id": "d93a0198-f1fc-42d5-af56-994006d0296b",
+        "original_sha256": "d70569dbef6b4cd7e0b042b369581c2a4c541fefbf260f66144a3da0c14f9a55",
+        "corrected_sha256": "26c4243ae20abd35b0fc10d7a9b0306ac4f870eb9da6c7eabd02d7c3cefae61f"
+      }
+    ]
+  },
+  {
+    "book": "La Cité de Dieu",
+    "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+    "changes": {
+      "page": 78
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4",
+        "original_sha256": "af5f4d5d74ad29ec7a09c41f3b4904b00e473016aadef35b8dadd1a81b6582b7",
+        "corrected_sha256": "6e1ab19996ea550fc6a434a7a83e479256dab2224af5d69850756ca440bfc687"
+      },
+      {
+        "kind": "download",
+        "id": "3590baad-0f89-4800-b3d1-a1e468d68084",
+        "original_sha256": "099b487aafd94e742fcf2a628e33d4e5a2f2232a9a1a77aeabe58bf6b7a76bd7",
+        "corrected_sha256": "2f2a31d95943e1eade8b007d695687808f8087602f6ceb7b9e9e23338b66e3c9"
+      }
+    ]
+  },
+  {
+    "book": "Considérations sur la France",
+    "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+    "changes": {
+      "duplicate": 8
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "6c589eaa-0667-49f8-892f-e75ca2b1fa2d",
+        "original_sha256": "ab8275feb6231956a132be576ce9525f5072f56a7b481db0da92eecdc0adbb7a",
+        "corrected_sha256": "a95d20030a179826bb0afdbe09e9b06d210aa3e2200b1887dfe81ea10820d81b"
+      },
+      {
+        "kind": "download",
+        "id": "6fca3c59-0b64-4fb8-9987-778162f097e2",
+        "original_sha256": "44eb883cbd4998af47b0d44c540ff297ac4e034bf43ebfff2621cabd378a1eec",
+        "corrected_sha256": "483e3f81bb0cd4e97b4808a9d2bd251ee848708483a9f17ecef10808561952d6"
+      }
+    ]
+  },
+  {
+    "book": "Explication du Sermon sur la montagne",
+    "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+    "changes": {
+      "page": 12
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "fcce9770-f941-4bcb-8109-68053359fa72",
+        "original_sha256": "0948baeb69a3bea72f7cf406f116e981a2d31e622a88758ad47e38bbdf65f43f",
+        "corrected_sha256": "1be33a2a41a3e07b4e8c6f1bacb0329f4556fab234c23a0d8c280675829b8f3e"
+      },
+      {
+        "kind": "download",
+        "id": "67b741bb-ae73-42fa-9d49-807800c509a4",
+        "original_sha256": "3409fdd9fd8a46e4d51c9d48b7177740eadf7b6674dfcad289871a3705fe19df",
+        "corrected_sha256": "87c7854057d5710abf6759a45b11e879a338e7b0eb51daad314a53bd449d24ad"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’Évangile selon saint Matthieu",
+    "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+    "changes": {
+      "page": 1
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "faef3586-1c50-4a8d-907c-d493a56af11a",
+        "original_sha256": "213d4a40f462fe0828199602a0616d69c4e924edc325d742264e0e4a2a760219",
+        "corrected_sha256": "c9d82033b1c2f557bc1a844c277d12877983edaa58a32ed119214e37313558cb"
+      },
+      {
+        "kind": "download",
+        "id": "334de9bc-783a-48fa-b6ed-64ec35df6c58",
+        "original_sha256": "16d63044ee616099cb6a93dabe859da115ead07cf98566532a986a64b9864711",
+        "corrected_sha256": "95842d9b7c959473b3dd9d8bfb2722b0ac59f8d74ac29d2ce7b5fac0c9fabd2a"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Philippiens",
+    "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+    "changes": {
+      "page": 79
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "af466133-4235-48f4-b93c-540772db5bff",
+        "original_sha256": "4722524da120023f1b89c29de21106894cc82059d5546f6a00de116b0f12ee5b",
+        "corrected_sha256": "5f697b5b3c8145977d5579ed09a92325bce28524040f2236e83440f5a47687b4"
+      },
+      {
+        "kind": "download",
+        "id": "13a0f719-44f3-4f43-9ac5-59f868deeeed",
+        "original_sha256": "da06dc92a007727fdebb751d05f44342efb3a5820f67e77bd9ddf67b39d70c4d",
+        "corrected_sha256": "c7a9d70ae602e6d3473e4fa403c1e0cd3d75ba651fbd9f4e981a6fae411dd931"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Romains",
+    "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+    "changes": {
+      "page": 210
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "428155e0-6dc4-4cd0-979c-32688d08211c",
+        "original_sha256": "c75cca82d3e60c42751f8ba1c320c5ee88b4c4277584a3712321ab626d18ee52",
+        "corrected_sha256": "2faaa290ebc9d2e1fee431ac34e40ab28b050526de2c392b2d81c77edd8b23f4"
+      },
+      {
+        "kind": "download",
+        "id": "10fd78e5-19bb-4363-b08f-32acbe67d12e",
+        "original_sha256": "50439bdd466f38d6074dff84bc9c358d81ecd447c210e6e920aa820e3206a721",
+        "corrected_sha256": "891fb37d1a78ae220faaef13815a8db44ff5766bf2d2198e27c80892d707d06c"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Éphésiens",
+    "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+    "changes": {
+      "page": 112
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "cfd3706a-185c-458f-8ddd-7aeeadb3e487",
+        "original_sha256": "bc1f488849ea264b2a2293e750ce88fdcf0db92c9d0943438b7da19e94b8a63c",
+        "corrected_sha256": "842496c15be162e6c3158444ede66423849320ccb7f193632b569d342fd40a8e"
+      },
+      {
+        "kind": "download",
+        "id": "d56b28e5-e196-4c3a-8c3b-815d36d1ca00",
+        "original_sha256": "98568961f3a6757617a4000328bf1831631dd3c08108e1d066587ec36aa13307",
+        "corrected_sha256": "f9a18444ef8fa06bcee1ef05ffbf01fd7deb5094e11e5fddde3ff00cc8647ff4"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Hébreux",
+    "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+    "changes": {
+      "page": 124
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "86842fe4-c383-444c-a146-ed09065c516a",
+        "original_sha256": "bddb04fbec301789d7c4e56483deae9aa65b0e1f41c72025bbd511cba67f0d5e",
+        "corrected_sha256": "49be3e0196147fef1c303b640361ab9b90c165639bdd01e2144cb9ef59a737a4"
+      },
+      {
+        "kind": "download",
+        "id": "0dbb3b1b-b552-4401-b10d-63b05efe990a",
+        "original_sha256": "885a3dc1dd8fd80902d37379bb6b173342d0842013ff31c42f2b7b2150dd8491",
+        "corrected_sha256": "69e58a27914d366d7bb5f26ea56a44e4045f089a399b099f19d6d82783f77516"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître à Philémon",
+    "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+    "changes": {
+      "page": 12
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "d6a8c726-e4f2-4244-9800-5acd112e1874",
+        "original_sha256": "4af0e7b24b0abe4621d4adcc25ec397ba3efecd29978d6393b5bbf04a8fd4227",
+        "corrected_sha256": "dd1998f3404c5b26000e5169dc878c1b65353199fcc278cd539e59e1dc29a9ed"
+      },
+      {
+        "kind": "download",
+        "id": "6cd08ef3-8fb9-4822-88a4-d64ceca6b176",
+        "original_sha256": "4af0e7b24b0abe4621d4adcc25ec397ba3efecd29978d6393b5bbf04a8fd4227",
+        "corrected_sha256": "d0210c61e84c2070fdd056d1522af48d437d8413ed6f9ae99a178a6216247072"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Colossiens",
+    "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+    "changes": {
+      "page": 53
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "20b12649-7e98-42f9-b152-c69af2a4d2f5",
+        "original_sha256": "654bf66e3400ae2b0fe0076d1841ef6693a3212f5db42df16e300732d582d44a",
+        "corrected_sha256": "6d58ecedeb7b469c587d8cafe4316e13a2142d2402214a30bce3a70b8f712795"
+      },
+      {
+        "kind": "download",
+        "id": "802db512-8b93-4881-aa19-70f8fddf5ce2",
+        "original_sha256": "654bf66e3400ae2b0fe0076d1841ef6693a3212f5db42df16e300732d582d44a",
+        "corrected_sha256": "ebbe04d279f074477688a8688c8d311744d0d890d9a44fcdd26ef32a0f4df2bd"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître aux Galates",
+    "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+    "changes": {
+      "page": 52
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "f277155c-6d85-4994-b600-c82638da8490",
+        "original_sha256": "a4def365c1f6d6d908afac96a98513046f13ee9b0056a5f90b5c35eb529cd8db",
+        "corrected_sha256": "6a54a3eeba07e91828db7b93251b28b4ec5d05a49d790304c7c2019eabf90a89"
+      },
+      {
+        "kind": "download",
+        "id": "2d4b04c2-8559-4c7b-9d60-8dedceb3a2f9",
+        "original_sha256": "1d792d7448314de3ee3509279c9239da3910321af623e2776213657c14181313",
+        "corrected_sha256": "7f17a5f96025d087779ec2d7fa828001456e3a6ac2cc3be203869e4c49296c11"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur l’épître à Tite",
+    "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+    "changes": {
+      "page": 28
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "77b9d554-1292-40cf-bf27-98201bd907fe",
+        "original_sha256": "d248a379b548e387279f10216dc1790ea73b6fd9ca067d446cfd235082dfdc22",
+        "corrected_sha256": "2f86ed00121fdcc703421e66d125a9504089deda9fea007961351d8a5ba71f2f"
+      },
+      {
+        "kind": "download",
+        "id": "7c6bd750-f1f9-4a43-8f9c-5476994f2893",
+        "original_sha256": "d248a379b548e387279f10216dc1790ea73b6fd9ca067d446cfd235082dfdc22",
+        "corrected_sha256": "2c1b9ac586ed5b9624f8bdb3ccc650eaf6a593dabc56a63071c9baea2fa620fa"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la première épître aux Corinthiens",
+    "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+    "changes": {
+      "page": 271
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "c2b5b95d-91f2-43b3-a5f1-2c249bf4b858",
+        "original_sha256": "98f76af1935e94080dbac46a3fecba755d9f3701f08e27e2bd47c2391abf6760",
+        "corrected_sha256": "c2ffe61285bd71c6ebce9ca22954419b33b73909ccafd361e44c95fa6303020c"
+      },
+      {
+        "kind": "download",
+        "id": "c7a4ae9d-2e8f-4c1f-8309-f3d1d302626b",
+        "original_sha256": "951e4da9fd5a6922df8880f4c40dca81afed609be75e8b1fe2ed526094f6f386",
+        "corrected_sha256": "fd0ad384fd2cdf74f178b67761e29637b5ba85b0e9ac3cbbcff137fa62c94c09"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la première épître aux Thessaloniciens",
+    "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+    "changes": {
+      "page": 60
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "a3e842e0-cce5-4dd7-a497-718e0df92e92",
+        "original_sha256": "272c913e585a293dc75efc14312bc1421dcdd1726dd0a128d2abe34c9426ac28",
+        "corrected_sha256": "6579945cf21ca4692534a6dd265940d94ca755bd7c39a5c30be7bb2488c36dc8"
+      },
+      {
+        "kind": "download",
+        "id": "7a3fc0a2-020f-48de-ac35-bd36c0c0324b",
+        "original_sha256": "0f7d05797781a0b30907846571ff796006827eccbf44a0d56a635dac903136c9",
+        "corrected_sha256": "09276719580c585322f4ed302a9e2b5b9e851cbe88aa5315c6bd1eb72f3f1409"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la première épître à Timothée",
+    "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+    "changes": {
+      "page": 53
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "1d19870f-d464-449c-abb6-4e750e1435a4",
+        "original_sha256": "bad07a1ddd67b908d6ed8da978d84dc6448b95b8e7344aa0b292cd29e118a579",
+        "corrected_sha256": "e9b9aea59e74f3ab014f8e4a4fb5fcd621068ed0bc170a479d401e943f388c05"
+      },
+      {
+        "kind": "download",
+        "id": "0b4420a5-c8ff-4f92-83c1-6f8d5738dedd",
+        "original_sha256": "62cb10927e660aaff149b0f4fc08ad4304b22f166f3a9c451ae0980f8573c677",
+        "corrected_sha256": "67c688a3a5b9a59e9c5f065a0549fea30ccbd22624afbbf1511262895cd706ca"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la deuxième épître aux Corinthiens",
+    "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+    "changes": {
+      "page": 166
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "3b590ab9-498f-4223-a7f7-fd17e37ba078",
+        "original_sha256": "e4e305531181972e3ecc857171d2b20fd14b7dff52cfb3e86635fb1b9d933942",
+        "corrected_sha256": "004767c02b757d8e7ec2acc50536f10564415014689c4795f7004b5e2939b67e"
+      },
+      {
+        "kind": "download",
+        "id": "05901ca5-ba2a-40c6-9cfe-7da9120f7aff",
+        "original_sha256": "ce789212babec51f72a433e9253dbb36ef27699573797ab1e829c00b3737fb64",
+        "corrected_sha256": "bf2046d4081c7a22cb54abee3afb7a548cea7d4843a5f7e2c539d1a5ecbb0b20"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la deuxième épître aux Thessaloniciens",
+    "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+    "changes": {
+      "page": 22
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "99fac3db-05da-45bc-a9a7-739a84a4d0fe",
+        "original_sha256": "5a757bd851a12c9c834455a6ffc23b34705b3760e14ff92f954a5aedc7f48eb3",
+        "corrected_sha256": "f2d62a8f7385ee70d9870993c9804ab2b379a36c4b49696c0924c1698303f3ff"
+      },
+      {
+        "kind": "download",
+        "id": "36625aa5-7795-4cb0-87aa-0244223a921b",
+        "original_sha256": "5a757bd851a12c9c834455a6ffc23b34705b3760e14ff92f954a5aedc7f48eb3",
+        "corrected_sha256": "91a6d1924376fd21379bd461e84be2c1990ea704ca27643d1d42398a32b88108"
+      }
+    ]
+  },
+  {
+    "book": "Commentaire sur la deuxième épître à Timothée",
+    "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+    "changes": {
+      "page": 47
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "eec8d173-ba17-4588-8ba7-496d7f17adae",
+        "original_sha256": "51ac7d9975bece958fc168bd8f72f067e0b767ca1ab0e2a3e9ef14369f5cdf1b",
+        "corrected_sha256": "6359212b53e7c0c46da27ccccfef315b278796fd34eb672717044b1dd803d551"
+      },
+      {
+        "kind": "download",
+        "id": "7438645b-42d4-4032-87fb-aadcaa65e9c6",
+        "original_sha256": "51ac7d9975bece958fc168bd8f72f067e0b767ca1ab0e2a3e9ef14369f5cdf1b",
+        "corrected_sha256": "9b25e1e459e10f9b1f2975d6ca6effd3d32e018eb981d441a49c72f8fa260bff"
+      }
+    ]
+  },
+  {
+    "book": "Homélies sur les Actes des Apôtres",
+    "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+    "changes": {},
+    "files": [
+      {
+        "kind": "web",
+        "id": "e1013e12-4ccc-4132-bea1-0c746f1bcb99",
+        "original_sha256": "5e3f8010b31c024d47eb398591def28c56502cb71d655415942e36c392284563",
+        "corrected_sha256": null
+      },
+      {
+        "kind": "download",
+        "id": "31674d0a-6e0a-4058-a12c-3424ef6fde83",
+        "original_sha256": "09c660bee7e569d65c9dd69ffa9baff649a8497e664f9f9f491b02f6851943f5",
+        "corrected_sha256": null
+      }
+    ]
+  },
+  {
+    "book": "Contre les Juifs",
+    "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+    "changes": {},
+    "files": [
+      {
+        "kind": "web",
+        "id": "3d74f7c5-533a-4078-aec8-7c3f360224a8",
+        "original_sha256": "9f0f8ec18462feeb1faee72c336218ddf3d7e251ba583aedbb4c626b159077ee",
+        "corrected_sha256": null
+      },
+      {
+        "kind": "download",
+        "id": "876a2551-3670-49fa-a1d8-744cff091617",
+        "original_sha256": "c0789c579581c62fae3f6f330d42d6054f2658a3c29b704e298a16106a42d0d1",
+        "corrected_sha256": null
+      }
+    ]
+  },
+  {
+    "book": "Discours contre les Juifs",
+    "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+    "changes": {},
+    "files": [
+      {
+        "kind": "web",
+        "id": "bcd2ce83-356c-494f-acdb-79080d09eb58",
+        "original_sha256": "f0df74e8ba0c0c2b45ca385380ff7848e254535eacaa00776d398aae855fef73",
+        "corrected_sha256": null
+      },
+      {
+        "kind": "download",
+        "id": "da42304d-be3e-4d83-b3c6-5a4fedb6d26c",
+        "original_sha256": "07c983d72d5895f417f7f059fd8a1d2a49fc6af470b31f4df26fc2e7b50bf088",
+        "corrected_sha256": null
+      }
+    ]
+  },
+  {
+    "book": "Apologie de la vie monastique",
+    "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+    "changes": {},
+    "files": [
+      {
+        "kind": "web",
+        "id": "8082b038-6557-44b9-9456-5c58bcd2d7d5",
+        "original_sha256": "5f4a4f046b271c3bc7eee3fc8ea98296d8d0061bc6e4a2ba313d464db74e4034",
+        "corrected_sha256": null
+      },
+      {
+        "kind": "download",
+        "id": "07c668e4-7c7a-485a-8dfc-18719c0bec05",
+        "original_sha256": "c209a53cbc6f67b4aa6b4bb39de4c876bc5e2334b927ca0c5fa070c2135c4c1d",
+        "corrected_sha256": null
+      }
+    ]
+  },
+  {
+    "book": "Traité du sacerdoce",
+    "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+    "changes": {
+      "page": 56,
+      "citation": 1
+    },
+    "files": [
+      {
+        "kind": "web",
+        "id": "b767e7b1-d213-45eb-a89a-bf43e6d9af31",
+        "original_sha256": "d75cf775af48d90f29891e0a4563f1ac7343ef08c770e3de88cfba6f846eb44b",
+        "corrected_sha256": "7399400067dcda0a1d86e80c9b2ffa711756e1fdc3effa92fe81fab7aa1c4e25"
+      },
+      {
+        "kind": "download",
+        "id": "f249065b-37a7-42f4-9f31-0aa2a4882cc3",
+        "original_sha256": "d75cf775af48d90f29891e0a4563f1ac7343ef08c770e3de88cfba6f846eb44b",
+        "corrected_sha256": "c61691c99e71ad9b34eb40137c2e8436d201e5bc539f68b1026412c9cafae5d2"
+      }
+    ]
+  }
+]

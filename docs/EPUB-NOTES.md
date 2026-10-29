@@ -80,6 +80,31 @@ les liens de préchargement et les parties utilisables pour les tests.
 
 ## Préchargement et dialogue
 
+### Aperçu à la souris
+
+`note-preview.ts` affiche un panneau non modal au survol des appels de notes et
+des références bibliques dans le texte. Il demande un vrai pointeur souris et
+la capacité de survol du navigateur ; le tactile conserve uniquement le clic.
+Un délai de 250 ms évite d’ouvrir chaque note traversée. Les appels disposent
+d’une marge de survol de 4 pixels ; le panneau chevauche légèrement leur bord
+et un délai de sortie de 220 ms permet de franchir la limite de l’iframe.
+
+Le panneau s’aligne près de l’appel, choisit le dessus ou le dessous selon la
+place et reste dans les limites horizontales de la fenêtre. Son contenu est
+défilable, sans suppression de mots ni de versets, sans en-tête « Note », bouton
+de fermeture ou commande de chapitre entier. Il reste ouvert quand la souris
+est dedans et disparaît à la sortie, au défilement du livre, à Échap ou au clic
+extérieur. Il fonctionne aussi dans le lecteur en plein écran. Les navigateurs
+sans l’API Popover conservent l’ouverture habituelle au clic.
+
+Le dialogue et l’aperçu partagent la copie de notes filtrée et le cache des XHTML.
+Leurs requêtes bibliques ont des cycles d’annulation distincts. Une note commentée
+ne charge aucun verset avant un clic sur une référence, y compris dans l’aperçu.
+Cliquer l’appel original ouvre toujours le dialogue complet. L’aperçu ne prend
+pas le focus et son défilement ne déplace pas le livre ni son signet.
+
+### Documents voisins
+
 `EpubNotes` enregistre les liens déclarés par les documents qu’EPUB.js rencontre,
 mais ne décompresse pas automatiquement leurs notes. Le lecteur lui transmet la
 partie courante et ses voisines précédente et suivante. Seules leurs notes sont
@@ -350,3 +375,38 @@ compensé dans le lecteur. Le build renouvelle les URL des fichiers à partir de
 leur date de modification et de leur taille, comme pour les autres éditions.
 Validation de cette correction : 25 tests Node et six scénarios navigateur
 réussis sur les EPUB publics, avec contrôle TypeScript et build réussis.
+
+### Maistre, Augustin et Chrysostome : audit complémentaire
+
+L’EPUB Wikisource original des Considérations contient déjà les appels doubles :
+ils précèdent les scripts de préparation du site. La comparaison avec les pages
+Wikisource actuelles des chapitres I à XI a permis de retirer huit appels
+surnuméraires : II [3], IV [5], VI [2]/[5]/[7], VIII [10], X [2]/[7]. Les notes
+elles-mêmes et leur premier appel sont conservés dans les deux versions.
+Il ne faut pas dédupliquer globalement les numéros : une même note peut avoir
+plusieurs appels légitimes dans un autre ouvrage.
+
+L’audit du lot Augustin/Chrysostome et de Maistre couvre 24 ouvrages ; 20 ont
+reçu une correction, soit 40 fichiers web/téléchargement. Les 1 583 repères de
+pagination identifiés sont retirés. Les courts numéros de versets des commentaires
+et les nombres ambigus sont conservés. La version web remplace les repères par
+des caractères invisibles U+200B de même longueur pour préserver les offsets CFI ;
+le téléchargement les retire normalement. Aucune suppression générale du contenu
+entre parenthèses n’est appliquée.
+
+Dans le livre II du Sacerdoce, `II Timoth. XI, 25.` était un renvoi erroné :
+la deuxième épître ne possède pas de chapitre XI. Le texte cité correspond
+à 2 Timothée 2:25–26 ; le renvoi est corrigé dans les deux EPUB.
+
+Les 40 fichiers passent EPUBCheck sans erreur ni avertissement. Le contrôle
+des archives conserve les mots et la ponctuation hors corrections déclarées,
+et vérifie explicitement la conservation des numéros entre parenthèses à la
+fin des citations. Les UUID, noms, dossiers, relations et ordre des éditions
+sont conservés. Les octets publiés ont été comparés par SHA-256 aux fichiers
+validés ; le relevé est dans `EPUB-SOURCE-REPAIRS-2026-10.json`.
+
+Validation du lot et du survol : 20 scénarios navigateur validés (aperçus clair
+et sombre, transfert vers le panneau, note longue, tactile, plein écran,
+corrections Maistre/Sacerdoce, conservation des versets et régressions de lecture),
+25 tests Node réussis, contrôle TypeScript et build réussis. Les captures des
+deux thèmes ont été examinées.
