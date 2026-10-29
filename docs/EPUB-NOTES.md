@@ -136,8 +136,13 @@ traductions entre les versets). La mention « traduction de secours » le signal
 Un échec réseau ne masque jamais la note elle-même. Les paramètres `t=<ID>` du comparateur continuent à fonctionner.
 La base reste ouverte en lecture seule avec `immutable=1`.
 
-Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapitre
+Un état de chargement est affiché, suivi de l’extrait sans numéros de versets,
+encadré par des guillemets français et des espaces insécables U+00A0.
+Une plage sur plusieurs paragraphes forme une seule citation. « Lire le chapitre
 entier » remplace le passage dans le même bloc et marque les versets cités.
+Le chapitre entier retrouve ses numéros et n’a pas ces guillemets ajoutés ;
+la barre verticale conserve le repérage des versets cités. Les références à un
+chapitre sans sélection de versets utilisent également cet affichage numéroté.
 Le bloc du passage porte le nom catholique complet du livre, distinct de la
 référence abrégée cliquable conservée dans les notes commentées. Un sous-titre indique « Chapitre 8,
 verset 12. », « Chapitre 8, versets 8 à 12. » ou les versets discontinus ; il

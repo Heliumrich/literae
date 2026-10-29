@@ -80,21 +80,27 @@ for (const profile of [
       }
       await expect(body.locator('.reader-bible-passage:not([hidden])').first()).toContainText(book.title.includes('Crampon') ? 'Bible Crampon' : book.title.includes('Glaire') ? 'Bible Glaire' : 'Bible Fillion');
       const panel = body.locator('.reader-bible-passage:not([hidden])').first();
-      expect(await panel.locator('sup').count()).toBeGreaterThan(0);
+      await expect(panel.locator('sup')).toHaveCount(0);
+      const excerpt = panel.locator('p[data-verse]');
+      expect(await excerpt.first().textContent()).toMatch(/^«\u00a0/);
+      expect(await excerpt.last().textContent()).toMatch(/\u00a0»$/);
       if (book.title.includes('Imitation') && index === 0) {
         // Discontiguous verses must not include 18 or 19 between 17 and 20.
-        expect(await panel.locator('sup').allTextContents()).toEqual(['17', '20']);
+        expect(await panel.locator('p[data-verse]').evaluateAll(nodes => nodes.map(n => (n as HTMLElement).dataset.verse))).toEqual(['17', '20']);
       }
       if (index === 0) {
-        const verses = await panel.locator('sup').allTextContents();
+        const verses = await panel.locator('p[data-verse]').allTextContents();
         await panel.getByRole('button', { name: 'Lire le chapitre entier', exact: true }).click();
         await expect(panel.getByRole('status')).toHaveText('Chapitre en cours de chargement…');
         await settled(page);
         expect(await panel.locator('sup').count()).toBeGreaterThan(verses.length);
+        expect(await panel.locator('p[data-verse]').first().textContent()).not.toMatch(/^«/);
+        expect(await panel.locator('p[data-verse]').last().textContent()).not.toMatch(/»$/);
         expect(await panel.locator('.reader-bible-cited').count()).toBe(verses.length);
         await panel.getByRole('button', { name: 'Revenir au passage cité' }).click();
         await settled(page);
-        expect(await panel.locator('sup').allTextContents()).toEqual(verses);
+        await expect(panel.locator('sup')).toHaveCount(0);
+        expect(await panel.locator('p[data-verse]').allTextContents()).toEqual(verses);
       }
       // The single scroll area must fit both the note and a full chapter on mobile.
       expect(await body.evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
@@ -167,7 +173,7 @@ for (const profile of [
       await settled(page);
       const body = page.locator('[data-reader="note-body"]');
       const panel = body.locator('.reader-bible-passage:not([hidden])').first();
-      const citedVerse = (await panel.locator('sup').first().textContent())!;
+      const citedVerse = (await panel.locator('p[data-verse]').first().getAttribute('data-verse'))!;
       await panel.getByRole('button', { name: 'Lire le chapitre entier', exact: true }).click();
       await settled(page);
       expect(await body.evaluate(el => el.scrollTop)).toBe(0);

@@ -166,11 +166,17 @@ export class NoteBible {
           if (generation !== this.generation || current !== sequence) return;
           edition.textContent = passage.name + (passage.code === 'FIL' && this.context.translation && this.context.translation !== 'FIL' ? ' (traduction de secours)' : '');
           if (ref.numbering === 'hebrew') edition.textContent += ` · Correspondance : ${bookTitle(ref.book!)} ${targets.map(t => `${t.chapter}${t.ranges.length ? ':' + t.ranges.map(r => r.first === r.last ? r.first : `${r.first}–${r.last}`).join(', ') : ''}`).join(' ; ')}`;
-          content.replaceChildren(...verses.map(verse => {
+          const chapterView = whole || !ref.ranges.length;
+          content.replaceChildren(...verses.map((verse, index) => {
             const p = document.createElement('p');
+            p.dataset.verse = String(verse.verse);
             if (whole && targets.some(target => inTarget(verse, target))) p.className = 'reader-bible-cited';
-            const number = document.createElement('sup'); number.textContent = targets.length > 1 ? `${verse.chapter}:${verse.verse}` : String(verse.verse);
-            p.append(number, document.createTextNode(' ' + verse.text));
+            if (chapterView) {
+              const number = document.createElement('sup'); number.textContent = targets.length > 1 ? `${verse.chapter}:${verse.verse}` : String(verse.verse);
+              p.append(number, document.createTextNode(' ' + verse.text));
+            } else {
+              p.textContent = (index === 0 ? '«\u00a0' : '') + verse.text + (index === verses.length - 1 ? '\u00a0»' : '');
+            }
             return p;
           }));
           status.textContent = '';
