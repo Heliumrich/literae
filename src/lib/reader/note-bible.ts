@@ -128,9 +128,24 @@ export class NoteBible {
       const action = document.createElement('button'); action.type = 'button'; action.className = 'reader-button';
       panel.append(heading, edition, content, status, action);
       panels.prepend(panel);
-      let started = false, sequence = 0;
+      let started = false, sequence = 0, wholeChapter = false, jumpAfterLoad = false;
+      const scrollToReference = () => {
+        const cited = content.querySelector<HTMLElement>('.reader-bible-cited');
+        const target = cited || panel, style = getComputedStyle(body);
+        const top = body.scrollTop + target.getBoundingClientRect().top - body.getBoundingClientRect().top
+          - parseFloat(style.paddingTop);
+        // A citation near the chapter's end needs enough trailing room to reach
+        // the top. A short chapter may grow the modal up to its CSS max-height.
+        const padding = style.boxSizing === 'content-box' ? parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) : 0;
+        const height = Math.max(body.clientHeight, (parseFloat(style.maxHeight) || 0) + padding);
+        const missing = top - (body.scrollHeight - height);
+        if (cited && missing > 0) panel.style.paddingBottom = `${parseFloat(getComputedStyle(panel).paddingBottom) + Math.ceil(missing)}px`;
+        // Scroll only the modal, leaving the book and its bookmark untouched.
+        body.scrollTop = top;
+      };
       const show = async (whole: boolean) => {
         const current = ++sequence;
+        wholeChapter = whole; jumpAfterLoad = false; panel.style.paddingBottom = '';
         heading.textContent = whole ? `${bookTitle(ref.book!)} ${ref.chapter}` : ref.label;
         status.textContent = whole ? 'Chapitre en cours de chargement…' : 'Verset en cours de chargement…';
         panel.setAttribute('aria-busy', 'true'); action.hidden = true;
@@ -146,13 +161,16 @@ export class NoteBible {
           }));
           status.textContent = '';
           action.textContent = whole ? 'Revenir au passage cité' : 'Lire le chapitre entier';
-          action.onclick = () => { content.replaceChildren(); void show(!whole); };
+          action.onclick = () => { content.replaceChildren(); body.scrollTop = 0; void show(!whole); };
         } catch {
           if (generation !== this.generation || current !== sequence) return;
           status.textContent = 'Ce passage n’est pas disponible. Vérifiez votre connexion ou la référence de l’édition.';
           action.textContent = 'Réessayer'; action.onclick = () => { void show(whole); };
         }
-        if (generation === this.generation && current === sequence) { panel.setAttribute('aria-busy', 'false'); action.hidden = false; }
+        if (generation === this.generation && current === sequence) {
+          panel.setAttribute('aria-busy', 'false'); action.hidden = false;
+          if (jumpAfterLoad) scrollToReference();
+        }
       };
       const open = () => {
         panel.hidden = false; button.setAttribute('aria-expanded', 'true');
@@ -160,8 +178,8 @@ export class NoteBible {
       };
       button.onclick = () => {
         open();
-        // Scroll only the modal, leaving the book and its bookmark untouched.
-        body.scrollTop += panel.getBoundingClientRect().top - body.getBoundingClientRect().top - 16;
+        jumpAfterLoad = wholeChapter;
+        scrollToReference();
       };
       activate.unshift(open);
     }

@@ -126,6 +126,10 @@ Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapi
 entier » remplace le passage dans le même bloc et marque les versets cités.
 « Revenir au passage cité » restaure la sélection. Le défilement reste dans le
 dialogue, y compris en plein écran et en orientation paysage sur mobile.
+Dans le chapitre entier, cliquer sur la référence soulignée aligne le premier
+verset cité en haut de la zone de lecture, sans rechargement ni réduction du
+chapitre. Un espace final est ajouté uniquement si nécessaire pour permettre
+cet alignement près de la fin du chapitre.
 
 Un cache borné garde uniquement les passages demandés pendant la vie du lecteur.
 Il partage les requêtes identiques simultanées et réutilise un chapitre déjà lu.

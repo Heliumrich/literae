@@ -103,6 +103,42 @@ for (const profile of [
     expect(errors).toEqual([]);
     await info.attach('real-comparator-requests', { body: JSON.stringify(requests, null, 2), contentType: 'application/json' });
   });
+  test('la référence aligne le premier verset cité dans le chapitre entier', async ({ page }) => {
+    test.setTimeout(90000);
+    const book = samples[0], requests: string[] = [];
+    page.on('request', request => { if (request.url().includes('/api/bible/verses?')) requests.push(request.url()); });
+    await openBook(page, book.bookId);
+    // Single verse, contiguous range and discontiguous list, including citations
+    // near the end where normal scroll limits would prevent top alignment.
+    for (const sample of [book.examples[2], book.examples[3], book.examples[0], book.examples[4]]) {
+      await openNote(page, sample);
+      await settled(page);
+      const body = page.locator('[data-reader="note-body"]');
+      const panel = body.locator('.reader-bible-passage:not([hidden])').first();
+      const citedVerse = (await panel.locator('sup').first().textContent())!;
+      await panel.getByRole('button', { name: 'Lire le chapitre entier', exact: true }).click();
+      await settled(page);
+      expect(await body.evaluate(el => el.scrollTop)).toBe(0);
+      const count = await panel.locator('sup').count(), beforeRequests = requests.length;
+      const background = () => page.evaluate(() => ({
+        page: window.scrollY,
+        book: document.querySelector('.epub-container')!.scrollTop,
+        bookmarks: Object.entries(localStorage).filter(([k]) => k.startsWith('literae-epub-progress-v2:')),
+      }));
+      const before = await background();
+      await body.locator('.reader-bible-reference').first().click();
+      const cited = panel.locator('.reader-bible-cited').first();
+      await expect(cited.locator('sup')).toHaveText(citedVerse);
+      await expect.poll(() => cited.evaluate(el => {
+        const body = el.closest<HTMLElement>('[data-reader="note-body"]')!;
+        return Math.abs(el.getBoundingClientRect().top - body.getBoundingClientRect().top - parseFloat(getComputedStyle(body).paddingTop));
+      })).toBeLessThanOrEqual(1);
+      expect(await panel.locator('sup').count()).toBe(count);
+      expect(requests.length).toBe(beforeRequests);
+      expect(await background()).toEqual(before);
+      await page.getByRole('button', { name: 'Fermer la note' }).click();
+    }
+  });
 });
 
 test('échec réseau, réessai, cache et fermeture pendant le chargement', async ({ page, context }) => {
