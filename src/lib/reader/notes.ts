@@ -1,4 +1,5 @@
 import type { Book, Contents } from 'epubjs';
+import { NoteBible } from './note-bible';
 const EPUB = 'http://www.idpf.org/2007/ops';
 const BASE = 'https://epub.invalid';
 const notePath = (path: string) => path.includes('/literae-notes/');
@@ -17,7 +18,11 @@ export class EpubNotes {
   private title: HTMLElement;
   private origin: HTMLAnchorElement | null = null;
   private sequence = 0;
+  private bible: NoteBible;
   constructor(private book: Book, private root: HTMLElement, private onToggle: (open: boolean) => void, private displayText: (text: string) => string = text => text) {
+    // Crampon's Hebrew OT numbering needs an explicit concordance before it can
+    // safely query Fillion's Vulgate numbering (notably for the Psalms).
+    this.bible = new NoteBible({ oldTestament: root.dataset.noteNumbering === 'hebrew' ? 'unmapped' : 'vulgate' });
     this.dialog = root.querySelector<HTMLDialogElement>('[data-reader="note-dialog"]')!;
     this.body = this.dialog.querySelector('[data-reader="note-body"]')!;
     this.title = this.dialog.querySelector('[data-reader="note-title"]')!;
@@ -26,7 +31,7 @@ export class EpubNotes {
       const r = this.dialog.getBoundingClientRect();
       if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) this.dialog.close();
     } };
-    this.dialog.onclose = () => { this.sequence++; this.onToggle(false); this.origin?.focus({ preventScroll: true }); };
+    this.dialog.onclose = () => { this.sequence++; this.bible.reset(); this.onToggle(false); this.origin?.focus({ preventScroll: true }); };
   }
   private resolve(href: string, source: string) {
     const url = new URL(href, BASE + this.book.resolve(source));
@@ -119,6 +124,7 @@ export class EpubNotes {
   }
   private async open(path: string, id: string, label: string) {
     const sequence = ++this.sequence;
+    this.bible.reset();
     const start = performance.now();
     const cached = this.cache.get(path)?.ready === true;
     this.title.textContent = `Note ${label.replace(/[\[\]]/g, '').trim()}`;
@@ -157,11 +163,12 @@ export class EpubNotes {
       };
       for (const child of target.childNodes) copy(child, this.body);
       for (const paragraph of this.body.querySelectorAll('p')) if (!paragraph.textContent?.trim() && !paragraph.children.length) paragraph.remove();
+      this.bible.enhance(this.body);
       this.body.scrollTop = 0;
       this.emit('note-opened', { path, id, cached, elapsedMs: performance.now() - start });
     } catch {
       if (sequence === this.sequence) this.body.textContent = 'Cette note ne peut pas être chargée. Fermez puis réessayez.';
     }
   }
-  destroy() { this.sequence++; if (this.dialog.open) this.dialog.close(); this.origin = null; this.cache.clear(); this.links.clear(); this.context = []; this.pinned.clear(); }
+  destroy() { this.sequence++; if (this.dialog.open) this.dialog.close(); this.bible.destroy(); this.origin = null; this.cache.clear(); this.links.clear(); this.context = []; this.pinned.clear(); }
 }

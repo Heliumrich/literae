@@ -5,7 +5,7 @@ import '../../styles/reader.css';
 interface Props { bookId: string; title: string; editions: BookEdition[]; }
 const { bookId, title, editions } = Astro.props;
 ---
-<section class="epub-reader" data-book-id={bookId} data-editions={JSON.stringify(editions)} aria-label={`Lecture de ${title}`}>
+<section class="epub-reader" data-book-id={bookId} data-editions={JSON.stringify(editions)} data-note-numbering={/\bcrampon\b/i.test(title) ? 'hebrew' : 'vulgate'} aria-label={`Lecture de ${title}`}>
   <div class="reader-toolbar">
     <label class="reader-field reader-edition"><span>Édition / traduction</span>
       <select data-reader="edition" aria-label="Édition ou traduction">{editions.map(edition => <option value={edition.id}>{edition.label}</option>)}</select>

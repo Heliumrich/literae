@@ -88,7 +88,9 @@ export function readBiblePassage(db: BibleReader, params: URLSearchParams) {
   const chapter = Number(params.get("chapter"));
   const verse = params.get("verse") ? Number(params.get("verse")) : null;
   const verseEnd = params.get("verseEnd") ? Number(params.get("verseEnd")) : null;
-  const translationIds = [...new Set(
+  const translationCode = params.get('translation');
+  const byCode = translationCode ? db.prepare('SELECT id FROM translations WHERE code = ?').get(translationCode.toUpperCase()) as { id: number } | undefined : undefined;
+  const translationIds = [...new Set(byCode ? [byCode.id] : translationCode ? [] :
     params
       .getAll("t")
       .map(Number)

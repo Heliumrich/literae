@@ -96,6 +96,93 @@ transmission réseau : `reader:notes-load`, `reader:notes-context` et
 `reader:note-opened`. Ils exposent les chemins, l’état du cache et les durées de
 préparation du contenu, sans reproduire le texte des notes.
 
+## Citations bibliques dans les notes
+
+Le dialogue normalise les références lors de l’affichage, dans tous les ouvrages.
+Les EPUB web et les téléchargements Directus ne sont pas réécrits. Les signets
+CFI, les appels de notes et leur préchargement restent indépendants de cet
+enrichissement.
+
+- `I Cor., VIII, 1.` devient `1 Cor. 8:1` ; les abréviations latines comme
+  `Joan.` sont reconnues.
+- `I Joan., II, 15, 16, 17.` devient `1 Jn 2:15–17`.
+- `Apoc., XXII, 17 et 20.` devient `Ap 22:17, 20` : seuls 17 et 20 sont chargés.
+- `Heb., XI, 35–38; XII, 1, 2.` donne deux passages, dans deux chapitres.
+
+Une note composée uniquement de références explicites affiche automatiquement
+les passages sous son texte. Dans une note accompagnée d’un commentaire, les
+références deviennent des boutons soulignés ; chaque passage est chargé au clic.
+Le texte autour des références et les emphases sont conservés. Le remplacement
+accepte les références réparties entre plusieurs balises en ligne et les retours
+à la ligne de mise en forme du XHTML, sans joindre deux paragraphes.
+
+Les passages proviennent de l’API existante du comparateur :
+`/api/bible/verses?translation=FIL&book=1CO&chapter=8&verse=1`.
+`FIL` sélectionne Fillion par son code stable, sans supposer son identifiant
+numérique. Les paramètres `t=<ID>` du comparateur continuent à fonctionner.
+La base reste ouverte en lecture seule avec `immutable=1`.
+
+Un état de chargement est affiché, suivi du texte numéroté. « Lire le chapitre
+entier » remplace le passage dans le même bloc et marque les versets cités.
+« Revenir au passage cité » restaure la sélection. Le défilement reste dans le
+dialogue, y compris en plein écran et en orientation paysage sur mobile.
+
+Un cache borné garde uniquement les passages demandés pendant la vie du lecteur.
+Il partage les requêtes identiques simultanées et réutilise un chapitre déjà lu.
+Les notes voisines préchargées depuis l’EPUB ne provoquent **aucune** requête
+biblique. Fermer la note, ouvrir une autre note ou changer d’édition annule les
+requêtes en attente ; leur résultat ne peut pas remplacer la nouvelle note.
+Les erreurs réseau sont réessayables et ne sont pas mises en cache.
+Cet enrichissement nécessite le réseau ; la note originale reste lisible si
+le comparateur est indisponible.
+
+### Conventions et limites éditoriales
+
+`bible-references.ts` contient le vocabulaire et l’analyse ; `note-bible.ts`
+gère les remplacements dans le dialogue, les requêtes et leur cache.
+
+- La numérotation des chapitres et versets de l’édition citée est conservée.
+  Les références historiques à `Regum` / aux quatre livres des Rois sont
+  transcrites vers Samuel / Rois dans la nomenclature moderne.
+- `Eccl.` / `Eccles.` peut désigner l’Ecclésiaste ou l’Ecclésiastique.
+  Au-delà de douze chapitres, l’Ecclésiastique est identifiable ; dans les cas
+  ambigus, la notation numérique est modernisée sans bouton de chargement.
+- Les `Ib.` / `Ibid.` isolés, les références sans verset et les plages traversant
+  deux chapitres dans une seule notation ne sont pas devinés. Les indications
+  « et suivants » restent dans le texte ; aucun terme de plage n’est inventé.
+- La Bible Crampon utilise une numérotation hébraïque de l’Ancien Testament,
+  différente de celle de Fillion. `EpubReader.astro` déclare ce contexte via
+  `data-note-numbering="hebrew"` pour le titre Crampon. Ses références de
+  l’Ancien Testament sont normalisées sans interrogation de Fillion en attendant
+  une concordance vérifiée. Les références du Nouveau Testament restent actives.
+  Une future édition utilisant une autre numérotation doit déclarer son contexte.
+- Certaines références sources sont erronées : par exemple `Joann., XXXV, 69.`
+  dans l’Imitation. Une réponse vide ou incomplète affiche une indisponibilité ;
+  aucun verset voisin ni autre traduction n’est substitué.
+
+### Vérification du lot
+
+L’audit des 37 EPUB web repère des références dans onze titres. Il confirme
+notamment les nombreux renvois de l’Imitation, de la Cité de Dieu, du Sermon sur
+la montagne, du Traité de la concupiscence et des Oraisons funèbres, ainsi que
+les références mêlées à un commentaire dans les Pensées et les Bibles annotées.
+Dans l’Imitation, 637 références explicites ont un livre identifié, dont 627
+sont disponibles intégralement dans Fillion ; les autres comprennent des
+erreurs présentes dans la source. Ce relevé ne résout pas les `Ibid.`.
+
+Les tests `note-bible.test.mjs` couvrent les conventions, les refus ambigus et
+la sélection de traduction par code. `note-bible.spec.ts` ouvre les vrais EPUB
+publics de huit titres et interroge la vraie API locale du comparateur sur
+ordinateur à 1920 × 1080 et mobile en portrait/paysage. Il vérifie aussi les
+listes discontinues, plusieurs chapitres, les commentaires conservés, le
+chargement différé, le chapitre entier, le cache, le réessai et la fermeture
+pendant une requête. Les régressions des notes bibliques et de la navigation
+du sommaire sont exécutées séparément.
+
+Pour cette évolution : 32 scénarios navigateur réussis, 20 tests Node réussis,
+contrôle TypeScript et build réussis. Les captures des deux thèmes et du plein
+écran ont également été contrôlées.
+
 ## Contrôles
 
 ```bash
