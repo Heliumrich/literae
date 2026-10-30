@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Confessions",
+    "kind": "ebook_files",
+    "author": "Aurelius Augustinus",
+    "sort_name": "Augustinus, Aurelius",
+    "original_sha256": "5179178c21c1ad4194d91822c0bbfc0fa58561d819f35aea6e6480afb5eeb206",
+    "corrected_sha256": "abb29f61c64864c65aae703288ba38d9ddfba1ee2d867aad1e08d4194a7cfb5c",
+    "file_id": "6ff4c85b-811f-4289-ae8f-c363c26d0022"
+  },
+  {
+    "title": "Confessions",
+    "kind": "ebook_download_files",
+    "author": "Aurelius Augustinus",
+    "sort_name": "Augustinus, Aurelius",
+    "original_sha256": "489f87a3526d53b3946527a3879f7d9a082ef05d88d364e1a7b53f71924fa4b1",
+    "corrected_sha256": "94b9e5ad93fb638e624224b28f78323a5103bb9c16c27ba35134046ba806623e",
+    "file_id": "d93a0198-f1fc-42d5-af56-994006d0296b"
+  },
+  {
+    "title": "La Cité de Dieu",
+    "kind": "ebook_files",
+    "author": "Aurelius Augustinus",
+    "sort_name": "Augustinus, Aurelius",
+    "original_sha256": "3bf74110de051b5846aec1d5f9ec1dad53798e1d60ae993bebb8fa920ebd9b2a",
+    "corrected_sha256": "505142b50dd7a14eaaf17d4cffb02ee058120a6df0d7389cd210a3015924711e",
+    "file_id": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4"
+  },
+  {
+    "title": "La Cité de Dieu",
+    "kind": "ebook_download_files",
+    "author": "Aurelius Augustinus",
+    "sort_name": "Augustinus, Aurelius",
+    "original_sha256": "2f2a31d95943e1eade8b007d695687808f8087602f6ceb7b9e9e23338b66e3c9",
+    "corrected_sha256": "329865e30309ca2b63f3c5f5aaab2d5591048c64682ddfa1db7d48864efa3d1d",
+    "file_id": "3590baad-0f89-4800-b3d1-a1e468d68084"
+  },
+  {
+    "title": "Pensées",
+    "kind": "ebook_files",
+    "author": "Blaise Pascal",
+    "sort_name": "Pascal, Blaise",
+    "original_sha256": "c19fcfd967db088520bca36d32c0296d709750f70326fcd532682c0ae9355943",
+    "corrected_sha256": "71216359d2524c042c9237cf556e6eada3d2d0ada3d39eee945e30bc391c60e6",
+    "file_id": "b167783c-8791-4fbe-9820-a8b10192431d"
+  },
+  {
+    "title": "Pensées",
+    "kind": "ebook_download_files",
+    "author": "Blaise Pascal",
+    "sort_name": "Pascal, Blaise",
+    "original_sha256": "b0a3ae710e70bed29aa7798299e4ed9aee6c3cd2f95e0fc75bbc3dc59ec1534b",
+    "corrected_sha256": "afecd1dde753567156c66d77ef0d4c2fc27f699b4409c0df8e81283c67394b31",
+    "file_id": "032835c5-4a79-45e2-be82-4026ade38115"
+  }
+]
