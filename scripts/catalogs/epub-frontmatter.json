@@ -1,0 +1,999 @@
+[
+  {
+    "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+    "title": "L’Imitation de Jésus-Christ",
+    "cover_title": "L’Imitation de Jésus-Christ",
+    "author": "Thomas à Kempis",
+    "credit": "Traduction de Félicité de Lamennais",
+    "origin_label": "Composition",
+    "origin_date": "vers 1420",
+    "publisher": "Paris, Ambroise Bray, XLIIIe édition",
+    "edition_date": "1859",
+    "notice_paragraphs": [
+      "Composition : vers 1420.",
+      "Édition : Paris, Ambroise Bray, XLIIIe édition, 1859."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Ambroise Bray, XLIIIe édition, 1859"
+  },
+  {
+    "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+    "title": "Confessions",
+    "cover_title": "Confessions",
+    "author": "Aurelius Augustinus",
+    "credit": "Traduction de M. Moreau",
+    "origin_label": "Composition",
+    "origin_date": "vers 397–401",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : vers 397–401.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": [
+        "EPUB/text/title.xhtml"
+      ]
+    },
+    "source_evidence": "Référence bibliographique Les confessions de Saint Augustin Cette traduction des Confessions est l’œuvre de M. Moreau. (1864) Abbaye Saint Benoît de Port-Valais rte de l'église 38 - CH-1897 Le Bouveret (VS) (Translation, Français) "
+  },
+  {
+    "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+    "title": "La Cité de Dieu",
+    "cover_title": "La Cité de Dieu",
+    "author": "Aurelius Augustinus",
+    "credit": "Traduction de Émile Saisset",
+    "origin_label": "Composition",
+    "origin_date": "413–426",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie",
+    "edition_date": "1869",
+    "notice_paragraphs": [
+      "Composition : 413–426.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, 1869."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique Abbaye Saint Benoît de Port-Valais rte de l'église 38 - CH-1897 Le Bouveret (VS) Traduction par M. SAISSET, 1869. (Translation, Français) "
+  },
+  {
+    "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+    "title": "Pensées",
+    "cover_title": "Pensées",
+    "author": "Blaise Pascal",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1670",
+    "publisher": "Paris, Guillaume Desprez, seconde édition",
+    "edition_date": "1670",
+    "notice_paragraphs": [
+      "Première publication : 1670.",
+      "Édition : Paris, Guillaume Desprez, seconde édition, 1670."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Guillaume Desprez, seconde édition, 1670"
+  },
+  {
+    "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+    "title": "Oraisons funèbres",
+    "cover_title": "Oraisons funèbres",
+    "author": "Jacques-Bénigne Bossuet",
+    "credit": "Préface de René Doumic",
+    "origin_label": "Discours prononcés",
+    "origin_date": "1669–1687",
+    "publisher": "Paris, Librairie Aristide Quillet",
+    "edition_date": "1928",
+    "notice_paragraphs": [
+      "Discours prononcés : 1669–1687.",
+      "Édition : Paris, Librairie Aristide Quillet, 1928."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Librairie Aristide Quillet, 1928"
+  },
+  {
+    "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+    "title": "Traité de la concupiscence",
+    "cover_title": "Traité de la concupiscence",
+    "author": "Jacques-Bénigne Bossuet",
+    "credit": "Introduction et notes d’André Pératé",
+    "origin_label": "Composition",
+    "origin_date": "1694",
+    "publisher": "Paris, Bloud et Cie",
+    "edition_date": "1908",
+    "notice_paragraphs": [
+      "Composition : 1694.",
+      "Édition : Paris, Bloud et Cie, 1908."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Bloud et Cie, 1908"
+  },
+  {
+    "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+    "title": "Considérations sur la France",
+    "cover_title": "Considérations sur la France",
+    "author": "Joseph de Maistre",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1797",
+    "publisher": "Lyon, Chez Rusand",
+    "edition_date": "1829",
+    "notice_paragraphs": [
+      "Première publication : 1797.",
+      "Édition : Lyon, Chez Rusand, 1829."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Lyon, Chez Rusand, 1829"
+  },
+  {
+    "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+    "title": "Sainte Bible traduite par A. Crampon",
+    "cover_title": "La Sainte Bible",
+    "author": "Augustin Crampon",
+    "credit": "Traduction d’après les textes originaux",
+    "origin_label": "Textes bibliques",
+    "origin_date": "Antiquité",
+    "publisher": "Paris, Tournai, Rome – Desclée et Cie",
+    "edition_date": "1923",
+    "notice_paragraphs": [
+      "Textes bibliques : Antiquité.",
+      "Édition : Paris, Tournai, Rome – Desclée et Cie, 1923."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Page de titre et métadonnées du fichier fourni"
+  },
+  {
+    "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+    "title": "Sainte Bible traduite par J.-B. Glaire",
+    "cover_title": "La Sainte Bible",
+    "author": "J.-B. Glaire",
+    "credit": "Traduction sur la Vulgate · Avec F. Vigouroux",
+    "origin_label": "Textes bibliques",
+    "origin_date": "Antiquité",
+    "publisher": "Paris – A. et R. Roger et F. Chernoviz",
+    "edition_date": "1905",
+    "notice_paragraphs": [
+      "Textes bibliques : Antiquité.",
+      "Édition : Paris – A. et R. Roger et F. Chernoviz, 1905."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Page de titre et métadonnées du fichier fourni"
+  },
+  {
+    "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+    "title": "Sainte Bible traduite par Lemaître Sacy",
+    "cover_title": "La Sainte Bible",
+    "author": "Louis-Isaac Lemaistre de Sacy",
+    "credit": "Traduction sur la Vulgate",
+    "origin_label": "Traduction",
+    "origin_date": "1667–1696",
+    "publisher": "Furne · Société biblique britannique et étrangère",
+    "edition_date": "1841 · 1855",
+    "notice_paragraphs": [
+      "Traduction de Louis-Isaac Lemaistre de Sacy, publiée de 1667 à 1696.",
+      "Édition composite : Bruxelles, Société biblique britannique et étrangère, 1855 ; Paris, Furne, 1841.",
+      "Les livres deutérocanoniques, Esther et Daniel dans leur intégralité proviennent de l’édition catholique Furne. Les autres livres suivent l’édition de 1855, de provenance protestante.",
+      "Les approbations anciennes de 1701 concernent une édition antérieure, non cet assemblage."
+    ],
+    "notice_paths": {
+      "web": [
+        "OPS/foreword.xhtml"
+      ],
+      "download": [
+        "OPS/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Page de titre et métadonnées du fichier fourni",
+    "requires_absent_pages": [
+      "OPS/p019-000.xhtml",
+      "OPS/p029-000.xhtml",
+      "OPS/p070-000.xhtml"
+    ]
+  },
+  {
+    "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+    "title": "L’Isolée",
+    "cover_title": "L’Isolée",
+    "author": "René Bazin",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1905",
+    "publisher": "Éditeur non indiqué",
+    "edition_date": "1905",
+    "notice_paragraphs": [
+      "Première publication : 1905.",
+      "Édition : Éditeur non indiqué, 1905."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Texte daté de 1905 dans le fichier fourni ; transcription Ebooks libres et gratuits"
+  },
+  {
+    "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+    "title": "La Terre qui meurt",
+    "cover_title": "La Terre qui meurt",
+    "author": "René Bazin",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1899",
+    "publisher": "Éditeur non indiqué",
+    "edition_date": "1899",
+    "notice_paragraphs": [
+      "Première publication : 1899.",
+      "Édition : Éditeur non indiqué, 1899."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Texte daté de 1899 dans le fichier fourni ; transcription Ebooks libres et gratuits"
+  },
+  {
+    "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+    "title": "Somme Théologique",
+    "cover_title": "Summa Theologiae",
+    "author": "Sanctus Thomas de Aquino",
+    "credit": "Texte latin",
+    "origin_label": "Composition",
+    "origin_date": "1265–1274",
+    "publisher": "The Aquinas Institute",
+    "edition_date": "s.d.",
+    "notice_paragraphs": [
+      "Composition : 1265–1274.",
+      "Édition : The Aquinas Institute, s.d.."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/text/edition.xhtml"
+      ],
+      "download": [
+        "EPUB/text/edition.xhtml"
+      ]
+    },
+    "source_evidence": "Page de titre et métadonnées du fichier fourni",
+    "remove_pages": {
+      "web": [
+        "EPUB/text/title.xhtml"
+      ],
+      "download": [
+        "EPUB/text/title.xhtml"
+      ]
+    }
+  },
+  {
+    "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+    "title": "Explication du Sermon sur la montagne",
+    "cover_title": "Explication du Sermon sur la montagne",
+    "author": "Saint Augustin",
+    "credit": "Traduction de l’abbé Devoille",
+    "origin_label": "Composition",
+    "origin_date": "vers 393–394",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome V",
+    "edition_date": "1867",
+    "notice_paragraphs": [
+      "Composition : vers 393–394.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome V, 1867."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique EXPLICATION DU SERMON SUR LA MONTAGNE Traduction de M. l'abbé DEVOILLE. Oeuvres Complètes de Saint Augustin, Traduites pour la première fois en français, sous la direction de M. Raulx, Tome Vème, Commentaires sur l'Écriture, Bar-Le-Duc, L. Guérins & Cie éditeurs, 1867. p. 257-317. (Translation, Français) "
+  },
+  {
+    "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+    "title": "Commentaire sur l’Évangile selon saint Matthieu",
+    "cover_title": "Commentaire sur l’Évangile selon saint Matthieu",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction sous la direction de M. Jeannin",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome VII–VIII",
+    "edition_date": "1865",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome VII–VIII, 1865."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Œuvres complètes de saint Jean Chrysostome, sous la direction de M. Jeannin, Bar-le-Duc, L. Guérin et Cie, 1865, tomes VII et VIII."
+  },
+  {
+    "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+    "title": "Commentaire sur l’épître aux Philippiens",
+    "cover_title": "Commentaire sur l’épître aux Philippiens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de l’abbé Collery",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI p. 1-100 (Translation, Français) "
+  },
+  {
+    "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+    "title": "Commentaire sur l’épître aux Romains",
+    "cover_title": "Commentaire sur l’épître aux Romains",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de l’abbé Devoille et C. Portelette",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome X",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome X, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome X p. 189 - 433 (Translation, Français) "
+  },
+  {
+    "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+    "title": "Commentaire sur l’épître aux Éphésiens",
+    "cover_title": "Commentaire sur l’épître aux Éphésiens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. X…",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome X",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome X, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome X p. 435 - 570 (Translation, Français) "
+  },
+  {
+    "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+    "title": "Commentaire sur l’épître aux Hébreux",
+    "cover_title": "Commentaire sur l’épître aux Hébreux",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de Baissey et l’abbé Collery",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Traduit par M. BOUCHERIE. Tome XI p. 451-599 (Translation, Français) "
+  },
+  {
+    "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+    "title": "Commentaire sur l’épître à Philémon",
+    "cover_title": "Commentaire sur l’épître à Philémon",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. B. A.",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI, p. 436-451 (Translation, Français) "
+  },
+  {
+    "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+    "title": "Commentaire sur l’épître aux Colossiens",
+    "cover_title": "Commentaire sur l’épître aux Colossiens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. Baissey",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI p. 101-177 Traduit par M. BAISSEY (Translation, Français) "
+  },
+  {
+    "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+    "title": "Commentaire sur l’épître aux Galates",
+    "cover_title": "Commentaire sur l’épître aux Galates",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. Boucherie",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome X",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome X, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Traduit par M. BOUCHERIE. Tome X p. 571 - 631 (Translation, Français) "
+  },
+  {
+    "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+    "title": "Commentaire sur l’épître à Tite",
+    "cover_title": "Commentaire sur l’épître à Tite",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction sous la direction de M. Jeannin",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI, p. 405-435 (Translation, Français) "
+  },
+  {
+    "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+    "title": "Commentaire sur la première épître aux Corinthiens",
+    "cover_title": "Commentaire sur la première épître aux Corinthiens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. Jeannin, l’abbé Devoille, C. Portelette et M. Baissey",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome IX",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome IX, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome IX p. 293-610 (Translation, Français) "
+  },
+  {
+    "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+    "title": "Commentaire sur la première épître aux Thessaloniciens",
+    "cover_title": "Commentaire sur la première épître aux Thessaloniciens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. Jeannin et ses collaborateurs",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI p. 178-245 (Translation, Français) "
+  },
+  {
+    "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+    "title": "Commentaire sur la première épître à Timothée",
+    "cover_title": "Commentaire sur la première épître à Timothée",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de Félix Robiou",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI, p. 272-404. (Translation, Français) "
+  },
+  {
+    "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+    "title": "Commentaire sur la deuxième épître aux Corinthiens",
+    "cover_title": "Commentaire sur la deuxième épître aux Corinthiens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de l’abbé Joly, Édouard Malvoisin et C. Portelette",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome X",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome X, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome X p. 1-185 (Translation, Français) "
+  },
+  {
+    "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+    "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+    "cover_title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de C. Portelette",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 tome XI page 245-272 (Translation, Français) "
+  },
+  {
+    "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+    "title": "Commentaire sur la deuxième épître à Timothée",
+    "cover_title": "Commentaire sur la deuxième épître à Timothée",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de M. Jeannin",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XI",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XI, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome XI, p. 272-404. (Translation, Français) "
+  },
+  {
+    "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+    "title": "Homélies sur les Actes des Apôtres",
+    "cover_title": "Homélies sur les Actes des Apôtres",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de l’abbé Duchassaing, M. Jeannin, l’abbé Devoille, C. Portelette, M. Housel et M. Ricard",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome VIII–IX",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome VIII–IX, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique HOMÉLIES SUR LES ACTES DES APOTRES. SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 (Translation, Français) "
+  },
+  {
+    "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+    "title": "Contre les Juifs",
+    "cover_title": "Contre les Juifs",
+    "author": "Saint Augustin",
+    "credit": "Traduction de l’abbé Aubert",
+    "origin_label": "Composition",
+    "origin_date": "Ve siècle",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome XIV",
+    "edition_date": "1869",
+    "notice_paragraphs": [
+      "Composition : Ve siècle.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome XIV, 1869."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique CONTRE LES JUIFS. Traduction de M. l'abbé AUBERT. Oeuvres complètes de saint Augustin traduites pour la première fois en français, sous la direction de M. Raulx, Bar-Le-Duc, L. Guérin & Cie, éditeurs, 1869, Tome XIV, p. 23-32. (Translation, Français) "
+  },
+  {
+    "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+    "title": "Discours contre les Juifs",
+    "cover_title": "Discours contre les Juifs",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction sous la direction de M. Jeannin",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome IV",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome IV, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 (Translation, Français) "
+  },
+  {
+    "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+    "title": "Apologie de la vie monastique",
+    "cover_title": "Apologie de la vie monastique",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction sous la direction de M. Jeannin",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome II",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome II, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 (Translation, Français) "
+  },
+  {
+    "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+    "title": "Traité du sacerdoce",
+    "cover_title": "Traité du sacerdoce",
+    "author": "Saint Jean Chrysostome",
+    "credit": "Traduction de J.-B. J.",
+    "origin_label": "Composition",
+    "origin_date": "IVe–Ve siècles",
+    "publisher": "Bar-le-Duc, L. Guérin et Cie, tome I",
+    "edition_date": "1864",
+    "notice_paragraphs": [
+      "Composition : IVe–Ve siècles.",
+      "Édition : Bar-le-Duc, L. Guérin et Cie, tome I, 1864."
+    ],
+    "notice_paths": {
+      "web": [],
+      "download": []
+    },
+    "source_evidence": "Référence bibliographique SAINT JEAN CHRYSOSTOME OEUVRES COMPLÈTES TRADUITES POUR LA PREMIÈRE FOIS SOUS LA DIRECTION DE M. JEANNIN, licencié ès-lettres professeur de rhétorique au collège de l'Immaculée-Conception de Saint-Dizier. Bar-le-Duc, L. Guérin & Cie, éditeurs, 1864 Tome I (Translation, Français) "
+  },
+  {
+    "book_id": "91d340a8-54f9-4182-b612-899030777152",
+    "title": "Le Blé qui lève",
+    "cover_title": "Le Blé qui lève",
+    "author": "René Bazin",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1907",
+    "publisher": "Paris, Calmann-Lévy",
+    "edition_date": "1907",
+    "notice_paragraphs": [
+      "Première publication : 1907.",
+      "Édition : Paris, Calmann-Lévy, 1907."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Calmann-Lévy, 1907"
+  },
+  {
+    "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+    "title": "La Barrière",
+    "cover_title": "La Barrière",
+    "author": "René Bazin",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1910",
+    "publisher": "Éditeur non indiqué",
+    "edition_date": "1910",
+    "notice_paragraphs": [
+      "Première publication : 1910.",
+      "Édition : Éditeur non indiqué, 1910."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Texte daté de 1910 dans le fichier fourni ; transcription Ebooks libres et gratuits"
+  },
+  {
+    "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+    "title": "Les Oberlé",
+    "cover_title": "Les Oberlé",
+    "author": "René Bazin",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1901",
+    "publisher": "Éditeur non indiqué",
+    "edition_date": "1903",
+    "notice_paragraphs": [
+      "Première publication : 1901.",
+      "Édition : Éditeur non indiqué, 1903."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Texte daté de 1903 dans le fichier fourni ; transcription Ebooks libres et gratuits"
+  },
+  {
+    "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+    "title": "Le Disciple",
+    "cover_title": "Le Disciple",
+    "author": "Paul Bourget",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1889",
+    "publisher": "Paris, Plon",
+    "edition_date": "1899",
+    "notice_paragraphs": [
+      "Première publication : 1889.",
+      "Édition : Paris, Plon, 1899."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Plon, 1899"
+  },
+  {
+    "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+    "title": "La Femme pauvre",
+    "cover_title": "La Femme pauvre",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1897",
+    "publisher": "Paris, G. Crès",
+    "edition_date": "1924",
+    "notice_paragraphs": [
+      "Première publication : 1897.",
+      "Édition : Paris, G. Crès, 1924."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, G. Crès, 1924"
+  },
+  {
+    "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+    "title": "Les Dernières Colonnes de l’Église",
+    "cover_title": "Les Dernières Colonnes de l’Église",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1903",
+    "publisher": "Paris, Mercure de France",
+    "edition_date": "1903",
+    "notice_paragraphs": [
+      "Première publication : 1903.",
+      "Édition : Paris, Mercure de France, 1903."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Mercure de France, 1903"
+  },
+  {
+    "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+    "title": "Belluaires et porchers",
+    "cover_title": "Belluaires et porchers",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1905",
+    "publisher": "Paris, Stock",
+    "edition_date": "1905",
+    "notice_paragraphs": [
+      "Première publication : 1905.",
+      "Édition : Paris, Stock, 1905."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Stock, 1905"
+  },
+  {
+    "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+    "title": "Exégèse des Lieux Communs",
+    "cover_title": "Exégèse des Lieux Communs",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1902",
+    "publisher": "Paris, Mercure de France",
+    "edition_date": "1902",
+    "notice_paragraphs": [
+      "Première publication : 1902.",
+      "Édition : Paris, Mercure de France, 1902."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Mercure de France, 1902"
+  },
+  {
+    "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+    "title": "Le Salut par les Juifs",
+    "cover_title": "Le Salut par les Juifs",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1892",
+    "publisher": "Paris, Joseph Victorion et Cie",
+    "edition_date": "1906",
+    "notice_paragraphs": [
+      "Première publication : 1892.",
+      "Édition : Paris, Joseph Victorion et Cie, 1906."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Joseph Victorion et Cie, 1906"
+  },
+  {
+    "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+    "title": "Le Sang du pauvre",
+    "cover_title": "Le Sang du pauvre",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première publication",
+    "origin_date": "1909",
+    "publisher": "Paris, Stock, Delamain et Boutelleau",
+    "edition_date": "1932",
+    "notice_paragraphs": [
+      "Première publication : 1909.",
+      "Édition : Paris, Stock, Delamain et Boutelleau, 1932."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, Stock, Delamain et Boutelleau, 1932"
+  },
+  {
+    "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+    "title": "Le Désespéré",
+    "cover_title": "Le Désespéré",
+    "author": "Léon Bloy",
+    "credit": "",
+    "origin_label": "Première édition datée",
+    "origin_date": "1886",
+    "publisher": "Paris, A. Soirat",
+    "edition_date": "1886",
+    "notice_paragraphs": [
+      "Première édition datée : 1886.",
+      "Édition : Paris, A. Soirat, 1886."
+    ],
+    "notice_paths": {
+      "web": [
+        "EPUB/foreword.xhtml"
+      ],
+      "download": [
+        "EPUB/foreword.xhtml"
+      ]
+    },
+    "source_evidence": "Paris, A. Soirat, 1886"
+  }
+]

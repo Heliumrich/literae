@@ -588,12 +588,6 @@ def prepare(row, input_dir, output_dir):
     foreword, fb = document("Avis au lecteur")
     element("h2", fb, "Avis au lecteur")
     element("p", fb, row["edition"])
-    element("p", fb, row["foreword"])
-    element(
-        "p",
-        fb,
-        "La page de garde et la présentation numérique ont été composées pour Literae. Le texte et les notes de l’édition sont conservés ; les espaces précédant la ponctuation française sont insécables.",
-    )
     nav, nb = document("Sommaire")
     nv = element("nav", nb, id="toc")
     nv.set("{%s}type" % EP, "toc")

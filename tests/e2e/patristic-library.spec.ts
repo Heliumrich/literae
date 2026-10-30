@@ -41,10 +41,10 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
             const doc = iframe.contentDocument;
             if (!doc?.querySelector('.literae-cover')) continue;
             const cover = doc.body.getBoundingClientRect();
-            const svg = doc.querySelector('svg')!.getBoundingClientRect();
+            const graphic = doc.querySelector('svg, .literae-cover img')!.getBoundingClientRect();
             const overflow = [...doc.querySelectorAll('svg text')].some(text => {
               const rect = text.getBoundingClientRect();
-              return rect.left < svg.left - 1 || rect.right > svg.right + 1 || rect.top < svg.top - 1 || rect.bottom > svg.bottom + 1;
+              return rect.left < graphic.left - 1 || rect.right > graphic.right + 1 || rect.top < graphic.top - 1 || rect.bottom > graphic.bottom + 1;
             });
             return { expectedHeight: viewport.clientHeight, height: cover.height, overflow };
           }

@@ -1,41 +1,135 @@
-# Couvertures EPUB
+# Couvertures et avis d’édition EPUB
 
-Le lecteur préserve les couleurs, polices et positions originales de `titlepage.xhtml`, des pages avec `<meta name="calibre:cover" content="true"/>` et des pages contenant `.literae-cover`. Les réglages typographiques s’appliquent aux autres pages.
+## Règle éditoriale
 
-Le lecteur donne au `html` et au `body` de la couverture une hauteur explicite en pixels égale à la zone de lecture. Ne pas utiliser `100vh` pour estimer la hauteur de l’application : dans un EPUB, cette unité désigne le viewport de l’iframe, dont EPUB.js calcule lui-même la taille. Utiliser `height: 100%` dans cette page dont la hauteur est fixée par le lecteur.
+La couverture reste une composition classique : auteur, titre, date de composition
+ou de première publication, traduction le cas échéant, maison d’édition et date
+de l’édition utilisée. Aucun texte de présentation du site ou du lecteur.
 
-Pour une couverture avec texte superposé, placer aussi le texte dans le SVG. Le `viewBox` utilise les dimensions originales de l’image et conserve ensemble les proportions de l’image et des titres, même sur un téléphone très allongé. Des titres HTML positionnés par rapport à la page entière peuvent tomber dans les bandes vides autour de l’image.
+Un avis ajouté par nos outils se limite aux renseignements bibliographiques.
+Les préfaces et avertissements historiques font partie de l’ouvrage et restent
+intacts. Les attributions et licences des transcriptions restent dans les
+métadonnées et les crédits de fin de volume. Une date ou un éditeur inconnu n’est
+pas inventé ; les datations anciennes incertaines restent approximatives.
 
-Exemple pour l’image des Confessions (1568 × 2000) :
+Sacy est une exception : son avis explique brièvement l’origine composite du
+texte. Les versions courtes de 1855 d’Esther et Daniel sont supprimées ; les
+versions catholiques Furne de 1841, en 16 et 14 chapitres, les remplacent entièrement.
+Les 46 livres de l’Ancien Testament et les 27 du Nouveau sont présentés sans doublon.
+
+## Format de couverture commun aux lecteurs
+
+La couverture est une **image JPEG baseline de 1 200 × 1 680 pixels**. Le texte,
+le cadre et l’ornement sont dessinés dans l’image ; aucun rendu SVG, police intégrée,
+positionnement de texte HTML ou bordure CSS n’est nécessaire sur une liseuse.
+Le JPEG est déclaré comme `cover-image` dans le manifeste EPUB 3 et par la
+métadonnée `cover` pour les lecteurs utilisant la convention EPUB 2.
+
+La page de lecture contient un seul `img`, dans `.literae-cover`, sans texte de
+couverture en double. Le chemin de la page existante est conservé. Exemple :
 
 ```html
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
 <head>
-  <title>Couverture</title>
+  <title>Confessions</title>
+  <meta name="calibre:cover" content="true"/>
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; }
-    .literae-cover { height: 100%; }
-    .literae-cover svg { display: block; width: 100%; height: 100%; }
+    html, body { margin: 0; padding: 0; height: 100%; background: #f7f1e5; }
+    .literae-cover { height: 100%; text-align: center; }
+    img {
+      display: block; height: 100%; width: auto;
+      max-width: 100%; max-height: 100%; object-fit: contain; margin: 0 auto;
+    }
   </style>
 </head>
 <body>
   <div class="literae-cover">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         width="100%" height="100%" viewBox="0 0 1568 2000"
-         preserveAspectRatio="xMidYMid meet">
-      <image width="1568" height="2000"
-             xlink:href="../EPUB/Saint-Augustin_Confessions.jpg"/>
-      <text x="784" y="160" text-anchor="middle"
-            font-family="serif" font-size="80" fill="white">Saint Augustin</text>
-      <text x="784" y="1580" text-anchor="middle"
-            font-family="serif" font-size="100" fill="white">Confessions</text>
-    </svg>
+    <img src="cover-classic.jpg" alt="Aurelius Augustinus – Confessions"
+         style="height:100%;width:auto;max-width:100%;margin:0 auto"/>
   </div>
 </body>
 </html>
 ```
 
-Adapter le chemin de l’image et le `viewBox` pour chaque ouvrage. Le ratio reste conservé : la couverture tient dans la largeur et la hauteur disponibles, sans déformation. Le nom `titlepage.xhtml` suffit pour l’exception ; la classe est utile si la page porte un autre nom.
+Une seule dimension est imposée à 100 %. Crosspoint traite les deux dimensions
+à 100 % comme le ratio de la fenêtre, ce qui déformerait l’image. Avec `height`
+et `width:auto`, il conserve le ratio intrinsèque et limite l’image à la place
+réellement disponible. Le cadre reste visible car il fait partie des pixels.
+Les proportions des écrans peuvent laisser des marges autour de la composition.
 
-Sur mobile, le lecteur utilise `svh` afin que sa hauteur ne change pas à chaque mouvement de la barre d’adresse. Les changements effectifs de dimensions (rotation, plein écran, largeur disponible) restent pris en compte. Le plein écran masque les outils et conserve le texte et la navigation inférieure ; on le quitte avec les commandes natives du navigateur (Échap sur ordinateur, retour sur Android).
+Dans le lecteur web, `client.ts` reconnaît `.literae-cover` ou la métadonnée de
+couverture et fixe la hauteur du document à celle du lecteur. `object-fit: contain`
+conserve l’image entière en portrait et paysage. Les réglages typographiques
+restent réservés aux autres pages. Ne pas utiliser `100vh` dans un EPUB : cette
+unité désigne la hauteur de l’iframe, calculée par EPUB.js.
+
+## Préparation des prochaines éditions
+
+[prepare-epub-frontmatter.py](../scripts/prepare-epub-frontmatter.py) est une étape
+finale commune, à exécuter sur les deux versions après préparation du contenu
+et des notes. Son catalogue bibliographique est
+[epub-frontmatter.json](../scripts/catalogs/epub-frontmatter.json).
+Un nouvel ouvrage doit y recevoir une entrée vérifiée avant publication.
+L’outil ne se connecte pas à Directus et n’écrase pas son entrée.
+
+Dépendances : Python, `lxml`, `Pillow`, police Noto Serif Regular disponible au
+chemin indiqué dans le script, ou fournie avec `--font`. La police sert uniquement
+à produire l’image, elle n’est pas intégrée à l’EPUB.
+
+```bash
+python scripts/prepare-epub-frontmatter.py source.epub final.epub \
+  --book-id UUID_DU_LIVRE --kind web --report rapport.json
+```
+
+Utiliser `--kind download` pour la variante liseuse. Les couvertures des cartes
+Directus reprennent la même image JPEG que les EPUB.
+
+Après remplacement dans Directus, reconstruire le site. Les URL des EPUB et des
+couvertures comportent une révision issue de l’identifiant, de `modified_on` et de
+`filesize`, afin de contourner les anciennes copies conservées en cache.
+
+Pour reprendre l’ancien fichier composite Sacy, appliquer d’abord
+[fix-sacy-duplicates.py](../scripts/fix-sacy-duplicates.py). Il retire physiquement
+les 22 chapitres des versions courtes et l’ancienne page de séparation, réordonne
+le spine et les deux sommaires, conserve chaque verset Furne et refuse tout lien
+non résolu vers une version supprimée. Ne pas le réappliquer à un fichier déjà
+corrigé : ses assertions exigent la structure source ancienne.
+
+## Contrôles du lot de 45 livres
+
+Les 90 fichiers passent EPUBCheck 5.4.0 sans erreur ni avertissement. L’audit
+compare toutes les ressources conservées, les métadonnées bibliographiques,
+les liens internes et les 3 038 documents de notes inchangés. Les différences
+sont limitées aux couvertures, avis éditoriaux, navigation associée et à la
+correction explicite de Sacy. Le doublon de page de titre ajouté à la Somme
+est retiré. Les associations web/téléchargement et noms d’auteurs EPUB récemment
+corrigés sont conservés. Les UUID Directus restent identiques, sauf celui de la
+version web de Sacy : des réponses de stockage incohérentes après remplacement
+ont nécessité un nouveau fichier. L’ancien reste accessible aux pages du site
+déjà chargées ; le catalogue associe désormais le nouveau fichier à son édition.
+
+`epub-frontmatter.spec.ts` vérifie les 45 couvertures web sur ordinateur et
+mobile portrait/paysage, ainsi que les 45 variantes liseuse dans le même lecteur :
+180 scénarios. Huit de ces parcours ont été relancés après les dernières corrections
+de Sacy et de la Somme ; les derniers chapitres d’Esther et Daniel s’ouvrent bien.
+Après publication, ces huit parcours passent également avec les fichiers servis
+par Directus. Deux contrôles supplémentaires valident le catalogue et le plein
+écran, y compris les nouvelles URL de couverture versionnées.
+
+Crosspoint a également été contrôlé avec son parseur C++ réel au commit
+`d9764e2b7c18230fb3673439229dd7b122fed835` : 90 pages de couverture × 3 tailles
+(480 × 800, 1 264 × 1 680, 800 × 480). Les 270 mises en page contiennent une seule
+image, sans texte séparé ni débordement et avec les proportions conservées.
+Le banc natif utilise les doubles matériels du projet Crosspoint : il teste
+le parseur XML/CSS, la lecture d’en-tête JPEG et la géométrie, sans simuler l’écran
+physique ni son décodage matériel.
+
+Pour KOReader, la structure suit sa lecture des couvertures EPUB via CREngine :
+JPEG standard, métadonnées de couverture et XHTML simple. Son code a été examiné ;
+l’application KOReader et les liseuses physiques n’ont pas été exécutées ici.
+Les sources consultées sont les dépôts
+[Crosspoint](https://github.com/crosspoint-reader/crosspoint-reader) et
+[KOReader](https://github.com/koreader/koreader).
+
+Les empreintes et identifiants publiés sont consignés dans
+[EPUB-FRONTMATTER-2026-10.json](EPUB-FRONTMATTER-2026-10.json).

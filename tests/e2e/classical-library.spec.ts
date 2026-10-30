@@ -80,9 +80,9 @@ for (const profile of profiles)
             );
             if (!frame) return null;
             const doc = frame.contentDocument!,
-              svg = doc.querySelector('svg')!,
-              bounds = svg.getBoundingClientRect();
-            const cropped = [...svg.querySelectorAll('text')].some((n) => {
+              graphic = doc.querySelector('svg, .literae-cover img')!,
+              bounds = graphic.getBoundingClientRect();
+            const cropped = [...graphic.querySelectorAll('text')].some((n) => {
               const b = n.getBoundingClientRect();
               return (
                 b.left < bounds.left - 1 ||

@@ -1,0 +1,3353 @@
+{
+  "date": "2026-10-30",
+  "scope": {
+    "books": 45,
+    "epub_files": 90,
+    "catalogue_covers": 45
+  },
+  "checks": {
+    "files": 90,
+    "books": 45,
+    "notes_documents_unchanged": 3038,
+    "epubcheck_errors": 0,
+    "epubcheck_warnings": 0,
+    "metadata_preserved": true,
+    "all_internal_links_valid": true,
+    "body_unchanged_outside_declared_frontmatter_and_sacy_repair": true
+  },
+  "browser": {
+    "scenarios_passed": 180,
+    "final_sacy_summa_reruns_passed": 8,
+    "published_sacy_summa_passed": 8,
+    "published_catalogue_fullscreen_passed": 2
+  },
+  "crosspoint": {
+    "commit": "d9764e2b7c18230fb3673439229dd7b122fed835",
+    "layout_cases_passed": 270,
+    "scope": "Native XML/CSS parser, JPEG header and geometry with hardware doubles; no physical device run"
+  },
+  "koreader": {
+    "scope": "Source review and standard JPEG/EPUB structure; application and physical devices not run"
+  },
+  "sacy": {
+    "old_testament_books": 46,
+    "new_testament_books": 27,
+    "esther_chapters": 16,
+    "daniel_chapters": 14,
+    "retained_edition": "Furne, Paris, 1841",
+    "removed_short_edition": "Bruxelles, 1855",
+    "retained_verses_unchanged": true
+  },
+  "epubs": [
+    {
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "kind": "web",
+      "file_id": "4d832cd3-a6ae-4d83-aa29-4cb50b2cacff",
+      "original_sha256": "681db57d65fdb354043048700bf2aab256c787eb6d0bbbf69c9a03e96a390ef1",
+      "corrected_sha256": "e077b08a78ee59d0d0669185879cbd0ecfb8d9062db5d60e1bc8032690072e2f",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 109652
+    },
+    {
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "kind": "download",
+      "file_id": "f4b4bbff-2510-4180-b6f9-cd3d36d144da",
+      "original_sha256": "791338e9182c01646b7ceb57c9bf269cb7bc5c01ccacb327989e8bedd7a37c89",
+      "corrected_sha256": "e116df9486777f8bc9f4ddf163964296b167be99e6a98560fef938ebd420b39d",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 109652
+    },
+    {
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "kind": "web",
+      "file_id": "6ff4c85b-811f-4289-ae8f-c363c26d0022",
+      "original_sha256": "abb29f61c64864c65aae703288ba38d9ddfba1ee2d867aad1e08d4194a7cfb5c",
+      "corrected_sha256": "59255f0a76b56896fabc14101a2f880af2a9946531c4f169749648ab189afdf3",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 97675
+    },
+    {
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "kind": "download",
+      "file_id": "d93a0198-f1fc-42d5-af56-994006d0296b",
+      "original_sha256": "94b9e5ad93fb638e624224b28f78323a5103bb9c16c27ba35134046ba806623e",
+      "corrected_sha256": "1a453f7afc43fd29cf9bd78e665300689f1e84dd7f7d2305623fba22cfb33152",
+      "changed_members": [
+        "EPUB/content.opf",
+        "EPUB/cover-classic.jpg",
+        "EPUB/text/title.xhtml",
+        "EPUB/text/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/text/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/text/title.xhtml"
+      ],
+      "cover_bytes": 97675
+    },
+    {
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "kind": "web",
+      "file_id": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4",
+      "original_sha256": "505142b50dd7a14eaaf17d4cffb02ee058120a6df0d7389cd210a3015924711e",
+      "corrected_sha256": "4e2af7e8c99d2cadb3f004844a2019119fee1bf209964b484b224ff37c7c2f32",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 98274
+    },
+    {
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "kind": "download",
+      "file_id": "3590baad-0f89-4800-b3d1-a1e468d68084",
+      "original_sha256": "329865e30309ca2b63f3c5f5aaab2d5591048c64682ddfa1db7d48864efa3d1d",
+      "corrected_sha256": "3670baf9c41fc47114e7cf1df24695107ee3166e1b64033c57d995786946b6cf",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 98274
+    },
+    {
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "kind": "web",
+      "file_id": "b167783c-8791-4fbe-9820-a8b10192431d",
+      "original_sha256": "71216359d2524c042c9237cf556e6eada3d2d0ada3d39eee945e30bc391c60e6",
+      "corrected_sha256": "ec141d9f616f5335dacf08bca4ba6d203339c0325e53ea3888f610ad45bc9834",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 89760
+    },
+    {
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "kind": "download",
+      "file_id": "032835c5-4a79-45e2-be82-4026ade38115",
+      "original_sha256": "afecd1dde753567156c66d77ef0d4c2fc27f699b4409c0df8e81283c67394b31",
+      "corrected_sha256": "aa550a22bd62dcf441c123c2ed55db2003e770df2d5dba99f3f5ca4de25f0440",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 89760
+    },
+    {
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "kind": "web",
+      "file_id": "0b28c8c3-7937-4f3c-afe2-309630acc018",
+      "original_sha256": "e0313363fa12077c0f12c879668890bc72c12a0ea8853101e518af0c5ecec122",
+      "corrected_sha256": "b0a5cb85beca74741df322b71af77837acdd39bfc3b425576c9d740708e36837",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 106683
+    },
+    {
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "kind": "download",
+      "file_id": "62472c16-9825-46ac-b2f1-51a3e2bb424a",
+      "original_sha256": "cb629db3b02f16eda9da52f32a2814c56a3d53c29bfa12648880f491fb8b29a2",
+      "corrected_sha256": "25883057b8e1a84e552ed53097b1399c5b8d32520ec19fba2590e4d9be9067c7",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 106683
+    },
+    {
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "kind": "web",
+      "file_id": "00d062c9-36a5-497c-ab35-e724e76a3e4e",
+      "original_sha256": "bff94d62f6f5b99b6b3d4283a6b50a3be403c697bf27a679a4b47fcf7184670a",
+      "corrected_sha256": "e5db7508da7d0cc240e0d379f486689b40ddeb5418e76b84514dd186d07b114a",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 107167
+    },
+    {
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "kind": "download",
+      "file_id": "6e77777b-3752-4be3-b5b8-2418d98d2f87",
+      "original_sha256": "1ad4a1ce948dceaa976deec8e48c3fc5b2d24c4070193c1cb8554d588aedc165",
+      "corrected_sha256": "b3a1fe3b13cdb21dbbb6ae7e84cb3b288cc72e3589d3a7e8ed15ec7a153c604a",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 107167
+    },
+    {
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "kind": "web",
+      "file_id": "6c589eaa-0667-49f8-892f-e75ca2b1fa2d",
+      "original_sha256": "a95d20030a179826bb0afdbe09e9b06d210aa3e2200b1887dfe81ea10820d81b",
+      "corrected_sha256": "fa92394d614c04f7c94e1ba0aef725ec99ac7ee14869be2ae97ce598b82bcf4b",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 99411
+    },
+    {
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "kind": "download",
+      "file_id": "6fca3c59-0b64-4fb8-9987-778162f097e2",
+      "original_sha256": "483e3f81bb0cd4e97b4808a9d2bd251ee848708483a9f17ecef10808561952d6",
+      "corrected_sha256": "6282be44e5f90c52996601f54928b5d719f47a200a58893a86bd4858c62bf204",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 99411
+    },
+    {
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "kind": "web",
+      "file_id": "bec96cc6-c2b4-4e32-9147-233726a15bad",
+      "original_sha256": "67c01886170eeb54b25a649acc52a4dbfd3774dd1a5fda64d00f612cfea9ddd8",
+      "corrected_sha256": "1327f3f7f33e68a4e3491467087652e6970f3f45b8b93a8c5b8ccc3e07aa2e72",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 104955
+    },
+    {
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "kind": "download",
+      "file_id": "c28adc3f-8674-4480-b83a-4a5057c49589",
+      "original_sha256": "107df6a50bc443c8efa94a5b51dd9ef2ed38d7a1d73b4e7e3215612ff625a4d2",
+      "corrected_sha256": "2d4dfd213b96e236e94417772c57338551770ec3ecf5e7997b1e28f202a78ccb",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 104955
+    },
+    {
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "kind": "web",
+      "file_id": "7fa44cee-e335-48b4-be27-aabcfd0f2bd1",
+      "original_sha256": "8f8e49767fbdf8db2d0b5ea83cdca397b1bd8a1b46396da54598ce1010e87d08",
+      "corrected_sha256": "d1aa26cb36f8582e14e728da23ae039b1e40c454c01ce07e4a312278e247c921",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 101599
+    },
+    {
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "kind": "download",
+      "file_id": "98dd3a07-1fa2-4efa-a170-150752ff6d6a",
+      "original_sha256": "fe62a34d90734a3216261516a13fdf11f4c5f8878a3f2a979c0378e2b046fb4f",
+      "corrected_sha256": "704b8d7092b7d1906919445deabfbe66061788e94aec04a49a7d5677bd08fb57",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 101599
+    },
+    {
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "kind": "web",
+      "file_id": "556e449b-0b45-4866-9744-789d5bdc2a59",
+      "original_sha256": "1fc9ada89bb90a16bea5cc7477b4f8ddcea02ed545df01db1ea1962bc66c5177",
+      "corrected_sha256": "5ed246ba13f7e70986777fcf991fc7d9099da3c282cd6e68237f88979b34bd2e",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml",
+        "OPS/foreword.xhtml",
+        "OPS/nav.xhtml",
+        "OPS/p072-000.xhtml",
+        "OPS/p072-001.xhtml",
+        "OPS/p072-002.xhtml",
+        "OPS/p072-003.xhtml",
+        "OPS/p072-004.xhtml",
+        "OPS/p072-005.xhtml",
+        "OPS/p072-006.xhtml",
+        "OPS/p072-007.xhtml",
+        "OPS/p072-008.xhtml",
+        "OPS/p072-009.xhtml",
+        "OPS/p072-010.xhtml",
+        "OPS/p072-011.xhtml",
+        "OPS/p072-012.xhtml",
+        "OPS/p072-013.xhtml",
+        "OPS/p075-000.xhtml",
+        "OPS/p075-001.xhtml",
+        "OPS/p075-002.xhtml",
+        "OPS/p075-003.xhtml",
+        "OPS/p075-004.xhtml",
+        "OPS/p075-005.xhtml",
+        "OPS/p075-006.xhtml",
+        "OPS/p075-007.xhtml",
+        "OPS/p075-008.xhtml",
+        "OPS/p075-009.xhtml",
+        "OPS/p075-010.xhtml",
+        "OPS/p075-011.xhtml",
+        "OPS/p075-012.xhtml",
+        "OPS/p075-013.xhtml",
+        "OPS/p075-014.xhtml",
+        "OPS/p075-015.xhtml",
+        "OPS/toc.ncx"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [
+        "OPS/foreword.xhtml"
+      ],
+      "cover_bytes": 109848,
+      "removed_members": [
+        "OPS/p019-000.xhtml",
+        "OPS/p019-001.xhtml",
+        "OPS/p019-002.xhtml",
+        "OPS/p019-003.xhtml",
+        "OPS/p019-004.xhtml",
+        "OPS/p019-005.xhtml",
+        "OPS/p019-006.xhtml",
+        "OPS/p019-007.xhtml",
+        "OPS/p019-008.xhtml",
+        "OPS/p019-009.xhtml",
+        "OPS/p029-000.xhtml",
+        "OPS/p029-001.xhtml",
+        "OPS/p029-002.xhtml",
+        "OPS/p029-003.xhtml",
+        "OPS/p029-004.xhtml",
+        "OPS/p029-005.xhtml",
+        "OPS/p029-006.xhtml",
+        "OPS/p029-007.xhtml",
+        "OPS/p029-008.xhtml",
+        "OPS/p029-009.xhtml",
+        "OPS/p029-010.xhtml",
+        "OPS/p029-011.xhtml",
+        "OPS/p070-000.xhtml"
+      ],
+      "sacy_deduplication": {
+        "original_sha256": "1fc9ada89bb90a16bea5cc7477b4f8ddcea02ed545df01db1ea1962bc66c5177",
+        "corrected_sha256": "6df3322d0d6a8922d979d587e96de74c28ab5e3b208597a026051b0684844664",
+        "changed_members": [
+          "OPS/content.opf",
+          "OPS/nav.xhtml",
+          "OPS/p072-000.xhtml",
+          "OPS/p072-001.xhtml",
+          "OPS/p072-002.xhtml",
+          "OPS/p072-003.xhtml",
+          "OPS/p072-004.xhtml",
+          "OPS/p072-005.xhtml",
+          "OPS/p072-006.xhtml",
+          "OPS/p072-007.xhtml",
+          "OPS/p072-008.xhtml",
+          "OPS/p072-009.xhtml",
+          "OPS/p072-010.xhtml",
+          "OPS/p072-011.xhtml",
+          "OPS/p072-012.xhtml",
+          "OPS/p072-013.xhtml",
+          "OPS/p075-000.xhtml",
+          "OPS/p075-001.xhtml",
+          "OPS/p075-002.xhtml",
+          "OPS/p075-003.xhtml",
+          "OPS/p075-004.xhtml",
+          "OPS/p075-005.xhtml",
+          "OPS/p075-006.xhtml",
+          "OPS/p075-007.xhtml",
+          "OPS/p075-008.xhtml",
+          "OPS/p075-009.xhtml",
+          "OPS/p075-010.xhtml",
+          "OPS/p075-011.xhtml",
+          "OPS/p075-012.xhtml",
+          "OPS/p075-013.xhtml",
+          "OPS/p075-014.xhtml",
+          "OPS/p075-015.xhtml",
+          "OPS/toc.ncx"
+        ],
+        "removed_members": [
+          "OPS/p019-000.xhtml",
+          "OPS/p019-001.xhtml",
+          "OPS/p019-002.xhtml",
+          "OPS/p019-003.xhtml",
+          "OPS/p019-004.xhtml",
+          "OPS/p019-005.xhtml",
+          "OPS/p019-006.xhtml",
+          "OPS/p019-007.xhtml",
+          "OPS/p019-008.xhtml",
+          "OPS/p019-009.xhtml",
+          "OPS/p029-000.xhtml",
+          "OPS/p029-001.xhtml",
+          "OPS/p029-002.xhtml",
+          "OPS/p029-003.xhtml",
+          "OPS/p029-004.xhtml",
+          "OPS/p029-005.xhtml",
+          "OPS/p029-006.xhtml",
+          "OPS/p029-007.xhtml",
+          "OPS/p029-008.xhtml",
+          "OPS/p029-009.xhtml",
+          "OPS/p029-010.xhtml",
+          "OPS/p029-011.xhtml",
+          "OPS/p070-000.xhtml"
+        ],
+        "old_testament_books": 46,
+        "new_testament_books": 27,
+        "esther_chapters": 16,
+        "daniel_chapters": 14,
+        "retained_verses_unchanged": true
+      },
+      "published_file_id": "5cd6f12b-6557-4359-a22c-7b37d9f45863"
+    },
+    {
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "kind": "download",
+      "file_id": "8918c635-2edb-4e3a-b13d-47c113632041",
+      "original_sha256": "44ecaf2fa75cccfbd93a76815145211d4bba43fef46f5cb11da9e0bfd28969ef",
+      "corrected_sha256": "e17a72548e2be57ee8c7c4d1607d9b33fd18e65bb229108e3a2475065b572bdd",
+      "changed_members": [
+        "OPS/content.opf",
+        "OPS/cover-classic.jpg",
+        "OPS/cover.xhtml",
+        "OPS/foreword.xhtml",
+        "OPS/nav.xhtml",
+        "OPS/p072-000.xhtml",
+        "OPS/p072-001.xhtml",
+        "OPS/p072-002.xhtml",
+        "OPS/p072-003.xhtml",
+        "OPS/p072-004.xhtml",
+        "OPS/p072-005.xhtml",
+        "OPS/p072-006.xhtml",
+        "OPS/p072-007.xhtml",
+        "OPS/p072-008.xhtml",
+        "OPS/p072-009.xhtml",
+        "OPS/p072-010.xhtml",
+        "OPS/p072-011.xhtml",
+        "OPS/p072-012.xhtml",
+        "OPS/p072-013.xhtml",
+        "OPS/p075-000.xhtml",
+        "OPS/p075-001.xhtml",
+        "OPS/p075-002.xhtml",
+        "OPS/p075-003.xhtml",
+        "OPS/p075-004.xhtml",
+        "OPS/p075-005.xhtml",
+        "OPS/p075-006.xhtml",
+        "OPS/p075-007.xhtml",
+        "OPS/p075-008.xhtml",
+        "OPS/p075-009.xhtml",
+        "OPS/p075-010.xhtml",
+        "OPS/p075-011.xhtml",
+        "OPS/p075-012.xhtml",
+        "OPS/p075-013.xhtml",
+        "OPS/p075-014.xhtml",
+        "OPS/p075-015.xhtml",
+        "OPS/toc.ncx"
+      ],
+      "cover_path": "OPS/cover.xhtml",
+      "image_path": "OPS/cover-classic.jpg",
+      "notice_paths": [
+        "OPS/foreword.xhtml"
+      ],
+      "cover_bytes": 109848,
+      "removed_members": [
+        "OPS/p019-000.xhtml",
+        "OPS/p019-001.xhtml",
+        "OPS/p019-002.xhtml",
+        "OPS/p019-003.xhtml",
+        "OPS/p019-004.xhtml",
+        "OPS/p019-005.xhtml",
+        "OPS/p019-006.xhtml",
+        "OPS/p019-007.xhtml",
+        "OPS/p019-008.xhtml",
+        "OPS/p019-009.xhtml",
+        "OPS/p029-000.xhtml",
+        "OPS/p029-001.xhtml",
+        "OPS/p029-002.xhtml",
+        "OPS/p029-003.xhtml",
+        "OPS/p029-004.xhtml",
+        "OPS/p029-005.xhtml",
+        "OPS/p029-006.xhtml",
+        "OPS/p029-007.xhtml",
+        "OPS/p029-008.xhtml",
+        "OPS/p029-009.xhtml",
+        "OPS/p029-010.xhtml",
+        "OPS/p029-011.xhtml",
+        "OPS/p070-000.xhtml"
+      ],
+      "sacy_deduplication": {
+        "original_sha256": "44ecaf2fa75cccfbd93a76815145211d4bba43fef46f5cb11da9e0bfd28969ef",
+        "corrected_sha256": "e0a1f1e830e6e2af2e38f87012dcdb173573ecb3c8ffa26acf5f3ca61427f1f8",
+        "changed_members": [
+          "OPS/content.opf",
+          "OPS/nav.xhtml",
+          "OPS/p072-000.xhtml",
+          "OPS/p072-001.xhtml",
+          "OPS/p072-002.xhtml",
+          "OPS/p072-003.xhtml",
+          "OPS/p072-004.xhtml",
+          "OPS/p072-005.xhtml",
+          "OPS/p072-006.xhtml",
+          "OPS/p072-007.xhtml",
+          "OPS/p072-008.xhtml",
+          "OPS/p072-009.xhtml",
+          "OPS/p072-010.xhtml",
+          "OPS/p072-011.xhtml",
+          "OPS/p072-012.xhtml",
+          "OPS/p072-013.xhtml",
+          "OPS/p075-000.xhtml",
+          "OPS/p075-001.xhtml",
+          "OPS/p075-002.xhtml",
+          "OPS/p075-003.xhtml",
+          "OPS/p075-004.xhtml",
+          "OPS/p075-005.xhtml",
+          "OPS/p075-006.xhtml",
+          "OPS/p075-007.xhtml",
+          "OPS/p075-008.xhtml",
+          "OPS/p075-009.xhtml",
+          "OPS/p075-010.xhtml",
+          "OPS/p075-011.xhtml",
+          "OPS/p075-012.xhtml",
+          "OPS/p075-013.xhtml",
+          "OPS/p075-014.xhtml",
+          "OPS/p075-015.xhtml",
+          "OPS/toc.ncx"
+        ],
+        "removed_members": [
+          "OPS/p019-000.xhtml",
+          "OPS/p019-001.xhtml",
+          "OPS/p019-002.xhtml",
+          "OPS/p019-003.xhtml",
+          "OPS/p019-004.xhtml",
+          "OPS/p019-005.xhtml",
+          "OPS/p019-006.xhtml",
+          "OPS/p019-007.xhtml",
+          "OPS/p019-008.xhtml",
+          "OPS/p019-009.xhtml",
+          "OPS/p029-000.xhtml",
+          "OPS/p029-001.xhtml",
+          "OPS/p029-002.xhtml",
+          "OPS/p029-003.xhtml",
+          "OPS/p029-004.xhtml",
+          "OPS/p029-005.xhtml",
+          "OPS/p029-006.xhtml",
+          "OPS/p029-007.xhtml",
+          "OPS/p029-008.xhtml",
+          "OPS/p029-009.xhtml",
+          "OPS/p029-010.xhtml",
+          "OPS/p029-011.xhtml",
+          "OPS/p070-000.xhtml"
+        ],
+        "old_testament_books": 46,
+        "new_testament_books": 27,
+        "esther_chapters": 16,
+        "daniel_chapters": 14,
+        "retained_verses_unchanged": true
+      }
+    },
+    {
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "kind": "web",
+      "file_id": "bbe1ffb9-2a57-4d7f-806e-e3803804d234",
+      "original_sha256": "e9171bfd8a10a952d49d00fae51bb586fd66bc135753ba71b78ec1c4cf036568",
+      "corrected_sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 82659
+    },
+    {
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "kind": "download",
+      "file_id": "9bfcd4f0-882d-4c95-b69c-9db8da35e329",
+      "original_sha256": "e9171bfd8a10a952d49d00fae51bb586fd66bc135753ba71b78ec1c4cf036568",
+      "corrected_sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 82659
+    },
+    {
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "kind": "web",
+      "file_id": "82a540ea-5760-4907-b41b-470b43c2ba7d",
+      "original_sha256": "e6702309516ac971c53a83a0a58eb6701fd0b870160a3a83f7f88957e856aff7",
+      "corrected_sha256": "9eb2e2872d8f514e63383f6711e0f417cdc7043ed948feb75be46f6f2fa27fb6",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 90308
+    },
+    {
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "kind": "download",
+      "file_id": "8dd9e6dd-cda1-4a5a-8691-2e651d0072f8",
+      "original_sha256": "406fa11a2e655b7befe6e41b1dcf4d5195b57d57c77be6a39a9b66e5f32d51be",
+      "corrected_sha256": "f88ad8a9df8fbea3bef693dd67741fb9cc8f52f0829862802a5c0e40e87eb013",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 90308
+    },
+    {
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "kind": "web",
+      "file_id": "073b6d87-4116-464d-a481-72e9aa09de56",
+      "original_sha256": "347b26b8443f16bcc1dea2292d029f3714321dc1140fab009c1b5cc2b7708267",
+      "corrected_sha256": "7174c1ef21afef0866970d263d5a876f0b0642287566ee6c748ffef894860005",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/text/cover.xhtml",
+        "EPUB/text/edition.xhtml",
+        "EPUB/text/title.xhtml"
+      ],
+      "cover_path": "EPUB/text/cover.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/text/edition.xhtml"
+      ],
+      "cover_bytes": 99208,
+      "removed_members": [
+        "EPUB/text/title.xhtml"
+      ]
+    },
+    {
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "kind": "download",
+      "file_id": "f6314f83-5cea-4cf5-bc96-bffa13d19fb8",
+      "original_sha256": "89f2f8a9844f9121ee47e570958c65da7d4ab92084b09579e763744fcc923b23",
+      "corrected_sha256": "70b945390f96a14d3fb21a41980504e24279a1ace42dc848e118acc3e60f47cf",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/text/cover.xhtml",
+        "EPUB/text/edition.xhtml",
+        "EPUB/text/title.xhtml"
+      ],
+      "cover_path": "EPUB/text/cover.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/text/edition.xhtml"
+      ],
+      "cover_bytes": 99208,
+      "removed_members": [
+        "EPUB/text/title.xhtml"
+      ]
+    },
+    {
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "kind": "web",
+      "file_id": "fcce9770-f941-4bcb-8109-68053359fa72",
+      "original_sha256": "458f0b6dfa9d5b1a0fbf3520acb1c16cbe57b6492fc8cb032d787ad08204ee52",
+      "corrected_sha256": "5f3f8344e06f482f634516a3fb93940e25c7e2312648ca7109964d95460d2ba5",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115646
+    },
+    {
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "kind": "download",
+      "file_id": "67b741bb-ae73-42fa-9d49-807800c509a4",
+      "original_sha256": "87c7854057d5710abf6759a45b11e879a338e7b0eb51daad314a53bd449d24ad",
+      "corrected_sha256": "54d9396d7900742511bb4492455ce052bbeb48693e8d0f8840a3b71a732475b8",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115646
+    },
+    {
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "kind": "web",
+      "file_id": "faef3586-1c50-4a8d-907c-d493a56af11a",
+      "original_sha256": "16e3c8a05e9f6d58683cdfb2d4721ee6495659e6bf0a706b7908b5370f5aaa1a",
+      "corrected_sha256": "38bf2aa440ad129bce82c873237ea71ec9474523221374a3bbd485b9b44d3628",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 128737
+    },
+    {
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "kind": "download",
+      "file_id": "334de9bc-783a-48fa-b6ed-64ec35df6c58",
+      "original_sha256": "95842d9b7c959473b3dd9d8bfb2722b0ac59f8d74ac29d2ce7b5fac0c9fabd2a",
+      "corrected_sha256": "73a031206e0a9df605612f63134b0cda49b9fc5606e0d3dcaed27c0551b564b2",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 128737
+    },
+    {
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "kind": "web",
+      "file_id": "af466133-4235-48f4-b93c-540772db5bff",
+      "original_sha256": "c5dcd0db0a4ac33e51e8d200f558097f325f8a3c06a59458cc3029608bf6522d",
+      "corrected_sha256": "f7fce94b2f77fb8ced40c4355a6412659652cf62b90898c0be85d18aa7481162",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 120547
+    },
+    {
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "kind": "download",
+      "file_id": "13a0f719-44f3-4f43-9ac5-59f868deeeed",
+      "original_sha256": "c7a9d70ae602e6d3473e4fa403c1e0cd3d75ba651fbd9f4e981a6fae411dd931",
+      "corrected_sha256": "c1b0c6268fc03ee139b62b9b4e67b3bada6b174768a4ff4576377f434482c606",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 120547
+    },
+    {
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "kind": "web",
+      "file_id": "428155e0-6dc4-4cd0-979c-32688d08211c",
+      "original_sha256": "74c1aaf1f044ae5d758aa92db68cbd8564d7588cdfe96ce3bfca0cb07f2ed7b2",
+      "corrected_sha256": "ffc8cc4a9e5800372a8259f1d41444e1ec3fd01e9d9f306286c34ee574ffb2f9",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 122445
+    },
+    {
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "kind": "download",
+      "file_id": "10fd78e5-19bb-4363-b08f-32acbe67d12e",
+      "original_sha256": "891fb37d1a78ae220faaef13815a8db44ff5766bf2d2198e27c80892d707d06c",
+      "corrected_sha256": "7d5e0b7cde9ae317cf75489991f009c9017f86c703a9c58bbe4782b93245be0c",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 122445
+    },
+    {
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "kind": "web",
+      "file_id": "cfd3706a-185c-458f-8ddd-7aeeadb3e487",
+      "original_sha256": "6919f6dba312420d85208f10c948230e695f34745b151c43048b8f8773b92ba4",
+      "corrected_sha256": "f7c1c987b0517d0c434cd04f68d45b8344a50dd10182727b91fd46ba491ff601",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117841
+    },
+    {
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "kind": "download",
+      "file_id": "d56b28e5-e196-4c3a-8c3b-815d36d1ca00",
+      "original_sha256": "f9a18444ef8fa06bcee1ef05ffbf01fd7deb5094e11e5fddde3ff00cc8647ff4",
+      "corrected_sha256": "a3865cc0de9200282e8bf0a23111c26230cf517ff173b8a5421e88c40b7f8a75",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117841
+    },
+    {
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "kind": "web",
+      "file_id": "86842fe4-c383-444c-a146-ed09065c516a",
+      "original_sha256": "d250621d55f2047aa0a1d115eed5507584ebfc080a8bed066cb848368691adb5",
+      "corrected_sha256": "c0d46b24e5def05a86a7c86fff8ea5fb85a6751d0755e7507420447ff33a802e",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 120671
+    },
+    {
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "kind": "download",
+      "file_id": "0dbb3b1b-b552-4401-b10d-63b05efe990a",
+      "original_sha256": "69e58a27914d366d7bb5f26ea56a44e4045f089a399b099f19d6d82783f77516",
+      "corrected_sha256": "71517b80d7e3f0426127efe43f419af1384ba6f77c2dfe2f460de52b321a4cc9",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 120671
+    },
+    {
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "kind": "web",
+      "file_id": "d6a8c726-e4f2-4244-9800-5acd112e1874",
+      "original_sha256": "d0210c61e84c2070fdd056d1522af48d437d8413ed6f9ae99a178a6216247072",
+      "corrected_sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115334
+    },
+    {
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "kind": "download",
+      "file_id": "6cd08ef3-8fb9-4822-88a4-d64ceca6b176",
+      "original_sha256": "d0210c61e84c2070fdd056d1522af48d437d8413ed6f9ae99a178a6216247072",
+      "corrected_sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115334
+    },
+    {
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "kind": "web",
+      "file_id": "20b12649-7e98-42f9-b152-c69af2a4d2f5",
+      "original_sha256": "ebbe04d279f074477688a8688c8d311744d0d890d9a44fcdd26ef32a0f4df2bd",
+      "corrected_sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 118911
+    },
+    {
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "kind": "download",
+      "file_id": "802db512-8b93-4881-aa19-70f8fddf5ce2",
+      "original_sha256": "ebbe04d279f074477688a8688c8d311744d0d890d9a44fcdd26ef32a0f4df2bd",
+      "corrected_sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 118911
+    },
+    {
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "kind": "web",
+      "file_id": "f277155c-6d85-4994-b600-c82638da8490",
+      "original_sha256": "9847e3f64887df2b9ae1e22aaa4e8a93247a0f871e3668e386164408f665ca6e",
+      "corrected_sha256": "38f10183a445e09a6c4a920e01c36c77aadd8493897c2df0a93757fc38eb117e",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117667
+    },
+    {
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "kind": "download",
+      "file_id": "2d4b04c2-8559-4c7b-9d60-8dedceb3a2f9",
+      "original_sha256": "7f17a5f96025d087779ec2d7fa828001456e3a6ac2cc3be203869e4c49296c11",
+      "corrected_sha256": "50c4301ba1097680181beeb39e68e9edbc8a09bcda5c5d754ba6faefd6b18f4a",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117667
+    },
+    {
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "kind": "web",
+      "file_id": "77b9d554-1292-40cf-bf27-98201bd907fe",
+      "original_sha256": "2c1b9ac586ed5b9624f8bdb3ccc650eaf6a593dabc56a63071c9baea2fa620fa",
+      "corrected_sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115899
+    },
+    {
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "kind": "download",
+      "file_id": "7c6bd750-f1f9-4a43-8f9c-5476994f2893",
+      "original_sha256": "2c1b9ac586ed5b9624f8bdb3ccc650eaf6a593dabc56a63071c9baea2fa620fa",
+      "corrected_sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 115899
+    },
+    {
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "kind": "web",
+      "file_id": "c2b5b95d-91f2-43b3-a5f1-2c249bf4b858",
+      "original_sha256": "d93a48533d227f439c065ef6a4b43dc2cb4824717446e79282e4805ca2fdec13",
+      "corrected_sha256": "379ec3ef30c98aba2c8e147b90c96b83bd821277fd339a2a7bd157141c300492",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 135724
+    },
+    {
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "kind": "download",
+      "file_id": "c7a4ae9d-2e8f-4c1f-8309-f3d1d302626b",
+      "original_sha256": "fd0ad384fd2cdf74f178b67761e29637b5ba85b0e9ac3cbbcff137fa62c94c09",
+      "corrected_sha256": "3921f273dad04b7fc3feaba7a2554a4dc74b18dc47c35c5e7f21153b7acd93df",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 135724
+    },
+    {
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "kind": "web",
+      "file_id": "a3e842e0-cce5-4dd7-a497-718e0df92e92",
+      "original_sha256": "d77902f87a4ad6fc7cdf03427505da9c69264fe8f453f0ee2018a126347332cf",
+      "corrected_sha256": "3ab66bf3802886922bdad3cb0146745ec55e2fa0fb16a76bb7a8a47d9e592f98",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 133574
+    },
+    {
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "kind": "download",
+      "file_id": "7a3fc0a2-020f-48de-ac35-bd36c0c0324b",
+      "original_sha256": "09276719580c585322f4ed302a9e2b5b9e851cbe88aa5315c6bd1eb72f3f1409",
+      "corrected_sha256": "b669ef39e1aae58d35b686cbeeabb9ed1b7ca5a87dfdc806b2cfb1c42d91be08",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 133574
+    },
+    {
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "kind": "web",
+      "file_id": "1d19870f-d464-449c-abb6-4e750e1435a4",
+      "original_sha256": "0d8c458be451fe4390d4e2c709e562ad3b36ee8763555f5669ef7a76750ca114",
+      "corrected_sha256": "9522e58f9f23cab1206027f8150ac291fc4ea906be672e05ed1ea3f1421ac459",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 123599
+    },
+    {
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "kind": "download",
+      "file_id": "0b4420a5-c8ff-4f92-83c1-6f8d5738dedd",
+      "original_sha256": "67c688a3a5b9a59e9c5f065a0549fea30ccbd22624afbbf1511262895cd706ca",
+      "corrected_sha256": "6a72df071985fe3da1d95e76bb6dbbec02c756c2d7ea3619061c89bef9fe535f",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 123599
+    },
+    {
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "kind": "web",
+      "file_id": "3b590ab9-498f-4223-a7f7-fd17e37ba078",
+      "original_sha256": "ab47551e06e48ef021f9aad14dd928e6ca3593dd558db65c85cd7cce4a8df0ca",
+      "corrected_sha256": "71863beb98dd0be101c5f6c5615cc91c7b105b810e0bb3f8aa109ef645ecab06",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 134990
+    },
+    {
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "kind": "download",
+      "file_id": "05901ca5-ba2a-40c6-9cfe-7da9120f7aff",
+      "original_sha256": "bf2046d4081c7a22cb54abee3afb7a548cea7d4843a5f7e2c539d1a5ecbb0b20",
+      "corrected_sha256": "08f76d802ce348a861822652ffd92ff411724d22905a13c4650f6372a8807818",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 134990
+    },
+    {
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "kind": "web",
+      "file_id": "99fac3db-05da-45bc-a9a7-739a84a4d0fe",
+      "original_sha256": "91a6d1924376fd21379bd461e84be2c1990ea704ca27643d1d42398a32b88108",
+      "corrected_sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 129006
+    },
+    {
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "kind": "download",
+      "file_id": "36625aa5-7795-4cb0-87aa-0244223a921b",
+      "original_sha256": "91a6d1924376fd21379bd461e84be2c1990ea704ca27643d1d42398a32b88108",
+      "corrected_sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 129006
+    },
+    {
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "kind": "web",
+      "file_id": "eec8d173-ba17-4588-8ba7-496d7f17adae",
+      "original_sha256": "9b25e1e459e10f9b1f2975d6ca6effd3d32e018eb981d441a49c72f8fa260bff",
+      "corrected_sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 123158
+    },
+    {
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "kind": "download",
+      "file_id": "7438645b-42d4-4032-87fb-aadcaa65e9c6",
+      "original_sha256": "9b25e1e459e10f9b1f2975d6ca6effd3d32e018eb981d441a49c72f8fa260bff",
+      "corrected_sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 123158
+    },
+    {
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "kind": "web",
+      "file_id": "e1013e12-4ccc-4132-bea1-0c746f1bcb99",
+      "original_sha256": "5e3f8010b31c024d47eb398591def28c56502cb71d655415942e36c392284563",
+      "corrected_sha256": "51bad32a03077127d215d69076986ef9a086fc6d8e58f7bba6873894400b1165",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 132864
+    },
+    {
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "kind": "download",
+      "file_id": "31674d0a-6e0a-4058-a12c-3424ef6fde83",
+      "original_sha256": "09c660bee7e569d65c9dd69ffa9baff649a8497e664f9f9f491b02f6851943f5",
+      "corrected_sha256": "82e7fe29504aedb7810110b8a57a5301c3d3554819e9ddc7d495891598cc8b79",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 132864
+    },
+    {
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "kind": "web",
+      "file_id": "3d74f7c5-533a-4078-aec8-7c3f360224a8",
+      "original_sha256": "9f0f8ec18462feeb1faee72c336218ddf3d7e251ba583aedbb4c626b159077ee",
+      "corrected_sha256": "8d19c2afcde336d31145b44e3fa51da25f007b829a3033847cc5237f193402f8",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 98694
+    },
+    {
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "kind": "download",
+      "file_id": "876a2551-3670-49fa-a1d8-744cff091617",
+      "original_sha256": "c0789c579581c62fae3f6f330d42d6054f2658a3c29b704e298a16106a42d0d1",
+      "corrected_sha256": "f0ba15d1c0b095d22602ed170354eb66db39d931cb5c1e452702caebe696c2f9",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 98694
+    },
+    {
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "kind": "web",
+      "file_id": "bcd2ce83-356c-494f-acdb-79080d09eb58",
+      "original_sha256": "f0df74e8ba0c0c2b45ca385380ff7848e254535eacaa00776d398aae855fef73",
+      "corrected_sha256": "80173b6def3aa7ef067400e5527c3542d1c35f1e046e9080da0ffd25111cab34",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 111314
+    },
+    {
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "kind": "download",
+      "file_id": "da42304d-be3e-4d83-b3c6-5a4fedb6d26c",
+      "original_sha256": "07c983d72d5895f417f7f059fd8a1d2a49fc6af470b31f4df26fc2e7b50bf088",
+      "corrected_sha256": "75fc01023729af3f9fe4c611a2cdd16bc1f8221a243d7c626671b23d94aae659",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 111314
+    },
+    {
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "kind": "web",
+      "file_id": "8082b038-6557-44b9-9456-5c58bcd2d7d5",
+      "original_sha256": "5f4a4f046b271c3bc7eee3fc8ea98296d8d0061bc6e4a2ba313d464db74e4034",
+      "corrected_sha256": "7614f97353764fcd65459fd671d8451c31744636923d19b70e7d28f62ad6ca8c",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117447
+    },
+    {
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "kind": "download",
+      "file_id": "07c668e4-7c7a-485a-8dfc-18719c0bec05",
+      "original_sha256": "c209a53cbc6f67b4aa6b4bb39de4c876bc5e2334b927ca0c5fa070c2135c4c1d",
+      "corrected_sha256": "aefef6f9eae2aa572e84e92bfd77fe7a72c1211ef80b2ed32f1a2bd779f1e9df",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 117447
+    },
+    {
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "kind": "web",
+      "file_id": "b767e7b1-d213-45eb-a89a-bf43e6d9af31",
+      "original_sha256": "c61691c99e71ad9b34eb40137c2e8436d201e5bc539f68b1026412c9cafae5d2",
+      "corrected_sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 103797
+    },
+    {
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "kind": "download",
+      "file_id": "f249065b-37a7-42f4-9f31-0aa2a4882cc3",
+      "original_sha256": "c61691c99e71ad9b34eb40137c2e8436d201e5bc539f68b1026412c9cafae5d2",
+      "corrected_sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [],
+      "cover_bytes": 103797
+    },
+    {
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "kind": "web",
+      "file_id": "47e2d4d1-52d6-451a-9419-d574da81c5da",
+      "original_sha256": "4c901838e7f958c059640e8617599ddff0853190d15b53ed92d5e07ad8f91d72",
+      "corrected_sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 86570
+    },
+    {
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "kind": "download",
+      "file_id": "499a7b8d-9ca6-484b-925b-1923b89e126b",
+      "original_sha256": "4c901838e7f958c059640e8617599ddff0853190d15b53ed92d5e07ad8f91d72",
+      "corrected_sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 86570
+    },
+    {
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "kind": "web",
+      "file_id": "c928533c-a958-45ab-bb22-713d03545a6c",
+      "original_sha256": "fa62338b14ae7a89fd24919ed0d22a356f5e39947d7d4fed2bf10ac2c0e8b40a",
+      "corrected_sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 84959
+    },
+    {
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "kind": "download",
+      "file_id": "c5bd78f1-9fa1-4780-8fbd-804128472794",
+      "original_sha256": "fa62338b14ae7a89fd24919ed0d22a356f5e39947d7d4fed2bf10ac2c0e8b40a",
+      "corrected_sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 84959
+    },
+    {
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "kind": "web",
+      "file_id": "2b873569-9272-4f5c-b875-9d5830509370",
+      "original_sha256": "09fb3880d5f84724d2c09f230b683b8b36295d01015eebcc44d7f798aad5edc3",
+      "corrected_sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 84412
+    },
+    {
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "kind": "download",
+      "file_id": "839ed980-588e-4966-a37c-5292bf4c3b4a",
+      "original_sha256": "09fb3880d5f84724d2c09f230b683b8b36295d01015eebcc44d7f798aad5edc3",
+      "corrected_sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 84412
+    },
+    {
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "kind": "web",
+      "file_id": "f8f88460-58d0-480f-9d3a-3094354e49a1",
+      "original_sha256": "d1c005680a1fde2e211862ca36f4e2cfeb2f4f88aee82cb703a3cee7cc1b5eb9",
+      "corrected_sha256": "0de55ce0aa1c3ea02467b1abd2690eb6f94e37adcc0e8a8b7476d466fa8cc39b",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 83722
+    },
+    {
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "kind": "download",
+      "file_id": "4d711acf-5229-438f-a90c-1561ad3a8a60",
+      "original_sha256": "0d58a867fca8313e84e9392b10676f238f20db0ff263769bd3b177d520b1d63c",
+      "corrected_sha256": "2de2968bb7cac6af1c6c7f840265952ced73992c5534dc37a68ba2e75ee7a891",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 83722
+    },
+    {
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "kind": "web",
+      "file_id": "76deb0a3-d2ee-4165-ad47-6022d34638a6",
+      "original_sha256": "76d9621c767dd9d8713d81dae96cdee1b1430b697538c22f4aec6a77d8f0f0c6",
+      "corrected_sha256": "00b49b7c00cde06a7ad086b9622363898e9cc68574a301c53adfb36d25a00c28",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 85402
+    },
+    {
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "kind": "download",
+      "file_id": "4103ac44-fd3d-476c-a03b-57603eebfa95",
+      "original_sha256": "a4bea306fe11374404b93e1c633447588f26c26b0ccda3781c936f983ea330df",
+      "corrected_sha256": "827f3f33f8912e67c913f72d6be5ed7b3cc8aee37c54d32ff6b56d445c2882b2",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 85402
+    },
+    {
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "kind": "web",
+      "file_id": "71e981da-9d05-4fa4-867c-dde0536b3817",
+      "original_sha256": "59f83765db67097bd8094a6e286b967fadf1859d7d5ce5d320399438a86ca527",
+      "corrected_sha256": "6a0fee900b00779e5b34ba3d3118a1e8ae3d323bbd1d6ed180beb30fafe8004c",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 100816
+    },
+    {
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "kind": "download",
+      "file_id": "4f904f2f-404b-48c3-89a5-7faeb3812ef7",
+      "original_sha256": "e894b18b100632ba382726ee081a17245a6847cc4d0c4fb575deff51824e95e0",
+      "corrected_sha256": "c93ebadce62f957acd9522fa80936db45e33f5903df77c2a1a604cb791d2a9a7",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 100816
+    },
+    {
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "kind": "web",
+      "file_id": "9c6edc10-9163-4ada-9e5e-3e8fcbd6436b",
+      "original_sha256": "70139084eecaa3af087a598227fe26b0a9e28d151396e08852c62a21501fd5bb",
+      "corrected_sha256": "e85829de3cd3050b5c6e2b7d6469dce97d50ef365430d65250b8aa887e0795a3",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 90843
+    },
+    {
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "kind": "download",
+      "file_id": "78a5e2a1-5d51-4f8d-95b1-1514bb06cf16",
+      "original_sha256": "b7accbc24d464d2680bb1d6065b35d96ce615d4a35577b36643a680b23d7f6a8",
+      "corrected_sha256": "7498355d9646b7426e6cbe927627763be15bf66d7ea82950e111a18cab85435c",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 90843
+    },
+    {
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "kind": "web",
+      "file_id": "cfc03a32-f5bd-4f63-8753-a8f738ed66a2",
+      "original_sha256": "e87ad55e0c48edead68ff41fa4f0a4e92cbdc77473d9d48a7515b55841baae9b",
+      "corrected_sha256": "a24699f0d1127368245fd1ace13b4f926b0fca37990e37e3a50ba375b6497099",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 98106
+    },
+    {
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "kind": "download",
+      "file_id": "36dbba41-3167-46ac-a6ec-007303ca45ff",
+      "original_sha256": "f585c67e87ef87a0536fc05c22afe8d4a413adc6ae2d3b941837985428e906ec",
+      "corrected_sha256": "97fa75e3b744c4767bbc57bc3ba162b5040ecd66efdbd6b04e9419acc1eb97a5",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 98106
+    },
+    {
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "kind": "web",
+      "file_id": "c27a8bdb-f3b6-4b60-8bdc-c408300efc0f",
+      "original_sha256": "6f614e4e6e8c41426a1b0a4f728e509d0dd6a7f225b261d2bf558788ea6c43ce",
+      "corrected_sha256": "9cec2262890ae2b3160c3ced08125865cca3cb5f2e592596a29ca30f1bc54041",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 92560
+    },
+    {
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "kind": "download",
+      "file_id": "8a5c1af5-5ce7-4ff3-9223-65daf0923741",
+      "original_sha256": "81a6598fd0e78bfa641f953f1ea4236a02115d0fefa17920d133f149efe2c81a",
+      "corrected_sha256": "e92ebe97d211602fd03ccc6ab75d8a023bfb1b0574ef7e12bf0f4e28432e5994",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 92560
+    },
+    {
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "kind": "web",
+      "file_id": "ae775dbe-9c07-42f8-b07a-08d9aaed5561",
+      "original_sha256": "a89304e0093d02a1429e5f36724dfcfa6408bf414221b3947240e587b38b6d49",
+      "corrected_sha256": "ecea8c84eabea15ce69a8c6b69c953b7ad1313983843313ae418ac1c0fe8062f",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 93943
+    },
+    {
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "kind": "download",
+      "file_id": "412fdaea-7e30-4f80-b27e-3e8950fb0456",
+      "original_sha256": "0b1e7e1b79757781dcc7d022f802fb7e6b37fb8825fc86fee49377267b2c9b2d",
+      "corrected_sha256": "1575b582209ea131d3f6384a512aeac8ad9ceaae6e330da3d45152fd94b96590",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 93943
+    },
+    {
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "kind": "web",
+      "file_id": "890cf326-ac77-4df4-b058-e924e222992b",
+      "original_sha256": "86d757eba4b361afcfd62cbb2e85e3e786eff51cc6b6b5b9e56ff1c5d37f7b93",
+      "corrected_sha256": "de03e18081f63f306d8f3bda93056278d88c967a4e2cb824c856240215cd0d66",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 85228
+    },
+    {
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "kind": "download",
+      "file_id": "65a6146d-f1a3-4496-b0f5-88917c54c7ab",
+      "original_sha256": "e0fdac290d3e43cd2c64e59dc4b386a89e53038941d98eee5884f0f237867ad3",
+      "corrected_sha256": "6eae2e910aa4edaca5776d1b05cbefe9f7bbb95f179618baeb71304557cae864",
+      "changed_members": [
+        "EPUB/cover-classic.jpg",
+        "EPUB/foreword.xhtml",
+        "EPUB/nav.xhtml",
+        "EPUB/package.opf",
+        "EPUB/titlepage.xhtml"
+      ],
+      "cover_path": "EPUB/titlepage.xhtml",
+      "image_path": "EPUB/cover-classic.jpg",
+      "notice_paths": [
+        "EPUB/foreword.xhtml"
+      ],
+      "cover_bytes": 85228
+    }
+  ],
+  "public_files_verified": [
+    {
+      "file_id": "4d832cd3-a6ae-4d83-aa29-4cb50b2cacff",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "kind": "web",
+      "sha256": "e077b08a78ee59d0d0669185879cbd0ecfb8d9062db5d60e1bc8032690072e2f",
+      "filename": "Thomas à Kempis - L’Imitation de Jésus-Christ (Traduction de Félicité de Lamennais · 1859).epub",
+      "modified_on": "2026-10-30T21:19:05.499Z",
+      "ok": true
+    },
+    {
+      "file_id": "f4b4bbff-2510-4180-b6f9-cd3d36d144da",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "kind": "download",
+      "sha256": "e116df9486777f8bc9f4ddf163964296b167be99e6a98560fef938ebd420b39d",
+      "filename": "Thomas à Kempis - L’Imitation de Jésus-Christ (Traduction de Félicité de Lamennais · 1859).epub",
+      "modified_on": "2026-10-30T21:19:05.126Z",
+      "ok": true
+    },
+    {
+      "file_id": "6ff4c85b-811f-4289-ae8f-c363c26d0022",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "kind": "web",
+      "sha256": "59255f0a76b56896fabc14101a2f880af2a9946531c4f169749648ab189afdf3",
+      "filename": "Saint Augustin - Confessions (Traduction de M. Moreau · 1864).epub",
+      "modified_on": "2026-10-30T21:19:05.599Z",
+      "ok": true
+    },
+    {
+      "file_id": "d93a0198-f1fc-42d5-af56-994006d0296b",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "kind": "download",
+      "sha256": "1a453f7afc43fd29cf9bd78e665300689f1e84dd7f7d2305623fba22cfb33152",
+      "filename": "Saint Augustin - Confessions (Traduction de M. Moreau · 1864).epub",
+      "modified_on": "2026-10-30T21:19:05.356Z",
+      "ok": true
+    },
+    {
+      "file_id": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "kind": "web",
+      "sha256": "4e2af7e8c99d2cadb3f004844a2019119fee1bf209964b484b224ff37c7c2f32",
+      "filename": "Saint Augustin - La Cité de Dieu (Traduction d’Émile Saisset · 1869).epub",
+      "modified_on": "2026-10-30T21:19:05.305Z",
+      "ok": true
+    },
+    {
+      "file_id": "3590baad-0f89-4800-b3d1-a1e468d68084",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "kind": "download",
+      "sha256": "3670baf9c41fc47114e7cf1df24695107ee3166e1b64033c57d995786946b6cf",
+      "filename": "Saint Augustin - La Cité de Dieu (Traduction d’Émile Saisset · 1869).epub",
+      "modified_on": "2026-10-30T21:19:05.646Z",
+      "ok": true
+    },
+    {
+      "file_id": "b167783c-8791-4fbe-9820-a8b10192431d",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "kind": "web",
+      "sha256": "ec141d9f616f5335dacf08bca4ba6d203339c0325e53ea3888f610ad45bc9834",
+      "filename": "Blaise Pascal - Pensées (Seconde édition Desprez · 1670).epub",
+      "modified_on": "2026-10-30T21:19:05.532Z",
+      "ok": true
+    },
+    {
+      "file_id": "032835c5-4a79-45e2-be82-4026ade38115",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "kind": "download",
+      "sha256": "aa550a22bd62dcf441c123c2ed55db2003e770df2d5dba99f3f5ca4de25f0440",
+      "filename": "Blaise Pascal - Pensées (Seconde édition Desprez · 1670).epub",
+      "modified_on": "2026-10-30T21:19:05.722Z",
+      "ok": true
+    },
+    {
+      "file_id": "0b28c8c3-7937-4f3c-afe2-309630acc018",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "kind": "web",
+      "sha256": "b0a5cb85beca74741df322b71af77837acdd39bfc3b425576c9d740708e36837",
+      "filename": "Jacques-Bénigne Bossuet - Oraisons funèbres (Préface de René Doumic · 1928).epub",
+      "modified_on": "2026-10-30T21:19:05.899Z",
+      "ok": true
+    },
+    {
+      "file_id": "62472c16-9825-46ac-b2f1-51a3e2bb424a",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "kind": "download",
+      "sha256": "25883057b8e1a84e552ed53097b1399c5b8d32520ec19fba2590e4d9be9067c7",
+      "filename": "Jacques-Bénigne Bossuet - Oraisons funèbres (Préface de René Doumic · 1928).epub",
+      "modified_on": "2026-10-30T21:19:05.777Z",
+      "ok": true
+    },
+    {
+      "file_id": "00d062c9-36a5-497c-ab35-e724e76a3e4e",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "kind": "web",
+      "sha256": "e5db7508da7d0cc240e0d379f486689b40ddeb5418e76b84514dd186d07b114a",
+      "filename": "Jacques-Bénigne Bossuet - Traité de la concupiscence (Introduction et notes d’André Pératé · 1908).epub",
+      "modified_on": "2026-10-30T21:19:05.934Z",
+      "ok": true
+    },
+    {
+      "file_id": "6e77777b-3752-4be3-b5b8-2418d98d2f87",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "kind": "download",
+      "sha256": "b3a1fe3b13cdb21dbbb6ae7e84cb3b288cc72e3589d3a7e8ed15ec7a153c604a",
+      "filename": "Jacques-Bénigne Bossuet - Traité de la concupiscence (Introduction et notes d’André Pératé · 1908).epub",
+      "modified_on": "2026-10-30T21:19:05.961Z",
+      "ok": true
+    },
+    {
+      "file_id": "6c589eaa-0667-49f8-892f-e75ca2b1fa2d",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "kind": "web",
+      "sha256": "fa92394d614c04f7c94e1ba0aef725ec99ac7ee14869be2ae97ce598b82bcf4b",
+      "filename": "Joseph de Maistre - Considérations sur la France (Édition Rusand · 1829).epub",
+      "modified_on": "2026-10-30T21:19:06.060Z",
+      "ok": true
+    },
+    {
+      "file_id": "6fca3c59-0b64-4fb8-9987-778162f097e2",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "kind": "download",
+      "sha256": "6282be44e5f90c52996601f54928b5d719f47a200a58893a86bd4858c62bf204",
+      "filename": "Joseph de Maistre - Considérations sur la France (Édition Rusand · 1829).epub",
+      "modified_on": "2026-10-30T21:19:06.083Z",
+      "ok": true
+    },
+    {
+      "file_id": "bec96cc6-c2b4-4e32-9147-233726a15bad",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "kind": "web",
+      "sha256": "1327f3f7f33e68a4e3491467087652e6970f3f45b8b93a8c5b8ccc3e07aa2e72",
+      "filename": "Bible Crampon 1923.epub",
+      "modified_on": "2026-10-30T21:19:06.207Z",
+      "ok": true
+    },
+    {
+      "file_id": "c28adc3f-8674-4480-b83a-4a5057c49589",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "kind": "download",
+      "sha256": "2d4dfd213b96e236e94417772c57338551770ec3ecf5e7997b1e28f202a78ccb",
+      "filename": "Bible Crampon 1923.epub",
+      "modified_on": "2026-10-30T21:19:06.151Z",
+      "ok": true
+    },
+    {
+      "file_id": "7fa44cee-e335-48b4-be27-aabcfd0f2bd1",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "kind": "web",
+      "sha256": "d1aa26cb36f8582e14e728da23ae039b1e40c454c01ce07e4a312278e247c921",
+      "filename": "Bible Glaire 1905.epub",
+      "modified_on": "2026-10-30T21:19:06.329Z",
+      "ok": true
+    },
+    {
+      "file_id": "98dd3a07-1fa2-4efa-a170-150752ff6d6a",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "kind": "download",
+      "sha256": "704b8d7092b7d1906919445deabfbe66061788e94aec04a49a7d5677bd08fb57",
+      "filename": "Bible Glaire 1905.epub",
+      "modified_on": "2026-10-30T21:19:06.273Z",
+      "ok": true
+    },
+    {
+      "file_id": "5cd6f12b-6557-4359-a22c-7b37d9f45863",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "kind": "web",
+      "sha256": "5ed246ba13f7e70986777fcf991fc7d9099da3c282cd6e68237f88979b34bd2e",
+      "filename": "Bible Sacy.epub",
+      "modified_on": "2026-10-30T21:22:03.230Z",
+      "ok": true,
+      "previous_file_id": "556e449b-0b45-4866-9744-789d5bdc2a59"
+    },
+    {
+      "file_id": "8918c635-2edb-4e3a-b13d-47c113632041",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "kind": "download",
+      "sha256": "e17a72548e2be57ee8c7c4d1607d9b33fd18e65bb229108e3a2475065b572bdd",
+      "filename": "Bible Sacy.epub",
+      "modified_on": "2026-10-30T21:19:06.428Z",
+      "ok": true
+    },
+    {
+      "file_id": "bbe1ffb9-2a57-4d7f-806e-e3803804d234",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "kind": "web",
+      "sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "filename": "René Bazin - L’Isolée (Texte de 1905 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:06.463Z",
+      "ok": true
+    },
+    {
+      "file_id": "9bfcd4f0-882d-4c95-b69c-9db8da35e329",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "kind": "download",
+      "sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "filename": "René Bazin - L’Isolée (Texte de 1905 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:06.516Z",
+      "ok": true
+    },
+    {
+      "file_id": "82a540ea-5760-4907-b41b-470b43c2ba7d",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "kind": "web",
+      "sha256": "9eb2e2872d8f514e63383f6711e0f417cdc7043ed948feb75be46f6f2fa27fb6",
+      "filename": "René Bazin - La Terre qui meurt (Texte de 1899 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:06.539Z",
+      "ok": true
+    },
+    {
+      "file_id": "8dd9e6dd-cda1-4a5a-8691-2e651d0072f8",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "kind": "download",
+      "sha256": "f88ad8a9df8fbea3bef693dd67741fb9cc8f52f0829862802a5c0e40e87eb013",
+      "filename": "René Bazin - La Terre qui meurt (Texte de 1899 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:06.711Z",
+      "ok": true
+    },
+    {
+      "file_id": "073b6d87-4116-464d-a481-72e9aa09de56",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "kind": "web",
+      "sha256": "7174c1ef21afef0866970d263d5a876f0b0642287566ee6c748ffef894860005",
+      "filename": "St. Thomas d'Aquin - Somme Théologique (Édition latine originale).epub",
+      "modified_on": "2026-10-30T21:19:06.808Z",
+      "ok": true
+    },
+    {
+      "file_id": "f6314f83-5cea-4cf5-bc96-bffa13d19fb8",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "kind": "download",
+      "sha256": "70b945390f96a14d3fb21a41980504e24279a1ace42dc848e118acc3e60f47cf",
+      "filename": "St. Thomas d'Aquin - Somme Théologique (Édition latine originale).epub",
+      "modified_on": "2026-10-30T21:19:06.979Z",
+      "ok": true
+    },
+    {
+      "file_id": "fcce9770-f941-4bcb-8109-68053359fa72",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "kind": "web",
+      "sha256": "5f3f8344e06f482f634516a3fb93940e25c7e2312648ca7109964d95460d2ba5",
+      "filename": "Saint Augustin - Explication du Sermon sur la montagne (Traduction de l’abbé Devoille · 1867).epub",
+      "modified_on": "2026-10-30T21:19:06.986Z",
+      "ok": true
+    },
+    {
+      "file_id": "67b741bb-ae73-42fa-9d49-807800c509a4",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "kind": "download",
+      "sha256": "54d9396d7900742511bb4492455ce052bbeb48693e8d0f8840a3b71a732475b8",
+      "filename": "Saint Augustin - Explication du Sermon sur la montagne (Traduction de l’abbé Devoille · 1867).epub",
+      "modified_on": "2026-10-30T21:19:07.153Z",
+      "ok": true
+    },
+    {
+      "file_id": "faef3586-1c50-4a8d-907c-d493a56af11a",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "kind": "web",
+      "sha256": "38bf2aa440ad129bce82c873237ea71ec9474523221374a3bbd485b9b44d3628",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’Évangile selon saint Matthieu (Traduction sous la direction de M. Jeannin · 1865).epub",
+      "modified_on": "2026-10-30T21:19:07.150Z",
+      "ok": true
+    },
+    {
+      "file_id": "334de9bc-783a-48fa-b6ed-64ec35df6c58",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "kind": "download",
+      "sha256": "73a031206e0a9df605612f63134b0cda49b9fc5606e0d3dcaed27c0551b564b2",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’Évangile selon saint Matthieu (Traduction sous la direction de M. Jeannin · 1865).epub",
+      "modified_on": "2026-10-30T21:19:07.190Z",
+      "ok": true
+    },
+    {
+      "file_id": "af466133-4235-48f4-b93c-540772db5bff",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "kind": "web",
+      "sha256": "f7fce94b2f77fb8ced40c4355a6412659652cf62b90898c0be85d18aa7481162",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Philippiens (Traduction de l’abbé Collery · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.213Z",
+      "ok": true
+    },
+    {
+      "file_id": "428155e0-6dc4-4cd0-979c-32688d08211c",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "kind": "web",
+      "sha256": "ffc8cc4a9e5800372a8259f1d41444e1ec3fd01e9d9f306286c34ee574ffb2f9",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Romains (Traduction de l’abbé Devoille et C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.320Z",
+      "ok": true
+    },
+    {
+      "file_id": "10fd78e5-19bb-4363-b08f-32acbe67d12e",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "kind": "download",
+      "sha256": "7d5e0b7cde9ae317cf75489991f009c9017f86c703a9c58bbe4782b93245be0c",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Romains (Traduction de l’abbé Devoille et C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.346Z",
+      "ok": true
+    },
+    {
+      "file_id": "cfd3706a-185c-458f-8ddd-7aeeadb3e487",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "kind": "web",
+      "sha256": "f7c1c987b0517d0c434cd04f68d45b8344a50dd10182727b91fd46ba491ff601",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Éphésiens (Traduction de M. X… · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.369Z",
+      "ok": true
+    },
+    {
+      "file_id": "d56b28e5-e196-4c3a-8c3b-815d36d1ca00",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "kind": "download",
+      "sha256": "a3865cc0de9200282e8bf0a23111c26230cf517ff173b8a5421e88c40b7f8a75",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Éphésiens (Traduction de M. X… · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.392Z",
+      "ok": true
+    },
+    {
+      "file_id": "86842fe4-c383-444c-a146-ed09065c516a",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "kind": "web",
+      "sha256": "c0d46b24e5def05a86a7c86fff8ea5fb85a6751d0755e7507420447ff33a802e",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Hébreux (Traduction de Baissey et l’abbé Collery · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.500Z",
+      "ok": true
+    },
+    {
+      "file_id": "0dbb3b1b-b552-4401-b10d-63b05efe990a",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "kind": "download",
+      "sha256": "71517b80d7e3f0426127efe43f419af1384ba6f77c2dfe2f460de52b321a4cc9",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Hébreux (Traduction de Baissey et l’abbé Collery · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.516Z",
+      "ok": true
+    },
+    {
+      "file_id": "d6a8c726-e4f2-4244-9800-5acd112e1874",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "kind": "web",
+      "sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Philémon (Traduction de M. B. A. · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.548Z",
+      "ok": true
+    },
+    {
+      "file_id": "6cd08ef3-8fb9-4822-88a4-d64ceca6b176",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "kind": "download",
+      "sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Philémon (Traduction de M. B. A. · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.588Z",
+      "ok": true
+    },
+    {
+      "file_id": "20b12649-7e98-42f9-b152-c69af2a4d2f5",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "kind": "web",
+      "sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Colossiens (Traduction de M. Baissey · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.690Z",
+      "ok": true
+    },
+    {
+      "file_id": "802db512-8b93-4881-aa19-70f8fddf5ce2",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "kind": "download",
+      "sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Colossiens (Traduction de M. Baissey · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.714Z",
+      "ok": true
+    },
+    {
+      "file_id": "f277155c-6d85-4994-b600-c82638da8490",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "kind": "web",
+      "sha256": "38f10183a445e09a6c4a920e01c36c77aadd8493897c2df0a93757fc38eb117e",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Galates (Traduction de M. Boucherie · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.736Z",
+      "ok": true
+    },
+    {
+      "file_id": "2d4b04c2-8559-4c7b-9d60-8dedceb3a2f9",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "kind": "download",
+      "sha256": "50c4301ba1097680181beeb39e68e9edbc8a09bcda5c5d754ba6faefd6b18f4a",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Galates (Traduction de M. Boucherie · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.764Z",
+      "ok": true
+    },
+    {
+      "file_id": "7c6bd750-f1f9-4a43-8f9c-5476994f2893",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "kind": "download",
+      "sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Tite (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.850Z",
+      "ok": true
+    },
+    {
+      "file_id": "c2b5b95d-91f2-43b3-a5f1-2c249bf4b858",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "kind": "web",
+      "sha256": "379ec3ef30c98aba2c8e147b90c96b83bd821277fd339a2a7bd157141c300492",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Corinthiens (Traduction de M. Jeannin, l’abbé Devoille, C. Portelette et M. Baissey · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.889Z",
+      "ok": true
+    },
+    {
+      "file_id": "c7a4ae9d-2e8f-4c1f-8309-f3d1d302626b",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "kind": "download",
+      "sha256": "3921f273dad04b7fc3feaba7a2554a4dc74b18dc47c35c5e7f21153b7acd93df",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Corinthiens (Traduction de M. Jeannin, l’abbé Devoille, C. Portelette et M. Baissey · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.932Z",
+      "ok": true
+    },
+    {
+      "file_id": "a3e842e0-cce5-4dd7-a497-718e0df92e92",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "kind": "web",
+      "sha256": "3ab66bf3802886922bdad3cb0146745ec55e2fa0fb16a76bb7a8a47d9e592f98",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Thessaloniciens (Traduction de M. Jeannin et ses collaborateurs · 1864).epub",
+      "modified_on": "2026-10-30T21:19:07.944Z",
+      "ok": true
+    },
+    {
+      "file_id": "7a3fc0a2-020f-48de-ac35-bd36c0c0324b",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "kind": "download",
+      "sha256": "b669ef39e1aae58d35b686cbeeabb9ed1b7ca5a87dfdc806b2cfb1c42d91be08",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Thessaloniciens (Traduction de M. Jeannin et ses collaborateurs · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.015Z",
+      "ok": true
+    },
+    {
+      "file_id": "1d19870f-d464-449c-abb6-4e750e1435a4",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "kind": "web",
+      "sha256": "9522e58f9f23cab1206027f8150ac291fc4ea906be672e05ed1ea3f1421ac459",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître à Timothée (Traduction de Félix Robiou · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.071Z",
+      "ok": true
+    },
+    {
+      "file_id": "0b4420a5-c8ff-4f92-83c1-6f8d5738dedd",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "kind": "download",
+      "sha256": "6a72df071985fe3da1d95e76bb6dbbec02c756c2d7ea3619061c89bef9fe535f",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître à Timothée (Traduction de Félix Robiou · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.104Z",
+      "ok": true
+    },
+    {
+      "file_id": "3b590ab9-498f-4223-a7f7-fd17e37ba078",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "kind": "web",
+      "sha256": "71863beb98dd0be101c5f6c5615cc91c7b105b810e0bb3f8aa109ef645ecab06",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Corinthiens (Traduction de l’abbé Joly, Édouard Malvoisin et C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.130Z",
+      "ok": true
+    },
+    {
+      "file_id": "05901ca5-ba2a-40c6-9cfe-7da9120f7aff",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "kind": "download",
+      "sha256": "08f76d802ce348a861822652ffd92ff411724d22905a13c4650f6372a8807818",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Corinthiens (Traduction de l’abbé Joly, Édouard Malvoisin et C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.171Z",
+      "ok": true
+    },
+    {
+      "file_id": "99fac3db-05da-45bc-a9a7-739a84a4d0fe",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "kind": "web",
+      "sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Thessaloniciens (Traduction de C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.250Z",
+      "ok": true
+    },
+    {
+      "file_id": "36625aa5-7795-4cb0-87aa-0244223a921b",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "kind": "download",
+      "sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Thessaloniciens (Traduction de C. Portelette · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.292Z",
+      "ok": true
+    },
+    {
+      "file_id": "eec8d173-ba17-4588-8ba7-496d7f17adae",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "kind": "web",
+      "sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître à Timothée (Traduction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.305Z",
+      "ok": true
+    },
+    {
+      "file_id": "7438645b-42d4-4032-87fb-aadcaa65e9c6",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "kind": "download",
+      "sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître à Timothée (Traduction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.363Z",
+      "ok": true
+    },
+    {
+      "file_id": "e1013e12-4ccc-4132-bea1-0c746f1bcb99",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "kind": "web",
+      "sha256": "51bad32a03077127d215d69076986ef9a086fc6d8e58f7bba6873894400b1165",
+      "filename": "Saint Jean Chrysostome - Homélies sur les Actes des Apôtres (Traduction de l’abbé Duchassaing, M. Jeannin, l’abbé Devoille, C. Portelette, M. Housel et M. Ricard · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.437Z",
+      "ok": true
+    },
+    {
+      "file_id": "31674d0a-6e0a-4058-a12c-3424ef6fde83",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "kind": "download",
+      "sha256": "82e7fe29504aedb7810110b8a57a5301c3d3554819e9ddc7d495891598cc8b79",
+      "filename": "Saint Jean Chrysostome - Homélies sur les Actes des Apôtres (Traduction de l’abbé Duchassaing, M. Jeannin, l’abbé Devoille, C. Portelette, M. Housel et M. Ricard · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.519Z",
+      "ok": true
+    },
+    {
+      "file_id": "3d74f7c5-533a-4078-aec8-7c3f360224a8",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "kind": "web",
+      "sha256": "8d19c2afcde336d31145b44e3fa51da25f007b829a3033847cc5237f193402f8",
+      "filename": "Saint Augustin - Contre les Juifs (Traduction de l’abbé Aubert · 1869).epub",
+      "modified_on": "2026-10-30T21:19:08.543Z",
+      "ok": true
+    },
+    {
+      "file_id": "876a2551-3670-49fa-a1d8-744cff091617",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "kind": "download",
+      "sha256": "f0ba15d1c0b095d22602ed170354eb66db39d931cb5c1e452702caebe696c2f9",
+      "filename": "Saint Augustin - Contre les Juifs (Traduction de l’abbé Aubert · 1869).epub",
+      "modified_on": "2026-10-30T21:19:08.582Z",
+      "ok": true
+    },
+    {
+      "file_id": "bcd2ce83-356c-494f-acdb-79080d09eb58",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "kind": "web",
+      "sha256": "80173b6def3aa7ef067400e5527c3542d1c35f1e046e9080da0ffd25111cab34",
+      "filename": "Saint Jean Chrysostome - Discours contre les Juifs (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.618Z",
+      "ok": true
+    },
+    {
+      "file_id": "da42304d-be3e-4d83-b3c6-5a4fedb6d26c",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "kind": "download",
+      "sha256": "75fc01023729af3f9fe4c611a2cdd16bc1f8221a243d7c626671b23d94aae659",
+      "filename": "Saint Jean Chrysostome - Discours contre les Juifs (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.710Z",
+      "ok": true
+    },
+    {
+      "file_id": "8082b038-6557-44b9-9456-5c58bcd2d7d5",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "kind": "web",
+      "sha256": "7614f97353764fcd65459fd671d8451c31744636923d19b70e7d28f62ad6ca8c",
+      "filename": "Saint Jean Chrysostome - Apologie de la vie monastique (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.717Z",
+      "ok": true
+    },
+    {
+      "file_id": "07c668e4-7c7a-485a-8dfc-18719c0bec05",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "kind": "download",
+      "sha256": "aefef6f9eae2aa572e84e92bfd77fe7a72c1211ef80b2ed32f1a2bd779f1e9df",
+      "filename": "Saint Jean Chrysostome - Apologie de la vie monastique (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.748Z",
+      "ok": true
+    },
+    {
+      "file_id": "b767e7b1-d213-45eb-a89a-bf43e6d9af31",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "kind": "web",
+      "sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "filename": "Saint Jean Chrysostome - Traité du sacerdoce (Traduction de J.-B. J. · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.790Z",
+      "ok": true
+    },
+    {
+      "file_id": "f249065b-37a7-42f4-9f31-0aa2a4882cc3",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "kind": "download",
+      "sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "filename": "Saint Jean Chrysostome - Traité du sacerdoce (Traduction de J.-B. J. · 1864).epub",
+      "modified_on": "2026-10-30T21:19:08.898Z",
+      "ok": true
+    },
+    {
+      "file_id": "47e2d4d1-52d6-451a-9419-d574da81c5da",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "kind": "web",
+      "sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "filename": "René Bazin - Le Blé qui lève (Édition Calmann-Lévy · 1907).epub",
+      "modified_on": "2026-10-30T21:19:08.900Z",
+      "ok": true
+    },
+    {
+      "file_id": "499a7b8d-9ca6-484b-925b-1923b89e126b",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "kind": "download",
+      "sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "filename": "René Bazin - Le Blé qui lève (Édition Calmann-Lévy · 1907).epub",
+      "modified_on": "2026-10-30T21:19:08.950Z",
+      "ok": true
+    },
+    {
+      "file_id": "c928533c-a958-45ab-bb22-713d03545a6c",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "kind": "web",
+      "sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "filename": "René Bazin - La Barrière (Texte de 1910 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:08.971Z",
+      "ok": true
+    },
+    {
+      "file_id": "c5bd78f1-9fa1-4780-8fbd-804128472794",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "kind": "download",
+      "sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "filename": "René Bazin - La Barrière (Texte de 1910 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:09.090Z",
+      "ok": true
+    },
+    {
+      "file_id": "2b873569-9272-4f5c-b875-9d5830509370",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "kind": "web",
+      "sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "filename": "René Bazin - Les Oberlé (Texte de 1903 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:09.079Z",
+      "ok": true
+    },
+    {
+      "file_id": "839ed980-588e-4966-a37c-5292bf4c3b4a",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "kind": "download",
+      "sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "filename": "René Bazin - Les Oberlé (Texte de 1903 · Ebooks libres et gratuits).epub",
+      "modified_on": "2026-10-30T21:19:09.139Z",
+      "ok": true
+    },
+    {
+      "file_id": "f8f88460-58d0-480f-9d3a-3094354e49a1",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "kind": "web",
+      "sha256": "0de55ce0aa1c3ea02467b1abd2690eb6f94e37adcc0e8a8b7476d466fa8cc39b",
+      "filename": "Paul Bourget - Le Disciple (Édition Plon · 1899).epub",
+      "modified_on": "2026-10-30T21:19:09.162Z",
+      "ok": true
+    },
+    {
+      "file_id": "4d711acf-5229-438f-a90c-1561ad3a8a60",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "kind": "download",
+      "sha256": "2de2968bb7cac6af1c6c7f840265952ced73992c5534dc37a68ba2e75ee7a891",
+      "filename": "Paul Bourget - Le Disciple (Édition Plon · 1899).epub",
+      "modified_on": "2026-10-30T21:19:09.292Z",
+      "ok": true
+    },
+    {
+      "file_id": "76deb0a3-d2ee-4165-ad47-6022d34638a6",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "kind": "web",
+      "sha256": "00b49b7c00cde06a7ad086b9622363898e9cc68574a301c53adfb36d25a00c28",
+      "filename": "Léon Bloy - La Femme pauvre (Édition G. Crès · 1924).epub",
+      "modified_on": "2026-10-30T21:19:09.286Z",
+      "ok": true
+    },
+    {
+      "file_id": "4103ac44-fd3d-476c-a03b-57603eebfa95",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "kind": "download",
+      "sha256": "827f3f33f8912e67c913f72d6be5ed7b3cc8aee37c54d32ff6b56d445c2882b2",
+      "filename": "Léon Bloy - La Femme pauvre (Édition G. Crès · 1924).epub",
+      "modified_on": "2026-10-30T21:19:09.315Z",
+      "ok": true
+    },
+    {
+      "file_id": "71e981da-9d05-4fa4-867c-dde0536b3817",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "kind": "web",
+      "sha256": "6a0fee900b00779e5b34ba3d3118a1e8ae3d323bbd1d6ed180beb30fafe8004c",
+      "filename": "Léon Bloy - Les Dernières Colonnes de l’Église (Édition Mercure de France · 1903).epub",
+      "modified_on": "2026-10-30T21:19:09.334Z",
+      "ok": true
+    },
+    {
+      "file_id": "9c6edc10-9163-4ada-9e5e-3e8fcbd6436b",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "kind": "web",
+      "sha256": "e85829de3cd3050b5c6e2b7d6469dce97d50ef365430d65250b8aa887e0795a3",
+      "filename": "Léon Bloy - Belluaires et porchers (Édition Stock · 1905).epub",
+      "modified_on": "2026-10-30T21:19:09.452Z",
+      "ok": true
+    },
+    {
+      "file_id": "78a5e2a1-5d51-4f8d-95b1-1514bb06cf16",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "kind": "download",
+      "sha256": "7498355d9646b7426e6cbe927627763be15bf66d7ea82950e111a18cab85435c",
+      "filename": "Léon Bloy - Belluaires et porchers (Édition Stock · 1905).epub",
+      "modified_on": "2026-10-30T21:19:09.468Z",
+      "ok": true
+    },
+    {
+      "file_id": "36dbba41-3167-46ac-a6ec-007303ca45ff",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "kind": "download",
+      "sha256": "97fa75e3b744c4767bbc57bc3ba162b5040ecd66efdbd6b04e9419acc1eb97a5",
+      "filename": "Léon Bloy - Exégèse des Lieux Communs (Édition Mercure de France · 1902).epub",
+      "modified_on": "2026-10-30T21:19:09.496Z",
+      "ok": true
+    },
+    {
+      "file_id": "c27a8bdb-f3b6-4b60-8bdc-c408300efc0f",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "kind": "web",
+      "sha256": "9cec2262890ae2b3160c3ced08125865cca3cb5f2e592596a29ca30f1bc54041",
+      "filename": "Léon Bloy - Le Salut par les Juifs (Édition Joseph Victorion et Cie · 1906).epub",
+      "modified_on": "2026-10-30T21:19:09.502Z",
+      "ok": true
+    },
+    {
+      "file_id": "8a5c1af5-5ce7-4ff3-9223-65daf0923741",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "kind": "download",
+      "sha256": "e92ebe97d211602fd03ccc6ab75d8a023bfb1b0574ef7e12bf0f4e28432e5994",
+      "filename": "Léon Bloy - Le Salut par les Juifs (Édition Joseph Victorion et Cie · 1906).epub",
+      "modified_on": "2026-10-30T21:19:09.615Z",
+      "ok": true
+    },
+    {
+      "file_id": "ae775dbe-9c07-42f8-b07a-08d9aaed5561",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "kind": "web",
+      "sha256": "ecea8c84eabea15ce69a8c6b69c953b7ad1313983843313ae418ac1c0fe8062f",
+      "filename": "Léon Bloy - Le Sang du pauvre (Édition Stock, Delamain et Boutelleau · 1932).epub",
+      "modified_on": "2026-10-30T21:19:09.644Z",
+      "ok": true
+    },
+    {
+      "file_id": "412fdaea-7e30-4f80-b27e-3e8950fb0456",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "kind": "download",
+      "sha256": "1575b582209ea131d3f6384a512aeac8ad9ceaae6e330da3d45152fd94b96590",
+      "filename": "Léon Bloy - Le Sang du pauvre (Édition Stock, Delamain et Boutelleau · 1932).epub",
+      "modified_on": "2026-10-30T21:19:09.681Z",
+      "ok": true
+    },
+    {
+      "file_id": "890cf326-ac77-4df4-b058-e924e222992b",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "kind": "web",
+      "sha256": "de03e18081f63f306d8f3bda93056278d88c967a4e2cb824c856240215cd0d66",
+      "filename": "Léon Bloy - Le Désespéré (Édition A. Soirat · 1886).epub",
+      "modified_on": "2026-10-30T21:19:09.672Z",
+      "ok": true
+    },
+    {
+      "file_id": "65a6146d-f1a3-4496-b0f5-88917c54c7ab",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "kind": "download",
+      "sha256": "6eae2e910aa4edaca5776d1b05cbefe9f7bbb95f179618baeb71304557cae864",
+      "filename": "Léon Bloy - Le Désespéré (Édition A. Soirat · 1886).epub",
+      "modified_on": "2026-10-30T21:19:09.798Z",
+      "ok": true
+    },
+    {
+      "file_id": "bba19ba9-e9cd-401e-90cf-46692118e060",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "kind": "cover",
+      "sha256": "1f430157d2dd2a5a610cf19dd3691712501a462dbdf5e83330f4423357cb0e78",
+      "filename": "Thomas à Kempis - L’Imitation de Jésus-Christ (Traduction de Félicité de Lamennais · 1859).jpg",
+      "modified_on": "2026-10-30T21:19:09.807Z",
+      "ok": true
+    },
+    {
+      "file_id": "773d3304-0ff7-4538-9d02-98bdc33ec0b6",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "kind": "cover",
+      "sha256": "ee1762ee584af03eaff86718f05b8e8356727e5491ef5fb3fd6c70418db415f1",
+      "filename": "Saint Augustin - Confessions (Traduction de M. Moreau · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:09.850Z",
+      "ok": true
+    },
+    {
+      "file_id": "5d550cad-874f-4aef-abd6-1b17dacce51d",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "kind": "cover",
+      "sha256": "630d19152569e377508f8343a61d792d5cc743cc7ce020fbc93310c7d740afb2",
+      "filename": "Blaise Pascal - Pensées (Seconde édition Desprez · 1670).jpg",
+      "modified_on": "2026-10-30T21:19:09.859Z",
+      "ok": true
+    },
+    {
+      "file_id": "acf34228-d7ee-47c8-a9a7-b4f638c2d761",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "kind": "cover",
+      "sha256": "f66f7ef052dfba822de789367bb2c74e13f82d16c92222747d6e8cc3eb5bf8fc",
+      "filename": "Jacques-Bénigne Bossuet - Oraisons funèbres (Préface de René Doumic · 1928).jpg",
+      "modified_on": "2026-10-30T21:19:09.980Z",
+      "ok": true
+    },
+    {
+      "file_id": "1917b783-5fd7-47b6-8f2b-ca2c4e03a41c",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "kind": "cover",
+      "sha256": "2e2a7393ccf8309a6fea29171e6a7ef96b054477c30b78bf55a6c4ee1c9c0c77",
+      "filename": "Jacques-Bénigne Bossuet - Traité de la concupiscence (Introduction et notes d’André Pératé · 1908).jpg",
+      "modified_on": "2026-10-30T21:19:09.981Z",
+      "ok": true
+    },
+    {
+      "file_id": "5033f477-ceb2-4370-97a0-873f9db473fe",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "kind": "cover",
+      "sha256": "f5f19025e0249d4ebc520113aed72d283d3e4bdb3bb7b2224b1d9a6a2f5cf092",
+      "filename": "Joseph de Maistre - Considérations sur la France (Édition Rusand · 1829).jpg",
+      "modified_on": "2026-10-30T21:19:10.028Z",
+      "ok": true
+    },
+    {
+      "file_id": "621a02fe-bf42-47ff-97c1-1186fc87c2b9",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "kind": "cover",
+      "sha256": "525ba7b64fab7b206234a23339f08e51429083af7f5fbc0b944146a16fb27869",
+      "filename": "bible-crampon-1923.jpg",
+      "modified_on": "2026-10-30T21:19:10.035Z",
+      "ok": true
+    },
+    {
+      "file_id": "45f26eaa-e383-4e9c-8a4b-92f25b1f7609",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "kind": "cover",
+      "sha256": "922e66b7c43994a2b3f0456bd44d5d9bd0a345280cff024cfde514fd6dcc819d",
+      "filename": "bible-glaire.jpg",
+      "modified_on": "2026-10-30T21:19:10.158Z",
+      "ok": true
+    },
+    {
+      "file_id": "4f0f859e-d381-4c75-8caf-3f5420133458",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "kind": "cover",
+      "sha256": "a5be7af45f8c516f8f7e88042fa4b47151dbc459946cf551aacee10e12eba13c",
+      "filename": "bible-sacy.jpg",
+      "modified_on": "2026-10-30T21:19:10.157Z",
+      "ok": true
+    },
+    {
+      "file_id": "7cbeb00e-06f3-49c8-9096-e984e8deb265",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "kind": "cover",
+      "sha256": "8a036a1440992e2939090e8ef8ee54824a9e140cdb6dd23090e8fb3b593f2d53",
+      "filename": "René Bazin - L’Isolée (Texte de 1905 · Ebooks libres et gratuits).jpg",
+      "modified_on": "2026-10-30T21:19:10.208Z",
+      "ok": true
+    },
+    {
+      "file_id": "286ff8db-26c7-4de6-99be-f314ea4f5719",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "kind": "cover",
+      "sha256": "f4ce1956148b8f8c037036867e996796fe2a4388c7d35e277bcd3a106b4301cf",
+      "filename": "René Bazin - La Terre qui meurt (Texte de 1899 · Ebooks libres et gratuits).jpg",
+      "modified_on": "2026-10-30T21:19:10.214Z",
+      "ok": true
+    },
+    {
+      "file_id": "21292dcd-bd17-4633-840b-6cc9f4960768",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "kind": "cover",
+      "sha256": "c45a748cec1cfc38faae80c239902e194aa269a7dfce7ea2ce5286a3ffdf1a68",
+      "filename": "somme-theologique-aquin-latin.jpg",
+      "modified_on": "2026-10-30T21:19:10.318Z",
+      "ok": true
+    },
+    {
+      "file_id": "b959581f-838c-4d5c-b521-95750196280a",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "kind": "cover",
+      "sha256": "8d9a2bfc6836bc72115fdb94ca158fe081d5ad7335bd9d658482e7f06631eecc",
+      "filename": "Saint Augustin - Explication du Sermon sur la montagne (Traduction de l’abbé Devoille · 1867).jpg",
+      "modified_on": "2026-10-30T21:19:10.336Z",
+      "ok": true
+    },
+    {
+      "file_id": "e5ed2bf1-a8af-4ce0-9173-d76d39ab399f",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "kind": "cover",
+      "sha256": "3de6cc38eab6a0f4a8102909d4ec00ea869f231ee113d29982d01d008f8c576e",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’Évangile selon saint Matthieu (Traduction sous la direction de M. Jeannin · 1865).jpg",
+      "modified_on": "2026-10-30T21:19:10.394Z",
+      "ok": true
+    },
+    {
+      "file_id": "fdc50006-ec3b-418a-9787-6bdb750a7a10",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "kind": "cover",
+      "sha256": "3e1e7e207789e44c65c67319e403c5fb53da05131921eb354bbe46e74a2d10d5",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Philippiens (Traduction de l’abbé Collery · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.387Z",
+      "ok": true
+    },
+    {
+      "file_id": "c5e8f972-22e0-41ce-88fb-64107485407b",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "kind": "cover",
+      "sha256": "68cbb8603a046762d75bdc679ce86bf799b0208825116c7a295c27455391621d",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Romains (Traduction de l’abbé Devoille et C. Portelette · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.471Z",
+      "ok": true
+    },
+    {
+      "file_id": "ccecbe2e-f43b-42a4-8b10-af694352dbf5",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "kind": "cover",
+      "sha256": "7d0e1f9da24d77d3fada1470baa846a87c5ade8f758b91bb905ad82a1855374b",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Éphésiens (Traduction de M. X… · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.505Z",
+      "ok": true
+    },
+    {
+      "file_id": "6d485474-d1d3-431d-a98c-2822f6796741",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "kind": "cover",
+      "sha256": "a499ca310b6cbfff70cd956560084cd9a88b4c973c6b979d06d4ca7ad19f9d69",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Hébreux (Traduction de Baissey et l’abbé Collery · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.570Z",
+      "ok": true
+    },
+    {
+      "file_id": "6d124401-835b-496f-bbd2-780b93914114",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "kind": "cover",
+      "sha256": "9a88eeebd8f2ce2ebc35f283071e26056862a87d66eed469c7b4949379a070ed",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Philémon (Traduction de M. B. A. · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.582Z",
+      "ok": true
+    },
+    {
+      "file_id": "d486b678-45ef-4ef0-9db6-6c34c3445ef4",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "kind": "cover",
+      "sha256": "aae22a6ef4c9c132ef7a065c4cc8dbffdf82e3644d8f851ddf8abdd2fdb79eeb",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Colossiens (Traduction de M. Baissey · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.647Z",
+      "ok": true
+    },
+    {
+      "file_id": "94cd7561-b412-4756-b6e7-bbd6a078860f",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "kind": "cover",
+      "sha256": "e827193f9c1750e87f1e7b2cb08369017cc2684051c639a2ddec473df1e3da53",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Galates (Traduction de M. Boucherie · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.666Z",
+      "ok": true
+    },
+    {
+      "file_id": "abdd0521-a635-4101-8516-4297f0757f56",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "kind": "cover",
+      "sha256": "219274d711b019dfafb4a6c5fffe2f267e3eb0d0448b8091f01520e3084d8fd4",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Tite (Traduction sous la direction de M. Jeannin · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.752Z",
+      "ok": true
+    },
+    {
+      "file_id": "9dc1254f-e3fa-48a0-82a2-91fff9343c76",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "kind": "cover",
+      "sha256": "f4427bcbc9fc9bb2d6dc70c670117e5d94a1a877bc5e6dc1578f7d3139f6b957",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Corinthiens (Traduction de M. Jeannin, l’abbé Devoille, C. Portelette et M. Baissey · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.762Z",
+      "ok": true
+    },
+    {
+      "file_id": "99331f56-05bd-4ed3-8628-4382f6501474",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "kind": "cover",
+      "sha256": "eef571955804e6c7580c156da88ac9df158d3cec0fadb843e587896446285263",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître aux Thessaloniciens (Traduction de M. Jeannin et ses collaborateurs · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.812Z",
+      "ok": true
+    },
+    {
+      "file_id": "641dc68f-269c-4771-b596-c4c4cf34d258",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "kind": "cover",
+      "sha256": "8713dc7311f8d4a373ff6705c48054a99d8fcafef30684aa38b832e1020a569b",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la première épître à Timothée (Traduction de Félix Robiou · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.820Z",
+      "ok": true
+    },
+    {
+      "file_id": "b641b8b3-e093-4859-9f00-2bcd05f1367d",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "kind": "cover",
+      "sha256": "7103b88949d5c1905635dc6b6f186b2ec12e85cf2fd224f1bbabcbcf4c0acd37",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Corinthiens (Traduction de l’abbé Joly, Édouard Malvoisin et C. Portelette · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.921Z",
+      "ok": true
+    },
+    {
+      "file_id": "ecd9949b-2d3c-48e4-8cef-b080fb68b843",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "kind": "cover",
+      "sha256": "ae03b547247de1e09bfaedb777facf4ac240b7e1ab91f56bedbe5e9360237e93",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître aux Thessaloniciens (Traduction de C. Portelette · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.927Z",
+      "ok": true
+    },
+    {
+      "file_id": "d91679a3-645e-4573-a3ed-c13e9f915318",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "kind": "cover",
+      "sha256": "643ec584aa0f7dedee63927c4f74e51b8e248e946c70b17631e1317a98de6e2c",
+      "filename": "Saint Jean Chrysostome - Commentaire sur la deuxième épître à Timothée (Traduction de M. Jeannin · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.979Z",
+      "ok": true
+    },
+    {
+      "file_id": "0226df05-f1f2-420e-9eaa-539c0a2ae992",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "kind": "cover",
+      "sha256": "c51f82546ef9844dac63e12bc1b7a955471a44a94823202176587e1a4260dc3a",
+      "filename": "Saint Jean Chrysostome - Homélies sur les Actes des Apôtres (Traduction de l’abbé Duchassaing, M. Jeannin, l’abbé Devoille, C. Portelette, M. Housel et M. Ricard · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:10.995Z",
+      "ok": true
+    },
+    {
+      "file_id": "897a7516-6ef4-4bd7-9a09-f6bf0e1104e4",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "kind": "cover",
+      "sha256": "78d41833cbf3e2378aa53531046b87a3b226f016aea63b181050338d65dca04b",
+      "filename": "Saint Augustin - Contre les Juifs (Traduction de l’abbé Aubert · 1869).jpg",
+      "modified_on": "2026-10-30T21:19:11.094Z",
+      "ok": true
+    },
+    {
+      "file_id": "420594c2-0396-4ebd-ab43-a7bebe6b7a69",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "kind": "cover",
+      "sha256": "66b5f161219c79c07b89b5546c637875beb339d9235d6122a6ad68003cd0e7c8",
+      "filename": "Saint Jean Chrysostome - Discours contre les Juifs (Traduction sous la direction de M. Jeannin · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:11.102Z",
+      "ok": true
+    },
+    {
+      "file_id": "a940da3e-8401-4973-bf3d-6cf97592eb8b",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "kind": "cover",
+      "sha256": "c7400835ca009a1355498c4d72104be14681483c29e89eb1fd118c0b7418beeb",
+      "filename": "Saint Jean Chrysostome - Apologie de la vie monastique (Traduction sous la direction de M. Jeannin · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:11.147Z",
+      "ok": true
+    },
+    {
+      "file_id": "865883e7-059b-4d88-beb0-02f9a768a653",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "kind": "cover",
+      "sha256": "9205a427c6248619eeb1e375f04ce27f35172b06969951bbd833788737c9aca0",
+      "filename": "Saint Jean Chrysostome - Traité du sacerdoce (Traduction de J.-B. J. · 1864).jpg",
+      "modified_on": "2026-10-30T21:19:11.159Z",
+      "ok": true
+    },
+    {
+      "file_id": "585ee495-18fb-4017-962c-a5629e588bec",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "kind": "cover",
+      "sha256": "8902092b75ea90be9a3bbf5e20ce5ac5ec7a0559311aba31b70e5d70548cb0a2",
+      "filename": "René Bazin - La Barrière (Texte de 1910 · Ebooks libres et gratuits).jpg",
+      "modified_on": "2026-10-30T21:19:11.268Z",
+      "ok": true
+    },
+    {
+      "file_id": "30902370-079a-4bdc-af6e-d83e786c2297",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "kind": "cover",
+      "sha256": "a686d16ed7d4e2f116d3c6254991d7bf758eb5731c0e2b1800c4e8065627f508",
+      "filename": "René Bazin - Les Oberlé (Texte de 1903 · Ebooks libres et gratuits).jpg",
+      "modified_on": "2026-10-30T21:19:11.273Z",
+      "ok": true
+    },
+    {
+      "file_id": "5829b842-ee5c-455f-8f40-b3a01c07875e",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "kind": "cover",
+      "sha256": "4d65bf084a27f494e399ac05777ecf6ae1c882970d104f68b5b421f69e5153c9",
+      "filename": "Paul Bourget - Le Disciple (Édition Plon · 1899).jpg",
+      "modified_on": "2026-10-30T21:19:11.303Z",
+      "ok": true
+    },
+    {
+      "file_id": "cc7baa18-f62a-403f-8226-f1b24da79073",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "kind": "cover",
+      "sha256": "a41d5941259e9b07cfc31774405db1e8bf8113facd01b8e0df7f878cd28cf882",
+      "filename": "Léon Bloy - La Femme pauvre (Édition G. Crès · 1924).jpg",
+      "modified_on": "2026-10-30T21:19:11.318Z",
+      "ok": true
+    },
+    {
+      "file_id": "cbd0a3b7-4243-4016-b2c9-a206e93ed2c7",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "kind": "cover",
+      "sha256": "5e1ac90ed64af1a3f008944d16e74f4614ba741bd44f8bca5ef578c96e8fa74a",
+      "filename": "Léon Bloy - Les Dernières Colonnes de l’Église (Édition Mercure de France · 1903).jpg",
+      "modified_on": "2026-10-30T21:19:11.456Z",
+      "ok": true
+    },
+    {
+      "file_id": "c7e70425-d79a-4402-bd15-668d1297102b",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "kind": "cover",
+      "sha256": "ef059f33ff88854e41b9a11d2c67d86e7627e91adb72d295f167e82de46bd099",
+      "filename": "Léon Bloy - Belluaires et porchers (Édition Stock · 1905).jpg",
+      "modified_on": "2026-10-30T21:19:11.473Z",
+      "ok": true
+    },
+    {
+      "file_id": "2ca33393-3827-40cc-b11b-247ab7fc344e",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "kind": "cover",
+      "sha256": "5b9132644e87ef9429985b71efb5664647ee2d30e8b07790e791b731663a5268",
+      "filename": "Léon Bloy - Exégèse des Lieux Communs (Édition Mercure de France · 1902).jpg",
+      "modified_on": "2026-10-30T21:19:11.496Z",
+      "ok": true
+    },
+    {
+      "file_id": "598ffdd1-2e8b-48f1-a2ec-9e7a1b27628c",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "kind": "cover",
+      "sha256": "b513e724567bb43a8ed77f41158c517b839392c98a7819e806541b6aa7ae4faa",
+      "filename": "Léon Bloy - Le Salut par les Juifs (Édition Joseph Victorion et Cie · 1906).jpg",
+      "modified_on": "2026-10-30T21:19:11.506Z",
+      "ok": true
+    },
+    {
+      "file_id": "d84d5c55-ed7f-4229-8958-874c040b18f6",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "kind": "cover",
+      "sha256": "5262f01fbd00bd23b26ad617adaec88170a1f699bcd8f5b0ee7995877d186aac",
+      "filename": "Léon Bloy - Le Sang du pauvre (Édition Stock, Delamain et Boutelleau · 1932).jpg",
+      "modified_on": "2026-10-30T21:19:11.669Z",
+      "ok": true
+    },
+    {
+      "file_id": "30986887-7592-4fc6-a15a-7b9c3bdf91b8",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "kind": "cover",
+      "sha256": "b8a0afc598897996e84c5797e8affc2504a0b28e0ca7bf0ff8e9d39bf2b32edb",
+      "filename": "Léon Bloy - Le Désespéré (Édition A. Soirat · 1886).jpg",
+      "modified_on": "2026-10-30T21:19:11.698Z",
+      "ok": true
+    },
+    {
+      "file_id": "13a0f719-44f3-4f43-9ac5-59f868deeeed",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "kind": "download",
+      "sha256": "c1b0c6268fc03ee139b62b9b4e67b3bada6b174768a4ff4576377f434482c606",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître aux Philippiens (Traduction de l’abbé Collery · 1864).epub",
+      "modified_on": "2026-10-30T21:19:11.692Z",
+      "ok": true
+    },
+    {
+      "file_id": "77b9d554-1292-40cf-bf27-98201bd907fe",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "kind": "web",
+      "sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "filename": "Saint Jean Chrysostome - Commentaire sur l’épître à Tite (Traduction sous la direction de M. Jeannin · 1864).epub",
+      "modified_on": "2026-10-30T21:19:11.676Z",
+      "ok": true
+    },
+    {
+      "file_id": "4f904f2f-404b-48c3-89a5-7faeb3812ef7",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "kind": "download",
+      "sha256": "c93ebadce62f957acd9522fa80936db45e33f5903df77c2a1a604cb791d2a9a7",
+      "filename": "Léon Bloy - Les Dernières Colonnes de l’Église (Édition Mercure de France · 1903).epub",
+      "modified_on": "2026-10-30T21:19:11.850Z",
+      "ok": true
+    },
+    {
+      "file_id": "cfc03a32-f5bd-4f63-8753-a8f738ed66a2",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "kind": "web",
+      "sha256": "a24699f0d1127368245fd1ace13b4f926b0fca37990e37e3a50ba375b6497099",
+      "filename": "Léon Bloy - Exégèse des Lieux Communs (Édition Mercure de France · 1902).epub",
+      "modified_on": "2026-10-30T21:19:11.845Z",
+      "ok": true
+    },
+    {
+      "file_id": "f3b58b66-03a7-41b9-84e4-c66047712b9a",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "kind": "cover",
+      "sha256": "c2985f5254a56a67271797f202babbda908b38f9244a277fe168ed9e23017e41",
+      "filename": "Saint Augustin - La Cité de Dieu (Traduction d’Émile Saisset · 1869).jpg",
+      "modified_on": "2026-10-30T21:19:11.879Z",
+      "ok": true
+    },
+    {
+      "file_id": "da491bd5-017f-4b84-a30c-c500da1d428a",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "kind": "cover",
+      "sha256": "20fbe0bf4e33c398098a4e7ec2dad341ce89fc593021884931e6fc1ecbb5641b",
+      "filename": "René Bazin - Le Blé qui lève (Édition Calmann-Lévy · 1907).jpg",
+      "modified_on": "2026-10-30T21:19:11.867Z",
+      "ok": true
+    }
+  ],
+  "asset_replacement": {
+    "old_file_id": "556e449b-0b45-4866-9744-789d5bdc2a59",
+    "new_file_id": "5cd6f12b-6557-4359-a22c-7b37d9f45863",
+    "reason": "Existing S3 asset responses intermittently combine stale bytes/Content-Length despite updated file metadata"
+  }
+}

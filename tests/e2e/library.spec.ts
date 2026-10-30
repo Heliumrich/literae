@@ -31,6 +31,9 @@ test.beforeAll(async ({ request }) => {
   const response = await request.get(`${LOCAL_ORIGIN}${LIBRARY}.json`);
   const { items } = await response.json();
   expect(items.length).toBeGreaterThan(0);
+  for (const item of items) {
+    if (item.cover) expect(item.cover).toMatch(/\?key=medium&v=[a-f0-9]{12}$/);
+  }
   const confessions = items.find((item: { title: string }) => item.title === 'Confessions');
   bookPath = confessions.href;
   bookId = confessions.id;
@@ -86,7 +89,7 @@ test('navigation, nouveautés, filtres, grille/liste et tri', async ({ page }) =
   await expect(page.locator('#catalog-grid .book-card')).toHaveCount(0);
   await expect(page.locator('#catalog-empty')).toContainText('Aucun ouvrage');
   await page.getByRole('button', { name: 'Effacer les filtres', exact: true }).click();
-  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(catalogCount);
+  await expect(page.locator('#catalog-grid .book-card')).toHaveCount(Math.min(40, catalogCount));
   const person = await page.request.get(`${LOCAL_ORIGIN}/personalites/aurelius-augustinus`);
   expect(await person.text()).toContain('Ouvrages de saint Augustin');
   expect(await person.text()).toContain(`https://literae.ch${bookPath}`);
@@ -100,10 +103,10 @@ test('préserve la couverture et épure le plein écran sans recréer les pages 
   const height = await page.locator('[data-reader="viewport"]').evaluate(el => el.clientHeight);
   await expect.poll(() => cover!.locator('body').evaluate(el => el.getBoundingClientRect().height)).toBe(height);
   if (await cover!.locator('.literae-cover').count()) {
-    await expect(cover!.locator('svg text').first()).toHaveAttribute('fill', '#302719');
-    await expect(cover!.locator('svg text').first()).toHaveAttribute('text-anchor', 'middle');
-    const boxes = await cover!.locator('svg text').evaluateAll(els => els.slice(0, 2).map(el => ({ top: el.getBoundingClientRect().top, bottom: el.getBoundingClientRect().bottom })));
-    expect(boxes[1].top).toBeGreaterThan(boxes[0].bottom);
+    const image = cover!.locator('.literae-cover img');
+    await expect(image).toHaveAttribute('src', /^(blob:|.*cover-classic\.jpg$)/);
+    await expect(image).toHaveCSS('object-fit', 'contain');
+    await expect.poll(() => image.evaluate(el => (el as HTMLImageElement).naturalWidth)).toBe(1200);
   } else {
     await expect(cover!.locator('.title-top')).toHaveCSS('color', 'rgb(255, 255, 255)');
     await expect(cover!.locator('.title-top')).toHaveCSS('text-align', 'center');
