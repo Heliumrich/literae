@@ -38,9 +38,7 @@ export async function fetchBooks(): Promise<LibraryBook[]> {
     author: row.author?.status === 'published' && row.author.slug
       ? { id: String(row.author.id), name: row.author.name, slug: row.author.slug } : null,
     tags: [...new Set(parseTags(row.tags))], created: row.date_created || '',
-    editions: bookEditions(row.ebook_files, row.ebook_download_files, file => {
-      const revision = assetRevision(file);
-      return `${getAssetURL(file.id)}?v=${revision}`;
-    }, row.title),
+    // EPUB contents are immutable: a new edition receives a new Directus UUID.
+    editions: bookEditions(row.ebook_files, row.ebook_download_files, file => getAssetURL(file.id)!, row.title),
   }));
 }

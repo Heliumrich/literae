@@ -1,0 +1,1376 @@
+{
+  "date": "2026-10-31",
+  "books": 45,
+  "files": 135,
+  "epubs": 90,
+  "covers": 45,
+  "storage": "local",
+  "bytes": 77950411,
+  "uuids_and_paths_preserved": true,
+  "book_relations_unchanged": true,
+  "metadata_preserved": true,
+  "all_public_sha256_verified_by_copy_tool": true,
+  "gallery_asset_ids_checked": 579,
+  "gallery_assets_moved": 0,
+  "s3_sources_deleted": false,
+  "files_verified": [
+    {
+      "id": "beb416f9-4687-46ad-972b-12d511877117",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "kind": "web",
+      "sha256": "e077b08a78ee59d0d0669185879cbd0ecfb8d9062db5d60e1bc8032690072e2f",
+      "filename_disk": "beb416f9-4687-46ad-972b-12d511877117.epub",
+      "storage": "local",
+      "bytes": 570602,
+      "modified_on": "2026-10-30T23:09:02.851Z"
+    },
+    {
+      "id": "ecdee352-3493-494c-9d6a-26524f0878d0",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "kind": "download",
+      "sha256": "e116df9486777f8bc9f4ddf163964296b167be99e6a98560fef938ebd420b39d",
+      "filename_disk": "ecdee352-3493-494c-9d6a-26524f0878d0.epub",
+      "storage": "local",
+      "bytes": 490303,
+      "modified_on": "2026-10-30T23:09:06.017Z"
+    },
+    {
+      "id": "bba19ba9-e9cd-401e-90cf-46692118e060",
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "kind": "cover",
+      "sha256": "1f430157d2dd2a5a610cf19dd3691712501a462dbdf5e83330f4423357cb0e78",
+      "filename_disk": "bba19ba9-e9cd-401e-90cf-46692118e060.jpg",
+      "storage": "local",
+      "bytes": 109652,
+      "modified_on": "2026-10-30T23:09:08.570Z"
+    },
+    {
+      "id": "cb12d85b-cdd1-4da2-b5fd-8bf80290d15e",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "kind": "web",
+      "sha256": "b0a5cb85beca74741df322b71af77837acdd39bfc3b425576c9d740708e36837",
+      "filename_disk": "cb12d85b-cdd1-4da2-b5fd-8bf80290d15e.epub",
+      "storage": "local",
+      "bytes": 686455,
+      "modified_on": "2026-10-30T23:09:10.430Z"
+    },
+    {
+      "id": "2215e3ff-0487-4f2b-9de7-5e6d4cb62ea2",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "kind": "download",
+      "sha256": "25883057b8e1a84e552ed53097b1399c5b8d32520ec19fba2590e4d9be9067c7",
+      "filename_disk": "2215e3ff-0487-4f2b-9de7-5e6d4cb62ea2.epub",
+      "storage": "local",
+      "bytes": 674309,
+      "modified_on": "2026-10-30T23:09:12.196Z"
+    },
+    {
+      "id": "acf34228-d7ee-47c8-a9a7-b4f638c2d761",
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "kind": "cover",
+      "sha256": "f66f7ef052dfba822de789367bb2c74e13f82d16c92222747d6e8cc3eb5bf8fc",
+      "filename_disk": "acf34228-d7ee-47c8-a9a7-b4f638c2d761.jpg",
+      "storage": "local",
+      "bytes": 106683,
+      "modified_on": "2026-10-30T23:09:14.301Z"
+    },
+    {
+      "id": "8b64c6de-0cc4-40b8-b177-47f06ddabea1",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "kind": "web",
+      "sha256": "e5db7508da7d0cc240e0d379f486689b40ddeb5418e76b84514dd186d07b114a",
+      "filename_disk": "8b64c6de-0cc4-40b8-b177-47f06ddabea1.epub",
+      "storage": "local",
+      "bytes": 203414,
+      "modified_on": "2026-10-30T23:09:15.463Z"
+    },
+    {
+      "id": "584b3b13-f31b-43b9-aa71-d10d71d610b5",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "kind": "download",
+      "sha256": "b3a1fe3b13cdb21dbbb6ae7e84cb3b288cc72e3589d3a7e8ed15ec7a153c604a",
+      "filename_disk": "584b3b13-f31b-43b9-aa71-d10d71d610b5.epub",
+      "storage": "local",
+      "bytes": 177266,
+      "modified_on": "2026-10-30T23:09:16.817Z"
+    },
+    {
+      "id": "1917b783-5fd7-47b6-8f2b-ca2c4e03a41c",
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "kind": "cover",
+      "sha256": "2e2a7393ccf8309a6fea29171e6a7ef96b054477c30b78bf55a6c4ee1c9c0c77",
+      "filename_disk": "1917b783-5fd7-47b6-8f2b-ca2c4e03a41c.jpg",
+      "storage": "local",
+      "bytes": 107167,
+      "modified_on": "2026-10-30T23:09:18.193Z"
+    },
+    {
+      "id": "bc30ec37-197f-496f-8709-b500d73bf31b",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "kind": "web",
+      "sha256": "4e2af7e8c99d2cadb3f004844a2019119fee1bf209964b484b224ff37c7c2f32",
+      "filename_disk": "bc30ec37-197f-496f-8709-b500d73bf31b.epub",
+      "storage": "local",
+      "bytes": 1078010,
+      "modified_on": "2026-10-30T23:09:19.681Z"
+    },
+    {
+      "id": "52fbfd1e-48ba-4959-ad9d-d76294746ef0",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "kind": "download",
+      "sha256": "3670baf9c41fc47114e7cf1df24695107ee3166e1b64033c57d995786946b6cf",
+      "filename_disk": "52fbfd1e-48ba-4959-ad9d-d76294746ef0.epub",
+      "storage": "local",
+      "bytes": 977915,
+      "modified_on": "2026-10-30T23:09:21.500Z"
+    },
+    {
+      "id": "f3b58b66-03a7-41b9-84e4-c66047712b9a",
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "kind": "cover",
+      "sha256": "c2985f5254a56a67271797f202babbda908b38f9244a277fe168ed9e23017e41",
+      "filename_disk": "f3b58b66-03a7-41b9-84e4-c66047712b9a.jpg",
+      "storage": "local",
+      "bytes": 98274,
+      "modified_on": "2026-10-30T23:09:22.845Z"
+    },
+    {
+      "id": "410be010-3884-48ab-a642-ddfd25dd3692",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "kind": "web",
+      "sha256": "9eb2e2872d8f514e63383f6711e0f417cdc7043ed948feb75be46f6f2fa27fb6",
+      "filename_disk": "410be010-3884-48ab-a642-ddfd25dd3692.epub",
+      "storage": "local",
+      "bytes": 166660,
+      "modified_on": "2026-10-30T23:09:24.219Z"
+    },
+    {
+      "id": "060f10e3-b3fa-4750-be66-6622c496bb19",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "kind": "download",
+      "sha256": "f88ad8a9df8fbea3bef693dd67741fb9cc8f52f0829862802a5c0e40e87eb013",
+      "filename_disk": "060f10e3-b3fa-4750-be66-6622c496bb19.epub",
+      "storage": "local",
+      "bytes": 165120,
+      "modified_on": "2026-10-30T23:09:25.547Z"
+    },
+    {
+      "id": "286ff8db-26c7-4de6-99be-f314ea4f5719",
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "kind": "cover",
+      "sha256": "f4ce1956148b8f8c037036867e996796fe2a4388c7d35e277bcd3a106b4301cf",
+      "filename_disk": "286ff8db-26c7-4de6-99be-f314ea4f5719.jpg",
+      "storage": "local",
+      "bytes": 90308,
+      "modified_on": "2026-10-30T23:09:26.907Z"
+    },
+    {
+      "id": "a6bf639d-63c6-440d-a1be-0c28a905591a",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "kind": "web",
+      "sha256": "ec141d9f616f5335dacf08bca4ba6d203339c0325e53ea3888f610ad45bc9834",
+      "filename_disk": "a6bf639d-63c6-440d-a1be-0c28a905591a.epub",
+      "storage": "local",
+      "bytes": 239139,
+      "modified_on": "2026-10-30T23:09:28.238Z"
+    },
+    {
+      "id": "e27c6f6d-7c64-4db2-a1e3-411fe7e24675",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "kind": "download",
+      "sha256": "aa550a22bd62dcf441c123c2ed55db2003e770df2d5dba99f3f5ca4de25f0440",
+      "filename_disk": "e27c6f6d-7c64-4db2-a1e3-411fe7e24675.epub",
+      "storage": "local",
+      "bytes": 236255,
+      "modified_on": "2026-10-30T23:09:29.765Z"
+    },
+    {
+      "id": "5d550cad-874f-4aef-abd6-1b17dacce51d",
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "kind": "cover",
+      "sha256": "630d19152569e377508f8343a61d792d5cc743cc7ce020fbc93310c7d740afb2",
+      "filename_disk": "5d550cad-874f-4aef-abd6-1b17dacce51d.jpg",
+      "storage": "local",
+      "bytes": 89760,
+      "modified_on": "2026-10-30T23:09:31.117Z"
+    },
+    {
+      "id": "5b72a9bb-31de-41e9-9d23-4d604edc3d5e",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "kind": "web",
+      "sha256": "5f3f8344e06f482f634516a3fb93940e25c7e2312648ca7109964d95460d2ba5",
+      "filename_disk": "5b72a9bb-31de-41e9-9d23-4d604edc3d5e.epub",
+      "storage": "local",
+      "bytes": 181972,
+      "modified_on": "2026-10-30T23:09:32.387Z"
+    },
+    {
+      "id": "a76e711a-3576-43ca-9281-3ca822596491",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "kind": "download",
+      "sha256": "54d9396d7900742511bb4492455ce052bbeb48693e8d0f8840a3b71a732475b8",
+      "filename_disk": "a76e711a-3576-43ca-9281-3ca822596491.epub",
+      "storage": "local",
+      "bytes": 170761,
+      "modified_on": "2026-10-30T23:09:33.796Z"
+    },
+    {
+      "id": "b959581f-838c-4d5c-b521-95750196280a",
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "kind": "cover",
+      "sha256": "8d9a2bfc6836bc72115fdb94ca158fe081d5ad7335bd9d658482e7f06631eecc",
+      "filename_disk": "b959581f-838c-4d5c-b521-95750196280a.jpg",
+      "storage": "local",
+      "bytes": 115646,
+      "modified_on": "2026-10-30T23:09:35.078Z"
+    },
+    {
+      "id": "b5362068-f90e-4dda-9efb-fefe27d7c9f8",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "kind": "web",
+      "sha256": "5ed246ba13f7e70986777fcf991fc7d9099da3c282cd6e68237f88979b34bd2e",
+      "filename_disk": "b5362068-f90e-4dda-9efb-fefe27d7c9f8.epub",
+      "storage": "local",
+      "bytes": 3381633,
+      "modified_on": "2026-10-30T23:09:36.750Z"
+    },
+    {
+      "id": "20245ddb-3adb-424e-b7b8-fbf6a5f04679",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "kind": "download",
+      "sha256": "e17a72548e2be57ee8c7c4d1607d9b33fd18e65bb229108e3a2475065b572bdd",
+      "filename_disk": "20245ddb-3adb-424e-b7b8-fbf6a5f04679.epub",
+      "storage": "local",
+      "bytes": 3381633,
+      "modified_on": "2026-10-30T23:09:39.126Z"
+    },
+    {
+      "id": "4f0f859e-d381-4c75-8caf-3f5420133458",
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "kind": "cover",
+      "sha256": "a5be7af45f8c516f8f7e88042fa4b47151dbc459946cf551aacee10e12eba13c",
+      "filename_disk": "4f0f859e-d381-4c75-8caf-3f5420133458.jpg",
+      "storage": "local",
+      "bytes": 109848,
+      "modified_on": "2026-10-30T23:09:41.055Z"
+    },
+    {
+      "id": "867d00e5-b7b1-4a30-9582-770e90a12616",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "kind": "web",
+      "sha256": "38bf2aa440ad129bce82c873237ea71ec9474523221374a3bbd485b9b44d3628",
+      "filename_disk": "867d00e5-b7b1-4a30-9582-770e90a12616.epub",
+      "storage": "local",
+      "bytes": 1348643,
+      "modified_on": "2026-10-30T23:09:42.555Z"
+    },
+    {
+      "id": "022c0c3f-20f8-4cc9-9981-0dd148e09769",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "kind": "download",
+      "sha256": "73a031206e0a9df605612f63134b0cda49b9fc5606e0d3dcaed27c0551b564b2",
+      "filename_disk": "022c0c3f-20f8-4cc9-9981-0dd148e09769.epub",
+      "storage": "local",
+      "bytes": 1347554,
+      "modified_on": "2026-10-30T23:09:44.300Z"
+    },
+    {
+      "id": "e5ed2bf1-a8af-4ce0-9173-d76d39ab399f",
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "kind": "cover",
+      "sha256": "3de6cc38eab6a0f4a8102909d4ec00ea869f231ee113d29982d01d008f8c576e",
+      "filename_disk": "e5ed2bf1-a8af-4ce0-9173-d76d39ab399f.jpg",
+      "storage": "local",
+      "bytes": 128737,
+      "modified_on": "2026-10-30T23:09:45.832Z"
+    },
+    {
+      "id": "59a3ac6d-4814-4123-b6a8-3f9378b19b6c",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "kind": "web",
+      "sha256": "c0d46b24e5def05a86a7c86fff8ea5fb85a6751d0755e7507420447ff33a802e",
+      "filename_disk": "59a3ac6d-4814-4123-b6a8-3f9378b19b6c.epub",
+      "storage": "local",
+      "bytes": 448829,
+      "modified_on": "2026-10-30T23:09:46.966Z"
+    },
+    {
+      "id": "1ffd3ba8-604a-441e-a86b-ed46e24e198e",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "kind": "download",
+      "sha256": "71517b80d7e3f0426127efe43f419af1384ba6f77c2dfe2f460de52b321a4cc9",
+      "filename_disk": "1ffd3ba8-604a-441e-a86b-ed46e24e198e.epub",
+      "storage": "local",
+      "bytes": 448001,
+      "modified_on": "2026-10-30T23:09:48.636Z"
+    },
+    {
+      "id": "6d485474-d1d3-431d-a98c-2822f6796741",
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "kind": "cover",
+      "sha256": "a499ca310b6cbfff70cd956560084cd9a88b4c973c6b979d06d4ca7ad19f9d69",
+      "filename_disk": "6d485474-d1d3-431d-a98c-2822f6796741.jpg",
+      "storage": "local",
+      "bytes": 120671,
+      "modified_on": "2026-10-30T23:09:49.995Z"
+    },
+    {
+      "id": "eea38c9a-faea-4014-ace3-da156e627402",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "kind": "web",
+      "sha256": "f7fce94b2f77fb8ced40c4355a6412659652cf62b90898c0be85d18aa7481162",
+      "filename_disk": "eea38c9a-faea-4014-ace3-da156e627402.epub",
+      "storage": "local",
+      "bytes": 269269,
+      "modified_on": "2026-10-30T23:09:51.267Z"
+    },
+    {
+      "id": "07ca164b-bd90-4a74-b024-bc2664e3f7ed",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "kind": "download",
+      "sha256": "c1b0c6268fc03ee139b62b9b4e67b3bada6b174768a4ff4576377f434482c606",
+      "filename_disk": "07ca164b-bd90-4a74-b024-bc2664e3f7ed.epub",
+      "storage": "local",
+      "bytes": 263063,
+      "modified_on": "2026-10-30T23:09:52.894Z"
+    },
+    {
+      "id": "fdc50006-ec3b-418a-9787-6bdb750a7a10",
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "kind": "cover",
+      "sha256": "3e1e7e207789e44c65c67319e403c5fb53da05131921eb354bbe46e74a2d10d5",
+      "filename_disk": "fdc50006-ec3b-418a-9787-6bdb750a7a10.jpg",
+      "storage": "local",
+      "bytes": 120547,
+      "modified_on": "2026-10-30T23:09:54.269Z"
+    },
+    {
+      "id": "f770f6fa-c85c-4bbb-9e2b-7602f1ea7b85",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "kind": "web",
+      "sha256": "f7c1c987b0517d0c434cd04f68d45b8344a50dd10182727b91fd46ba491ff601",
+      "filename_disk": "f770f6fa-c85c-4bbb-9e2b-7602f1ea7b85.epub",
+      "storage": "local",
+      "bytes": 325536,
+      "modified_on": "2026-10-30T23:09:55.752Z"
+    },
+    {
+      "id": "eebb9e92-3333-4240-b33c-0be8daa14247",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "kind": "download",
+      "sha256": "a3865cc0de9200282e8bf0a23111c26230cf517ff173b8a5421e88c40b7f8a75",
+      "filename_disk": "eebb9e92-3333-4240-b33c-0be8daa14247.epub",
+      "storage": "local",
+      "bytes": 316599,
+      "modified_on": "2026-10-30T23:09:57.350Z"
+    },
+    {
+      "id": "ccecbe2e-f43b-42a4-8b10-af694352dbf5",
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "kind": "cover",
+      "sha256": "7d0e1f9da24d77d3fada1470baa846a87c5ade8f758b91bb905ad82a1855374b",
+      "filename_disk": "ccecbe2e-f43b-42a4-8b10-af694352dbf5.jpg",
+      "storage": "local",
+      "bytes": 117841,
+      "modified_on": "2026-10-30T23:09:58.819Z"
+    },
+    {
+      "id": "291d87a0-dcd7-4fc6-b700-00f7ab4d41bc",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "kind": "web",
+      "sha256": "3ab66bf3802886922bdad3cb0146745ec55e2fa0fb16a76bb7a8a47d9e592f98",
+      "filename_disk": "291d87a0-dcd7-4fc6-b700-00f7ab4d41bc.epub",
+      "storage": "local",
+      "bytes": 211054,
+      "modified_on": "2026-10-30T23:10:00.288Z"
+    },
+    {
+      "id": "664062eb-399e-4d87-9050-745b6ad74e81",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "kind": "download",
+      "sha256": "b669ef39e1aae58d35b686cbeeabb9ed1b7ca5a87dfdc806b2cfb1c42d91be08",
+      "filename_disk": "664062eb-399e-4d87-9050-745b6ad74e81.epub",
+      "storage": "local",
+      "bytes": 210424,
+      "modified_on": "2026-10-30T23:10:01.771Z"
+    },
+    {
+      "id": "99331f56-05bd-4ed3-8628-4382f6501474",
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "kind": "cover",
+      "sha256": "eef571955804e6c7580c156da88ac9df158d3cec0fadb843e587896446285263",
+      "filename_disk": "99331f56-05bd-4ed3-8628-4382f6501474.jpg",
+      "storage": "local",
+      "bytes": 133574,
+      "modified_on": "2026-10-30T23:10:03.240Z"
+    },
+    {
+      "id": "af1c38d1-48e2-442b-a690-6918a5961acb",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "kind": "web",
+      "sha256": "51bad32a03077127d215d69076986ef9a086fc6d8e58f7bba6873894400b1165",
+      "filename_disk": "af1c38d1-48e2-442b-a690-6918a5961acb.epub",
+      "storage": "local",
+      "bytes": 701519,
+      "modified_on": "2026-10-30T23:10:04.597Z"
+    },
+    {
+      "id": "cbac7ba4-8443-4edd-84a7-be8d85de5085",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "kind": "download",
+      "sha256": "82e7fe29504aedb7810110b8a57a5301c3d3554819e9ddc7d495891598cc8b79",
+      "filename_disk": "cbac7ba4-8443-4edd-84a7-be8d85de5085.epub",
+      "storage": "local",
+      "bytes": 696057,
+      "modified_on": "2026-10-30T23:10:06.260Z"
+    },
+    {
+      "id": "0226df05-f1f2-420e-9eaa-539c0a2ae992",
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "kind": "cover",
+      "sha256": "c51f82546ef9844dac63e12bc1b7a955471a44a94823202176587e1a4260dc3a",
+      "filename_disk": "0226df05-f1f2-420e-9eaa-539c0a2ae992.jpg",
+      "storage": "local",
+      "bytes": 132864,
+      "modified_on": "2026-10-30T23:10:07.991Z"
+    },
+    {
+      "id": "802e4b5a-3962-4b16-8ea9-d88a2bc1a47a",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "kind": "web",
+      "sha256": "71863beb98dd0be101c5f6c5615cc91c7b105b810e0bb3f8aa109ef645ecab06",
+      "filename_disk": "802e4b5a-3962-4b16-8ea9-d88a2bc1a47a.epub",
+      "storage": "local",
+      "bytes": 422682,
+      "modified_on": "2026-10-30T23:10:09.504Z"
+    },
+    {
+      "id": "6534ad63-169f-4085-b38a-e06ca06a50c7",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "kind": "download",
+      "sha256": "08f76d802ce348a861822652ffd92ff411724d22905a13c4650f6372a8807818",
+      "filename_disk": "6534ad63-169f-4085-b38a-e06ca06a50c7.epub",
+      "storage": "local",
+      "bytes": 422042,
+      "modified_on": "2026-10-30T23:10:11.088Z"
+    },
+    {
+      "id": "b641b8b3-e093-4859-9f00-2bcd05f1367d",
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "kind": "cover",
+      "sha256": "7103b88949d5c1905635dc6b6f186b2ec12e85cf2fd224f1bbabcbcf4c0acd37",
+      "filename_disk": "b641b8b3-e093-4859-9f00-2bcd05f1367d.jpg",
+      "storage": "local",
+      "bytes": 134990,
+      "modified_on": "2026-10-30T23:10:12.568Z"
+    },
+    {
+      "id": "275b6f5a-3f14-4cda-b1de-3b7bc06f4a9a",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "kind": "web",
+      "sha256": "7614f97353764fcd65459fd671d8451c31744636923d19b70e7d28f62ad6ca8c",
+      "filename_disk": "275b6f5a-3f14-4cda-b1de-3b7bc06f4a9a.epub",
+      "storage": "local",
+      "bytes": 165519,
+      "modified_on": "2026-10-30T23:10:13.760Z"
+    },
+    {
+      "id": "61a5db7d-99f0-4627-9835-0ef6fcc7fb7b",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "kind": "download",
+      "sha256": "aefef6f9eae2aa572e84e92bfd77fe7a72c1211ef80b2ed32f1a2bd779f1e9df",
+      "filename_disk": "61a5db7d-99f0-4627-9835-0ef6fcc7fb7b.epub",
+      "storage": "local",
+      "bytes": 165370,
+      "modified_on": "2026-10-30T23:10:15.237Z"
+    },
+    {
+      "id": "a940da3e-8401-4973-bf3d-6cf97592eb8b",
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "kind": "cover",
+      "sha256": "c7400835ca009a1355498c4d72104be14681483c29e89eb1fd118c0b7418beeb",
+      "filename_disk": "a940da3e-8401-4973-bf3d-6cf97592eb8b.jpg",
+      "storage": "local",
+      "bytes": 117447,
+      "modified_on": "2026-10-30T23:10:16.609Z"
+    },
+    {
+      "id": "09dd8b0f-365b-4fa3-b39a-e5de30cc52ff",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "kind": "web",
+      "sha256": "38f10183a445e09a6c4a920e01c36c77aadd8493897c2df0a93757fc38eb117e",
+      "filename_disk": "09dd8b0f-365b-4fa3-b39a-e5de30cc52ff.epub",
+      "storage": "local",
+      "bytes": 170387,
+      "modified_on": "2026-10-30T23:10:18.104Z"
+    },
+    {
+      "id": "32f15427-0e37-4f8e-b919-b41687cf9413",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "kind": "download",
+      "sha256": "50c4301ba1097680181beeb39e68e9edbc8a09bcda5c5d754ba6faefd6b18f4a",
+      "filename_disk": "32f15427-0e37-4f8e-b919-b41687cf9413.epub",
+      "storage": "local",
+      "bytes": 169058,
+      "modified_on": "2026-10-30T23:10:19.611Z"
+    },
+    {
+      "id": "94cd7561-b412-4756-b6e7-bbd6a078860f",
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "kind": "cover",
+      "sha256": "e827193f9c1750e87f1e7b2cb08369017cc2684051c639a2ddec473df1e3da53",
+      "filename_disk": "94cd7561-b412-4756-b6e7-bbd6a078860f.jpg",
+      "storage": "local",
+      "bytes": 117667,
+      "modified_on": "2026-10-30T23:10:21.026Z"
+    },
+    {
+      "id": "41950092-f99e-44fc-85c5-3275eaaed8ed",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "kind": "web",
+      "sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "filename_disk": "41950092-f99e-44fc-85c5-3275eaaed8ed.epub",
+      "storage": "local",
+      "bytes": 287297,
+      "modified_on": "2026-10-30T23:10:22.390Z"
+    },
+    {
+      "id": "a5a82251-7da6-4b9e-b30f-6646f783e0ae",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "kind": "download",
+      "sha256": "9c2c06cb299eef049800d39a445f84694ce61f397ddf10bcf0d5a1c02723ff98",
+      "filename_disk": "a5a82251-7da6-4b9e-b30f-6646f783e0ae.epub",
+      "storage": "local",
+      "bytes": 287297,
+      "modified_on": "2026-10-30T23:10:23.982Z"
+    },
+    {
+      "id": "da491bd5-017f-4b84-a30c-c500da1d428a",
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "kind": "cover",
+      "sha256": "20fbe0bf4e33c398098a4e7ec2dad341ce89fc593021884931e6fc1ecbb5641b",
+      "filename_disk": "da491bd5-017f-4b84-a30c-c500da1d428a.jpg",
+      "storage": "local",
+      "bytes": 86570,
+      "modified_on": "2026-10-30T23:10:25.460Z"
+    },
+    {
+      "id": "7303b637-9f1e-4fd0-bc0a-98fedb893b18",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "kind": "web",
+      "sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "filename_disk": "7303b637-9f1e-4fd0-bc0a-98fedb893b18.epub",
+      "storage": "local",
+      "bytes": 211550,
+      "modified_on": "2026-10-30T23:10:26.708Z"
+    },
+    {
+      "id": "ede106ad-64f3-424f-a18d-1986e534a550",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "kind": "download",
+      "sha256": "822b4d6a1bba6ed44b2a349182be019ce2625edf6a942e035da566fdc0cd98fb",
+      "filename_disk": "ede106ad-64f3-424f-a18d-1986e534a550.epub",
+      "storage": "local",
+      "bytes": 211550,
+      "modified_on": "2026-10-30T23:10:28.112Z"
+    },
+    {
+      "id": "d486b678-45ef-4ef0-9db6-6c34c3445ef4",
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "kind": "cover",
+      "sha256": "aae22a6ef4c9c132ef7a065c4cc8dbffdf82e3644d8f851ddf8abdd2fdb79eeb",
+      "filename_disk": "d486b678-45ef-4ef0-9db6-6c34c3445ef4.jpg",
+      "storage": "local",
+      "bytes": 118911,
+      "modified_on": "2026-10-30T23:10:29.371Z"
+    },
+    {
+      "id": "9b60d0d1-4497-4473-816d-c617b8154a82",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "kind": "web",
+      "sha256": "379ec3ef30c98aba2c8e147b90c96b83bd821277fd339a2a7bd157141c300492",
+      "filename_disk": "9b60d0d1-4497-4473-816d-c617b8154a82.epub",
+      "storage": "local",
+      "bytes": 667231,
+      "modified_on": "2026-10-30T23:10:30.860Z"
+    },
+    {
+      "id": "a663c3ec-428d-487e-a0e5-49e623b6c4d6",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "kind": "download",
+      "sha256": "3921f273dad04b7fc3feaba7a2554a4dc74b18dc47c35c5e7f21153b7acd93df",
+      "filename_disk": "a663c3ec-428d-487e-a0e5-49e623b6c4d6.epub",
+      "storage": "local",
+      "bytes": 659663,
+      "modified_on": "2026-10-30T23:10:32.647Z"
+    },
+    {
+      "id": "9dc1254f-e3fa-48a0-82a2-91fff9343c76",
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "kind": "cover",
+      "sha256": "f4427bcbc9fc9bb2d6dc70c670117e5d94a1a877bc5e6dc1578f7d3139f6b957",
+      "filename_disk": "9dc1254f-e3fa-48a0-82a2-91fff9343c76.jpg",
+      "storage": "local",
+      "bytes": 135724,
+      "modified_on": "2026-10-30T23:10:34.319Z"
+    },
+    {
+      "id": "9fedc63f-199d-4e14-ac4a-4d6d4a717be5",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "kind": "web",
+      "sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "filename_disk": "9fedc63f-199d-4e14-ac4a-4d6d4a717be5.epub",
+      "storage": "local",
+      "bytes": 91429,
+      "modified_on": "2026-10-30T23:10:35.494Z"
+    },
+    {
+      "id": "6a6118aa-b97a-4d7b-94d3-7b13e6a408be",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "kind": "download",
+      "sha256": "d5eeaaa52b4d06a076d1251eebe963b8aea4b7d831218c7481b527e4814e80a7",
+      "filename_disk": "6a6118aa-b97a-4d7b-94d3-7b13e6a408be.epub",
+      "storage": "local",
+      "bytes": 91429,
+      "modified_on": "2026-10-30T23:10:36.842Z"
+    },
+    {
+      "id": "6d124401-835b-496f-bbd2-780b93914114",
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "kind": "cover",
+      "sha256": "9a88eeebd8f2ce2ebc35f283071e26056862a87d66eed469c7b4949379a070ed",
+      "filename_disk": "6d124401-835b-496f-bbd2-780b93914114.jpg",
+      "storage": "local",
+      "bytes": 115334,
+      "modified_on": "2026-10-30T23:10:38.181Z"
+    },
+    {
+      "id": "b7e23c95-58a0-4488-8f40-d13294010164",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "kind": "web",
+      "sha256": "e85829de3cd3050b5c6e2b7d6469dce97d50ef365430d65250b8aa887e0795a3",
+      "filename_disk": "b7e23c95-58a0-4488-8f40-d13294010164.epub",
+      "storage": "local",
+      "bytes": 361152,
+      "modified_on": "2026-10-30T23:10:39.622Z"
+    },
+    {
+      "id": "332f4769-53f8-4f35-afa3-a1a30c6cd7ba",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "kind": "download",
+      "sha256": "7498355d9646b7426e6cbe927627763be15bf66d7ea82950e111a18cab85435c",
+      "filename_disk": "332f4769-53f8-4f35-afa3-a1a30c6cd7ba.epub",
+      "storage": "local",
+      "bytes": 353925,
+      "modified_on": "2026-10-30T23:10:41.213Z"
+    },
+    {
+      "id": "c7e70425-d79a-4402-bd15-668d1297102b",
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "kind": "cover",
+      "sha256": "ef059f33ff88854e41b9a11d2c67d86e7627e91adb72d295f167e82de46bd099",
+      "filename_disk": "c7e70425-d79a-4402-bd15-668d1297102b.jpg",
+      "storage": "local",
+      "bytes": 90843,
+      "modified_on": "2026-10-30T23:10:42.781Z"
+    },
+    {
+      "id": "6c0ad574-61fa-49aa-967f-12d6d78c0cee",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "kind": "web",
+      "sha256": "ecea8c84eabea15ce69a8c6b69c953b7ad1313983843313ae418ac1c0fe8062f",
+      "filename_disk": "6c0ad574-61fa-49aa-967f-12d6d78c0cee.epub",
+      "storage": "local",
+      "bytes": 151346,
+      "modified_on": "2026-10-30T23:10:44.142Z"
+    },
+    {
+      "id": "d7e7aa26-0d20-4d22-a53a-636e35b7737e",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "kind": "download",
+      "sha256": "1575b582209ea131d3f6384a512aeac8ad9ceaae6e330da3d45152fd94b96590",
+      "filename_disk": "d7e7aa26-0d20-4d22-a53a-636e35b7737e.epub",
+      "storage": "local",
+      "bytes": 147369,
+      "modified_on": "2026-10-30T23:10:45.498Z"
+    },
+    {
+      "id": "d84d5c55-ed7f-4229-8958-874c040b18f6",
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "kind": "cover",
+      "sha256": "5262f01fbd00bd23b26ad617adaec88170a1f699bcd8f5b0ee7995877d186aac",
+      "filename_disk": "d84d5c55-ed7f-4229-8958-874c040b18f6.jpg",
+      "storage": "local",
+      "bytes": 93943,
+      "modified_on": "2026-10-30T23:10:46.879Z"
+    },
+    {
+      "id": "578db740-9c1a-44b4-81d8-3d0e4e9691ad",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "kind": "web",
+      "sha256": "9cec2262890ae2b3160c3ced08125865cca3cb5f2e592596a29ca30f1bc54041",
+      "filename_disk": "578db740-9c1a-44b4-81d8-3d0e4e9691ad.epub",
+      "storage": "local",
+      "bytes": 151201,
+      "modified_on": "2026-10-30T23:10:48.266Z"
+    },
+    {
+      "id": "a1931fc1-7de9-4c45-9fba-5484c9a61c4c",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "kind": "download",
+      "sha256": "e92ebe97d211602fd03ccc6ab75d8a023bfb1b0574ef7e12bf0f4e28432e5994",
+      "filename_disk": "a1931fc1-7de9-4c45-9fba-5484c9a61c4c.epub",
+      "storage": "local",
+      "bytes": 139313,
+      "modified_on": "2026-10-30T23:10:49.759Z"
+    },
+    {
+      "id": "598ffdd1-2e8b-48f1-a2ec-9e7a1b27628c",
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "kind": "cover",
+      "sha256": "b513e724567bb43a8ed77f41158c517b839392c98a7819e806541b6aa7ae4faa",
+      "filename_disk": "598ffdd1-2e8b-48f1-a2ec-9e7a1b27628c.jpg",
+      "storage": "local",
+      "bytes": 92560,
+      "modified_on": "2026-10-30T23:10:51.155Z"
+    },
+    {
+      "id": "ea96e198-58a3-4c93-ae7a-f64e62d08251",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "kind": "web",
+      "sha256": "8d19c2afcde336d31145b44e3fa51da25f007b829a3033847cc5237f193402f8",
+      "filename_disk": "ea96e198-58a3-4c93-ae7a-f64e62d08251.epub",
+      "storage": "local",
+      "bytes": 83497,
+      "modified_on": "2026-10-30T23:10:52.432Z"
+    },
+    {
+      "id": "e0bb172e-56df-41b0-9d81-3972c9497e56",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "kind": "download",
+      "sha256": "f0ba15d1c0b095d22602ed170354eb66db39d931cb5c1e452702caebe696c2f9",
+      "filename_disk": "e0bb172e-56df-41b0-9d81-3972c9497e56.epub",
+      "storage": "local",
+      "bytes": 77264,
+      "modified_on": "2026-10-30T23:10:53.696Z"
+    },
+    {
+      "id": "897a7516-6ef4-4bd7-9a09-f6bf0e1104e4",
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "kind": "cover",
+      "sha256": "78d41833cbf3e2378aa53531046b87a3b226f016aea63b181050338d65dca04b",
+      "filename_disk": "897a7516-6ef4-4bd7-9a09-f6bf0e1104e4.jpg",
+      "storage": "local",
+      "bytes": 98694,
+      "modified_on": "2026-10-30T23:10:54.953Z"
+    },
+    {
+      "id": "891af77d-0a79-4c16-9ee8-9cb33f0701a1",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "kind": "web",
+      "sha256": "59255f0a76b56896fabc14101a2f880af2a9946531c4f169749648ab189afdf3",
+      "filename_disk": "891af77d-0a79-4c16-9ee8-9cb33f0701a1.epub",
+      "storage": "local",
+      "bytes": 318612,
+      "modified_on": "2026-10-30T23:10:56.269Z"
+    },
+    {
+      "id": "6af287d5-24d2-4a0c-93b2-d7870e342b5f",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "kind": "download",
+      "sha256": "1a453f7afc43fd29cf9bd78e665300689f1e84dd7f7d2305623fba22cfb33152",
+      "filename_disk": "6af287d5-24d2-4a0c-93b2-d7870e342b5f.epub",
+      "storage": "local",
+      "bytes": 785878,
+      "modified_on": "2026-10-30T23:10:57.956Z"
+    },
+    {
+      "id": "773d3304-0ff7-4538-9d02-98bdc33ec0b6",
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "kind": "cover",
+      "sha256": "ee1762ee584af03eaff86718f05b8e8356727e5491ef5fb3fd6c70418db415f1",
+      "filename_disk": "773d3304-0ff7-4538-9d02-98bdc33ec0b6.jpg",
+      "storage": "local",
+      "bytes": 97675,
+      "modified_on": "2026-10-30T23:10:59.586Z"
+    },
+    {
+      "id": "6ff72129-b7f5-405b-ae17-6ba22f917510",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "kind": "web",
+      "sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "filename_disk": "6ff72129-b7f5-405b-ae17-6ba22f917510.epub",
+      "storage": "local",
+      "bytes": 123109,
+      "modified_on": "2026-10-30T23:11:00.652Z"
+    },
+    {
+      "id": "44688c5b-163b-444b-9764-a0386af65191",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "kind": "download",
+      "sha256": "0d43b57d2408c3052a0f2df25b533977113e6b2bcbf319eed66a623af1f60bc9",
+      "filename_disk": "44688c5b-163b-444b-9764-a0386af65191.epub",
+      "storage": "local",
+      "bytes": 123109,
+      "modified_on": "2026-10-30T23:11:02.116Z"
+    },
+    {
+      "id": "abdd0521-a635-4101-8516-4297f0757f56",
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "kind": "cover",
+      "sha256": "219274d711b019dfafb4a6c5fffe2f267e3eb0d0448b8091f01520e3084d8fd4",
+      "filename_disk": "abdd0521-a635-4101-8516-4297f0757f56.jpg",
+      "storage": "local",
+      "bytes": 115899,
+      "modified_on": "2026-10-30T23:11:03.611Z"
+    },
+    {
+      "id": "f6460b4b-e1ff-474a-a035-9bcab72f7599",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "kind": "web",
+      "sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "filename_disk": "f6460b4b-e1ff-474a-a035-9bcab72f7599.epub",
+      "storage": "local",
+      "bytes": 176980,
+      "modified_on": "2026-10-30T23:11:05.325Z"
+    },
+    {
+      "id": "29901bc7-efaf-4ef5-980d-1dd99cbcc400",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "kind": "download",
+      "sha256": "cafdb7832be0be5aebb1fee68cfb94808d13fe6f0ef78c2b542dac4efee0dae0",
+      "filename_disk": "29901bc7-efaf-4ef5-980d-1dd99cbcc400.epub",
+      "storage": "local",
+      "bytes": 176980,
+      "modified_on": "2026-10-30T23:11:06.971Z"
+    },
+    {
+      "id": "585ee495-18fb-4017-962c-a5629e588bec",
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "kind": "cover",
+      "sha256": "8902092b75ea90be9a3bbf5e20ce5ac5ec7a0559311aba31b70e5d70548cb0a2",
+      "filename_disk": "585ee495-18fb-4017-962c-a5629e588bec.jpg",
+      "storage": "local",
+      "bytes": 84959,
+      "modified_on": "2026-10-30T23:11:08.430Z"
+    },
+    {
+      "id": "e374fd19-d94c-4f06-8324-1be41bab674e",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "kind": "web",
+      "sha256": "fa92394d614c04f7c94e1ba0aef725ec99ac7ee14869be2ae97ce598b82bcf4b",
+      "filename_disk": "e374fd19-d94c-4f06-8324-1be41bab674e.epub",
+      "storage": "local",
+      "bytes": 202515,
+      "modified_on": "2026-10-30T23:11:09.729Z"
+    },
+    {
+      "id": "14d8f866-e5ec-47c0-9b1a-09a1b032a006",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "kind": "download",
+      "sha256": "6282be44e5f90c52996601f54928b5d719f47a200a58893a86bd4858c62bf204",
+      "filename_disk": "14d8f866-e5ec-47c0-9b1a-09a1b032a006.epub",
+      "storage": "local",
+      "bytes": 193828,
+      "modified_on": "2026-10-30T23:11:11.157Z"
+    },
+    {
+      "id": "5033f477-ceb2-4370-97a0-873f9db473fe",
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "kind": "cover",
+      "sha256": "f5f19025e0249d4ebc520113aed72d283d3e4bdb3bb7b2224b1d9a6a2f5cf092",
+      "filename_disk": "5033f477-ceb2-4370-97a0-873f9db473fe.jpg",
+      "storage": "local",
+      "bytes": 99411,
+      "modified_on": "2026-10-30T23:11:12.627Z"
+    },
+    {
+      "id": "8c6c7fae-0b79-41af-aebc-3f8b70938694",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "kind": "web",
+      "sha256": "de03e18081f63f306d8f3bda93056278d88c967a4e2cb824c856240215cd0d66",
+      "filename_disk": "8c6c7fae-0b79-41af-aebc-3f8b70938694.epub",
+      "storage": "local",
+      "bytes": 410503,
+      "modified_on": "2026-10-30T23:11:14.091Z"
+    },
+    {
+      "id": "f4e70c9c-c804-4f5a-a818-91fec8da67d0",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "kind": "download",
+      "sha256": "6eae2e910aa4edaca5776d1b05cbefe9f7bbb95f179618baeb71304557cae864",
+      "filename_disk": "f4e70c9c-c804-4f5a-a818-91fec8da67d0.epub",
+      "storage": "local",
+      "bytes": 409955,
+      "modified_on": "2026-10-30T23:11:16.001Z"
+    },
+    {
+      "id": "30986887-7592-4fc6-a15a-7b9c3bdf91b8",
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "kind": "cover",
+      "sha256": "b8a0afc598897996e84c5797e8affc2504a0b28e0ca7bf0ff8e9d39bf2b32edb",
+      "filename_disk": "30986887-7592-4fc6-a15a-7b9c3bdf91b8.jpg",
+      "storage": "local",
+      "bytes": 85228,
+      "modified_on": "2026-10-30T23:11:17.535Z"
+    },
+    {
+      "id": "402ed0bb-7997-4754-be19-dfeedfb7ad17",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "kind": "web",
+      "sha256": "00b49b7c00cde06a7ad086b9622363898e9cc68574a301c53adfb36d25a00c28",
+      "filename_disk": "402ed0bb-7997-4754-be19-dfeedfb7ad17.epub",
+      "storage": "local",
+      "bytes": 368573,
+      "modified_on": "2026-10-30T23:11:18.864Z"
+    },
+    {
+      "id": "a04ef1b7-6f1b-4f27-a702-b3ca1535a1f2",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "kind": "download",
+      "sha256": "827f3f33f8912e67c913f72d6be5ed7b3cc8aee37c54d32ff6b56d445c2882b2",
+      "filename_disk": "a04ef1b7-6f1b-4f27-a702-b3ca1535a1f2.epub",
+      "storage": "local",
+      "bytes": 366595,
+      "modified_on": "2026-10-30T23:11:20.624Z"
+    },
+    {
+      "id": "cc7baa18-f62a-403f-8226-f1b24da79073",
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "kind": "cover",
+      "sha256": "a41d5941259e9b07cfc31774405db1e8bf8113facd01b8e0df7f878cd28cf882",
+      "filename_disk": "cc7baa18-f62a-403f-8226-f1b24da79073.jpg",
+      "storage": "local",
+      "bytes": 85402,
+      "modified_on": "2026-10-30T23:11:22.146Z"
+    },
+    {
+      "id": "129f92c5-d944-4e0a-a968-9688ea4f5730",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "kind": "web",
+      "sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "filename_disk": "129f92c5-d944-4e0a-a968-9688ea4f5730.epub",
+      "storage": "local",
+      "bytes": 157951,
+      "modified_on": "2026-10-30T23:11:23.389Z"
+    },
+    {
+      "id": "7592e941-c4e9-4cb9-a018-18aea357c725",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "kind": "download",
+      "sha256": "5430ec94eecbd18a968523b656481d3ead3262f76f4b763feb801e157d9ca846",
+      "filename_disk": "7592e941-c4e9-4cb9-a018-18aea357c725.epub",
+      "storage": "local",
+      "bytes": 157951,
+      "modified_on": "2026-10-30T23:11:24.765Z"
+    },
+    {
+      "id": "865883e7-059b-4d88-beb0-02f9a768a653",
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "kind": "cover",
+      "sha256": "9205a427c6248619eeb1e375f04ce27f35172b06969951bbd833788737c9aca0",
+      "filename_disk": "865883e7-059b-4d88-beb0-02f9a768a653.jpg",
+      "storage": "local",
+      "bytes": 103797,
+      "modified_on": "2026-10-30T23:11:26.223Z"
+    },
+    {
+      "id": "afbf1e97-e532-4706-9ea0-a3a7767dad9a",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "kind": "web",
+      "sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "filename_disk": "afbf1e97-e532-4706-9ea0-a3a7767dad9a.epub",
+      "storage": "local",
+      "bytes": 196843,
+      "modified_on": "2026-10-30T23:11:27.705Z"
+    },
+    {
+      "id": "80c5fa87-2bc0-4b9f-9277-9df4706688aa",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "kind": "download",
+      "sha256": "9a7b3ca0249022688662b56002823be029b75de8aed088797c47f9b323a8f2cb",
+      "filename_disk": "80c5fa87-2bc0-4b9f-9277-9df4706688aa.epub",
+      "storage": "local",
+      "bytes": 196843,
+      "modified_on": "2026-10-30T23:11:29.117Z"
+    },
+    {
+      "id": "7cbeb00e-06f3-49c8-9096-e984e8deb265",
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "kind": "cover",
+      "sha256": "8a036a1440992e2939090e8ef8ee54824a9e140cdb6dd23090e8fb3b593f2d53",
+      "filename_disk": "7cbeb00e-06f3-49c8-9096-e984e8deb265.jpg",
+      "storage": "local",
+      "bytes": 82659,
+      "modified_on": "2026-10-30T23:11:30.527Z"
+    },
+    {
+      "id": "aee83921-a49a-4ca4-88eb-757519325b9b",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "kind": "web",
+      "sha256": "ffc8cc4a9e5800372a8259f1d41444e1ec3fd01e9d9f306286c34ee574ffb2f9",
+      "filename_disk": "aee83921-a49a-4ca4-88eb-757519325b9b.epub",
+      "storage": "local",
+      "bytes": 521109,
+      "modified_on": "2026-10-30T23:11:32.100Z"
+    },
+    {
+      "id": "c2ca62c1-8e43-4c06-824b-4ea675da8f71",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "kind": "download",
+      "sha256": "7d5e0b7cde9ae317cf75489991f009c9017f86c703a9c58bbe4782b93245be0c",
+      "filename_disk": "c2ca62c1-8e43-4c06-824b-4ea675da8f71.epub",
+      "storage": "local",
+      "bytes": 517701,
+      "modified_on": "2026-10-30T23:11:33.936Z"
+    },
+    {
+      "id": "c5e8f972-22e0-41ce-88fb-64107485407b",
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "kind": "cover",
+      "sha256": "68cbb8603a046762d75bdc679ce86bf799b0208825116c7a295c27455391621d",
+      "filename_disk": "c5e8f972-22e0-41ce-88fb-64107485407b.jpg",
+      "storage": "local",
+      "bytes": 122445,
+      "modified_on": "2026-10-30T23:11:35.411Z"
+    },
+    {
+      "id": "e1815438-37c5-4645-a761-f57feae4e700",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "kind": "web",
+      "sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "filename_disk": "e1815438-37c5-4645-a761-f57feae4e700.epub",
+      "storage": "local",
+      "bytes": 175605,
+      "modified_on": "2026-10-30T23:11:36.463Z"
+    },
+    {
+      "id": "f8b06335-8ff1-47e1-9785-99dfe569fa54",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "kind": "download",
+      "sha256": "f275bca6e0890eb1f976818e7999568aeaca260798e46c386c7481f47e55f390",
+      "filename_disk": "f8b06335-8ff1-47e1-9785-99dfe569fa54.epub",
+      "storage": "local",
+      "bytes": 175605,
+      "modified_on": "2026-10-30T23:11:37.667Z"
+    },
+    {
+      "id": "d91679a3-645e-4573-a3ed-c13e9f915318",
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "kind": "cover",
+      "sha256": "643ec584aa0f7dedee63927c4f74e51b8e248e946c70b17631e1317a98de6e2c",
+      "filename_disk": "d91679a3-645e-4573-a3ed-c13e9f915318.jpg",
+      "storage": "local",
+      "bytes": 123158,
+      "modified_on": "2026-10-30T23:11:38.928Z"
+    },
+    {
+      "id": "713f966d-78e1-49be-8f77-e557bfd130b1",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "kind": "web",
+      "sha256": "1327f3f7f33e68a4e3491467087652e6970f3f45b8b93a8c5b8ccc3e07aa2e72",
+      "filename_disk": "713f966d-78e1-49be-8f77-e557bfd130b1.epub",
+      "storage": "local",
+      "bytes": 7487965,
+      "modified_on": "2026-10-30T23:11:41.714Z"
+    },
+    {
+      "id": "9afbb7d4-ea54-47fc-a240-e806b4a80a7b",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "kind": "download",
+      "sha256": "2d4dfd213b96e236e94417772c57338551770ec3ecf5e7997b1e28f202a78ccb",
+      "filename_disk": "9afbb7d4-ea54-47fc-a240-e806b4a80a7b.epub",
+      "storage": "local",
+      "bytes": 6480905,
+      "modified_on": "2026-10-30T23:11:44.667Z"
+    },
+    {
+      "id": "621a02fe-bf42-47ff-97c1-1186fc87c2b9",
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "kind": "cover",
+      "sha256": "525ba7b64fab7b206234a23339f08e51429083af7f5fbc0b944146a16fb27869",
+      "filename_disk": "621a02fe-bf42-47ff-97c1-1186fc87c2b9.jpg",
+      "storage": "local",
+      "bytes": 104955,
+      "modified_on": "2026-10-30T23:11:46.224Z"
+    },
+    {
+      "id": "fbd7c7b6-f6fd-477a-b8c8-8d3643d176c1",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "kind": "web",
+      "sha256": "80173b6def3aa7ef067400e5527c3542d1c35f1e046e9080da0ffd25111cab34",
+      "filename_disk": "fbd7c7b6-f6fd-477a-b8c8-8d3643d176c1.epub",
+      "storage": "local",
+      "bytes": 205775,
+      "modified_on": "2026-10-30T23:11:47.403Z"
+    },
+    {
+      "id": "278222e6-01ce-4297-a51b-94e657b39da5",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "kind": "download",
+      "sha256": "75fc01023729af3f9fe4c611a2cdd16bc1f8221a243d7c626671b23d94aae659",
+      "filename_disk": "278222e6-01ce-4297-a51b-94e657b39da5.epub",
+      "storage": "local",
+      "bytes": 204197,
+      "modified_on": "2026-10-30T23:11:48.885Z"
+    },
+    {
+      "id": "420594c2-0396-4ebd-ab43-a7bebe6b7a69",
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "kind": "cover",
+      "sha256": "66b5f161219c79c07b89b5546c637875beb339d9235d6122a6ad68003cd0e7c8",
+      "filename_disk": "420594c2-0396-4ebd-ab43-a7bebe6b7a69.jpg",
+      "storage": "local",
+      "bytes": 111314,
+      "modified_on": "2026-10-30T23:11:50.224Z"
+    },
+    {
+      "id": "7849bb9f-f697-4c6a-aad8-17d87c7db231",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "kind": "web",
+      "sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "filename_disk": "7849bb9f-f697-4c6a-aad8-17d87c7db231.epub",
+      "storage": "local",
+      "bytes": 230740,
+      "modified_on": "2026-10-30T23:11:51.712Z"
+    },
+    {
+      "id": "67ffeaf0-9ad7-4d9a-8042-bb7ccb2cd82f",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "kind": "download",
+      "sha256": "c2c30fb9087a1585dc8827441de9b4f0e4a6e94f491119f5888c7d7d3f05d76f",
+      "filename_disk": "67ffeaf0-9ad7-4d9a-8042-bb7ccb2cd82f.epub",
+      "storage": "local",
+      "bytes": 230740,
+      "modified_on": "2026-10-30T23:11:53.240Z"
+    },
+    {
+      "id": "30902370-079a-4bdc-af6e-d83e786c2297",
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "kind": "cover",
+      "sha256": "a686d16ed7d4e2f116d3c6254991d7bf758eb5731c0e2b1800c4e8065627f508",
+      "filename_disk": "30902370-079a-4bdc-af6e-d83e786c2297.jpg",
+      "storage": "local",
+      "bytes": 84412,
+      "modified_on": "2026-10-30T23:11:54.729Z"
+    },
+    {
+      "id": "33c2188f-c181-43e7-b8b1-f07da79f2f5d",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "kind": "web",
+      "sha256": "6a0fee900b00779e5b34ba3d3118a1e8ae3d323bbd1d6ed180beb30fafe8004c",
+      "filename_disk": "33c2188f-c181-43e7-b8b1-f07da79f2f5d.epub",
+      "storage": "local",
+      "bytes": 171459,
+      "modified_on": "2026-10-30T23:11:56.133Z"
+    },
+    {
+      "id": "5a8e2c45-6d83-4157-8319-9497c60cdbf4",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "kind": "download",
+      "sha256": "c93ebadce62f957acd9522fa80936db45e33f5903df77c2a1a604cb791d2a9a7",
+      "filename_disk": "5a8e2c45-6d83-4157-8319-9497c60cdbf4.epub",
+      "storage": "local",
+      "bytes": 165261,
+      "modified_on": "2026-10-30T23:11:57.631Z"
+    },
+    {
+      "id": "cbd0a3b7-4243-4016-b2c9-a206e93ed2c7",
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "kind": "cover",
+      "sha256": "5e1ac90ed64af1a3f008944d16e74f4614ba741bd44f8bca5ef578c96e8fa74a",
+      "filename_disk": "cbd0a3b7-4243-4016-b2c9-a206e93ed2c7.jpg",
+      "storage": "local",
+      "bytes": 100816,
+      "modified_on": "2026-10-30T23:11:59.116Z"
+    },
+    {
+      "id": "e730a025-f316-4b1e-a165-9d201cad903a",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "kind": "web",
+      "sha256": "d1aa26cb36f8582e14e728da23ae039b1e40c454c01ce07e4a312278e247c921",
+      "filename_disk": "e730a025-f316-4b1e-a165-9d201cad903a.epub",
+      "storage": "local",
+      "bytes": 7958528,
+      "modified_on": "2026-10-30T23:12:02.445Z"
+    },
+    {
+      "id": "6977b6e7-2808-4b2e-ba4e-5106e583127c",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "kind": "download",
+      "sha256": "704b8d7092b7d1906919445deabfbe66061788e94aec04a49a7d5677bd08fb57",
+      "filename_disk": "6977b6e7-2808-4b2e-ba4e-5106e583127c.epub",
+      "storage": "local",
+      "bytes": 6708893,
+      "modified_on": "2026-10-30T23:12:06.921Z"
+    },
+    {
+      "id": "45f26eaa-e383-4e9c-8a4b-92f25b1f7609",
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "kind": "cover",
+      "sha256": "922e66b7c43994a2b3f0456bd44d5d9bd0a345280cff024cfde514fd6dcc819d",
+      "filename_disk": "45f26eaa-e383-4e9c-8a4b-92f25b1f7609.jpg",
+      "storage": "local",
+      "bytes": 101599,
+      "modified_on": "2026-10-30T23:12:08.889Z"
+    },
+    {
+      "id": "1739789f-10b2-4a77-a4a8-bc54d5d028c9",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "kind": "web",
+      "sha256": "a24699f0d1127368245fd1ace13b4f926b0fca37990e37e3a50ba375b6497099",
+      "filename_disk": "1739789f-10b2-4a77-a4a8-bc54d5d028c9.epub",
+      "storage": "local",
+      "bytes": 339250,
+      "modified_on": "2026-10-30T23:12:10.383Z"
+    },
+    {
+      "id": "2a394440-6336-4a90-9ab9-67c16bfc10fe",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "kind": "download",
+      "sha256": "97fa75e3b744c4767bbc57bc3ba162b5040ecd66efdbd6b04e9419acc1eb97a5",
+      "filename_disk": "2a394440-6336-4a90-9ab9-67c16bfc10fe.epub",
+      "storage": "local",
+      "bytes": 337312,
+      "modified_on": "2026-10-30T23:12:11.595Z"
+    },
+    {
+      "id": "2ca33393-3827-40cc-b11b-247ab7fc344e",
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "kind": "cover",
+      "sha256": "5b9132644e87ef9429985b71efb5664647ee2d30e8b07790e791b731663a5268",
+      "filename_disk": "2ca33393-3827-40cc-b11b-247ab7fc344e.jpg",
+      "storage": "local",
+      "bytes": 98106,
+      "modified_on": "2026-10-30T23:12:12.843Z"
+    },
+    {
+      "id": "89ffe456-6cd3-4dce-963f-2e7619f7c57a",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "kind": "web",
+      "sha256": "0de55ce0aa1c3ea02467b1abd2690eb6f94e37adcc0e8a8b7476d466fa8cc39b",
+      "filename_disk": "89ffe456-6cd3-4dce-963f-2e7619f7c57a.epub",
+      "storage": "local",
+      "bytes": 280309,
+      "modified_on": "2026-10-30T23:12:14.321Z"
+    },
+    {
+      "id": "1c3f4dd5-d9d4-4274-a69a-d759cdda9905",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "kind": "download",
+      "sha256": "2de2968bb7cac6af1c6c7f840265952ced73992c5534dc37a68ba2e75ee7a891",
+      "filename_disk": "1c3f4dd5-d9d4-4274-a69a-d759cdda9905.epub",
+      "storage": "local",
+      "bytes": 279761,
+      "modified_on": "2026-10-30T23:12:15.911Z"
+    },
+    {
+      "id": "5829b842-ee5c-455f-8f40-b3a01c07875e",
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "kind": "cover",
+      "sha256": "4d65bf084a27f494e399ac05777ecf6ae1c882970d104f68b5b421f69e5153c9",
+      "filename_disk": "5829b842-ee5c-455f-8f40-b3a01c07875e.jpg",
+      "storage": "local",
+      "bytes": 83722,
+      "modified_on": "2026-10-30T23:12:17.279Z"
+    },
+    {
+      "id": "c6704a8a-6302-4919-b6d9-4bea2cb942ef",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "kind": "web",
+      "sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "filename_disk": "c6704a8a-6302-4919-b6d9-4bea2cb942ef.epub",
+      "storage": "local",
+      "bytes": 127929,
+      "modified_on": "2026-10-30T23:12:18.518Z"
+    },
+    {
+      "id": "48b0eee8-5a19-4c4a-a5ca-7c05fc67e883",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "kind": "download",
+      "sha256": "cfa44a8b14e960835baedbcfe83d0d5f78e33de41d4692609228e197947bbaef",
+      "filename_disk": "48b0eee8-5a19-4c4a-a5ca-7c05fc67e883.epub",
+      "storage": "local",
+      "bytes": 127929,
+      "modified_on": "2026-10-30T23:12:19.893Z"
+    },
+    {
+      "id": "ecd9949b-2d3c-48e4-8cef-b080fb68b843",
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "kind": "cover",
+      "sha256": "ae03b547247de1e09bfaedb777facf4ac240b7e1ab91f56bedbe5e9360237e93",
+      "filename_disk": "ecd9949b-2d3c-48e4-8cef-b080fb68b843.jpg",
+      "storage": "local",
+      "bytes": 129006,
+      "modified_on": "2026-10-30T23:12:21.284Z"
+    },
+    {
+      "id": "802b4e04-20a1-4c4f-b788-c35360337469",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "kind": "web",
+      "sha256": "9522e58f9f23cab1206027f8150ac291fc4ea906be672e05ed1ea3f1421ac459",
+      "filename_disk": "802b4e04-20a1-4c4f-b788-c35360337469.epub",
+      "storage": "local",
+      "bytes": 235639,
+      "modified_on": "2026-10-30T23:12:22.860Z"
+    },
+    {
+      "id": "7f2ff81a-47ba-4f56-a789-42115cd0a68f",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "kind": "download",
+      "sha256": "6a72df071985fe3da1d95e76bb6dbbec02c756c2d7ea3619061c89bef9fe535f",
+      "filename_disk": "7f2ff81a-47ba-4f56-a789-42115cd0a68f.epub",
+      "storage": "local",
+      "bytes": 229200,
+      "modified_on": "2026-10-30T23:12:24.497Z"
+    },
+    {
+      "id": "641dc68f-269c-4771-b596-c4c4cf34d258",
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "kind": "cover",
+      "sha256": "8713dc7311f8d4a373ff6705c48054a99d8fcafef30684aa38b832e1020a569b",
+      "filename_disk": "641dc68f-269c-4771-b596-c4c4cf34d258.jpg",
+      "storage": "local",
+      "bytes": 123599,
+      "modified_on": "2026-10-30T23:12:26.031Z"
+    },
+    {
+      "id": "7af35d44-9148-4608-8afd-9c15360b4780",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "kind": "web",
+      "sha256": "7174c1ef21afef0866970d263d5a876f0b0642287566ee6c748ffef894860005",
+      "filename_disk": "7af35d44-9148-4608-8afd-9c15360b4780.epub",
+      "storage": "local",
+      "bytes": 5400489,
+      "modified_on": "2026-10-30T23:12:28.659Z"
+    },
+    {
+      "id": "8b5d2f4c-4c05-45ef-9a0e-28e392f64282",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "kind": "download",
+      "sha256": "70b945390f96a14d3fb21a41980504e24279a1ace42dc848e118acc3e60f47cf",
+      "filename_disk": "8b5d2f4c-4c05-45ef-9a0e-28e392f64282.epub",
+      "storage": "local",
+      "bytes": 5314694,
+      "modified_on": "2026-10-30T23:12:31.180Z"
+    },
+    {
+      "id": "21292dcd-bd17-4633-840b-6cc9f4960768",
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "kind": "cover",
+      "sha256": "c45a748cec1cfc38faae80c239902e194aa269a7dfce7ea2ce5286a3ffdf1a68",
+      "filename_disk": "21292dcd-bd17-4633-840b-6cc9f4960768.jpg",
+      "storage": "local",
+      "bytes": 99208,
+      "modified_on": "2026-10-30T23:12:34.772Z"
+    }
+  ],
+  "timezone": "Europe/Zurich",
+  "validation": {
+    "reader_browser_cases_passed": 180,
+    "reader_browser_cases_failed": 0,
+    "catalogue_seo_cases_passed": 9,
+    "python_tests_passed": 19,
+    "node_unit_tests_passed": 25
+  }
+}

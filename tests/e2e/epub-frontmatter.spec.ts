@@ -1,5 +1,6 @@
 import { test, expect, devices } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import batch from '../fixtures/frontmatter-catalog.json' with { type: 'json' };
 import { chooseChapterHref } from './reader-helpers';
 
@@ -21,7 +22,10 @@ for (const [name, profile, kind] of [
       isMobile: profile.isMobile, hasTouch: profile.hasTouch, deviceScaleFactor: profile.deviceScaleFactor });
     for (const book of batch) test(book.title, async ({ page, context, request }, info) => {
       const errors: string[] = [];
+      const diagnostics: string[] = [];
       page.on('pageerror', error => errors.push(error.message));
+      page.on('console', message => { if (message.type() === 'error') diagnostics.push(message.text()); });
+      page.on('requestfailed', request => diagnostics.push(`${request.url()}: ${request.failure()?.errorText}`));
       await context.route(MAIN + '/**', async route => {
         const url = new URL(route.request().url());
         await route.fulfill({ response: await route.fetch({ url: LOCAL + url.pathname + url.search }) });
@@ -35,7 +39,10 @@ for (const [name, profile, kind] of [
         } else {
           const asset = new URL(route.request().url());
           asset.pathname = `/assets/${id}`;
-          await route.fulfill({ response: await route.fetch({ url: asset.href }) });
+          const response = await route.fetch({ url: asset.href });
+          const body = await response.body();
+          diagnostics.push(`${asset.href}: HTTP ${response.status()}, ${body.length}/${response.headers()['content-length']} bytes, SHA-256 ${createHash('sha256').update(body).digest('hex')}`);
+          await route.fulfill({ response });
         }
       });
       const catalogue = (await (await request.get(LOCAL + '/scriptorium/bibliotheque.json')).json()).items;
@@ -44,7 +51,7 @@ for (const [name, profile, kind] of [
       await page.goto(item.href);
       const viewport = page.locator('[data-reader="viewport"]');
       await expect(viewport).toHaveAttribute('aria-busy', 'false', { timeout: 30000 });
-      await expect(page.locator('[data-reader="error"]')).toBeHidden();
+      await expect(page.locator('[data-reader="error"]'), diagnostics.join('\n')).toBeHidden();
       await expect.poll(() => viewport.evaluate(viewport => {
         for (const iframe of viewport.querySelectorAll('iframe')) {
           const doc = iframe.contentDocument, img = doc?.querySelector<HTMLImageElement>('.literae-cover img');

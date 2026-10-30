@@ -2,8 +2,8 @@
   {
     "bookId": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
     "title": "L’Imitation de Jésus-Christ",
-    "webId": "4d832cd3-a6ae-4d83-aa29-4cb50b2cacff",
-    "downloadId": "f4b4bbff-2510-4180-b6f9-cd3d36d144da",
+    "webId": "beb416f9-4687-46ad-972b-12d511877117",
+    "downloadId": "ecdee352-3493-494c-9d6a-26524f0878d0",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -16,8 +16,8 @@
   {
     "bookId": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
     "title": "Confessions",
-    "webId": "6ff4c85b-811f-4289-ae8f-c363c26d0022",
-    "downloadId": "d93a0198-f1fc-42d5-af56-994006d0296b",
+    "webId": "891af77d-0a79-4c16-9ee8-9cb33f0701a1",
+    "downloadId": "6af287d5-24d2-4a0c-93b2-d7870e342b5f",
     "noticePaths": {
       "web": [],
       "download": [
@@ -28,8 +28,8 @@
   {
     "bookId": "1f282977-8501-471b-a307-1fa132c3e4db",
     "title": "La Cité de Dieu",
-    "webId": "a77f2309-f2e4-4eb3-b6bd-58393a15f3d4",
-    "downloadId": "3590baad-0f89-4800-b3d1-a1e468d68084",
+    "webId": "bc30ec37-197f-496f-8709-b500d73bf31b",
+    "downloadId": "52fbfd1e-48ba-4959-ad9d-d76294746ef0",
     "noticePaths": {
       "web": [],
       "download": []
@@ -38,8 +38,8 @@
   {
     "bookId": "168709f2-594c-4c35-859e-9b5426d83838",
     "title": "Pensées",
-    "webId": "b167783c-8791-4fbe-9820-a8b10192431d",
-    "downloadId": "032835c5-4a79-45e2-be82-4026ade38115",
+    "webId": "a6bf639d-63c6-440d-a1be-0c28a905591a",
+    "downloadId": "e27c6f6d-7c64-4db2-a1e3-411fe7e24675",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -52,8 +52,8 @@
   {
     "bookId": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
     "title": "Oraisons funèbres",
-    "webId": "0b28c8c3-7937-4f3c-afe2-309630acc018",
-    "downloadId": "62472c16-9825-46ac-b2f1-51a3e2bb424a",
+    "webId": "cb12d85b-cdd1-4da2-b5fd-8bf80290d15e",
+    "downloadId": "2215e3ff-0487-4f2b-9de7-5e6d4cb62ea2",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -66,8 +66,8 @@
   {
     "bookId": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
     "title": "Traité de la concupiscence",
-    "webId": "00d062c9-36a5-497c-ab35-e724e76a3e4e",
-    "downloadId": "6e77777b-3752-4be3-b5b8-2418d98d2f87",
+    "webId": "8b64c6de-0cc4-40b8-b177-47f06ddabea1",
+    "downloadId": "584b3b13-f31b-43b9-aa71-d10d71d610b5",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -80,8 +80,8 @@
   {
     "bookId": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
     "title": "Considérations sur la France",
-    "webId": "6c589eaa-0667-49f8-892f-e75ca2b1fa2d",
-    "downloadId": "6fca3c59-0b64-4fb8-9987-778162f097e2",
+    "webId": "e374fd19-d94c-4f06-8324-1be41bab674e",
+    "downloadId": "14d8f866-e5ec-47c0-9b1a-09a1b032a006",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -94,8 +94,8 @@
   {
     "bookId": "70b9ede4-bffe-4558-b98d-6dff010686cc",
     "title": "Sainte Bible traduite par A. Crampon",
-    "webId": "bec96cc6-c2b4-4e32-9147-233726a15bad",
-    "downloadId": "c28adc3f-8674-4480-b83a-4a5057c49589",
+    "webId": "713f966d-78e1-49be-8f77-e557bfd130b1",
+    "downloadId": "9afbb7d4-ea54-47fc-a240-e806b4a80a7b",
     "noticePaths": {
       "web": [],
       "download": []
@@ -104,8 +104,8 @@
   {
     "bookId": "94e52d29-20a5-47eb-bbad-ae90633c1534",
     "title": "Sainte Bible traduite par J.-B. Glaire",
-    "webId": "7fa44cee-e335-48b4-be27-aabcfd0f2bd1",
-    "downloadId": "98dd3a07-1fa2-4efa-a170-150752ff6d6a",
+    "webId": "e730a025-f316-4b1e-a165-9d201cad903a",
+    "downloadId": "6977b6e7-2808-4b2e-ba4e-5106e583127c",
     "noticePaths": {
       "web": [],
       "download": []
@@ -114,8 +114,8 @@
   {
     "bookId": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
     "title": "Sainte Bible traduite par Lemaître Sacy",
-    "webId": "5cd6f12b-6557-4359-a22c-7b37d9f45863",
-    "downloadId": "8918c635-2edb-4e3a-b13d-47c113632041",
+    "webId": "b5362068-f90e-4dda-9efb-fefe27d7c9f8",
+    "downloadId": "20245ddb-3adb-424e-b7b8-fbf6a5f04679",
     "noticePaths": {
       "web": [
         "OPS/foreword.xhtml"
@@ -128,8 +128,8 @@
   {
     "bookId": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
     "title": "L’Isolée",
-    "webId": "bbe1ffb9-2a57-4d7f-806e-e3803804d234",
-    "downloadId": "9bfcd4f0-882d-4c95-b69c-9db8da35e329",
+    "webId": "afbf1e97-e532-4706-9ea0-a3a7767dad9a",
+    "downloadId": "80c5fa87-2bc0-4b9f-9277-9df4706688aa",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -142,8 +142,8 @@
   {
     "bookId": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
     "title": "La Terre qui meurt",
-    "webId": "82a540ea-5760-4907-b41b-470b43c2ba7d",
-    "downloadId": "8dd9e6dd-cda1-4a5a-8691-2e651d0072f8",
+    "webId": "410be010-3884-48ab-a642-ddfd25dd3692",
+    "downloadId": "060f10e3-b3fa-4750-be66-6622c496bb19",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -156,8 +156,8 @@
   {
     "bookId": "51a8874a-1030-4668-860d-3b327dee3c34",
     "title": "Somme Théologique",
-    "webId": "073b6d87-4116-464d-a481-72e9aa09de56",
-    "downloadId": "f6314f83-5cea-4cf5-bc96-bffa13d19fb8",
+    "webId": "7af35d44-9148-4608-8afd-9c15360b4780",
+    "downloadId": "8b5d2f4c-4c05-45ef-9a0e-28e392f64282",
     "noticePaths": {
       "web": [
         "EPUB/text/edition.xhtml"
@@ -170,8 +170,8 @@
   {
     "bookId": "05991d3b-1f6c-467c-be37-6026bc3321fd",
     "title": "Explication du Sermon sur la montagne",
-    "webId": "fcce9770-f941-4bcb-8109-68053359fa72",
-    "downloadId": "67b741bb-ae73-42fa-9d49-807800c509a4",
+    "webId": "5b72a9bb-31de-41e9-9d23-4d604edc3d5e",
+    "downloadId": "a76e711a-3576-43ca-9281-3ca822596491",
     "noticePaths": {
       "web": [],
       "download": []
@@ -180,8 +180,8 @@
   {
     "bookId": "23be59ae-879f-494a-90c7-a31f70878fa9",
     "title": "Commentaire sur l’Évangile selon saint Matthieu",
-    "webId": "faef3586-1c50-4a8d-907c-d493a56af11a",
-    "downloadId": "334de9bc-783a-48fa-b6ed-64ec35df6c58",
+    "webId": "867d00e5-b7b1-4a30-9582-770e90a12616",
+    "downloadId": "022c0c3f-20f8-4cc9-9981-0dd148e09769",
     "noticePaths": {
       "web": [],
       "download": []
@@ -190,8 +190,8 @@
   {
     "bookId": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
     "title": "Commentaire sur l’épître aux Philippiens",
-    "webId": "af466133-4235-48f4-b93c-540772db5bff",
-    "downloadId": "13a0f719-44f3-4f43-9ac5-59f868deeeed",
+    "webId": "eea38c9a-faea-4014-ace3-da156e627402",
+    "downloadId": "07ca164b-bd90-4a74-b024-bc2664e3f7ed",
     "noticePaths": {
       "web": [],
       "download": []
@@ -200,8 +200,8 @@
   {
     "bookId": "42f03745-75c3-473a-bdc6-984259769488",
     "title": "Commentaire sur l’épître aux Romains",
-    "webId": "428155e0-6dc4-4cd0-979c-32688d08211c",
-    "downloadId": "10fd78e5-19bb-4363-b08f-32acbe67d12e",
+    "webId": "aee83921-a49a-4ca4-88eb-757519325b9b",
+    "downloadId": "c2ca62c1-8e43-4c06-824b-4ea675da8f71",
     "noticePaths": {
       "web": [],
       "download": []
@@ -210,8 +210,8 @@
   {
     "bookId": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
     "title": "Commentaire sur l’épître aux Éphésiens",
-    "webId": "cfd3706a-185c-458f-8ddd-7aeeadb3e487",
-    "downloadId": "d56b28e5-e196-4c3a-8c3b-815d36d1ca00",
+    "webId": "f770f6fa-c85c-4bbb-9e2b-7602f1ea7b85",
+    "downloadId": "eebb9e92-3333-4240-b33c-0be8daa14247",
     "noticePaths": {
       "web": [],
       "download": []
@@ -220,8 +220,8 @@
   {
     "bookId": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
     "title": "Commentaire sur l’épître aux Hébreux",
-    "webId": "86842fe4-c383-444c-a146-ed09065c516a",
-    "downloadId": "0dbb3b1b-b552-4401-b10d-63b05efe990a",
+    "webId": "59a3ac6d-4814-4123-b6a8-3f9378b19b6c",
+    "downloadId": "1ffd3ba8-604a-441e-a86b-ed46e24e198e",
     "noticePaths": {
       "web": [],
       "download": []
@@ -230,8 +230,8 @@
   {
     "bookId": "bab6ba05-2d92-4125-8446-731d038738a4",
     "title": "Commentaire sur l’épître à Philémon",
-    "webId": "d6a8c726-e4f2-4244-9800-5acd112e1874",
-    "downloadId": "6cd08ef3-8fb9-4822-88a4-d64ceca6b176",
+    "webId": "9fedc63f-199d-4e14-ac4a-4d6d4a717be5",
+    "downloadId": "6a6118aa-b97a-4d7b-94d3-7b13e6a408be",
     "noticePaths": {
       "web": [],
       "download": []
@@ -240,8 +240,8 @@
   {
     "bookId": "3b65285f-fd12-4b36-822d-372f7cef664f",
     "title": "Commentaire sur l’épître aux Colossiens",
-    "webId": "20b12649-7e98-42f9-b152-c69af2a4d2f5",
-    "downloadId": "802db512-8b93-4881-aa19-70f8fddf5ce2",
+    "webId": "7303b637-9f1e-4fd0-bc0a-98fedb893b18",
+    "downloadId": "ede106ad-64f3-424f-a18d-1986e534a550",
     "noticePaths": {
       "web": [],
       "download": []
@@ -250,8 +250,8 @@
   {
     "bookId": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
     "title": "Commentaire sur l’épître aux Galates",
-    "webId": "f277155c-6d85-4994-b600-c82638da8490",
-    "downloadId": "2d4b04c2-8559-4c7b-9d60-8dedceb3a2f9",
+    "webId": "09dd8b0f-365b-4fa3-b39a-e5de30cc52ff",
+    "downloadId": "32f15427-0e37-4f8e-b919-b41687cf9413",
     "noticePaths": {
       "web": [],
       "download": []
@@ -260,8 +260,8 @@
   {
     "bookId": "8767f872-509d-443b-98d1-8314251d6fa0",
     "title": "Commentaire sur l’épître à Tite",
-    "webId": "77b9d554-1292-40cf-bf27-98201bd907fe",
-    "downloadId": "7c6bd750-f1f9-4a43-8f9c-5476994f2893",
+    "webId": "6ff72129-b7f5-405b-ae17-6ba22f917510",
+    "downloadId": "44688c5b-163b-444b-9764-a0386af65191",
     "noticePaths": {
       "web": [],
       "download": []
@@ -270,8 +270,8 @@
   {
     "bookId": "518d8bd3-0479-444c-b037-447c7d9856e6",
     "title": "Commentaire sur la première épître aux Corinthiens",
-    "webId": "c2b5b95d-91f2-43b3-a5f1-2c249bf4b858",
-    "downloadId": "c7a4ae9d-2e8f-4c1f-8309-f3d1d302626b",
+    "webId": "9b60d0d1-4497-4473-816d-c617b8154a82",
+    "downloadId": "a663c3ec-428d-487e-a0e5-49e623b6c4d6",
     "noticePaths": {
       "web": [],
       "download": []
@@ -280,8 +280,8 @@
   {
     "bookId": "999cdeb7-b075-411c-9cd4-ef63400db69d",
     "title": "Commentaire sur la première épître aux Thessaloniciens",
-    "webId": "a3e842e0-cce5-4dd7-a497-718e0df92e92",
-    "downloadId": "7a3fc0a2-020f-48de-ac35-bd36c0c0324b",
+    "webId": "291d87a0-dcd7-4fc6-b700-00f7ab4d41bc",
+    "downloadId": "664062eb-399e-4d87-9050-745b6ad74e81",
     "noticePaths": {
       "web": [],
       "download": []
@@ -290,8 +290,8 @@
   {
     "bookId": "d4809d10-e532-48ba-8d24-418a39daff16",
     "title": "Commentaire sur la première épître à Timothée",
-    "webId": "1d19870f-d464-449c-abb6-4e750e1435a4",
-    "downloadId": "0b4420a5-c8ff-4f92-83c1-6f8d5738dedd",
+    "webId": "802b4e04-20a1-4c4f-b788-c35360337469",
+    "downloadId": "7f2ff81a-47ba-4f56-a789-42115cd0a68f",
     "noticePaths": {
       "web": [],
       "download": []
@@ -300,8 +300,8 @@
   {
     "bookId": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
     "title": "Commentaire sur la deuxième épître aux Corinthiens",
-    "webId": "3b590ab9-498f-4223-a7f7-fd17e37ba078",
-    "downloadId": "05901ca5-ba2a-40c6-9cfe-7da9120f7aff",
+    "webId": "802e4b5a-3962-4b16-8ea9-d88a2bc1a47a",
+    "downloadId": "6534ad63-169f-4085-b38a-e06ca06a50c7",
     "noticePaths": {
       "web": [],
       "download": []
@@ -310,8 +310,8 @@
   {
     "bookId": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
     "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
-    "webId": "99fac3db-05da-45bc-a9a7-739a84a4d0fe",
-    "downloadId": "36625aa5-7795-4cb0-87aa-0244223a921b",
+    "webId": "c6704a8a-6302-4919-b6d9-4bea2cb942ef",
+    "downloadId": "48b0eee8-5a19-4c4a-a5ca-7c05fc67e883",
     "noticePaths": {
       "web": [],
       "download": []
@@ -320,8 +320,8 @@
   {
     "bookId": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
     "title": "Commentaire sur la deuxième épître à Timothée",
-    "webId": "eec8d173-ba17-4588-8ba7-496d7f17adae",
-    "downloadId": "7438645b-42d4-4032-87fb-aadcaa65e9c6",
+    "webId": "e1815438-37c5-4645-a761-f57feae4e700",
+    "downloadId": "f8b06335-8ff1-47e1-9785-99dfe569fa54",
     "noticePaths": {
       "web": [],
       "download": []
@@ -330,8 +330,8 @@
   {
     "bookId": "798c7563-8f74-4708-93b9-a0a97272b94c",
     "title": "Homélies sur les Actes des Apôtres",
-    "webId": "e1013e12-4ccc-4132-bea1-0c746f1bcb99",
-    "downloadId": "31674d0a-6e0a-4058-a12c-3424ef6fde83",
+    "webId": "af1c38d1-48e2-442b-a690-6918a5961acb",
+    "downloadId": "cbac7ba4-8443-4edd-84a7-be8d85de5085",
     "noticePaths": {
       "web": [],
       "download": []
@@ -340,8 +340,8 @@
   {
     "bookId": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
     "title": "Contre les Juifs",
-    "webId": "3d74f7c5-533a-4078-aec8-7c3f360224a8",
-    "downloadId": "876a2551-3670-49fa-a1d8-744cff091617",
+    "webId": "ea96e198-58a3-4c93-ae7a-f64e62d08251",
+    "downloadId": "e0bb172e-56df-41b0-9d81-3972c9497e56",
     "noticePaths": {
       "web": [],
       "download": []
@@ -350,8 +350,8 @@
   {
     "bookId": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
     "title": "Discours contre les Juifs",
-    "webId": "bcd2ce83-356c-494f-acdb-79080d09eb58",
-    "downloadId": "da42304d-be3e-4d83-b3c6-5a4fedb6d26c",
+    "webId": "fbd7c7b6-f6fd-477a-b8c8-8d3643d176c1",
+    "downloadId": "278222e6-01ce-4297-a51b-94e657b39da5",
     "noticePaths": {
       "web": [],
       "download": []
@@ -360,8 +360,8 @@
   {
     "bookId": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
     "title": "Apologie de la vie monastique",
-    "webId": "8082b038-6557-44b9-9456-5c58bcd2d7d5",
-    "downloadId": "07c668e4-7c7a-485a-8dfc-18719c0bec05",
+    "webId": "275b6f5a-3f14-4cda-b1de-3b7bc06f4a9a",
+    "downloadId": "61a5db7d-99f0-4627-9835-0ef6fcc7fb7b",
     "noticePaths": {
       "web": [],
       "download": []
@@ -370,8 +370,8 @@
   {
     "bookId": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
     "title": "Traité du sacerdoce",
-    "webId": "b767e7b1-d213-45eb-a89a-bf43e6d9af31",
-    "downloadId": "f249065b-37a7-42f4-9f31-0aa2a4882cc3",
+    "webId": "129f92c5-d944-4e0a-a968-9688ea4f5730",
+    "downloadId": "7592e941-c4e9-4cb9-a018-18aea357c725",
     "noticePaths": {
       "web": [],
       "download": []
@@ -380,8 +380,8 @@
   {
     "bookId": "91d340a8-54f9-4182-b612-899030777152",
     "title": "Le Blé qui lève",
-    "webId": "47e2d4d1-52d6-451a-9419-d574da81c5da",
-    "downloadId": "499a7b8d-9ca6-484b-925b-1923b89e126b",
+    "webId": "41950092-f99e-44fc-85c5-3275eaaed8ed",
+    "downloadId": "a5a82251-7da6-4b9e-b30f-6646f783e0ae",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -394,8 +394,8 @@
   {
     "bookId": "c5f2acdd-8366-43fd-a378-e3d53c793056",
     "title": "La Barrière",
-    "webId": "c928533c-a958-45ab-bb22-713d03545a6c",
-    "downloadId": "c5bd78f1-9fa1-4780-8fbd-804128472794",
+    "webId": "f6460b4b-e1ff-474a-a035-9bcab72f7599",
+    "downloadId": "29901bc7-efaf-4ef5-980d-1dd99cbcc400",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -408,8 +408,8 @@
   {
     "bookId": "3c1bdbba-2337-433c-b6be-5bb46b286978",
     "title": "Les Oberlé",
-    "webId": "2b873569-9272-4f5c-b875-9d5830509370",
-    "downloadId": "839ed980-588e-4966-a37c-5292bf4c3b4a",
+    "webId": "7849bb9f-f697-4c6a-aad8-17d87c7db231",
+    "downloadId": "67ffeaf0-9ad7-4d9a-8042-bb7ccb2cd82f",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -422,8 +422,8 @@
   {
     "bookId": "2edce269-88a9-485f-853a-385d692434c1",
     "title": "Le Disciple",
-    "webId": "f8f88460-58d0-480f-9d3a-3094354e49a1",
-    "downloadId": "4d711acf-5229-438f-a90c-1561ad3a8a60",
+    "webId": "89ffe456-6cd3-4dce-963f-2e7619f7c57a",
+    "downloadId": "1c3f4dd5-d9d4-4274-a69a-d759cdda9905",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -436,8 +436,8 @@
   {
     "bookId": "e5467b39-2468-4f1e-b8af-322ba33689eb",
     "title": "La Femme pauvre",
-    "webId": "76deb0a3-d2ee-4165-ad47-6022d34638a6",
-    "downloadId": "4103ac44-fd3d-476c-a03b-57603eebfa95",
+    "webId": "402ed0bb-7997-4754-be19-dfeedfb7ad17",
+    "downloadId": "a04ef1b7-6f1b-4f27-a702-b3ca1535a1f2",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -450,8 +450,8 @@
   {
     "bookId": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
     "title": "Les Dernières Colonnes de l’Église",
-    "webId": "71e981da-9d05-4fa4-867c-dde0536b3817",
-    "downloadId": "4f904f2f-404b-48c3-89a5-7faeb3812ef7",
+    "webId": "33c2188f-c181-43e7-b8b1-f07da79f2f5d",
+    "downloadId": "5a8e2c45-6d83-4157-8319-9497c60cdbf4",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -464,8 +464,8 @@
   {
     "bookId": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
     "title": "Belluaires et porchers",
-    "webId": "9c6edc10-9163-4ada-9e5e-3e8fcbd6436b",
-    "downloadId": "78a5e2a1-5d51-4f8d-95b1-1514bb06cf16",
+    "webId": "b7e23c95-58a0-4488-8f40-d13294010164",
+    "downloadId": "332f4769-53f8-4f35-afa3-a1a30c6cd7ba",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -478,8 +478,8 @@
   {
     "bookId": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
     "title": "Exégèse des Lieux Communs",
-    "webId": "cfc03a32-f5bd-4f63-8753-a8f738ed66a2",
-    "downloadId": "36dbba41-3167-46ac-a6ec-007303ca45ff",
+    "webId": "1739789f-10b2-4a77-a4a8-bc54d5d028c9",
+    "downloadId": "2a394440-6336-4a90-9ab9-67c16bfc10fe",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -492,8 +492,8 @@
   {
     "bookId": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
     "title": "Le Salut par les Juifs",
-    "webId": "c27a8bdb-f3b6-4b60-8bdc-c408300efc0f",
-    "downloadId": "8a5c1af5-5ce7-4ff3-9223-65daf0923741",
+    "webId": "578db740-9c1a-44b4-81d8-3d0e4e9691ad",
+    "downloadId": "a1931fc1-7de9-4c45-9fba-5484c9a61c4c",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -506,8 +506,8 @@
   {
     "bookId": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
     "title": "Le Sang du pauvre",
-    "webId": "ae775dbe-9c07-42f8-b07a-08d9aaed5561",
-    "downloadId": "412fdaea-7e30-4f80-b27e-3e8950fb0456",
+    "webId": "6c0ad574-61fa-49aa-967f-12d6d78c0cee",
+    "downloadId": "d7e7aa26-0d20-4d22-a53a-636e35b7737e",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"
@@ -520,8 +520,8 @@
   {
     "bookId": "593fafef-2596-43c4-ae42-9acc9ecffeec",
     "title": "Le Désespéré",
-    "webId": "890cf326-ac77-4df4-b058-e924e222992b",
-    "downloadId": "65a6146d-f1a3-4496-b0f5-88917c54c7ab",
+    "webId": "8c6c7fae-0b79-41af-aebc-3f8b70938694",
+    "downloadId": "f4e70c9c-c804-4f5a-a818-91fec8da67d0",
     "noticePaths": {
       "web": [
         "EPUB/foreword.xhtml"

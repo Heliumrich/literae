@@ -84,9 +84,11 @@ python scripts/prepare-epub-frontmatter.py source.epub final.epub \
 Utiliser `--kind download` pour la variante liseuse. Les couvertures des cartes
 Directus reprennent la même image JPEG que les EPUB.
 
-Après remplacement dans Directus, reconstruire le site. Les URL des EPUB et des
-couvertures comportent une révision issue de l’identifiant, de `modified_on` et de
-`filesize`, afin de contourner les anciennes copies conservées en cache.
+Après publication dans Directus, reconstruire le site. Un EPUB utilise directement
+l’URL de son nouvel UUID : son contenu est immuable et cet identifiant constitue
+sa version. Les couvertures des cartes conservent une révision issue de leur
+identifiant, de `modified_on` et de `filesize`, car elles peuvent être remplacées
+en place.
 
 Pour reprendre l’ancien fichier composite Sacy, appliquer d’abord
 [fix-sacy-duplicates.py](../scripts/fix-sacy-duplicates.py). Il retire physiquement
@@ -103,18 +105,23 @@ les liens internes et les 3 038 documents de notes inchangés. Les différences
 sont limitées aux couvertures, avis éditoriaux, navigation associée et à la
 correction explicite de Sacy. Le doublon de page de titre ajouté à la Somme
 est retiré. Les associations web/téléchargement et noms d’auteurs EPUB récemment
-corrigés sont conservés. Les UUID Directus restent identiques, sauf celui de la
-version web de Sacy : des réponses de stockage incohérentes après remplacement
-ont nécessité un nouveau fichier. L’ancien reste accessible aux pages du site
-déjà chargées ; le catalogue associe désormais le nouveau fichier à son édition.
+corrigés sont conservés. Après détection de réponses de stockage incohérentes,
+les 90 EPUB ont été republiés sous de nouveaux UUID Directus. Les anciens fichiers
+restent accessibles aux pages déjà chargées. Voir la
+[procédure de publication](EPUB-ASSET-PUBLICATION.md) pour éviter de remplacer
+en place un fichier déjà servi.
 
 `epub-frontmatter.spec.ts` vérifie les 45 couvertures web sur ordinateur et
 mobile portrait/paysage, ainsi que les 45 variantes liseuse dans le même lecteur :
-180 scénarios. Huit de ces parcours ont été relancés après les dernières corrections
-de Sacy et de la Somme ; les derniers chapitres d’Esther et Daniel s’ouvrent bien.
-Après publication, ces huit parcours passent également avec les fichiers servis
-par Directus. Deux contrôles supplémentaires valident le catalogue et le plein
-écran, y compris les nouvelles URL de couverture versionnées.
+180 scénarios réussis sur les fichiers préparés localement. Les derniers chapitres
+d’Esther et Daniel sont également contrôlés.
+
+Le parcours public sur S3 avait encore 11 erreurs sur 180, liées à des réponses
+403 et délais ; les logs ont confirmé une limitation S3 `503 ServiceUnavailable`.
+Après migration des fichiers actifs vers le volume local, les **180 scénarios
+publics passent**, ainsi que les neuf tests de pagination, filtres, canoniques et
+sitemaps. Les UUID et associations des éditions sont conservés par cette migration.
+Voir le [rapport de stockage local](LIBRARY-LOCAL-STORAGE-2026-10.json).
 
 Crosspoint a également été contrôlé avec son parseur C++ réel au commit
 `d9764e2b7c18230fb3673439229dd7b122fed835` : 90 pages de couverture × 3 tailles
