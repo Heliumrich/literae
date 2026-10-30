@@ -1,0 +1,229 @@
+[
+  {
+    "key": "disciple",
+    "source_profile": "wikisource",
+    "source": "disciple.epub",
+    "original_filename": "Paul Bourget - Le_Disciple.epub",
+    "title": "Le Disciple",
+    "author": "Paul Bourget",
+    "year": "1899",
+    "edition_label": "Édition Plon · 1899",
+    "edition": "Paris, Plon, 1899",
+    "credit": "Édition Plon",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1899",
+    "cover_publisher": "Paris – Plon",
+    "tags": [
+      "Roman",
+      "Foi et raison",
+      "Responsabilité morale"
+    ],
+    "description": "Un maître qui croit les idées sans conséquence découvre leur puissance dans le crime de son disciple. Bourget examine la responsabilité de l’intelligence et les ruines que laisse une science de l’homme séparée de la conscience.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Le_Disciple_%28Bourget%29"
+    ],
+    "rights_verified": true,
+    "heading_rules": [
+      {
+        "pattern": "Confession_d_un_jeune_homme_d_aujourd_hui_.+\\.xhtml$",
+        "level": 3
+      }
+    ],
+    "omit_repeated_title": true
+  },
+  {
+    "key": "femme-pauvre",
+    "source_profile": "wikisource",
+    "source": "femme-pauvre.epub",
+    "original_filename": "Léon Bloy - La_Femme_pauvre.epub",
+    "title": "La Femme pauvre",
+    "author": "Léon Bloy",
+    "year": "1924",
+    "edition_label": "Édition G. Crès · 1924",
+    "edition": "Paris, G. Crès, 1924",
+    "credit": "Édition G. Crès",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1924",
+    "cover_publisher": "Paris – G. Crès",
+    "tags": [
+      "Roman",
+      "Pauvreté",
+      "Vie intérieure"
+    ],
+    "description": "À travers les humiliations et les deuils de Clotilde, Bloy cherche la grandeur cachée des pauvres. Sous les apparences de l’abandon, ce récit découvre une espérance que le monde ne sait ni donner ni comprendre.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/La_Femme_pauvre"
+    ],
+    "rights_verified": true,
+    "heading_rules": [
+      {
+        "pattern": "Partie_[12]_\\d+\\.xhtml$",
+        "level": 3
+      }
+    ]
+  },
+  {
+    "key": "colonnes",
+    "source_profile": "wikisource",
+    "source": "colonnes.epub",
+    "original_filename": "Léon Bloy - Les_Dernières_Colonnes_de_l’Église.epub",
+    "title": "Les Dernières Colonnes de l’Église",
+    "author": "Léon Bloy",
+    "year": "1903",
+    "edition_label": "Édition Mercure de France · 1903",
+    "edition": "Paris, Mercure de France, 1903",
+    "credit": "Édition Mercure de France",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1903",
+    "cover_publisher": "Paris – Mercure de France",
+    "tags": [
+      "Essais",
+      "Critique littéraire",
+      "Catholicisme"
+    ],
+    "description": "Bloy éprouve les réputations catholiques de son temps à la rigueur de l’Évangile et de son propre idéal littéraire. Ses portraits, tantôt admiratifs, tantôt impitoyables, interrogent la distance entre la confession de la foi et les accommodements du monde.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Les_Derni%C3%A8res_Colonnes_de_l%E2%80%99%C3%89glise"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  },
+  {
+    "key": "belluaires",
+    "source_profile": "wikisource",
+    "source": "belluaires.epub",
+    "original_filename": "Léon Bloy - Belluaires_et_porchers.epub",
+    "title": "Belluaires et porchers",
+    "author": "Léon Bloy",
+    "year": "1905",
+    "edition_label": "Édition Stock · 1905",
+    "edition": "Paris, Stock, 1905",
+    "credit": "Édition Stock",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1905",
+    "cover_publisher": "Paris – Stock",
+    "tags": [
+      "Essais",
+      "Critique littéraire",
+      "Littérature française"
+    ],
+    "description": "Dans ces portraits et ces invectives, Bloy poursuit les faux prestiges de la vie littéraire. Une langue ardente y demande aux écrivains davantage que le succès : la fidélité au vrai, jusque dans ses exigences les plus redoutables.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Belluaires_et_porchers"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  },
+  {
+    "key": "exegese",
+    "source_profile": "wikisource",
+    "source": "exegese.epub",
+    "original_filename": "Léon Bloy - Exégèse_des_Lieux_Communs.epub",
+    "title": "Exégèse des Lieux Communs",
+    "author": "Léon Bloy",
+    "year": "1902",
+    "edition_label": "Édition Mercure de France · 1902",
+    "edition": "Paris, Mercure de France, 1902",
+    "credit": "Édition Mercure de France",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1902",
+    "cover_publisher": "Paris – Mercure de France",
+    "tags": [
+      "Essais",
+      "Langage",
+      "Critique sociale"
+    ],
+    "description": "Bloy prend au mot les sentences familières dont se rassure la prudence bourgeoise. Sous leur innocence apparente, il découvre les renoncements du cœur et les vérités spirituelles qu’une parole usée finit par ensevelir.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Ex%C3%A9g%C3%A8se_des_Lieux_Communs"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  },
+  {
+    "key": "salut",
+    "source_profile": "wikisource",
+    "source": "salut.epub",
+    "original_filename": "Léon Bloy - Le_Salut_par_les_Juifs.epub",
+    "title": "Le Salut par les Juifs",
+    "author": "Léon Bloy",
+    "year": "1906",
+    "edition_label": "Édition Joseph Victorion et Cie · 1906",
+    "edition": "Paris, Joseph Victorion et Cie, 1906",
+    "credit": "Édition Joseph Victorion et Cie",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1906",
+    "cover_publisher": "Paris – Joseph Victorion et Cie",
+    "tags": [
+      "Essais",
+      "Écriture sainte",
+      "Histoire du salut"
+    ],
+    "description": "Bloy médite la place d’Israël dans le mystère chrétien et l’attente du salut. À rebours des haines de son temps, il fait du peuple juif une présence inséparable de l’histoire sacrée, dans une prose où l’exégèse rejoint la supplication.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume. Il s’agit de l’édition de 1906, avec sa préface et les pièces « De Profundis » et « In Excelso ».",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Le_Salut_par_les_Juifs"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  },
+  {
+    "key": "sang",
+    "source_profile": "wikisource",
+    "source": "sang.epub",
+    "original_filename": "Léon Bloy - Le_Sang_du_pauvre.epub",
+    "title": "Le Sang du pauvre",
+    "author": "Léon Bloy",
+    "year": "1932",
+    "edition_label": "Édition Stock, Delamain et Boutelleau · 1932",
+    "edition": "Paris, Stock, Delamain et Boutelleau, 1932",
+    "credit": "Édition Stock, Delamain et Boutelleau",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1932",
+    "cover_publisher": "Paris – Stock, Delamain et Boutelleau",
+    "tags": [
+      "Essais",
+      "Pauvreté",
+      "Justice sociale"
+    ],
+    "description": "Pour Bloy, l’argent ne saurait être séparé de la peine des hommes et du sang des pauvres. Ces méditations accusent l’indifférence des puissants et ramènent les relations sociales à la charité, dont aucune prospérité ne dispense.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Le_Sang_du_pauvre"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  },
+  {
+    "key": "desespere",
+    "source_profile": "wikisource",
+    "source": "desespere.epub",
+    "original_filename": "Léon Bloy - Le_Désespéré.epub",
+    "title": "Le Désespéré",
+    "author": "Léon Bloy",
+    "year": "1886",
+    "edition_label": "Édition A. Soirat · 1886",
+    "edition": "Paris, A. Soirat, 1886",
+    "credit": "Édition A. Soirat",
+    "cover_role": "Texte français",
+    "cover_credit": "Édition de 1886",
+    "cover_publisher": "Paris – A. Soirat",
+    "tags": [
+      "Roman",
+      "Littérature française",
+      "Vie intérieure"
+    ],
+    "description": "Dans les épreuves de Caïn Marchenoir, la misère matérielle se mêle à la solitude de l’écrivain et à la recherche de l’absolu. Bloy donne à cette révolte une voix de feu, où l’invective demeure travaillée par la faim de Dieu.",
+    "foreword": "Transcription Wikisource de cette édition. Les dédicaces, épigraphes, préfaces et avant-propos originaux sont conservés. La table imprimée est remplacée par le sommaire de l’EPUB ; les crédits de transcription et la licence sont réunis en fin de volume. La page de titre du volume porte la date de 1886, retenue ici pour désigner cette édition.",
+    "sources": [
+      "https://fr.wikisource.org/wiki/Le_D%C3%A9sesp%C3%A9r%C3%A9"
+    ],
+    "rights_verified": true,
+    "heading_rules": []
+  }
+]

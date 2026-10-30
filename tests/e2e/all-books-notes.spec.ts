@@ -319,7 +319,12 @@ for (const device of ['Desktop Chrome', 'Pixel 7']) {
               .textContent())!.trim().length,
           ).toBeGreaterThan(0);
           expect(
-            await page.locator('[data-reader="note-body"]').textContent(),
+            await page.locator('[data-reader="note-body"]').evaluate((body) => {
+              // Check the EPUB note, not the independently loaded SQLite text.
+              const note = body.cloneNode(true) as HTMLElement;
+              note.querySelector('.reader-bible-passages')?.remove();
+              return note.textContent;
+            }),
           ).not.toMatch(/[ \t\r\n\u202f]+[:;?!]/);
           const opened: Open = await page.evaluate(
             (index) => (window as any).__notesAudit.opens[index],

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Léon Bloy",
+    "slug": "leon-bloy",
+    "birth_year": 1846,
+    "death_year": "1917",
+    "type": [
+      "author"
+    ],
+    "tags": [
+      "Littérature française",
+      "Essais",
+      "Catholicisme"
+    ],
+    "short_description": "Écrivain d’une ferveur intraitable, Léon Bloy demanda à la littérature de rendre témoignage à l’absolu. Ses romans et ses essais donnent aux pauvres, aux humiliés et aux mystères de l’histoire une place que les prudences du monde leur refusent.",
+    "biography": "Né à Périgueux en 1846, Léon Bloy mena une vie marquée par la pauvreté, les amitiés littéraires et les combats de plume. La rencontre de Barbey d’Aurevilly contribua à son retour à la foi catholique et à la formation de sa vocation d’écrivain.\n\nRomancier, pamphlétaire et diariste, il publia notamment Le Désespéré, La Femme pauvre et Le Salut par les Juifs. Sa prose unit l’invective à la contemplation, et l’attention aux humiliés à une lecture spirituelle de l’histoire. Il mourut à Bourg-la-Reine en 1917, après avoir exercé sur plusieurs écrivains et convertis une influence profonde."
+  },
+  {
+    "name": "Paul Bourget",
+    "slug": "paul-bourget",
+    "birth_year": 1852,
+    "death_year": "1935",
+    "type": [
+      "author"
+    ],
+    "tags": [
+      "Roman",
+      "Littérature française",
+      "Psychologie"
+    ],
+    "short_description": "Observateur scrupuleux des mouvements de l’âme, Paul Bourget interrogea les liens entre les idées et la conduite des hommes. Ses romans donnent aux choix de la conscience une gravité que les systèmes abstraits ne sauraient abolir.",
+    "biography": "Né à Amiens en 1852, Paul Bourget se fit d’abord connaître par la poésie et la critique avant de consacrer une grande part de son œuvre au roman psychologique. Ses Essais de psychologie contemporaine examinèrent les maîtres littéraires et les inquiétudes de son siècle.\n\nAvec Le Disciple, paru en 1889, il plaça au premier plan la responsabilité morale des idées. Élu à l’Académie française en 1894, il revint au catholicisme au tournant du siècle. Son œuvre poursuivit dès lors une méditation sur la famille, la transmission et les conditions d’une vie sociale ordonnée. Il mourut à Paris en 1935."
+  }
+]

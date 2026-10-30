@@ -78,6 +78,20 @@ def resolve(href, origin):
     )
 
 
+def image_extension(data, filename):
+    # Wikimedia export names can end in query strings, not extensions.
+    for signature, extension in [
+        (b"\x89PNG", ".png"),
+        (b"\xff\xd8", ".jpg"),
+        (b"GIF8", ".gif"),
+    ]:
+        if data.startswith(signature):
+            return extension
+    extension = Path(filename).suffix.lower()
+    assert extension == ".svg", ("Unsupported image", filename)
+    return extension
+
+
 def blocks_of(parent):
     """Unwrap layout containers while preserving mixed text and anchor IDs."""
     if parent.text and parent.text.strip():
@@ -161,6 +175,9 @@ def clean(root, key, origin):
             and local(node.getparent()) in ("h1", "h2", "h3", "h4", "h5", "h6", "p")
         ):
             node.tag = "{%s}span" % X
+            # Removing a block boundary must not join the surrounding words.
+            node.text = "\n" + (node.text or "")
+            node.tail = "\n" + (node.tail or "")
     # Wikisource sometimes wraps multi-paragraph notes in a phrasing span.
     for node in list(root.iter())[::-1]:
         if local(node) in ("span", "p") and any(
@@ -172,6 +189,37 @@ def clean(root, key, origin):
 
 def select(row, name, body, index, count):
     key = row["key"]
+    if row.get("source_profile") == "wikisource":
+        if name.endswith(("title.xhtml", "about.xhtml")):
+            return []
+        clone = copy.deepcopy(body)
+        # The export's root page mixes original epigraphs with a generated TOC.
+        # Remove the identified TOC container, never discard the entire page.
+        for node in list(clone.iter()):
+            if (
+                row.get("omit_repeated_title")
+                and local(node) in ("h1", "h2", "h3")
+                and text(node).casefold() == row["title"].casefold()
+            ):
+                drop(node)
+                continue
+            if set(node.get("class", "").split()) & {
+                "ws-summary",
+                "headertemplate",
+                "headertemplate-journal",
+            }:
+                drop(node)
+            if local(node) == "dl" and not node.findall("x:dt", NS):
+                # Wiki indentation is exported as a definition list without terms.
+                node.tag = "{%s}blockquote" % X
+                for child in node.findall("x:dd", NS):
+                    child.tag = "{%s}div" % X
+            if local(node) == "hr" and any(
+                local(a) in ("h1", "h2", "h3", "h4", "h5", "h6")
+                for a in node.iterancestors()
+            ):
+                drop(node)  # A decorative rule cannot be a child of a heading.
+        return [clone]
     if key in ("pascal", "maistre"):
         if name.endswith(("title.xhtml", "about.xhtml")) or re.search(r"/c0_", name):
             return []
@@ -213,7 +261,7 @@ def select(row, name, body, index, count):
 
 
 def prepare(row, input_dir, output_dir):
-    if row["key"] not in {
+    if row.get("source_profile") != "wikisource" and row["key"] not in {
         "imitation",
         "pascal",
         "concupiscence",
@@ -244,6 +292,14 @@ def prepare(row, input_dir, output_dir):
     ]
     nav_labels = {}
     for item in manifest.values():
+        if "nav" in item.get("properties", "").split():
+            nav_name = path.normpath(path.join(folder, item.get("href")))
+            for link in parse(files[nav_name]).xpath(
+                '//x:nav[@epub:type="toc"]//x:a[@href]', namespaces=NS
+            ):
+                target = resolve(link.get("href"), nav_name)
+                if target:
+                    nav_labels.setdefault(target[0], text(link))
         if item.get("media-type") == "application/x-dtbncx+xml":
             nav_name = path.normpath(path.join(folder, item.get("href")))
             for point in parse(files[nav_name]).findall(".//{*}navPoint"):
@@ -300,10 +356,62 @@ def prepare(row, input_dir, output_dir):
                     ):
                         n.tag = "{%s}h2" % X
             clean(chosen_body, row["key"], name)
-            source_blocks = list(blocks_of(chosen_body))
+            # Inline-only divs are paragraphs (dedications, addresses, poems).
+            # Keep their inline spaces and line breaks together when unwrapping.
+            unwrap = (
+                base.flatten if row.get("source_profile") == "wikisource" else blocks_of
+            )
+            source_blocks = list(unwrap(chosen_body))
+            if row.get("source_profile") == "wikisource":
+                for b in source_blocks:
+                    if local(b) == "div" and not any(
+                        local(n)
+                        in ("hr", "p", "div", "ul", "ol", "dl", "table", "blockquote")
+                        for n in b.iterdescendants()
+                    ):
+                        b.tag = "{%s}p" % X
             assert re.sub(r"\s+", "", "".join(chosen_body.itertext())) == re.sub(
                 r"\s+", "", "".join("".join(n.itertext()) for n in source_blocks)
             ), f"Text lost while unwrapping {name}"
+            if row.get("source_profile") == "wikisource":
+                # Empty page-break sentinels are export machinery, not prose.
+                source_blocks = [
+                    b
+                    for b in source_blocks
+                    if text(b).replace("\u200c", "").strip()
+                    or b.get("id")
+                    or b.findall(".//*[@id]")
+                ]
+                if not any(
+                    text(b).replace("\u200c", "").strip() for b in source_blocks
+                ):
+                    continue
+                headings = [
+                    b
+                    for b in source_blocks
+                    if local(b) in ("h1", "h2", "h3", "h4", "h5", "h6")
+                ]
+                level = next(
+                    (
+                        rule["level"]
+                        for rule in row.get("heading_rules", [])
+                        if re.search(rule["pattern"], name)
+                    ),
+                    2,
+                )
+                if headings:
+                    for i, h in enumerate(headings):
+                        h.tag = "{%s}h%d" % (X, level if i == 0 else min(3, level + 1))
+                else:
+                    label = (
+                        "Épigraphe et dédicace"
+                        if re.search(r"/c0_", name)
+                        else nav_labels.get(name)
+                    )
+                    assert label, ("Missing chapter label", name)
+                    source_blocks.insert(
+                        0, element("h%d" % level, value=label[0].upper() + label[1:])
+                    )
             if row["key"] == "pascal":
                 heading = next(
                     (
@@ -443,7 +551,8 @@ def prepare(row, input_dir, output_dir):
                     a.attrib.pop("href")
             for img in b.iter("{%s}img" % X):
                 resource = resolve(img.get("src"), origin)[0]
-                ext = Path(resource).suffix.lower()
+                data = files[resource]
+                ext = image_extension(data, resource)
                 new = "images/" + hashlib.sha256(files[resource]).hexdigest()[:20] + ext
                 assets[new] = files[resource]
                 img.set("src", new)
@@ -521,6 +630,7 @@ def prepare(row, input_dir, output_dir):
     rights = "Texte historique dans le domaine public. " + (
         "Transcription Wikisource : attribution et partage dans les mêmes conditions, CC BY-SA 3.0."
         if row["key"] in ("pascal", "maistre")
+        or row.get("source_profile") == "wikisource"
         else "Voir les crédits et conditions de la transcription en fin de volume."
     )
     for key, val in [
@@ -562,19 +672,15 @@ def prepare(row, input_dir, output_dir):
     content.update({name: xml(root) for name, (root, _) in docs.items()})
     content.update(assets)
     for i, (name, data) in enumerate(content.items()):
-        mime = (
-            "application/xhtml+xml"
-            if name.endswith(".xhtml")
-            else (
-                "image/svg+xml"
-                if name.endswith(".svg")
-                else (
-                    "text/css"
-                    if name.endswith(".css")
-                    else "image/png" if name.endswith(".png") else "image/jpeg"
-                )
-            )
-        )
+        mime = {
+            ".xhtml": "application/xhtml+xml",
+            ".svg": "image/svg+xml",
+            ".css": "text/css",
+            ".png": "image/png",
+            ".gif": "image/gif",
+            ".jpg": "image/jpeg",
+            ".jpeg": "image/jpeg",
+        }[Path(name).suffix.lower()]
         item = E.SubElement(
             mf, "{%s}item" % OPF, id=f"item-{i}", href=name, attrib={"media-type": mime}
         )

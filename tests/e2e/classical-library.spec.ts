@@ -5,8 +5,10 @@ import {
   type Page,
   type APIRequestContext,
 } from '@playwright/test';
-import batch from '../../scripts/catalogs/library-2026-10.json' with { type: 'json' };
+import originalBatch from '../../scripts/catalogs/library-2026-10.json' with { type: 'json' };
+import bloyBourget from '../../scripts/catalogs/bloy-bourget-2026-10.json' with { type: 'json' };
 import { chooseChapterHref } from './reader-helpers';
+const batch = [...originalBatch, ...bloyBourget];
 const MAIN = 'https://literae.ch',
   LOCAL = 'http://127.0.0.1:4322';
 test.use({
@@ -98,6 +100,10 @@ for (const profile of profiles)
         expect(cover).toBeTruthy();
         expect(cover!.height).toBe(cover!.expected);
         expect(cover!.cropped).toBe(false);
+        if (row.key === 'colonnes')
+          await page.locator('[data-reader="viewport"]').screenshot({
+            path: info.outputPath('cover.png'),
+          });
         const href = await page
           .locator('[data-reader="toc-link"]')
           .evaluateAll((links) =>
@@ -155,6 +161,18 @@ for (const profile of profiles)
           ),
         ).toBe(false);
         expect(errors).toEqual([]);
+        if (row.key === 'femme-pauvre') {
+          await page.locator('.reader-settings summary').click();
+          const firstChapter = await page
+            .locator('[data-reader="toc-link"]')
+            .filter({ hasText: /^I$/ })
+            .first()
+            .getAttribute('data-href');
+          await chooseChapterHref(page, firstChapter!);
+          await page.locator('[data-reader="viewport"]').screenshot({
+            path: info.outputPath('reader.png'),
+          });
+        }
         if (row.key === 'terre' || row.key === 'pascal')
           await info.attach('reader.png', {
             body: await page.screenshot(),
