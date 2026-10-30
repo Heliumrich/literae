@@ -1,36 +1,7 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CollectionHeader from '../../../components/CollectionHeader.astro';
-import CatalogToolbar from '../../../components/CatalogToolbar.astro';
-import BookCard from '../../../components/books/BookCard.astro';
+import BookCatalog from '../../../components/books/BookCatalog.astro';
 import { fetchBooks } from '../../../lib/books-server';
-import { PAGE_SIZE } from '../../../lib/catalog';
 export const prerender = true;
 const books = await fetchBooks();
-const tags = [...new Set(books.flatMap(book => book.tags))].sort((a, b) => a.localeCompare(b, 'fr'));
 ---
-<BaseLayout title="Bibliothèque" description="Textes anciens et ouvrages choisis : parcourez la bibliothèque de Literae et lisez les livres en ligne.">
-  <main>
-    <div class="page-wrap">
-      <CollectionHeader eyebrow="Lire · Libri" title="La bibliothèque" lead="Des textes à habiter, des voix à retrouver. Un fonds choisi pour prendre le temps de lire."
-        count={books.length} countLabel={books.length > 1 ? 'ouvrages' : 'ouvrage'} />
-    </div>
-    <section class="catalog-section" aria-label="Catalogue des ouvrages" id="book-catalog">
-      <div class="page-wrap">
-        <label class="book-sort">Trier par
-          <select id="book-sort"><option value="default">Ordre de la bibliothèque</option><option value="title">Titre · A à Z</option><option value="author">Auteur · A à Z</option><option value="tags">Étiquettes · A à Z</option></select>
-        </label>
-        <CatalogToolbar tags={tags} showView searchPlaceholder="Rechercher un titre, un auteur, une étiquette…" />
-        <p id="catalog-status" class="catalog-status" aria-live="polite">{books.length} ouvrage{books.length > 1 ? 's' : ''}</p>
-        <p id="catalog-empty" class:list={['catalog-empty', { hidden: books.length > 0 }]}>La bibliothèque s’enrichira au fil des lectures.</p>
-        <div id="catalog-grid" class="book-grid" data-ssr="1">{books.slice(0, PAGE_SIZE).map((book, i) => <BookCard book={book} eager={i < 8} />)}</div>
-        <nav id="catalog-pager" class="catalog-pager" aria-label="Pagination"></nav>
-        <noscript><p>Activez JavaScript pour filtrer la bibliothèque et parcourir toutes ses pages.</p></noscript>
-      </div>
-    </section>
-  </main>
-</BaseLayout>
-<script>
-  import { initBookCatalog } from '../../../lib/books-client';
-  initBookCatalog();
-</script>
+<BookCatalog books={books} />

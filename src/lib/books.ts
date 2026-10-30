@@ -3,6 +3,10 @@ import { escapeHtml } from './catalog-ui';
 
 export const LIBRARY_PATH = '/scriptorium/bibliotheque';
 
+export function bookPagePath(page: number) {
+  return page > 1 ? `${LIBRARY_PATH}/page/${page}` : LIBRARY_PATH;
+}
+
 export type BookEdition = { id: string; label: string; url: string; downloadUrl: string; size: number };
 export type LibraryBook = {
   id: string; slug: string; title: string; description: string; cover: string | null;

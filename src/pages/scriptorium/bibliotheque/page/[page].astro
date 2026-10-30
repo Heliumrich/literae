@@ -1,0 +1,15 @@
+---
+import BookCatalog from '../../../../components/books/BookCatalog.astro';
+import { fetchBooks } from '../../../../lib/books-server';
+import { PAGE_SIZE } from '../../../../lib/catalog';
+export const prerender = true;
+export async function getStaticPaths() {
+  const books = await fetchBooks();
+  const pages = Math.ceil(books.length / PAGE_SIZE);
+  return Array.from({ length: Math.max(0, pages - 1) }, (_, i) => ({
+    params: { page: String(i + 2) }, props: { books, currentPage: i + 2 },
+  }));
+}
+const { books, currentPage } = Astro.props;
+---
+<BookCatalog books={books} currentPage={currentPage} />

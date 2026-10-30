@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CollectionHeader from '../CollectionHeader.astro';
+import CatalogToolbar from '../CatalogToolbar.astro';
+import BookCard from '../books/BookCard.astro';
+import { bookItem, bookPagePath, type LibraryBook } from '../../lib/books';
+import { PAGE_SIZE } from '../../lib/catalog';
+interface Props { books: LibraryBook[]; currentPage?: number }
+const { books, currentPage = 1 } = Astro.props;
+const pages = Math.max(1, Math.ceil(books.length / PAGE_SIZE));
+const visible = books.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+const catalogue = JSON.stringify(books.map(book => bookItem(book))).replaceAll('<', '\\u003c');
+const tags = [...new Set(books.flatMap(book => book.tags))].sort((a, b) => a.localeCompare(b, 'fr'));
+---
+<BaseLayout title={currentPage === 1 ? "Bibliothèque" : `Bibliothèque – Page ${currentPage}`} description="Textes anciens et ouvrages choisis : parcourez la bibliothèque de Literae et lisez les livres en ligne.">
+  <script is:inline slot="head">
+    if (['p', 'q', 'tags', 'sort', 'mode', 'view'].some(key => new URLSearchParams(location.search).has(key))) {
+      document.documentElement.setAttribute('data-book-catalog-pending', '');
+    }
+  </script>
+  <main>
+    <div class="page-wrap">
+      <CollectionHeader eyebrow="Lire · Libri" title="La bibliothèque" lead="Des textes à habiter, des voix à retrouver. Un fonds choisi pour prendre le temps de lire."
+        count={books.length} countLabel={books.length > 1 ? 'ouvrages' : 'ouvrage'} />
+    </div>
+    <section class="catalog-section" aria-label="Catalogue des ouvrages" id="book-catalog">
+      <div class="page-wrap">
+        <label class="book-sort">Trier par
+          <select id="book-sort"><option value="default">Ordre de la bibliothèque</option><option value="title">Titre · A à Z</option><option value="author">Auteur · A à Z</option><option value="tags">Étiquettes · A à Z</option></select>
+        </label>
+        <CatalogToolbar tags={tags} showView searchPlaceholder="Rechercher un titre, un auteur, une étiquette…" />
+        <p id="catalog-status" class="catalog-status" aria-live="polite">{books.length} ouvrage{books.length > 1 ? 's' : ''}</p>
+        <p id="catalog-empty" class:list={['catalog-empty', { hidden: books.length > 0 }]}>La bibliothèque s’enrichira au fil des lectures.</p>
+        <div id="catalog-grid" class="book-grid" data-ssr="1" data-page={currentPage}>{visible.map((book, i) => <BookCard book={book} eager={i < 8} />)}</div>
+        <nav id="catalog-pager" class="catalog-pager" aria-label="Pagination">
+          {pages > 1 && Array.from({ length: pages }, (_, i) => i + 1).map(page =>
+            <a href={bookPagePath(page)} class:list={['catalog-page', { 'is-active': page === currentPage }]}
+              aria-label={`Page ${page}`} aria-current={page === currentPage ? 'page' : undefined}>{page}</a>
+          )}
+        </nav>
+        <script id="book-catalog-data" type="application/json" set:html={catalogue} />
+        <noscript><p>Activez JavaScript pour filtrer la bibliothèque.</p></noscript>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+<script>
+  import { initBookCatalog } from '../../lib/books-client';
+  initBookCatalog();
+</script>
+
+<style is:global>
+  html[data-book-catalog-pending] #catalog-grid,
+  html[data-book-catalog-pending] #catalog-pager { visibility: hidden; }
+</style>

@@ -49,7 +49,7 @@ export function readFilterParams(search: HTMLInputElement | null) {
   }
   return {
     mode: (params.get("mode") === "or" ? "or" : "and") as FilterMode,
-    page: Math.max(1, Number(params.get("p") || "1") || 1),
+    page: Math.max(1, Math.floor(Number(params.get("p") || "1")) || 1),
     view: (params.get("view") === "list" ? "list" : "grid") as CatalogView,
   };
 }
@@ -64,13 +64,15 @@ export function writeFilterParams(opts: {
   mode: FilterMode;
   page: number;
   extra?: Record<string, string | null>;
+  pathname?: string;
 }) {
   const url = new URL(location.href);
   const tags = selectedTags();
   setParam(url, "q", opts.search?.value.trim() || null);
   setParam(url, "tags", tags.length ? tags.join(",") : null);
   setParam(url, "mode", opts.mode === "or" && tags.length ? "or" : null);
-  setParam(url, "p", opts.page > 1 ? String(opts.page) : null);
+  if (opts.pathname) url.pathname = opts.pathname;
+  setParam(url, "p", !opts.pathname && opts.page > 1 ? String(opts.page) : null);
   if (opts.extra) {
     for (const [key, value] of Object.entries(opts.extra)) setParam(url, key, value);
   }
@@ -85,7 +87,7 @@ export function markActiveButtons(selector: string, dataKey: string, current: st
   });
 }
 
-export function renderPager(pager: HTMLElement | null, pages: number, page: number) {
+export function renderPager(pager: HTMLElement | null, pages: number, page: number, href?: (page: number) => string) {
   if (!pager) return;
   if (pages <= 1) {
     pager.innerHTML = "";
@@ -94,6 +96,7 @@ export function renderPager(pager: HTMLElement | null, pages: number, page: numb
   pager.innerHTML = Array.from({ length: pages }, (_, i) => {
     const n = i + 1;
     const current = n === page;
+    if (href) return `<a href="${escapeHtml(href(n))}" class="catalog-page ${current ? "is-active" : ""}" aria-label="Page ${n}"${current ? ' aria-current="page"' : ''}>${n}</a>`;
     return `<button type="button" data-page="${n}" class="catalog-page ${current ? "is-active" : ""}" aria-current="${current ? "page" : "false"}">${n}</button>`;
   }).join("");
 }

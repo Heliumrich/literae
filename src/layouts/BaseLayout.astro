@@ -17,6 +17,7 @@ const {
 } = Astro.props;
 
 const fullTitle = title === "Literae" ? title : `${title} – Literae`;
+// Canonical URLs keep real pagination paths and never include filter/search parameters.
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isArtPath =
   pathname === "/art" ||
