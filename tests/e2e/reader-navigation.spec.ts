@@ -5,6 +5,7 @@ const MAIN = 'https://literae.ch',
   LOCAL = 'http://127.0.0.1:4322';
 test.use({
   baseURL: MAIN,
+  ignoreHTTPSErrors: !!process.env.HTTPS_PROXY,
   viewport: { width: 1920, height: 1080 },
   userAgent: devices['Desktop Chrome'].userAgent,
   isMobile: false,
@@ -78,6 +79,7 @@ for (const title of [
       'aria-busy',
       'false',
     );
+    await expect(page.locator('[data-reader="error"]')).toBeHidden();
     const links = await page
       .locator('[data-reader="toc-link"]')
       .evaluateAll((links) =>
@@ -85,6 +87,7 @@ for (const title of [
           .map((a) => (a as HTMLElement).dataset.href!)
           .filter((href) => !href.includes('titlepage')),
       );
+    expect(links.length).toBeGreaterThan(5);
     const picks = [
       links[Math.floor(links.length * 0.6)],
       links[Math.floor(links.length * 0.15)],

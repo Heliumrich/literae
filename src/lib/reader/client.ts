@@ -9,7 +9,7 @@ import { lastEditionKey, legacyProgressForFile, parseProgress, progressKey, type
 
 type SectionView = { index: number; element: HTMLElement; displayed: boolean; expand(): void; contents?: Contents };
 // EPUB.js exposes these at runtime but omits them from its declaration files.
-type ContinuousRendition = Rendition & { manager: { container: HTMLElement; scrollTo(x: number, y: number, silent?: boolean): void; views: { all(): SectionView[] }; q: Rendition['q'] } };
+type ContinuousRendition = Rendition & { manager: { container: HTMLElement; scrollTo(x: number, y: number, silent?: boolean): void; fill(): Promise<void>; views: { all(): SectionView[] }; q: Rendition['q'] } };
 
 function readLocal(key: string): unknown {
   try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch { return null; }
@@ -230,6 +230,11 @@ async function initReader(root: HTMLElement) {
       });
       active.on('relocated', (location: Location) => { if (currentEpoch === epoch) saveLocation(location); });
       await restorePosition(bookmark, active);
+      if (currentEpoch !== epoch) return;
+      // EPUB.js fills before content hooks finish sizing a full-height cover.
+      // Re-measure, then fill its neighbour buffer before allowing touch scrolling.
+      for (const view of active.manager.views.all()) if (view.contents) view.expand();
+      await active.manager.fill();
       if (currentEpoch !== epoch) return;
       canSave = true;
       writeLocal(editionKey, selected.id);

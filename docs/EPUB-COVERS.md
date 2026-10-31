@@ -186,3 +186,32 @@ Les 45 EPUB téléchargeables conservent leurs identifiants et leurs octets.
 Le [rapport de correction](EPUB-WEB-COVERS-2026-10.json) conserve les empreintes
 et les associations des éditions. Ne pas nettoyer les anciens fichiers avant
 confirmation du déploiement de ces nouveaux identifiants sur les 45 pages.
+
+## Défilement depuis la couverture
+
+Une ouverture sans progression enregistrée doit offrir immédiatement une zone de
+défilement après la couverture. EPUB.js remplit son tampon avant que les hooks de
+contenu aient appliqué la hauteur finale : il peut alors croire que la couverture
+occupe plusieurs écrans et ne charger aucun voisin. Une fois la garde ramenée à
+un écran, aucun scroll ne peut démarrer pour déclencher ce chargement.
+Le lecteur remesure les vues et appelle le remplissage continu d’EPUB.js après
+l’affichage initial, avant de terminer l’ouverture. Les EPUB ne changent pas.
+
+`reader-cover-scroll.spec.ts` vérifie une ouverture vierge, des gestes tactiles
+simulés dans Chromium via CDP, en portrait et paysage, l’arrivée au texte sans
+bouton Suivant et le chargement du XHTML suivant. Le contrôle des 45 couvertures
+web exige également une zone de défilement disponible dès l’ouverture.
+
+Un stress distinct, à qualifier, a aussi été observé pendant le diagnostic :
+enchaîner six balayages, forcer le défilement à la fin du tampon, puis revenir
+immédiatement à la garde par le sommaire peut laisser le test attendre le signal
+`reader:chapter-positioned`. La garde et ses voisins étaient pourtant déjà rendus
+dans le cas instrumenté ; ce n’est pas le blocage initial sans zone de défilement.
+Ce scénario n’a pas été confirmé sur appareil physique. La navigation par le
+sommaire reste inchangée dans le correctif de démarrage ; ce stress demande une
+investigation séparée du signal de fin de navigation et de la file interne d’EPUB.js.
+
+Validation du correctif de démarrage : contrôle de la couverture et de la zone de
+défilement sur 45 livres, sur ordinateur et mobile portrait/paysage ; 18 scénarios
+de gestes tactiles et de navigation habituelle réussis en deux répétitions.
+La vérification TypeScript, la frontière statique et le build passent.

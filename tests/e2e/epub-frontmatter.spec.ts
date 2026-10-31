@@ -81,6 +81,10 @@ for (const [name, profile, kind] of [
         }
         return null;
       }, kind), { timeout: 15000 }).toEqual({ visible: true, height: true, fits: true, atStart: true, artwork: true, format: true, textFits: true });
+      if (kind === 'web') await expect.poll(() => viewport.evaluate(el => {
+        const scroll = el.querySelector('.epub-container')!;
+        return scroll.scrollHeight > scroll.clientHeight + 1;
+      })).toBe(true);
       expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
       if (['Les Dernières Colonnes de l’Église', 'Somme Théologique', 'Confessions'].includes(book.title))
         await viewport.screenshot({ path: info.outputPath('cover.png') });
