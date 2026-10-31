@@ -1,0 +1,704 @@
+{
+  "date": "2026-10-31",
+  "books": 45,
+  "cause": "EPUB.js adjustImages measured an initially empty body and injected img max-height:0px!important; JPEG decoded but rendered at 0x0. Previous test did not reject zero dimensions.",
+  "changes": {
+    "web_titlepages": "inline SVG, with package svg property",
+    "reader_css": "Exempt cover JPEGs as well as SVGs from EPUB.js column image max-height",
+    "download_ids_and_epub_bytes_unchanged": true,
+    "all_other_epub_resources_byte_identical": true,
+    "old_assets_retained_until_production_rebuild": true
+  },
+  "validation": {
+    "epubcheck_files": 45,
+    "errors": 0,
+    "warnings": 0,
+    "prepared_browser_cases": 180,
+    "prepared_browser_passed": 180,
+    "production_reader_preview_cases": 135,
+    "production_reader_preview_passed": 135,
+    "preview_html_css_js": "https://literae.ch",
+    "preview_epub_bytes": "New immutable public Directus local assets; requested old EPUB URL overridden only in test browser",
+    "production_default_asset_switch": "Requires manual VPS rebuild; not yet verified",
+    "python_tests": 20,
+    "typecheck_and_static_boundary": "passed",
+    "build": "passed"
+  },
+  "editions": [
+    {
+      "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+      "title": "L’Imitation de Jésus-Christ",
+      "previous_web_id": "beb416f9-4687-46ad-972b-12d511877117",
+      "web_id": "d1d8459c-db47-4848-a207-6f54436cfc6e",
+      "download_id": "ecdee352-3493-494c-9d6a-26524f0878d0",
+      "web_sha256": "0fb845cef1db99d4f6125f553bad26f7eaef93c87a877c634851541d75a4ba9f",
+      "web_bytes": 570919,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "9870b9a1-427f-467e-9e55-f7321bfb2b34",
+      "title": "Oraisons funèbres",
+      "previous_web_id": "cb12d85b-cdd1-4da2-b5fd-8bf80290d15e",
+      "web_id": "342807b4-e494-4e75-9f28-76b4a6875243",
+      "download_id": "2215e3ff-0487-4f2b-9de7-5e6d4cb62ea2",
+      "web_sha256": "ac8bb6d8735bdb3d772f710523658b196b7401571ebc77d3cb3ed8b5a39db6d3",
+      "web_bytes": 686771,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "b2ebbe6c-75c3-42b1-a0a5-2424274cf1b9",
+      "title": "Traité de la concupiscence",
+      "previous_web_id": "8b64c6de-0cc4-40b8-b177-47f06ddabea1",
+      "web_id": "573f58c7-6ad7-4999-95e2-8b81423973da",
+      "download_id": "584b3b13-f31b-43b9-aa71-d10d71d610b5",
+      "web_sha256": "db04c60d46eb3dfdcc4885676270cb00c95f6c58ee263959b1db8cbabd9356e9",
+      "web_bytes": 203726,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "1f282977-8501-471b-a307-1fa132c3e4db",
+      "title": "La Cité de Dieu",
+      "previous_web_id": "bc30ec37-197f-496f-8709-b500d73bf31b",
+      "web_id": "9f92393a-2aba-4c60-9349-f61a95301842",
+      "download_id": "52fbfd1e-48ba-4959-ad9d-d76294746ef0",
+      "web_sha256": "4a7b7748381badc141687a2a3c0f29542e46c93cd77772f1b6096f713cee60eb",
+      "web_bytes": 1078319,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "797bc337-3661-4e9a-9254-c3f02bb1d0e1",
+      "title": "La Terre qui meurt",
+      "previous_web_id": "410be010-3884-48ab-a642-ddfd25dd3692",
+      "web_id": "9194823a-0ba7-47f9-bcd6-fb601134d81d",
+      "download_id": "060f10e3-b3fa-4750-be66-6622c496bb19",
+      "web_sha256": "0176e1ed266c461acd6db56a12d639f4c0402e35c3d6f6656efe3f1c498e1a65",
+      "web_bytes": 166939,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "168709f2-594c-4c35-859e-9b5426d83838",
+      "title": "Pensées",
+      "previous_web_id": "a6bf639d-63c6-440d-a1be-0c28a905591a",
+      "web_id": "fd2ed973-9aca-43a8-b6a3-278c72f39fee",
+      "download_id": "e27c6f6d-7c64-4db2-a1e3-411fe7e24675",
+      "web_sha256": "da7a556c9b59bdac7bbb5d3d1a8b87c72376221ca36dbd013fa81a0a1fd6b719",
+      "web_bytes": 239427,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "05991d3b-1f6c-467c-be37-6026bc3321fd",
+      "title": "Explication du Sermon sur la montagne",
+      "previous_web_id": "5b72a9bb-31de-41e9-9d23-4d604edc3d5e",
+      "web_id": "477e146b-1ccc-407e-81da-24865a0f2e86",
+      "download_id": "a76e711a-3576-43ca-9281-3ca822596491",
+      "web_sha256": "5fa7c6fa893dddfe17f8a227ab86e683786254908b3f7be6efa8e72faf3806d5",
+      "web_bytes": 182309,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "86f0f9de-c72d-418a-97c5-df9bffc9d83f",
+      "title": "Sainte Bible traduite par Lemaître Sacy",
+      "previous_web_id": "b5362068-f90e-4dda-9efb-fefe27d7c9f8",
+      "web_id": "15064282-3365-40ba-a433-f1485b86b839",
+      "download_id": "20245ddb-3adb-424e-b7b8-fbf6a5f04679",
+      "web_sha256": "37a0d1cf6f28d74120026782b0955a8d94dd7a00957b4bce2e1a865e888f66ea",
+      "web_bytes": 3381965,
+      "storage": "local",
+      "changed_members": [
+        "OPS/cover.xhtml",
+        "OPS/content.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "23be59ae-879f-494a-90c7-a31f70878fa9",
+      "title": "Commentaire sur l’Évangile selon saint Matthieu",
+      "previous_web_id": "867d00e5-b7b1-4a30-9582-770e90a12616",
+      "web_id": "b0ffc27a-96fb-4872-86a8-14dbb2a58a67",
+      "download_id": "022c0c3f-20f8-4cc9-9981-0dd148e09769",
+      "web_sha256": "3ca693f8c9ba7da961a5f49103b366baa4b23e2a5a37da6ed40762dacdf57b50",
+      "web_bytes": 1348996,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "cebf7e8d-e7e6-4b7e-bcba-748f48d696c3",
+      "title": "Commentaire sur l’épître aux Hébreux",
+      "previous_web_id": "59a3ac6d-4814-4123-b6a8-3f9378b19b6c",
+      "web_id": "a1a6760b-14fd-4b84-ab7b-123dd143d2df",
+      "download_id": "1ffd3ba8-604a-441e-a86b-ed46e24e198e",
+      "web_sha256": "658046d3186ffeac59131de1c5f0f617d8bafcb23245abd217b1eec1d921ef27",
+      "web_bytes": 449176,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "03d15abc-45a1-45bc-a078-7a1741b7b85c",
+      "title": "Commentaire sur l’épître aux Philippiens",
+      "previous_web_id": "eea38c9a-faea-4014-ace3-da156e627402",
+      "web_id": "4ce059e0-e367-4f0f-ac63-3fe9ff2bb49f",
+      "download_id": "07ca164b-bd90-4a74-b024-bc2664e3f7ed",
+      "web_sha256": "76a3e650533cc7cbfc3e2416bdf37069547a2f42c1f44066d53017f238864dd2",
+      "web_bytes": 269608,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "dbcccc4b-4fb7-47f3-981e-b2cf4f6edd8a",
+      "title": "Commentaire sur l’épître aux Éphésiens",
+      "previous_web_id": "f770f6fa-c85c-4bbb-9e2b-7602f1ea7b85",
+      "web_id": "b3bf95d6-1801-446c-b72b-27e4fcc6885a",
+      "download_id": "eebb9e92-3333-4240-b33c-0be8daa14247",
+      "web_sha256": "bacbcd165595634f8cb8706e29297549a01095188b7cdb596f5294e4815b23cf",
+      "web_bytes": 325871,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "999cdeb7-b075-411c-9cd4-ef63400db69d",
+      "title": "Commentaire sur la première épître aux Thessaloniciens",
+      "previous_web_id": "291d87a0-dcd7-4fc6-b700-00f7ab4d41bc",
+      "web_id": "837a4d2d-4ced-4028-85a2-5d30811cf8f9",
+      "download_id": "664062eb-399e-4d87-9050-745b6ad74e81",
+      "web_sha256": "0dafa46bb09d19c90ebcf00f79c690bc510aa8726fdad808d09c451e7268574a",
+      "web_bytes": 211399,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "798c7563-8f74-4708-93b9-a0a97272b94c",
+      "title": "Homélies sur les Actes des Apôtres",
+      "previous_web_id": "af1c38d1-48e2-442b-a690-6918a5961acb",
+      "web_id": "3cded97b-465f-4c66-a1ba-bd743e615082",
+      "download_id": "cbac7ba4-8443-4edd-84a7-be8d85de5085",
+      "web_sha256": "96a42224a3785f7107e268c382e32c1baeda0a574c9628be6a0a0828eee4b112",
+      "web_bytes": 701918,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "e04d8cb8-93e1-4b75-83d3-64764a63d3fe",
+      "title": "Commentaire sur la deuxième épître aux Corinthiens",
+      "previous_web_id": "802e4b5a-3962-4b16-8ea9-d88a2bc1a47a",
+      "web_id": "6079f1fd-41d6-420d-88cc-d7e86576b0db",
+      "download_id": "6534ad63-169f-4085-b38a-e06ca06a50c7",
+      "web_sha256": "6a75fa2cef1b20552f8963fd84dc2349bddf1b0236e5d9b475f02a1e795c0318",
+      "web_bytes": 423047,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "99043f27-c17f-4a43-9386-13fb91f5a2e7",
+      "title": "Apologie de la vie monastique",
+      "previous_web_id": "275b6f5a-3f14-4cda-b1de-3b7bc06f4a9a",
+      "web_id": "cf8031b5-6422-43f5-9ba9-e3950a7c5e59",
+      "download_id": "61a5db7d-99f0-4627-9835-0ef6fcc7fb7b",
+      "web_sha256": "559ea025b1fd9cf16cc4a6096c75eab5db1ec532af7ea9b864fc9a8b59d8b778",
+      "web_bytes": 165856,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "42e980b1-5040-41d6-84fd-23a3a66ae8f9",
+      "title": "Commentaire sur l’épître aux Galates",
+      "previous_web_id": "09dd8b0f-365b-4fa3-b39a-e5de30cc52ff",
+      "web_id": "3fc40fdd-41e8-476c-8f6f-73662aeff931",
+      "download_id": "32f15427-0e37-4f8e-b919-b41687cf9413",
+      "web_sha256": "c8e93f5fdecbaa7aff2fe225110039ce55ee4c4a458ae27dfb594c37aecdc81e",
+      "web_bytes": 170720,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "91d340a8-54f9-4182-b612-899030777152",
+      "title": "Le Blé qui lève",
+      "previous_web_id": "41950092-f99e-44fc-85c5-3275eaaed8ed",
+      "web_id": "4e8fc750-ff0f-41fd-8ddb-03694e3fc851",
+      "download_id": "a5a82251-7da6-4b9e-b30f-6646f783e0ae",
+      "web_sha256": "acf01ea1587755486f90ce825386102ec99cbdd53837b7eb6761c00e89ab8bc1",
+      "web_bytes": 287570,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "3b65285f-fd12-4b36-822d-372f7cef664f",
+      "title": "Commentaire sur l’épître aux Colossiens",
+      "previous_web_id": "7303b637-9f1e-4fd0-bc0a-98fedb893b18",
+      "web_id": "f5a034a9-755e-4e61-a9ee-59d4269f0cac",
+      "download_id": "ede106ad-64f3-424f-a18d-1986e534a550",
+      "web_sha256": "a621c969a9015b6ac74cff3753b0e6c680f64edd2ee8fc37de3ff429d2c730ed",
+      "web_bytes": 211887,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "518d8bd3-0479-444c-b037-447c7d9856e6",
+      "title": "Commentaire sur la première épître aux Corinthiens",
+      "previous_web_id": "9b60d0d1-4497-4473-816d-c617b8154a82",
+      "web_id": "98f700e9-413d-4b60-8f63-f93799582406",
+      "download_id": "a663c3ec-428d-487e-a0e5-49e623b6c4d6",
+      "web_sha256": "ee74fb482ebe11485061da5034532b322a1f06f686d63971c479fdbb1050148a",
+      "web_bytes": 667601,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "bab6ba05-2d92-4125-8446-731d038738a4",
+      "title": "Commentaire sur l’épître à Philémon",
+      "previous_web_id": "9fedc63f-199d-4e14-ac4a-4d6d4a717be5",
+      "web_id": "ab14df5b-01a5-40cb-8f77-59b6e149cfb4",
+      "download_id": "6a6118aa-b97a-4d7b-94d3-7b13e6a408be",
+      "web_sha256": "3fadfbdd972f70606f7b191c6eaf5e4a7da4fecbe652a15c1e5414a194790d8c",
+      "web_bytes": 91762,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "397d8032-9cf7-4ba2-86e2-ae9fde63d539",
+      "title": "Belluaires et porchers",
+      "previous_web_id": "b7e23c95-58a0-4488-8f40-d13294010164",
+      "web_id": "11c00ee7-2a4b-4c4b-a570-b7c5bc48e7ea",
+      "download_id": "332f4769-53f8-4f35-afa3-a1a30c6cd7ba",
+      "web_sha256": "c4966ff26428581d82934a84be74ee3123fab12a6bf527b13508a26a677f4f8a",
+      "web_bytes": 361424,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "f95b60bf-b2ee-4704-a061-5a9fcf906281",
+      "title": "Le Sang du pauvre",
+      "previous_web_id": "6c0ad574-61fa-49aa-967f-12d6d78c0cee",
+      "web_id": "c4740b97-d8f6-44b6-ab11-8c45ddd69395",
+      "download_id": "d7e7aa26-0d20-4d22-a53a-636e35b7737e",
+      "web_sha256": "a030e81051cc7abf5666bcfa30acc3e75af9df1063ff70520d7015d6e48b7402",
+      "web_bytes": 151631,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "94bea2a9-25cb-4233-942f-8cf32b8ccc89",
+      "title": "Le Salut par les Juifs",
+      "previous_web_id": "578db740-9c1a-44b4-81d8-3d0e4e9691ad",
+      "web_id": "c664e899-475b-43ab-86c1-d24b1a6c5ac4",
+      "download_id": "a1931fc1-7de9-4c45-9fba-5484c9a61c4c",
+      "web_sha256": "8b20a367747d340aed84118ada36c8f506e417a18d1e26e36e47d5d3faca99a5",
+      "web_bytes": 151485,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "e6901882-ed6c-4357-b7a1-c4c4c13fee11",
+      "title": "Contre les Juifs",
+      "previous_web_id": "ea96e198-58a3-4c93-ae7a-f64e62d08251",
+      "web_id": "679a23b4-ca88-4df1-9056-5e647d690982",
+      "download_id": "e0bb172e-56df-41b0-9d81-3972c9497e56",
+      "web_sha256": "2a8e1ab4b7f6a87ee0e4c7d1372f6f404b5df108e6b32492c73d75727b6481f2",
+      "web_bytes": 83822,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "a758f0c9-c999-4d8a-ae1d-42f8a7c66c92",
+      "title": "Confessions",
+      "previous_web_id": "891af77d-0a79-4c16-9ee8-9cb33f0701a1",
+      "web_id": "1fe99655-4487-48f3-a447-bc34550d3962",
+      "download_id": "6af287d5-24d2-4a0c-93b2-d7870e342b5f",
+      "web_sha256": "d96bc246ed24441d439f00e9ea0b5cbe22f86e7126ec480780d09904e1f42da3",
+      "web_bytes": 318926,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "8767f872-509d-443b-98d1-8314251d6fa0",
+      "title": "Commentaire sur l’épître à Tite",
+      "previous_web_id": "6ff72129-b7f5-405b-ae17-6ba22f917510",
+      "web_id": "0392d9bd-88fa-4d16-8116-804bed176dc0",
+      "download_id": "44688c5b-163b-444b-9764-a0386af65191",
+      "web_sha256": "95c4b456b39a2987efbb8aaa80e9469d237c736dcbd615b7d35c7475b6e4d932",
+      "web_bytes": 123442,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "c5f2acdd-8366-43fd-a378-e3d53c793056",
+      "title": "La Barrière",
+      "previous_web_id": "f6460b4b-e1ff-474a-a035-9bcab72f7599",
+      "web_id": "31d2df77-e22d-4404-a757-ee7ff84cac28",
+      "download_id": "29901bc7-efaf-4ef5-980d-1dd99cbcc400",
+      "web_sha256": "67719e10250cbbbee04ab99fc87404085dc89f4d060767d7e529d566b5542b1e",
+      "web_bytes": 177251,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "5090cade-8eb5-45db-a44c-4f0576f1a25e",
+      "title": "Considérations sur la France",
+      "previous_web_id": "e374fd19-d94c-4f06-8324-1be41bab674e",
+      "web_id": "9f31c476-9d0d-445c-b222-a5274568a847",
+      "download_id": "14d8f866-e5ec-47c0-9b1a-09a1b032a006",
+      "web_sha256": "d406dcbe3103b4c7caed93f041c40c745d814e71e688b44a7f3aa7ff8c9a2534",
+      "web_bytes": 202792,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "593fafef-2596-43c4-ae42-9acc9ecffeec",
+      "title": "Le Désespéré",
+      "previous_web_id": "8c6c7fae-0b79-41af-aebc-3f8b70938694",
+      "web_id": "e18ab77f-24e5-4dd0-ab78-b5dcf49f3725",
+      "download_id": "f4e70c9c-c804-4f5a-a818-91fec8da67d0",
+      "web_sha256": "45e9fb10144de57d642fa95770bdfb9b1ee65ee2644f53a6f2a4720e7ba8c907",
+      "web_bytes": 410777,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "e5467b39-2468-4f1e-b8af-322ba33689eb",
+      "title": "La Femme pauvre",
+      "previous_web_id": "402ed0bb-7997-4754-be19-dfeedfb7ad17",
+      "web_id": "d72fc153-75e5-4f17-9321-cf0c869bf407",
+      "download_id": "a04ef1b7-6f1b-4f27-a702-b3ca1535a1f2",
+      "web_sha256": "87fb5c23c5360420078a92622119d86a1616ccc79210deddecae35a23a87ca36",
+      "web_bytes": 368844,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "17d0f5b4-f373-4ce8-ba03-9234dc1667ce",
+      "title": "Traité du sacerdoce",
+      "previous_web_id": "129f92c5-d944-4e0a-a968-9688ea4f5730",
+      "web_id": "6f7bf0aa-ecdf-4a39-944f-14e9961facaa",
+      "download_id": "7592e941-c4e9-4cb9-a018-18aea357c725",
+      "web_sha256": "d0e9f77483445ad9fb01c2a390662044b1817b0056f6b4a63bfd4719eaa37c19",
+      "web_bytes": 158269,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "fed14f24-2bc0-4911-b889-5e63ad252ef9",
+      "title": "L’Isolée",
+      "previous_web_id": "afbf1e97-e532-4706-9ea0-a3a7767dad9a",
+      "web_id": "2bd1bec7-7dfc-42b9-8a31-b4aaa7b396a5",
+      "download_id": "80c5fa87-2bc0-4b9f-9277-9df4706688aa",
+      "web_sha256": "7c2830414c720e9f5bb8f6b6b016f837ae8db029a6ad325e3ef46733475a9e8f",
+      "web_bytes": 197117,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "42f03745-75c3-473a-bdc6-984259769488",
+      "title": "Commentaire sur l’épître aux Romains",
+      "previous_web_id": "aee83921-a49a-4ca4-88eb-757519325b9b",
+      "web_id": "2d9678f3-8645-42e0-b2d5-54ed4fa7017e",
+      "download_id": "c2ca62c1-8e43-4c06-824b-4ea675da8f71",
+      "web_sha256": "de23397515f0b5b860b70f269ebb5940ebc6824be6ec215631af54f387133837",
+      "web_bytes": 521459,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "ce13e04d-2ec7-417e-a32b-67bacf9ecb43",
+      "title": "Commentaire sur la deuxième épître à Timothée",
+      "previous_web_id": "e1815438-37c5-4645-a761-f57feae4e700",
+      "web_id": "e8588262-a41e-40d3-b086-4e95a0b19544",
+      "download_id": "f8b06335-8ff1-47e1-9785-99dfe569fa54",
+      "web_sha256": "5095db6616daffceb2f4d6885843dfc7eb94a2a32aabccb85e76e87ba81b9775",
+      "web_bytes": 175936,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "70b9ede4-bffe-4558-b98d-6dff010686cc",
+      "title": "Sainte Bible traduite par A. Crampon",
+      "previous_web_id": "713f966d-78e1-49be-8f77-e557bfd130b1",
+      "web_id": "176be4e5-b3ed-4edd-bd30-f5ce9a1236ac",
+      "download_id": "9afbb7d4-ea54-47fc-a240-e806b4a80a7b",
+      "web_sha256": "832f36bdc805e6665e5784930c3f825a7588bfb75c3f414184070de823c3dc05",
+      "web_bytes": 7488306,
+      "storage": "local",
+      "changed_members": [
+        "OPS/cover.xhtml",
+        "OPS/content.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "a8cd50d3-d4d6-4cba-9793-a036485d64f9",
+      "title": "Discours contre les Juifs",
+      "previous_web_id": "fbd7c7b6-f6fd-477a-b8c8-8d3643d176c1",
+      "web_id": "b252a216-40bf-4f42-8682-e6afebd71d62",
+      "download_id": "278222e6-01ce-4297-a51b-94e657b39da5",
+      "web_sha256": "cd591fc6634fad9ff68f03199184dd14cdb1c9aa12a707ff3ccfdbe33e30ca19",
+      "web_bytes": 206111,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "3c1bdbba-2337-433c-b6be-5bb46b286978",
+      "title": "Les Oberlé",
+      "previous_web_id": "7849bb9f-f697-4c6a-aad8-17d87c7db231",
+      "web_id": "6e32fe74-1fe5-4dd3-acd7-fe3f2d29832a",
+      "download_id": "67ffeaf0-9ad7-4d9a-8042-bb7ccb2cd82f",
+      "web_sha256": "babb7d145a22a97cf1476024dc0d10028d9813dc7f90cae921820dcca5b394ab",
+      "web_bytes": 231018,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "3d4a99e2-555c-483d-b18f-b69e46b04e62",
+      "title": "Les Dernières Colonnes de l’Église",
+      "previous_web_id": "33c2188f-c181-43e7-b8b1-f07da79f2f5d",
+      "web_id": "ae90c764-61ed-4f8d-b19c-01f733dfce99",
+      "download_id": "5a8e2c45-6d83-4157-8319-9497c60cdbf4",
+      "web_sha256": "fa9c3c2046cffe1c565839febdac00de4bf1e86ad0b986bb32259b9cfa8b5905",
+      "web_bytes": 171743,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "94e52d29-20a5-47eb-bbad-ae90633c1534",
+      "title": "Sainte Bible traduite par J.-B. Glaire",
+      "previous_web_id": "e730a025-f316-4b1e-a165-9d201cad903a",
+      "web_id": "265917ba-a957-4fec-9c8f-102d93bbd081",
+      "download_id": "6977b6e7-2808-4b2e-ba4e-5106e583127c",
+      "web_sha256": "184a68c7c19050bdb4fc7f4c488e363c75b82962b8c5090ec0e8752f8439db15",
+      "web_bytes": 7958870,
+      "storage": "local",
+      "changed_members": [
+        "OPS/cover.xhtml",
+        "OPS/content.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "9b1e98ce-60c8-41b3-9633-c4797118ae64",
+      "title": "Exégèse des Lieux Communs",
+      "previous_web_id": "1739789f-10b2-4a77-a4a8-bc54d5d028c9",
+      "web_id": "eff67f49-cbe8-42f7-9663-ce03d8792583",
+      "download_id": "2a394440-6336-4a90-9ab9-67c16bfc10fe",
+      "web_sha256": "9cba76292e3e1be38b59bffc98eec77d78a6f99b6f52c18ee0c293a965a2c639",
+      "web_bytes": 339530,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "2edce269-88a9-485f-853a-385d692434c1",
+      "title": "Le Disciple",
+      "previous_web_id": "89ffe456-6cd3-4dce-963f-2e7619f7c57a",
+      "web_id": "c0e5c66e-cdca-4860-970f-60b837c229f4",
+      "download_id": "1c3f4dd5-d9d4-4274-a69a-d759cdda9905",
+      "web_sha256": "7e4ed7be9aef7b642976324427da34f36fc157293286c97bd300b0e17c3560b9",
+      "web_bytes": 280580,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "5d6234c5-b4cf-47f9-972d-fb538db32f23",
+      "title": "Commentaire sur la deuxième épître aux Thessaloniciens",
+      "previous_web_id": "c6704a8a-6302-4919-b6d9-4bea2cb942ef",
+      "web_id": "bafb36a3-4709-4e2b-9921-7aaaec27facf",
+      "download_id": "48b0eee8-5a19-4c4a-a5ca-7c05fc67e883",
+      "web_sha256": "4ef3e18a795620b213b5b26c897b62034685545e425d2a88dd646661e9a1f624",
+      "web_bytes": 128266,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "d4809d10-e532-48ba-8d24-418a39daff16",
+      "title": "Commentaire sur la première épître à Timothée",
+      "previous_web_id": "802b4e04-20a1-4c4f-b788-c35360337469",
+      "web_id": "eff81ce2-ea87-4d38-b6be-13015e03702e",
+      "download_id": "7f2ff81a-47ba-4f56-a789-42115cd0a68f",
+      "web_sha256": "f0b26b0b3a0e89cb7f694b39c3f07c4ca13ee7d313e45ee27e938b51b3c8741f",
+      "web_bytes": 235974,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/titlepage.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    },
+    {
+      "book_id": "51a8874a-1030-4668-860d-3b327dee3c34",
+      "title": "Somme Théologique",
+      "previous_web_id": "7af35d44-9148-4608-8afd-9c15360b4780",
+      "web_id": "7a26a110-cede-4eb8-bc74-4d50b0f22c8c",
+      "download_id": "8b5d2f4c-4c05-45ef-9a0e-28e392f64282",
+      "web_sha256": "c411b7f6f7a0ef31ef1495628a24877d973bc2b4b670795dd39d3d40f7e0cf9c",
+      "web_bytes": 5400788,
+      "storage": "local",
+      "changed_members": [
+        "EPUB/text/cover.xhtml",
+        "EPUB/package.opf"
+      ],
+      "public_sha256_verified": true
+    }
+  ]
+}

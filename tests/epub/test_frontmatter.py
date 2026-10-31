@@ -66,10 +66,9 @@ class Frontmatter(TestCase):
                 self.assertTrue(notice.xpath('//*[@id="avis"]'))
                 self.assertNotIn("Literae", "".join(notice.itertext()))
                 cover = E.fromstring(archive.read("EPUB/titlepage.xhtml"))
-                self.assertFalse(cover.xpath('//*[local-name()="svg"]'))
-                self.assertIn(
-                    "height:100%;width:auto", cover.find(".//x:img", fm.NS).get("style")
-                )
+                self.assertTrue(cover.xpath('//*[local-name()="svg"]'))
+                self.assertIsNone(cover.find(".//x:img", fm.NS))
+                self.assertIn("svg", E.fromstring(archive.read("EPUB/book.opf")).find('o:manifest/o:item[@id="cover"]', fm.NS).get("properties").split())
                 opf = E.fromstring(archive.read("EPUB/book.opf"))
                 self.assertEqual(
                     opf.find(".//{http://purl.org/dc/elements/1.1/}creator").text,
@@ -79,3 +78,9 @@ class Frontmatter(TestCase):
                     opf.find('o:metadata/o:meta[@name="cover"]', fm.NS).get("content"),
                     "literae-classic-cover",
                 )
+
+    def test_download_cover_remains_a_single_raster_image(self):
+        old = E.fromstring(f'<html xmlns="{fm.X}"><body/></html>')
+        cover = fm.cover_document(old, self.entry(), "cover.jpg", "download")
+        self.assertFalse(cover.xpath('//*[local-name()="svg"]'))
+        self.assertEqual(cover.find(".//x:img", fm.NS).get("src"), "cover.jpg")

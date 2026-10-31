@@ -66,7 +66,10 @@ async function initReader(root: HTMLElement) {
     style.textContent = cover ? `
       html, body { height: ${viewport.clientHeight}px !important; min-height: ${viewport.clientHeight}px !important;
         margin: 0 !important; padding: 0 !important; max-width: none !important; }
-      html body svg { max-height: none !important; max-width: 100% !important; }
+      /* EPUB.js adjustImages can measure an empty body and inject max-height:0!important.
+         Cover artwork has its own full-height layout, outside column image fitting. */
+      html body svg, html body .literae-cover img { max-height: none !important; max-width: 100% !important; }
+      html body .literae-cover img { height: 100% !important; object-fit: contain; }
       .literae-cover { height: 100%; position: relative; }
     ` : readerCss(settings, dark(), location.origin);
     modernizeDocument(doc, settings.modernize);

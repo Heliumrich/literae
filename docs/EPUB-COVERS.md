@@ -17,15 +17,32 @@ texte. Les versions courtes de 1855 d’Esther et Daniel sont supprimées ; les
 versions catholiques Furne de 1841, en 16 et 14 chapitres, les remplacent entièrement.
 Les 46 livres de l’Ancien Testament et les 27 du Nouveau sont présentés sans doublon.
 
-## Format de couverture commun aux lecteurs
+## Deux variantes de couverture
 
-La couverture est une **image JPEG baseline de 1 200 × 1 680 pixels**. Le texte,
+La version téléchargeable utilise une **image JPEG baseline de 1 200 × 1 680 pixels**. Le texte,
 le cadre et l’ornement sont dessinés dans l’image ; aucun rendu SVG, police intégrée,
 positionnement de texte HTML ou bordure CSS n’est nécessaire sur une liseuse.
 Le JPEG est déclaré comme `cover-image` dans le manifeste EPUB 3 et par la
 métadonnée `cover` pour les lecteurs utilisant la convention EPUB 2.
 
-La page de lecture contient un seul `img`, dans `.literae-cover`, sans texte de
+L’édition web conserve une **composition SVG intégrée**, dimensionnée à la hauteur
+du lecteur. La géométrie et les informations bibliographiques viennent du même
+catalogue que le JPEG, mais le texte reste vectoriel dans le navigateur.
+Le manifeste déclare la propriété `svg` sur cette page. Les variantes téléchargeables
+restent inchangées et conservent leur JPEG destiné à Crosspoint et KOReader.
+
+Pour réparer uniquement la couverture d’une édition web déjà traitée :
+
+```bash
+python scripts/restore-web-epub-cover.py source.epub web.epub --book-id UUID_DU_LIVRE
+```
+
+Cet outil ne change que le XHTML de garde et sa déclaration dans le package OPF ;
+chaque autre ressource, notamment les chapitres et les notes, est comparée octet
+par octet. Publier sous un nouvel UUID dans le stockage local, puis reconstruire
+le site avant de supprimer le fichier précédent.
+
+La page de lecture **téléchargeable** contient un seul `img`, dans `.literae-cover`, sans texte de
 couverture en double. Le chemin de la page existante est conservé. Exemple :
 
 ```html
@@ -113,14 +130,16 @@ en place un fichier déjà servi.
 
 `epub-frontmatter.spec.ts` vérifie les 45 couvertures web sur ordinateur et
 mobile portrait/paysage, ainsi que les 45 variantes liseuse dans le même lecteur :
-180 scénarios réussis sur les fichiers préparés localement. Les derniers chapitres
+Ces anciens tests étaient insuffisants : ils acceptaient une image décodée dont
+la largeur et la hauteur affichées étaient nulles. Leur résultat ne prouvait donc
+pas que les couvertures étaient visibles. Les derniers chapitres
 d’Esther et Daniel sont également contrôlés.
 
 Le parcours public sur S3 avait encore 11 erreurs sur 180, liées à des réponses
 403 et délais ; les logs ont confirmé une limitation S3 `503 ServiceUnavailable`.
-Après migration des fichiers actifs vers le volume local, les **180 scénarios
-publics passent**, ainsi que les neuf tests de pagination, filtres, canoniques et
-sitemaps. Les UUID et associations des éditions sont conservés par cette migration.
+Après migration des fichiers actifs vers le volume local, les 180 anciens scénarios
+de chargement passaient, ainsi que les neuf tests de pagination, filtres, canoniques et
+sitemaps. Le défaut visuel décrit ci-dessus demeurait toutefois présent. Les UUID et associations des éditions sont conservés par cette migration.
 Voir le [rapport de stockage local](LIBRARY-LOCAL-STORAGE-2026-10.json).
 
 Crosspoint a également été contrôlé avec son parseur C++ réel au commit
@@ -140,3 +159,30 @@ Les sources consultées sont les dépôts
 
 Les empreintes et identifiants publiés sont consignés dans
 [EPUB-FRONTMATTER-2026-10.json](EPUB-FRONTMATTER-2026-10.json).
+
+## Correction du rendu dans EPUB.js (31 octobre 2026)
+
+Le site réel a été contrôlé : ses 45 pages de livre servaient bien les UUID de la
+migration locale. La page vide venait de `Rendition.adjustImages()` : pendant le
+chargement, EPUB.js calculait zéro à partir du corps encore vide et injectait
+`img { max-height: 0px !important; }`. L’image était décodée mais occupait 0 × 0 pixel.
+La règle du lecteur protégeait déjà les SVG ; elle protège maintenant aussi les
+images de couverture. Les éditions web retrouvent parallèlement leur SVG intégré.
+
+Le test exige désormais une largeur supérieure à 100 pixels, une hauteur couvrant
+au moins 95 % du lecteur, une position en haut du lecteur, l’absence de débordement
+et la présence réelle du texte/cadre SVG ou du JPEG décodé. L’ancien rendu échoue
+explicitement sur `visible`, et le rendu corrigé est vérifié sur ordinateur,
+mobile portrait et paysage. `LITERAE_LIVE=1` permet de tester les pages publiées
+sans redirection des pages HTML vers le serveur cloud local.
+
+Résultat de cette correction : 45 EPUBCheck sans erreur ni avertissement,
+180 scénarios locaux réussis et 135 scénarios sur le lecteur déployé de
+`literae.ch` (ordinateur, portrait, paysage). Dans ce dernier contrôle, les pages,
+CSS et JavaScript proviennent du site réel ; seule la requête EPUB est redirigée,
+dans le navigateur de test, vers le nouvel UUID public correspondant. Le site
+servira ces nouveaux UUID par défaut après son prochain rebuild manuel.
+Les 45 EPUB téléchargeables conservent leurs identifiants et leurs octets.
+Le [rapport de correction](EPUB-WEB-COVERS-2026-10.json) conserve les empreintes
+et les associations des éditions. Ne pas nettoyer les anciens fichiers avant
+confirmation du déploiement de ces nouveaux identifiants sur les 45 pages.

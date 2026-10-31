@@ -5,8 +5,13 @@ import batch from '../fixtures/frontmatter-catalog.json' with { type: 'json' };
 import { chooseChapterHref } from './reader-helpers';
 
 const MAIN = 'https://literae.ch', LOCAL = 'http://127.0.0.1:4322';
+const LIVE = process.env.LITERAE_LIVE === '1';
+// Preview newly published immutable assets against the deployed reader before its next build.
+const publicEpubMap: Record<string, string> = process.env.LITERAE_PUBLIC_EPUB_MAP
+  ? JSON.parse(await readFile(process.env.LITERAE_PUBLIC_EPUB_MAP, 'utf8')) : {};
+const webIds = (id: string) => [id, publicEpubMap[id], ...Object.keys(publicEpubMap).filter(old => publicEpubMap[old] === id)];
 test.describe.configure({ mode: 'parallel' });
-test.use({ baseURL: MAIN, ...(process.env.HTTPS_PROXY ? {
+test.use({ baseURL: MAIN, ignoreHTTPSErrors: !!process.env.HTTPS_PROXY, ...(process.env.HTTPS_PROXY ? {
   proxy: { server: process.env.HTTPS_PROXY, bypass: '127.0.0.1,localhost' },
 } : {}) });
 
@@ -26,14 +31,14 @@ for (const [name, profile, kind] of [
       page.on('pageerror', error => errors.push(error.message));
       page.on('console', message => { if (message.type() === 'error') diagnostics.push(message.text()); });
       page.on('requestfailed', request => diagnostics.push(`${request.url()}: ${request.failure()?.errorText}`));
-      await context.route(MAIN + '/**', async route => {
+      if (!LIVE) await context.route(MAIN + '/**', async route => {
         const url = new URL(route.request().url());
         await route.fulfill({ response: await route.fetch({ url: LOCAL + url.pathname + url.search }) });
       });
       // Test both real editions in the same application, without changing its catalogue.
       await context.route('https://api.literae.ch/assets/**', async route => {
-        if (new URL(route.request().url()).pathname.split('/')[2] !== book.webId) return route.continue();
-        const id = kind === 'web' ? book.webId : book.downloadId;
+        if (!webIds(book.webId).includes(new URL(route.request().url()).pathname.split('/')[2])) return route.continue();
+        const id = kind === 'web' ? publicEpubMap[book.webId] || book.webId : book.downloadId;
         if (process.env.LITERAE_PREPARED_EPUB_DIR) {
           await route.fulfill({ body: await readFile(`${process.env.LITERAE_PREPARED_EPUB_DIR}/${id}.epub`), contentType: 'application/epub+zip', headers: { 'access-control-allow-origin': '*' } });
         } else {
@@ -45,25 +50,37 @@ for (const [name, profile, kind] of [
           await route.fulfill({ response });
         }
       });
-      const catalogue = (await (await request.get(LOCAL + '/scriptorium/bibliotheque.json')).json()).items;
+      const catalogue = (await (await request.get((LIVE ? MAIN : LOCAL) + '/scriptorium/bibliotheque.json')).json()).items;
       const item = catalogue.find((item: { id: string }) => item.id === book.bookId);
       expect(item).toBeTruthy();
       await page.goto(item.href);
+      if (LIVE) expect(JSON.parse(await page.locator('[data-editions]').getAttribute('data-editions') || '[]').some((edition: {id: string}) => webIds(book.webId).includes(edition.id))).toBe(true);
       const viewport = page.locator('[data-reader="viewport"]');
       await expect(viewport).toHaveAttribute('aria-busy', 'false', { timeout: 30000 });
       await expect(page.locator('[data-reader="error"]'), diagnostics.join('\n')).toBeHidden();
-      await expect.poll(() => viewport.evaluate(viewport => {
+      await expect.poll(() => viewport.evaluate((viewport, kind) => {
         for (const iframe of viewport.querySelectorAll('iframe')) {
-          const doc = iframe.contentDocument, img = doc?.querySelector<HTMLImageElement>('.literae-cover img');
-          if (!img || !img.complete || !img.naturalWidth) continue;
-          const style = iframe.contentWindow!.getComputedStyle(img), rect = img.getBoundingClientRect();
-          return { decoded: img.naturalWidth === 1200 && img.naturalHeight === 1680,
-            height: doc!.body.getBoundingClientRect().height === viewport.clientHeight,
+          const doc = iframe.contentDocument;
+          const graphic = doc?.querySelector<SVGSVGElement | HTMLImageElement>('.literae-cover svg, .literae-cover img');
+          if (!graphic) continue;
+          const rect = graphic.getBoundingClientRect();
+          const frame = iframe.getBoundingClientRect(), outer = viewport.getBoundingClientRect();
+          const img = graphic.tagName.toLowerCase() === 'img' ? graphic as HTMLImageElement : null;
+          const svg = graphic.tagName.toLowerCase() === 'svg';
+          return { visible: rect.width > 100 && rect.height >= viewport.clientHeight * .95,
+            height: Math.abs(doc!.body.getBoundingClientRect().height - viewport.clientHeight) <= 1,
             fits: rect.width <= iframe.clientWidth + 1 && rect.height <= viewport.clientHeight + 1,
-            fit: style.objectFit, svg: !!doc!.querySelector('svg') };
+            atStart: Math.abs(frame.top - outer.top) <= 1,
+            artwork: svg ? !!graphic.querySelector('text') && !!graphic.querySelector('rect')
+              : !!img?.complete && img.naturalWidth === 1200 && img.naturalHeight === 1680,
+            format: kind === 'web' ? svg : !svg,
+            textFits: !svg || [...graphic.querySelectorAll('text')].every(text => {
+              const box = text.getBBox();
+              return box.width > 0 && box.x >= 72 && box.x + box.width <= 1128 && box.y >= 72 && box.y + box.height <= 1608;
+            }) };
         }
         return null;
-      })).toEqual({ decoded: true, height: true, fits: true, fit: 'contain', svg: false });
+      }, kind), { timeout: 15000 }).toEqual({ visible: true, height: true, fits: true, atStart: true, artwork: true, format: true, textFits: true });
       expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
       if (['Les Dernières Colonnes de l’Église', 'Somme Théologique', 'Confessions'].includes(book.title))
         await viewport.screenshot({ path: info.outputPath('cover.png') });

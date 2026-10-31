@@ -36,12 +36,11 @@ def document(title):
     return root, head, E.SubElement(root, "{%s}body" % X)
 
 
-def cover_image(entry, font_path=FONT):
-    """A baseline JPEG: no SVG renderer or embedded fonts required on e-readers."""
+def cover_lines(entry, font_path=FONT):
+    """Shared line wrapping for the vector web cover and the e-reader JPEG."""
     image = Image.new("RGB", (1200, 1680), "#f7f1e5")
     draw = ImageDraw.Draw(image)
-    draw.rectangle((58, 58, 1142, 1622), outline="#715b32", width=3)
-    draw.rectangle((72, 72, 1128, 1608), outline="#9a8864", width=2)
+    lines_out = []
 
     def block(value, centre_y, size, maximum_height, width=990):
         if not value:
@@ -67,22 +66,51 @@ def cover_image(entry, font_path=FONT):
             raise ValueError("Cover text does not fit: " + value)
         y = centre_y - len(lines) * step / 2
         for line in lines:
-            draw.text((600, y), line, font=font, fill="#302719", anchor="mt")
+            lines_out.append((line, y, size))
             y += step
 
     block(entry["author"], 300, 46, 150)
     block(entry.get("cover_title", entry["title"]), 680, 66, 380)
-    draw.line((500, 1000, 700, 1000), fill="#715b32", width=2)
-    draw.line((600, 980, 600, 1020), fill="#715b32", width=2)
+
     block(entry["origin_label"] + " : " + entry["origin_date"], 1085, 30, 90)
     block(entry.get("credit", ""), 1195, 30, 130)
     block(entry["publisher"], 1380, 30, 160)
     block(entry["edition_date"], 1530, 38, 70)
+    return lines_out
+
+
+def cover_image(entry, font_path=FONT):
+    """A baseline JPEG: no SVG renderer or embedded fonts required on e-readers."""
+    image = Image.new("RGB", (1200, 1680), "#f7f1e5")
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((58, 58, 1142, 1622), outline="#715b32", width=3)
+    draw.rectangle((72, 72, 1128, 1608), outline="#9a8864", width=2)
+    draw.line((500, 1000, 700, 1000), fill="#715b32", width=2)
+    draw.line((600, 980, 600, 1020), fill="#715b32", width=2)
+    for line, y, size in cover_lines(entry, font_path):
+        draw.text((600, y), line, font=ImageFont.truetype(str(font_path), size),
+                  fill="#302719", anchor="mt")
     output = BytesIO()
-    image.save(
-        output, "JPEG", quality=90, optimize=True, progressive=False, subsampling=0
-    )
+    image.save(output, "JPEG", quality=90, optimize=True, progressive=False, subsampling=0)
     return output.getvalue()
+
+
+def cover_svg(entry):
+    """Inline vector artwork for EPUB.js; independent of image loading and book CSS."""
+    ns = "http://www.w3.org/2000/svg"
+    svg = E.Element("{%s}svg" % ns, nsmap={None: ns},
+                    viewBox="0 0 1200 1680", role="img", preserveAspectRatio="xMidYMid meet")
+    E.SubElement(svg, "{%s}title" % ns).text = entry["author"] + " – " + entry["title"]
+    E.SubElement(svg, "{%s}rect" % ns, width="1200", height="1680", fill="#f7f1e5")
+    for x, y, w, h, color, stroke in [(58,58,1084,1564,"#715b32",3),(72,72,1056,1536,"#9a8864",2)]:
+        E.SubElement(svg, "{%s}rect" % ns, x=str(x), y=str(y), width=str(w), height=str(h),
+                     fill="none", stroke=color, attrib={"stroke-width":str(stroke)})
+    E.SubElement(svg, "{%s}path" % ns, d="M500 1000 H700 M600 980 V1020", stroke="#715b32",
+                 fill="none", attrib={"stroke-width":"2"})
+    for line, y, size in cover_lines(entry):
+        E.SubElement(svg, "{%s}text" % ns, x="600", y=str(y + size), fill="#302719",
+                     attrib={"text-anchor":"middle", "font-family":"Georgia, serif", "font-size":str(size)}).text = line
+    return svg
 
 
 def keep_ids(old, body):
@@ -91,9 +119,18 @@ def keep_ids(old, body):
         E.SubElement(body, "{%s}span" % X, id=identity)
 
 
-def cover_document(old, entry, image_href):
+def cover_document(old, entry, image_href, kind="download"):
     root, head, body = document(entry["title"])
     E.SubElement(head, "{%s}meta" % X, name="calibre:cover", content="true")
+    if kind == "web":
+        E.SubElement(head, "{%s}style" % X).text = """
+html,body{margin:0;padding:0;height:100%;background:#f7f1e5}
+.literae-cover{height:100%;width:100%;margin:0;padding:0}
+.literae-cover svg{display:block;height:100%;width:100%}
+"""
+        keep_ids(old, body)
+        E.SubElement(body, "{%s}div" % X, attrib={"class":"literae-cover"}).append(cover_svg(entry))
+        return root
     # A single percentage dimension preserves the intrinsic image ratio in
     # Crosspoint. Its parser stretches images when width AND height are 100%.
     E.SubElement(head, "{%s}style" % X).text = """
@@ -159,9 +196,12 @@ def prepare(source, target, entry, kind, image=None):
             original_cover,
             entry,
             posixpath.relpath(image_path, posixpath.dirname(cover_path)),
+            kind,
         )
     )
     properties = set(cover_item.get("properties", "").split()) - {"svg"}
+    if kind == "web":
+        properties.add("svg")
     if properties:
         cover_item.set("properties", " ".join(sorted(properties)))
     else:
