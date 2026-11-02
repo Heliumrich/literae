@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compact a downloadable EPUB's paragraphs and inline notes, preserving all text and links."""
+"""Restore reader defaults and style only notes in a downloadable EPUB, preserving text and links."""
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
@@ -10,10 +10,8 @@ from lxml import etree as E
 X = 'http://www.w3.org/1999/xhtml'
 EP = 'http://www.idpf.org/2007/ops'
 NS = {'x': X, 'epub': EP}
-MARKER = '/* Compact downloadable edition */'
 CSS = '''
 /* Compact downloadable edition */
-p { margin-top: 0; margin-bottom: 0; }
 aside.ebook-note { margin: 0; padding: 0; font-size: .8em; line-height: 1.2; }
 aside.ebook-note p { margin: 0; padding: 0; text-indent: 0; }
 sup.ebook-noteref { line-height: 0; }
@@ -49,10 +47,9 @@ def compact(source, target, stylesheet):
     assert source.resolve() != target.resolve()
     with ZipFile(source) as z:
         files = {n: z.read(n) for n in z.namelist()}
-    css = files[stylesheet].decode('utf-8')
-    if MARKER in css:
-        raise ValueError('This edition is already compacted')
-    files[stylesheet] = (css.rstrip() + '\n' + CSS).encode()
+    assert stylesheet in files, 'The specified stylesheet is missing'
+    # Reader defaults: no generic body, paragraph, heading or image rules.
+    files[stylesheet] = CSS.lstrip().encode()
     changed = [stylesheet]
     counts = {'notes': 0, 'calls': 0}
     for name in list(files):
@@ -60,9 +57,18 @@ def compact(source, target, stylesheet):
             continue
         original = E.fromstring(files[name])
         root = E.fromstring(files[name])
+        # Graphic cover pages keep their dedicated layout, outside the reading text.
+        if root.xpath('//x:meta[@name="calibre:cover" and @content="true"] | //*[@class="literae-cover"]', namespaces=NS):
+            continue
+        styles = root.xpath('//x:style', namespaces=NS)
+        styled_nodes = root.xpath('//*[@style]')
+        for style in styles:
+            style.getparent().remove(style)
+        for node in styled_nodes:
+            del node.attrib['style']
         notes = root.xpath('//x:aside[@epub:type="footnote" or @role="doc-footnote"]', namespaces=NS)
         calls = root.xpath('//x:a[@epub:type="noteref" or @role="doc-noteref"]', namespaces=NS)
-        if not notes and not calls:
+        if not notes and not calls and not styles and not styled_nodes:
             continue
         for note in notes:
             add_class(note, 'ebook-note')
@@ -77,7 +83,7 @@ def compact(source, target, stylesheet):
             add_class(marker, 'ebook-noteref')
             space_before(marker)
         # Changes are limited to presentation and whitespace around note calls.
-        normalize = lambda r: re.sub(r'\s+', '', ''.join(r.itertext()))
+        normalize = lambda r: re.sub(r'\s+', '', ''.join(r.find('x:body', NS).itertext()))
         assert normalize(original) == normalize(root), f'Text changed: {name}'
         assert original.xpath('//@id') == root.xpath('//@id'), f'Anchor changed: {name}'
         assert original.xpath('//@href') == root.xpath('//@href'), f'Link changed: {name}'

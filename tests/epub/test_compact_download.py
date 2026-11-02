@@ -2,6 +2,7 @@ import importlib.util
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+import re
 from zipfile import ZipFile
 from lxml import etree as E
 
@@ -15,8 +16,8 @@ class CompactDownload(unittest.TestCase):
         with TemporaryDirectory() as folder:
             root = Path(folder)
             source, target = root / 'source.epub', root / 'compact.epub'
-            doc = f'''<html xmlns="{compact.X}" xmlns:epub="{compact.EP}"><head/><body>
-<p>Un <em>mot</em> <a id="appel"/><a epub:type="noteref" role="doc-noteref" href="#note">1</a>. Suite.</p>
+            doc = f'''<html xmlns="{compact.X}" xmlns:epub="{compact.EP}"><head><style>p {{margin:2em}} body {{line-height:2}}</style></head><body>
+<p style="margin-top:2em">Un <em>mot</em> <a id="appel"/><a epub:type="noteref" role="doc-noteref" href="#note">1</a>. Suite.</p>
 <aside epub:type="footnote" role="doc-footnote"><p><a id="note"/><a role="doc-backlink" href="#appel">[1]</a> Jn 1:1.</p></aside>
 </body></html>'''
             with ZipFile(source, 'w') as z:
@@ -36,6 +37,12 @@ class CompactDownload(unittest.TestCase):
                 self.assertEqual(call.get('href'), '#note')
                 self.assertEqual(tree.xpath('//@id'), ['appel', 'note'])
                 self.assertIn('ebook-note', tree.find('.//{%s}aside' % compact.X).get('class'))
-                self.assertIn('margin-top: 0; margin-bottom: 0', z.read('style.css').decode())
-            with self.assertRaisesRegex(ValueError, 'already compacted'):
-                compact.compact(target, root / 'second.epub', 'style.css')
+                css = re.sub(r'/\*.*?\*/', '', z.read('style.css').decode(), flags=re.S)
+                selectors = {part.split('{')[0].strip() for part in css.split('}') if '{' in part}
+                self.assertEqual(selectors, {'aside.ebook-note', 'aside.ebook-note p', 'sup.ebook-noteref'})
+                self.assertFalse(tree.xpath('//x:style | //*[@style]', namespaces=compact.NS))
+            second = root / 'second.epub'
+            compact.compact(target, second, 'style.css')
+            with ZipFile(target) as first, ZipFile(second) as repeated:
+                self.assertEqual(first.read('chapter.xhtml'), repeated.read('chapter.xhtml'))
+                self.assertEqual(first.read('style.css'), repeated.read('style.css'))

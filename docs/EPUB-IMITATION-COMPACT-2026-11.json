@@ -1,11 +1,11 @@
 {
   "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
-  "previous_download_id": "ecdee352-3493-494c-9d6a-26524f0878d0",
-  "download_id": "b1df51d9-7c66-41e5-bb5d-726300ad6527",
+  "previous_download_id": "b1df51d9-7c66-41e5-bb5d-726300ad6527",
+  "download_id": "231f36e5-b065-4d96-9bc1-9df13dd7c953",
   "web_id": "d1d8459c-db47-4848-a207-6f54436cfc6e",
   "web_sha256_before": "0fb845cef1db99d4f6125f553bad26f7eaef93c87a877c634851541d75a4ba9f",
-  "download_sha256": "f92296d249ed7d4132bf10c7de0cb9c01cbc01e7b04c6a8deceaf1b7b5cb0820",
-  "download_bytes": 494493,
+  "download_sha256": "a02817c48001ab4140872ece77f5f5fb898cae0a91b3b400f4b8c83afcf3c7e9",
+  "download_bytes": 494235,
   "status": "linked and verified",
   "web_bytes_unchanged": true,
   "storage": "local",
@@ -23,5 +23,6 @@
   "cover_unchanged": true,
   "text_and_all_internal_links_preserved": true,
   "koreader_popup": "Existing EPUB noteref/footnote semantics retained; enable footnote popup in KOReader",
-  "crosspoint_popup": "No popup in inspected official source; compact inline notes and jump/back links retained"
+  "crosspoint_popup": "No popup in inspected official source; compact inline notes and jump/back links retained",
+  "reading_styles": "Only note/call selectors; no generic paragraph, body, heading or image CSS. Inline reading styles removed. Dedicated cover layout retained."
 }

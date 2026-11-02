@@ -4,8 +4,11 @@ La variante liseuse de la traduction Lamennais (1859) conserve tous les paragrap
 le texte, les notes, les liens aller/retour et la couverture JPEG. Le corps de
 l’édition web n’est pas modifié.
 
-- Les marges verticales imposées aux `p` sont annulées. Crosspoint contrôle son
-  espacement supplémentaire ; désactivé, il n’ajoute pas de demi-ligne.
+- Les règles CSS générales de lecture sont supprimées, y compris les styles
+  intégrés aux XHTML et leurs attributs `style`. Aucune déclaration générique pour
+  `p`, `body`, les titres ou les images n’est conservée, pas même `margin: 0`.
+  La feuille CSS de lecture ne cible que les notes et leurs appels. La garde
+  conserve sa feuille locale propre à sa composition graphique.
 - Les 734 notes restent à leur place, conformément à la solution de repli demandée :
   80 % de la police courante, marges et padding nuls, sans alinéa. Les notes
   consécutives n’ont plus de marges CSS entre elles. Le réglage global de Crosspoint
@@ -31,7 +34,7 @@ python scripts/compact-download-epub.py original.epub compact.epub --stylesheet 
 ```
 
 Cet outil vérifie la conservation du texte hors espaces, des identifiants et des
-liens de chaque XHTML modifié. Il refuse une seconde application sur le même fichier.
+liens de chaque XHTML modifié. Une nouvelle application conserve les mêmes notes, exposants et espaces sans les dupliquer.
 EPUBCheck ne signale aucune erreur ni avertissement. Les 130 XHTML sont audités :
 3 783 paragraphes, 734 notes, 734 appels. Quatre tests du parseur C++ Crosspoint
 vérifient l’espacement désactivé/activé, la taille et l’alinéa des notes, puis le vrai
