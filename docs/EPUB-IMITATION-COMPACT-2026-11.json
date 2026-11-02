@@ -1,0 +1,27 @@
+{
+  "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
+  "previous_download_id": "ecdee352-3493-494c-9d6a-26524f0878d0",
+  "download_id": "b1df51d9-7c66-41e5-bb5d-726300ad6527",
+  "web_id": "d1d8459c-db47-4848-a207-6f54436cfc6e",
+  "web_sha256_before": "0fb845cef1db99d4f6125f553bad26f7eaef93c87a877c634851541d75a4ba9f",
+  "download_sha256": "f92296d249ed7d4132bf10c7de0cb9c01cbc01e7b04c6a8deceaf1b7b5cb0820",
+  "download_bytes": 494493,
+  "status": "linked and verified",
+  "web_bytes_unchanged": true,
+  "storage": "local",
+  "download_filename": "Thomas à Kempis - L’Imitation de Jésus-Christ (Traduction de Félicité de Lamennais · 1859).epub",
+  "date": "2026-11-02",
+  "notes": 734,
+  "spaced_noterefs": 734,
+  "xhtml_audited": 130,
+  "paragraphs_preserved": 3783,
+  "epubcheck": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "crosspoint_native_tests_passed": 4,
+  "cover_unchanged": true,
+  "text_and_all_internal_links_preserved": true,
+  "koreader_popup": "Existing EPUB noteref/footnote semantics retained; enable footnote popup in KOReader",
+  "crosspoint_popup": "No popup in inspected official source; compact inline notes and jump/back links retained"
+}
