@@ -1,11 +1,11 @@
 {
   "book_id": "4558f5ea-768d-4c5b-90dd-441899aabdd1",
-  "previous_download_id": "b1df51d9-7c66-41e5-bb5d-726300ad6527",
-  "download_id": "231f36e5-b065-4d96-9bc1-9df13dd7c953",
+  "previous_download_id": "231f36e5-b065-4d96-9bc1-9df13dd7c953",
+  "download_id": "18636269-d90e-4c7b-b01e-865a40b49a3a",
   "web_id": "d1d8459c-db47-4848-a207-6f54436cfc6e",
   "web_sha256_before": "0fb845cef1db99d4f6125f553bad26f7eaef93c87a877c634851541d75a4ba9f",
-  "download_sha256": "a02817c48001ab4140872ece77f5f5fb898cae0a91b3b400f4b8c83afcf3c7e9",
-  "download_bytes": 494235,
+  "download_sha256": "da359f883c58cf39e9d3a6ecd35490998fe75b7eef3b6513f7c9a861ca996611",
+  "download_bytes": 494246,
   "status": "linked and verified",
   "web_bytes_unchanged": true,
   "storage": "local",
@@ -24,5 +24,30 @@
   "text_and_all_internal_links_preserved": true,
   "koreader_popup": "Existing EPUB noteref/footnote semantics retained; enable footnote popup in KOReader",
   "crosspoint_popup": "No popup in inspected official source; compact inline notes and jump/back links retained",
-  "reading_styles": "Only note/call selectors; no generic paragraph, body, heading or image CSS. Inline reading styles removed. Dedicated cover layout retained."
+  "reading_styles": "Edition-specific p {margin:0.5em 0}; compact note/call selectors; no other generic reading CSS; dedicated cover layout retained.",
+  "paragraph_margin_em": 0.5,
+  "all_xhtml_bytes_identical_to_previous": true,
+  "crosspoint_native_margin_tests_passed": 6,
+  "crosspoint_reference_metrics": {
+    "line_height_px": 16,
+    "font_ascender_px": 12,
+    "added_spacing_px": [
+      {
+        "margin": "default",
+        "extra_off": 0,
+        "extra_on": 8
+      },
+      {
+        "margin": "0.7em 0",
+        "extra_off": 16,
+        "extra_on": 24
+      },
+      {
+        "margin": "0.5em 0",
+        "extra_off": 12,
+        "extra_on": 20
+      }
+    ],
+    "note": "Native test font, not physical device pixels; metrics vary with reader font settings."
+  }
 }

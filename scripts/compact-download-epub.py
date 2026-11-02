@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Restore reader defaults and style only notes in a downloadable EPUB, preserving text and links."""
 import argparse
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 import re
@@ -43,13 +44,18 @@ def space_before(marker):
         previous.tail = (previous.tail or '').rstrip() + '\u00a0'
 
 
-def compact(source, target, stylesheet):
+def compact(source, target, stylesheet, paragraph_margin_em=None):
     assert source.resolve() != target.resolve()
     with ZipFile(source) as z:
         files = {n: z.read(n) for n in z.namelist()}
     assert stylesheet in files, 'The specified stylesheet is missing'
-    # Reader defaults: no generic body, paragraph, heading or image rules.
-    files[stylesheet] = CSS.lstrip().encode()
+    # Reader defaults unless a particular edition explicitly requests a paragraph margin.
+    extra_css = ''
+    if paragraph_margin_em is not None:
+        if not math.isfinite(paragraph_margin_em) or paragraph_margin_em < 0:
+            raise ValueError('Paragraph margin must be a finite, non-negative number')
+        extra_css = f'p {{ margin: {paragraph_margin_em:g}em 0; }}\n'
+    files[stylesheet] = (extra_css + CSS.lstrip()).encode()
     changed = [stylesheet]
     counts = {'notes': 0, 'calls': 0}
     for name in list(files):
@@ -103,7 +109,7 @@ def compact(source, target, stylesheet):
         z.writestr('mimetype', files.pop('mimetype'), compress_type=ZIP_STORED)
         for name, data in files.items():
             z.writestr(name, data)
-    return {**counts, 'changed_members': changed}
+    return {**counts, 'paragraph_margin_em': paragraph_margin_em, 'changed_members': changed}
 
 
 if __name__ == '__main__':
@@ -112,5 +118,6 @@ if __name__ == '__main__':
     parser.add_argument('source', type=Path)
     parser.add_argument('target', type=Path)
     parser.add_argument('--stylesheet', required=True)
+    parser.add_argument('--paragraph-margin-em', type=float)
     args = parser.parse_args()
-    print(json.dumps(compact(args.source, args.target, args.stylesheet), ensure_ascii=False, indent=2))
+    print(json.dumps(compact(args.source, args.target, args.stylesheet, args.paragraph_margin_em), ensure_ascii=False, indent=2))

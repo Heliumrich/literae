@@ -4,11 +4,10 @@ La variante liseuse de la traduction Lamennais (1859) conserve tous les paragrap
 le texte, les notes, les liens aller/retour et la couverture JPEG. Le corps de
 l’édition web n’est pas modifié.
 
-- Les règles CSS générales de lecture sont supprimées, y compris les styles
-  intégrés aux XHTML et leurs attributs `style`. Aucune déclaration générique pour
-  `p`, `body`, les titres ou les images n’est conservée, pas même `margin: 0`.
-  La feuille CSS de lecture ne cible que les notes et leurs appels. La garde
-  conserve sa feuille locale propre à sa composition graphique.
+- Cette édition demande explicitement `p { margin: 0.5em 0; }`. Ce choix reste
+  propre à l’Imitation ; l’outil générique conserve les réglages du lecteur par
+  défaut lorsqu’aucune marge n’est demandée. Les styles généraux de `body`, titres
+  et images restent supprimés. La garde conserve sa composition locale.
 - Les 734 notes restent à leur place, conformément à la solution de repli demandée :
   80 % de la police courante, marges et padding nuls, sans alinéa. Les notes
   consécutives n’ont plus de marges CSS entre elles. Le réglage global de Crosspoint
@@ -30,7 +29,7 @@ Sources inspectées :
 ## Reproduire la préparation
 
 ```bash
-python scripts/compact-download-epub.py original.epub compact.epub --stylesheet EPUB/style.css
+python scripts/compact-download-epub.py original.epub compact.epub --stylesheet EPUB/style.css --paragraph-margin-em 0.5
 ```
 
 Cet outil vérifie la conservation du texte hors espaces, des identifiants et des
@@ -52,3 +51,17 @@ L’ancien fichier reste disponible jusqu’au rebuild des pages du VPS.
 Crosspoint indexe son cache par chemin du fichier. Après remplacement d’un EPUB
 sous le même nom, utiliser l’action de suppression du cache du livre pour reconstruire
 le CSS et les pages avec le nouvel EPUB.
+
+## Comparaison dans Crosspoint
+
+Crosspoint n’applique pas une marge navigateur de 1 em aux `p` sans CSS.
+Six tests natifs ont comparé l’absence de règle, 0,7 em et 0,5 em, chacun avec
+l’option d’espacement supplémentaire désactivée puis activée. Avec les métriques
+de test (ascendante 12 px, hauteur de ligne 16 px), l’espace ajouté entre deux
+paragraphes est respectivement 0/8 px, 16/24 px et 12/20 px (option OFF/ON).
+Les valeurs physiques varient avec la police. Les marges basse/haute s’additionnent.
+Ainsi, 0,5 em réduit l’espacement par rapport à 0,7 em, mais l’augmente par rapport
+à l’absence de règle lorsque l’option supplémentaire est désactivée.
+
+La dernière révision ne change que la feuille CSS et la date de modification OPF :
+les 130 XHTML et toutes les ressources graphiques sont identiques octet pour octet.

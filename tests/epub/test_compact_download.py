@@ -46,3 +46,11 @@ class CompactDownload(unittest.TestCase):
             with ZipFile(target) as first, ZipFile(second) as repeated:
                 self.assertEqual(first.read('chapter.xhtml'), repeated.read('chapter.xhtml'))
                 self.assertEqual(first.read('style.css'), repeated.read('style.css'))
+
+            half = root / 'half.epub'
+            compact.compact(target, half, 'style.css', .5)
+            with ZipFile(target) as defaults, ZipFile(half) as custom:
+                self.assertEqual(defaults.read('chapter.xhtml'), custom.read('chapter.xhtml'))
+                self.assertEqual(custom.read('style.css').decode(), 'p { margin: 0.5em 0; }\n' + defaults.read('style.css').decode())
+            with self.assertRaises(ValueError):
+                compact.compact(target, root / 'invalid.epub', 'style.css', -.5)
