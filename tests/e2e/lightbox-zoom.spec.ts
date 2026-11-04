@@ -21,13 +21,15 @@ async function reachOriginal(page: Page) {
   await expect(page.locator('.lightbox-img')).toHaveJSProperty('naturalWidth', 2400);
 }
 
-test('le zoom atteint 100 %, puis charge uniquement l’original courant et le conserve au dézoom', async ({ page }) => {
+test('le zoom atteint la résolution optimisée, puis charge uniquement l’original courant et le conserve au dézoom', async ({ page }) => {
   await openCatalog(page);
-  for (let count = 0; await percent(page) < 100 && count < 15; count++) {
+  const reference = await page.locator('#catalog-grid [data-lightbox]').first().getAttribute('data-original-width');
+  expect(Number(reference)).toBeGreaterThan(800);
+  for (let count = 0; (await page.locator('.lightbox-img').boundingBox())!.width < 799 && count < 15; count++) {
     await page.getByRole('button', { name: 'Zoomer', exact: true }).click();
     await page.waitForTimeout(30);
   }
-  expect(await percent(page)).toBe(100);
+  expect(await percent(page)).toBe(Math.round(800 / Number(reference) * 100));
   await expect(page.locator('.lightbox-img')).toHaveAttribute('src', /\?key=/);
   let release!: () => void;
   const pending = new Promise<void>(resolve => { release = resolve; });
@@ -39,9 +41,14 @@ test('le zoom atteint 100 %, puis charge uniquement l’original courant et le c
   const beforeUpgrade = (await page.locator('.lightbox-img').boundingBox())!.width;
   await page.getByRole('button', { name: 'Zoomer', exact: true }).click();
   await expect(page.locator('#lightbox')).toHaveAttribute('aria-busy', 'true');
+  const status = (await page.locator('.lightbox-status').boundingBox())!;
+  const toolbar = (await page.locator('.lightbox-top').boundingBox())!;
+  expect(status.y).toBeLessThan(toolbar.y + toolbar.height + 10);
   release();
   await expect(page.locator('.lightbox-img')).toHaveJSProperty('naturalWidth', 2400);
   await expect.poll(async () => (await page.locator('.lightbox-img').boundingBox())!.width).toBeGreaterThan(beforeUpgrade);
+  const rendered = (await page.locator('.lightbox-img').boundingBox())!.width;
+  expect(await percent(page)).toBe(Math.round(rendered / Number(reference) * 100));
   const original = await page.locator('.lightbox-img').getAttribute('src');
   for (let count = 0; count < 6; count++) await page.getByRole('button', { name: 'Dézoomer', exact: true }).click();
   await expect(page.locator('.lightbox-img')).toHaveAttribute('src', original!);

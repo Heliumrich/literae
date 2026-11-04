@@ -12,6 +12,7 @@ export type LightboxItem = {
   large?: string | null;
   xlarge?: string | null;
   original?: string | null;
+  originalWidth?: number | null;
   epic?: boolean;
 };
 
@@ -68,6 +69,7 @@ function fromEl(el: HTMLElement): LightboxItem {
     large: el.dataset.large,
     xlarge: el.dataset.xlarge,
     original: el.dataset.original,
+    originalWidth: Number(el.dataset.originalWidth) || null,
     epic: el.dataset.epic === "true",
   };
 }
@@ -117,14 +119,14 @@ function ensureLightbox() {
       <button type="button" class="lightbox-epic" aria-pressed="false" hidden title="Accentuer les ombres et les lumières">Épique</button>
       <div class="lightbox-zoom" role="group" aria-label="Zoom">
         <button type="button" data-zoom="out" aria-label="Dézoomer">${zoomIcon('-')}</button>
-        <output class="lightbox-zoom-level" aria-label="Échelle de l’image" title="100 % : taille réelle de l’image">–</output>
+        <output class="lightbox-zoom-level" aria-label="Échelle de l’image" title="100 % : taille réelle de l’original">–</output>
         <button type="button" data-zoom="in" aria-label="Zoomer">${zoomIcon('+')}</button>
+        <p class="lightbox-status" role="status" hidden></p>
       </div>
     </div>
     <button type="button" class="lightbox-close" aria-label="Fermer">×</button></div>
     <button type="button" class="lightbox-prev" aria-label="Œuvre précédente">‹</button>
     <div class="lightbox-stage"><img class="lightbox-img" alt="" /></div>
-    <p class="lightbox-status" role="status" hidden></p>
     <button type="button" class="lightbox-next" aria-label="Œuvre suivante">›</button>
     <p class="lightbox-cap">
       <span class="lightbox-cap-center">
@@ -150,6 +152,7 @@ function ensureLightbox() {
       show();
       return true;
     },
+    () => gallery[index]?.originalWidth || 0,
   );
   root.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;

@@ -38,6 +38,7 @@ const href = `${basePath}/${work.slug}`;
     data-large={getAssetURL(id, "large") || ""}
     data-xlarge={getAssetURL(id, "xlarge") || ""}
     data-original={getAssetURL(id) || ""}
+    data-original-width={work.image?.width}
   />
   <a href={href} class="catalog-card-copy">
     <h2>{title}</h2>

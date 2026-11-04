@@ -41,6 +41,7 @@ const selection = await fetchArtSelection();
                     data-medium={image} data-large={getAssetURL(fileIdOf(work.image), 'large')}
                     data-xlarge={getAssetURL(fileIdOf(work.image), 'xlarge')}
                     data-original={getAssetURL(fileIdOf(work.image))}
+                    data-original-width={work.image?.width}
                   ><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6M7 10h6m-3-3v6"/></svg></button>}
                 </div>
                 <h3><a href={`${ART_BASE}/oeuvres/${work.slug}`}>{getArtworkTitle(work)}</a></h3>

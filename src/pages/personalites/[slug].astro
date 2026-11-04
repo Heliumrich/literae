@@ -36,7 +36,7 @@ export async function getStaticPaths() {
       "artists?filter[status][_eq]=published&fields=*&sort=name",
     ),
     fetchAllFromDirectus<any>(
-      "artworks?filter[status][_eq]=published&fields=id,slug,title_original,title_french,title_english,year,image,artist.id,artist.name,artist.type,artist.slug,depicted.artists_id.id&sort=-year",
+      "artworks?filter[status][_eq]=published&fields=id,slug,title_original,title_french,title_english,year,image.id,image.width,image.height,artist.id,artist.name,artist.type,artist.slug,depicted.artists_id.id&sort=-year",
     ),
     fetchBooks(),
   ]);

@@ -4,6 +4,7 @@ export function createLightboxZoom(
   image: HTMLImageElement,
   label: HTMLElement,
   requestOriginal: () => boolean,
+  originalWidth: () => number,
 ) {
   let width = 0, x = 0, y = 0;
   let fitted = true;
@@ -25,7 +26,7 @@ export function createLightboxZoom(
     image.style.height = `${height}px`;
     image.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
     stage.classList.toggle('is-zoomed', width > fitWidth() + 1);
-    label.textContent = `${Math.round(width / image.naturalWidth * 100)} %`;
+    label.textContent = `${Math.round(width / (originalWidth() || image.naturalWidth) * 100)} %`;
   }
   function schedule() { if (!frame) frame = requestAnimationFrame(paint); }
 

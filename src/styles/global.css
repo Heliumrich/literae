@@ -1229,19 +1229,30 @@
   }
 }
 
-/* The original-quality request can take longer; keep its progress visible. */
+/* Keep download feedback by the zoom controls, away from the artwork's centre. */
+.lightbox-zoom { position: relative; }
 .lightbox-status {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: .6rem 1rem;
-  border-radius: 3px;
-  background: rgba(10, 8, 6, .85);
-  color: #fffaf0;
+  top: 100%;
+  left: 0;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  margin-top: .3rem;
+  padding: .35rem .6rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--bg);
+  color: var(--text-muted);
   font-family: var(--type-ui);
-  font-size: .85rem;
+  font-size: .7rem;
   pointer-events: none;
+}
+.lightbox-detail .lightbox-status {
+  top: auto;
+  bottom: 100%;
+  left: auto;
+  right: 0;
+  margin: 0 0 .3rem;
 }
 
 .catalog-order {

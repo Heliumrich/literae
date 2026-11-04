@@ -30,6 +30,7 @@ export const GET: APIRoute = async () => {
       large: getAssetURL(fileIdOf(work.image), "large"),
       xlarge: getAssetURL(fileIdOf(work.image), "xlarge"),
       original: getAssetURL(fileIdOf(work.image)),
+      originalWidth: work.image?.width || null,
       tags,
       haystack: searchHaystack([
         work.title_french,
