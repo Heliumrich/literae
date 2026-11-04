@@ -105,6 +105,8 @@ Le catalogue des œuvres propose deux vues statiques : `/oeuvres/selection` (cha
 
 `ArtSelection.astro` partage les cinq œuvres choisies entre l’accueil principal et l’accueil d’art ; leurs liens « Voir notre sélection » ouvrent le catalogue dans l’ordre manuel. Un changement d’ordre dans Directus nécessite un rebuild, comme les autres contenus du CMS.
 
+La visionneuse propose les boutons de zoom, la molette, le pincement tactile et le déplacement par glissement. À 100 %, un pixel de l’image correspond à un pixel CSS ; une tentative supplémentaire charge l’original pour cette œuvre uniquement, sans modifier la préférence globale. Cet original est conservé au dézoom, puis cet état est effacé au changement d’œuvre ou au départ de la page. Les listes utilisent deux bandeaux suivant le thème ; la fiche d’une œuvre conserve des commandes flottantes et toute la surface pour l’image.
+
 La visionneuse navigable du catalogue et des collections d’une personnalité précharge uniquement l’image suivante dans la qualité sélectionnée. Depuis une fiche d’œuvre, elle utilise une vue épurée, sans légende ni navigation. Le bouton **Épique**, réservé aux œuvres attribuées à Gustave Doré, applique une courbe en S avec un filtre SVG côté navigateur ; les fichiers Directus et les téléchargements restent inchangés.
 
 ## Bibliothèque
