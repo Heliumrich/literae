@@ -1,3 +1,4 @@
+import { createLightboxZoom } from "./lightbox-zoom";
 import { pickAssetSrc } from "./asset-tier";
 
 function downloadUrl(src: string) {
@@ -39,14 +40,16 @@ function saveQuality() {
     document.cookie = `${QUALITY_KEY}=${value}; path=/; max-age=31536000; SameSite=Lax${shared ? '; domain=.literae.ch' : ''}`;
   } catch { /* Cookies may also be disabled. */ }
 }
+let zoom: ReturnType<typeof createLightboxZoom>;
+let imageOriginal: string | null = null;
 let epicEnabled = false;
 let detailMode = false;
 let preload: HTMLImageElement | null = null;
 let previousOverflow = "";
 let returnFocus: HTMLElement | null = null;
 
-function itemSrc(item: LightboxItem) {
-  if (qualityMax && item.original) return item.original;
+function itemSrc(item: LightboxItem, upgraded = false) {
+  if ((qualityMax || upgraded) && item.original) return item.original;
   return pickAssetSrc({
     dataset: {
       medium: item.medium || "",
@@ -84,6 +87,10 @@ const epicCurve = Array.from({ length: 33 }, (_, i) => {
   return (0.2 * x + 0.8 * x * x * (3 - 2 * x)).toFixed(5);
 }).join(" ");
 
+function zoomIcon(sign: string) {
+  return `<svg viewBox="0 0 28 28" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7.5"/><circle cx="11" cy="11" r="5.8" opacity=".4"/><path d="m17 17 7 7m-8-6 6 6M7.5 11h7${sign === '+' ? 'M11 7.5v7' : ''}"/></svg>`;
+}
+
 function ensureLightbox() {
   let root = document.getElementById("lightbox");
   if (root) return root;
@@ -105,13 +112,18 @@ function ensureLightbox() {
         </feComponentTransfer>
       </filter></defs>
     </svg>
-    <div class="lightbox-tools">
+    <div class="lightbox-top"><div class="lightbox-tools">
       <button type="button" class="lightbox-quality" aria-pressed="false">Qualité originale</button>
       <button type="button" class="lightbox-epic" aria-pressed="false" hidden title="Accentuer les ombres et les lumières">Épique</button>
+      <div class="lightbox-zoom" role="group" aria-label="Zoom">
+        <button type="button" data-zoom="out" aria-label="Dézoomer">${zoomIcon('-')}</button>
+        <output class="lightbox-zoom-level" aria-label="Échelle de l’image" title="100 % : taille réelle de l’image">–</output>
+        <button type="button" data-zoom="in" aria-label="Zoomer">${zoomIcon('+')}</button>
+      </div>
     </div>
-    <button type="button" class="lightbox-close" aria-label="Fermer">×</button>
+    <button type="button" class="lightbox-close" aria-label="Fermer">×</button></div>
     <button type="button" class="lightbox-prev" aria-label="Œuvre précédente">‹</button>
-    <img class="lightbox-img" alt="" />
+    <div class="lightbox-stage"><img class="lightbox-img" alt="" /></div>
     <p class="lightbox-status" role="status" hidden></p>
     <button type="button" class="lightbox-next" aria-label="Œuvre suivante">›</button>
     <p class="lightbox-cap">
@@ -128,13 +140,30 @@ function ensureLightbox() {
     </p>
   `;
   document.body.appendChild(root);
+  zoom = createLightboxZoom(
+    root.querySelector<HTMLElement>('.lightbox-stage')!,
+    root.querySelector<HTMLImageElement>('.lightbox-img')!,
+    root.querySelector<HTMLElement>('.lightbox-zoom-level')!,
+    () => {
+      if (qualityMax || imageOriginal || !gallery[index]?.original) return false;
+      imageOriginal = gallery[index].original!;
+      show();
+      return true;
+    },
+  );
   root.addEventListener("click", (e) => {
     const t = e.target as HTMLElement;
     if (t.closest(".lightbox-cap-link")) return;
     if (t.closest(".lightbox-dl")) return;
+    const zoomButton = t.closest<HTMLElement>('[data-zoom]');
+    if (zoomButton) {
+      zoom.zoomBy(zoomButton.dataset.zoom === 'in' ? 1.5 : 1 / 1.5);
+      return;
+    }
     const quality = t.closest<HTMLButtonElement>(".lightbox-quality");
     if (quality) {
       qualityMax = !qualityMax;
+      if (!qualityMax) imageOriginal = null;
       saveQuality();
       show();
       return;
@@ -144,7 +173,8 @@ function ensureLightbox() {
       show();
       return;
     }
-    if (t.closest(".lightbox-tools")) return;
+    if (t.closest('.lightbox-close')) { closeLightbox(); return; }
+    if (t.closest('.lightbox-top, .lightbox-cap')) return;
     if (t.classList.contains("lightbox-prev")) {
       step(-1);
       return;
@@ -154,7 +184,7 @@ function ensureLightbox() {
       return;
     }
     const img = root.querySelector<HTMLImageElement>(".lightbox-img");
-    if (img && (t === img || img.contains(t)) && clickOnPaintedImage(img, e)) return;
+    if (img && t.closest(".lightbox-stage") && clickOnPaintedImage(img, e)) return;
     closeLightbox();
   });
   return root;
@@ -172,12 +202,13 @@ function show() {
   const epic = root.querySelector<HTMLButtonElement>(".lightbox-epic");
   root.classList.toggle("lightbox-detail", detailMode);
   if (img) {
-    const src = itemSrc(item);
+    const src = itemSrc(item, Boolean(imageOriginal));
     // Install before src, including cache hits. Do not reload on effect toggles.
     const status = root.querySelector<HTMLElement>('.lightbox-status')!;
     img.onload = () => {
       root.setAttribute('aria-busy', 'false');
       status.hidden = true;
+      zoom.loaded();
       preloadNext();
     };
     img.onerror = () => {
@@ -187,7 +218,7 @@ function show() {
     };
     if (img.getAttribute("src") !== src) {
       root.setAttribute('aria-busy', 'true');
-      status.textContent = qualityMax ? 'Chargement de l’original…' : 'Chargement de l’image…';
+      status.textContent = (qualityMax || imageOriginal) ? 'Chargement de l’original…' : 'Chargement de l’image…';
       status.hidden = false;
       img.src = src;
     }
@@ -196,6 +227,7 @@ function show() {
     if (img.complete && img.naturalWidth) {
       status.hidden = true;
       root.setAttribute('aria-busy', 'false');
+      zoom.loaded();
       preloadNext();
     }
   }
@@ -255,8 +287,11 @@ function preloadNext() {
 
 export function openLightbox(el: HTMLElement) {
   restoreQuality();
-  returnFocus = el;
+  ensureLightbox();
   const current = fromEl(el);
+  if (current.original !== imageOriginal) imageOriginal = null;
+  zoom.reset();
+  returnFocus = el;
   detailMode = el.dataset.lightboxMode === "detail";
   const scope = el.closest("[data-lightbox-gallery]") ||
     (!catalogGallery.length ? el.closest(".catalog-grid") : null);
@@ -293,6 +328,8 @@ function clickOnPaintedImage(img: HTMLImageElement, e: MouseEvent) {
 
 function step(delta: number) {
   if (detailMode || gallery.length < 2) return;
+  imageOriginal = null;
+  zoom.reset();
   index = (index + delta + gallery.length) % gallery.length;
   show();
 }
@@ -301,6 +338,7 @@ export function closeLightbox() {
   const root = document.getElementById("lightbox");
   if (!root) return;
   root.hidden = true;
+  zoom.reset();
   const img = root.querySelector<HTMLImageElement>(".lightbox-img");
   if (img) {
     img.onload = img.onerror = null;

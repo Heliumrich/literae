@@ -192,7 +192,7 @@ test('le seuil occupe le viewport et précède la sélection puis les derniers a
 test('les mêmes cinq œuvres sont sélectionnées sur les deux accueils', async ({ page }) => {
   for (const path of ['/', '/art']) {
     await page.goto(path);
-    expect(await page.locator('.art-preview .art-card').evaluateAll(links => links.map(link => new URL((link as HTMLAnchorElement).href).pathname.split('/').pop()))).toEqual(SELECTION);
+    expect(await page.locator('.art-preview .art-card h3 a').evaluateAll(links => links.map(link => new URL((link as HTMLAnchorElement).href).pathname.split('/').pop()))).toEqual(SELECTION);
     await expect(page.locator('.art-preview .editorial-link')).toHaveText('Voir notre sélection →');
     await expect(page.locator('.art-preview .editorial-link')).toHaveAttribute('href', 'https://art.literae.ch/oeuvres/selection');
   }
