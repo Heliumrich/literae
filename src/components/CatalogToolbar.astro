@@ -3,8 +3,9 @@ interface Props {
   tags: string[];
   searchPlaceholder?: string;
   showView?: boolean;
+  artworkOrder?: "selection" | "nouveautes";
 }
-const { tags, searchPlaceholder = "Rechercher…", showView = false } = Astro.props;
+const { tags, searchPlaceholder = "Rechercher…", showView = false, artworkOrder } = Astro.props;
 ---
 
 <div class="catalog-toolbar">
@@ -21,6 +22,23 @@ const { tags, searchPlaceholder = "Rechercher…", showView = false } = Astro.pr
       autocomplete="off"
     />
   </label>
+
+  {artworkOrder && (
+    <nav class="catalog-order" aria-label="Ordre des œuvres">
+      <a
+        href="/oeuvres/nouveautes"
+        data-artwork-order="nouveautes"
+        class:list={['catalog-order-link', { 'is-active': artworkOrder === 'nouveautes' }]}
+        aria-current={artworkOrder === 'nouveautes' ? 'page' : undefined}
+      >Nouveautés</a>
+      <a
+        href="/oeuvres/selection"
+        data-artwork-order="selection"
+        class:list={['catalog-order-link', { 'is-active': artworkOrder === 'selection' }]}
+        aria-current={artworkOrder === 'selection' ? 'page' : undefined}
+      >Sélection</a>
+    </nav>
+  )}
 
   {
     showView && (

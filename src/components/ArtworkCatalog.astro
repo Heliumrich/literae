@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArtworkCard from "./ArtworkCard.astro";
+import CatalogToolbar from "./CatalogToolbar.astro";
+import CollectionHeader from "./CollectionHeader.astro";
+import { fetchArtworkCatalog } from "../lib/artworks-server";
+import { PAGE_SIZE, parseTags } from "../lib/catalog";
+import { ART_BASE } from "../lib/site-links";
+import { orderArtworks, type ArtworkOrder } from "../lib/artworks";
+interface Props { order?: ArtworkOrder }
+
+const { order = 'selection' } = Astro.props;
+const artworks = orderArtworks(await fetchArtworkCatalog(), order);
+const allTags = [...new Set(artworks.flatMap((work) => parseTags(work.tags)))].sort((a, b) =>
+  a.localeCompare(b, "fr"),
+);
+const firstPage = artworks.slice(0, PAGE_SIZE);
+---
+
+<BaseLayout gallery canonicalPath="/oeuvres" title="Œuvres" description="Catalogue des œuvres d’art chrétien de Literae">
+  <script is:inline slot="head">
+    if (['q', 'tags', 'p'].some(key => new URLSearchParams(location.search).has(key))) {
+      document.documentElement.setAttribute('data-art-catalog-pending', '');
+    }
+  </script>
+  <main>
+    <div class="page-wrap">
+      <CollectionHeader
+        eyebrow="Contempler · Le cabinet d’images"
+        title="Les œuvres"
+        lead="Tableaux, fresques et sculptures forment ici une exposition en mouvement, reliée aux artistes et aux figures qu’elle représente."
+        count={artworks.length}
+        countLabel={artworks.length > 1 ? "œuvres" : "œuvre"}
+        backHref={`${ART_BASE}/`}
+        backLabel="Contempler"
+      />
+    </div>
+
+    <section class="catalog-section artwork-catalog" aria-label="Catalogue des œuvres">
+      <div class="page-wrap">
+        <CatalogToolbar
+          tags={allTags}
+          artworkOrder={order}
+          searchPlaceholder="Rechercher un titre, un artiste ou une époque…"
+        />
+        <p id="catalog-status" class="catalog-status" aria-live="polite"></p>
+        <p id="catalog-empty" class="catalog-empty hidden">
+          Aucune œuvre ne correspond.
+        </p>
+
+        <div id="catalog-grid" class="catalog-grid" data-ssr="1" data-order={order}>
+          {firstPage.map((work, index) => (
+            <ArtworkCard work={work} index={index} />
+          ))}
+        </div>
+
+        <nav id="catalog-pager" class="catalog-pager" aria-label="Pagination"></nav>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  import { initCatalog } from "../lib/catalog-client";
+  initCatalog({ jsonUrl: "/oeuvres.json", kind: "artwork" });
+</script>
+
+<style is:global>
+  html[data-art-catalog-pending] .artwork-catalog #catalog-grid,
+  html[data-art-catalog-pending] .artwork-catalog #catalog-pager { visibility:hidden; }
+</style>

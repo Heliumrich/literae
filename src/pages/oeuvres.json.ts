@@ -1,28 +1,27 @@
+import { fetchArtworkCatalog } from "../lib/artworks-server";
 import type { APIRoute } from "astro";
 import {
-  fetchAllFromDirectus,
   getAssetURL,
   getArtworkTitle,
   fileIdOf,
 } from "../lib/directus";
 import { parseTags, searchHaystack, jsonItems } from "../lib/catalog";
-import { alternateArtists, artworkArtistKey, isDoreArtwork } from "../lib/artworks";
+import { orderArtworks, isDoreArtwork } from "../lib/artworks";
 
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const artworks = alternateArtists(await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.id,artist.name,artist.type,artist.slug&sort=-date_created,id",
-  ), artworkArtistKey, (work) => work.artist?.name);
+  const artworks = orderArtworks(await fetchArtworkCatalog(), 'selection');
 
   const items = artworks.map((work) => {
     const tags = parseTags(work.tags);
     return {
       slug: work.slug,
+      sort: work.sort ?? null,
+      date_created: work.date_created ?? null,
       href: `/oeuvres/${work.slug}`,
       title: getArtworkTitle(work),
       year: work.year ?? null,
-      artistKey: artworkArtistKey(work),
       epic: isDoreArtwork(work),
       artist:
         work.artist && typeof work.artist === "object" ? work.artist.name : null,

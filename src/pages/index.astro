@@ -1,4 +1,5 @@
 ---
+import ArtSelection from "../components/ArtSelection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Fleur from "../components/Fleur.astro";
 import Cross from "../components/Cross.astro";
@@ -31,18 +32,6 @@ const featured = artworks.find((work) => fileIdOf(work.image));
 const featuredImage = featured
   ? getAssetURL(fileIdOf(featured.image), "large")
   : null;
-const selectedSlugs = [
-  'fra-angelico-annonciation-prado',
-  'the-vision-of-the-blessed-hermann-joseph',
-  'veronese-noces-cana',
-  'claude-vignon-saint-ambroise',
-  'destruction-of-leviathan',
-];
-const selectedArtworks = (await fetchFromDirectus<Artwork[]>(
-  `artworks?filter[status][_eq]=published&filter[slug][_in]=${selectedSlugs.join(',')}&fields=id,slug,title_french,title_original,title_english,year,image&limit=${selectedSlugs.length}`,
-)) || [];
-// Directus' response order is independent of this ordered home-page selection.
-const selection = selectedSlugs.flatMap(slug => selectedArtworks.filter(work => work.slug === slug));
 const recentBooks = (await fetchBooks()).sort((a, b) => b.created.localeCompare(a.created)).slice(0, 4);
 
 const gestures = [
@@ -180,45 +169,7 @@ const gestures = [
       </div>
     </section>
 
-    {
-      selection.length > 0 && (
-        <section class="art-preview" aria-labelledby="selection-title">
-          <div class="page-wrap">
-            <div class="section-heading compact">
-              <div>
-                <p class="eyebrow">Contempler</p>
-                <h2 id="selection-title">Sélections d’œuvres intemporelles</h2>
-              </div>
-              <a href={`${ART_BASE}/oeuvres`} class="editorial-link">Voir toute la collection →</a>
-            </div>
-            <div class="art-row">
-              {selection.map((work, index) => {
-                const image = getAssetURL(fileIdOf(work.image), "medium");
-                return (
-                  <a href={`${ART_BASE}/oeuvres/${work.slug}`} class="art-card">
-                    <div class="art-image">
-                      {image ? (
-                        <img
-                          src={image}
-                          alt={getArtworkTitle(work)}
-                          width="540"
-                          height="680"
-                          loading={index < 2 ? "eager" : "lazy"}
-                        />
-                      ) : (
-                        <Fleur class="size-16 text-gold opacity-40" />
-                      )}
-                    </div>
-                    <h3>{getArtworkTitle(work)}</h3>
-                    {work.year && <p>{work.year}</p>}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )
-    }
+    <ArtSelection />
 
     {recentBooks.length > 0 && (
       <section class="recent-books" aria-labelledby="recent-books-title">
@@ -485,57 +436,6 @@ const gestures = [
     color: var(--text-muted);
   }
 
-  .art-preview {
-    padding: clamp(4.5rem, 8vw, 7rem) 0;
-    border-block: 1px solid var(--border);
-    background: var(--card);
-  }
-
-  .art-row {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  .art-card {
-    color: var(--text);
-    text-decoration: none;
-  }
-
-  .art-image {
-    display: grid;
-    aspect-ratio: 4 / 5;
-    place-items: center;
-    overflow: hidden;
-    background: var(--bg-secondary);
-  }
-
-  .art-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(0.88);
-    transition: filter 220ms ease, transform 420ms ease;
-  }
-
-  .art-card:hover .art-image img {
-    filter: saturate(1);
-    transform: scale(1.025);
-  }
-
-  .art-card h3 {
-    margin-top: 0.8rem;
-    font-size: 1.3rem;
-    line-height: 1.1;
-  }
-
-  .art-card p {
-    margin-top: 0.25rem;
-    color: var(--text-subtle);
-    font-size: 0.78rem;
-  }
-
   .future {
     border-bottom: 1px solid var(--border);
   }
@@ -606,11 +506,6 @@ const gestures = [
 
     .section-heading.compact > a {
       justify-self: start;
-    }
-
-    .art-row {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      row-gap: 2.2rem;
     }
   }
 

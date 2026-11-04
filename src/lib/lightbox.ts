@@ -18,7 +18,27 @@ let gallery: LightboxItem[] = [];
 let catalogGallery: LightboxItem[] = [];
 let index = 0;
 let bound = false;
+const QUALITY_KEY = 'literae-lightbox-quality';
 let qualityMax = false;
+
+function restoreQuality() {
+  try {
+    const cookie = document.cookie.match(/(?:^|; )literae-lightbox-quality=(original|optimized)(?:;|$)/)?.[1];
+    const saved = cookie || localStorage.getItem(QUALITY_KEY);
+    if (saved === 'original' || saved === 'optimized') qualityMax = saved === 'original';
+  } catch { /* Keep the in-page choice when storage is unavailable. */ }
+}
+function saveQuality() {
+  const value = qualityMax ? 'original' : 'optimized';
+  try {
+    localStorage.setItem(QUALITY_KEY, value);
+  } catch { /* Preference still works in this page. */ }
+  try {
+    // The gallery is also reachable from the main site's home page.
+    const shared = location.hostname === 'literae.ch' || location.hostname.endsWith('.literae.ch');
+    document.cookie = `${QUALITY_KEY}=${value}; path=/; max-age=31536000; SameSite=Lax${shared ? '; domain=.literae.ch' : ''}`;
+  } catch { /* Cookies may also be disabled. */ }
+}
 let epicEnabled = false;
 let detailMode = false;
 let preload: HTMLImageElement | null = null;
@@ -34,7 +54,7 @@ function itemSrc(item: LightboxItem) {
       xlarge: item.xlarge || "",
       original: item.original || "",
     },
-  });
+  }, false);
 }
 
 function fromEl(el: HTMLElement): LightboxItem {
@@ -92,6 +112,7 @@ function ensureLightbox() {
     <button type="button" class="lightbox-close" aria-label="Fermer">×</button>
     <button type="button" class="lightbox-prev" aria-label="Œuvre précédente">‹</button>
     <img class="lightbox-img" alt="" />
+    <p class="lightbox-status" role="status" hidden></p>
     <button type="button" class="lightbox-next" aria-label="Œuvre suivante">›</button>
     <p class="lightbox-cap">
       <span class="lightbox-cap-center">
@@ -114,6 +135,7 @@ function ensureLightbox() {
     const quality = t.closest<HTMLButtonElement>(".lightbox-quality");
     if (quality) {
       qualityMax = !qualityMax;
+      saveQuality();
       show();
       return;
     }
@@ -152,12 +174,30 @@ function show() {
   if (img) {
     const src = itemSrc(item);
     // Install before src, including cache hits. Do not reload on effect toggles.
-    img.onload = preloadNext;
-    img.onerror = preloadNext;
-    if (img.getAttribute("src") !== src) img.src = src;
+    const status = root.querySelector<HTMLElement>('.lightbox-status')!;
+    img.onload = () => {
+      root.setAttribute('aria-busy', 'false');
+      status.hidden = true;
+      preloadNext();
+    };
+    img.onerror = () => {
+      root.setAttribute('aria-busy', 'false');
+      status.textContent = 'L’image n’a pas pu être chargée.';
+      status.hidden = false;
+    };
+    if (img.getAttribute("src") !== src) {
+      root.setAttribute('aria-busy', 'true');
+      status.textContent = qualityMax ? 'Chargement de l’original…' : 'Chargement de l’image…';
+      status.hidden = false;
+      img.src = src;
+    }
     img.alt = item.alt;
     img.classList.toggle("is-epic", Boolean(item.epic && epicEnabled));
-    if (img.complete) preloadNext();
+    if (img.complete && img.naturalWidth) {
+      status.hidden = true;
+      root.setAttribute('aria-busy', 'false');
+      preloadNext();
+    }
   }
   if (cap) cap.hidden = detailMode;
   const link = root.querySelector<HTMLAnchorElement>(".lightbox-cap-link");
@@ -206,6 +246,7 @@ function preloadNext() {
   const src = itemSrc(gallery[(index + 1) % gallery.length]);
   if (!src || preload?.getAttribute("src") === src) return;
   // Keep only the next image alive. Original files are requested only on opt-in.
+  preload?.removeAttribute("src");
   preload = new Image();
   preload.decoding = "async";
   preload.fetchPriority = "low";
@@ -213,6 +254,7 @@ function preloadNext() {
 }
 
 export function openLightbox(el: HTMLElement) {
+  restoreQuality();
   returnFocus = el;
   const current = fromEl(el);
   detailMode = el.dataset.lightboxMode === "detail";
@@ -264,6 +306,7 @@ export function closeLightbox() {
     img.onload = img.onerror = null;
     img.removeAttribute("src");
   }
+  preload?.removeAttribute("src");
   preload = null;
   gallery = [];
   document.body.style.overflow = previousOverflow;

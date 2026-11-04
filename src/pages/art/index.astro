@@ -1,4 +1,5 @@
 ---
+import ArtSelection from "../../components/ArtSelection.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArtworkCard from "../../components/ArtworkCard.astro";
 import Fleur from "../../components/Fleur.astro";
@@ -16,7 +17,7 @@ const artworks = await fetchAllFromDirectus<any>(
   "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image,tags,artist.name,artist.type,artist.slug&sort=-date_created",
 );
 const featured = artworks.find((work) => fileIdOf(work.image));
-const latest = artworks.filter((work) => work.id !== featured?.id).slice(0, 8);
+const latest = artworks.slice(0, 8);
 const featuredImage = featured
   ? getAssetURL(fileIdOf(featured.image), "large")
   : null;
@@ -61,6 +62,26 @@ const featuredImage = featured
       </div>
     </section>
 
+    <ArtSelection />
+
+    {
+      latest.length > 0 && (
+        <section class="art-latest" aria-labelledby="latest-title">
+          <div class="page-wrap">
+            <div class="art-section-head">
+              <div>
+                <p class="eyebrow">Nouveaux regards</p>
+                <h2 id="latest-title">Dernières œuvres déposées</h2>
+              </div>
+              <a href="/oeuvres/nouveautes" class="editorial-link">Voir les derniers ajouts →</a>
+            </div>
+            <div class="catalog-grid">
+              {latest.map((work, index) => <ArtworkCard work={work} index={index} />)}
+            </div>
+          </div>
+        </section>
+      )
+    }
     <section class="page-wrap art-gateways" aria-label="Explorer le cabinet">
       <a href="/oeuvres">
         <p class="eyebrow">La collection</p>
@@ -76,24 +97,6 @@ const featuredImage = featured
       </a>
     </section>
 
-    {
-      latest.length > 0 && (
-        <section class="art-latest" aria-labelledby="latest-title">
-          <div class="page-wrap">
-            <div class="art-section-head">
-              <div>
-                <p class="eyebrow">Nouveaux regards</p>
-                <h2 id="latest-title">Dernières œuvres déposées</h2>
-              </div>
-              <a href="/oeuvres" class="editorial-link">Voir toute la collection →</a>
-            </div>
-            <div class="catalog-grid">
-              {latest.map((work, index) => <ArtworkCard work={work} index={index} />)}
-            </div>
-          </div>
-        </section>
-      )
-    }
   </main>
 </BaseLayout>
 
@@ -106,13 +109,14 @@ const featuredImage = featured
     display: grid;
     grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 1.08fr);
     align-items: stretch;
+    min-height: calc(100dvh - var(--site-header-height) - 1px);
   }
 
   .art-hero-copy {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: var(--page-start) clamp(2.5rem, 7vw, 7rem) var(--intro-end) 0;
+    justify-content: center;
+    padding: clamp(1rem, 5dvh, 4rem) clamp(1.5rem, 4vw, 4rem) clamp(1rem, 5dvh, 4rem) 0;
   }
 
   .art-eyebrow {
@@ -124,25 +128,25 @@ const featuredImage = featured
   .art-hero h1 {
     max-width: 9ch;
     margin-top: 1rem;
-    font-size: clamp(3.7rem, 7vw, 6.8rem);
+    font-size: clamp(2rem, min(7vw, 9dvh), 6.8rem);
   }
 
   .art-hero-copy > p:not(.eyebrow) {
     max-width: 32rem;
-    margin-top: 2rem;
+    margin-top: clamp(.75rem, 2dvh, 2rem);
     color: var(--text-muted);
-    font-size: 1.16rem;
+    font-size: clamp(.9rem, 1.7dvh, 1.16rem);
   }
 
   .art-hero-copy .editorial-button {
     align-self: flex-start;
-    margin-top: 2.2rem;
+    margin-top: clamp(.75rem, 2dvh, 2.2rem);
   }
 
   .art-hero-image {
     position: relative;
     display: grid;
-    min-height: 36rem;
+    min-height: 0;
     margin-right: calc((100vw - min(100vw - 2rem, 76rem)) / -2);
     place-items: center;
     overflow: hidden;
@@ -150,6 +154,8 @@ const featuredImage = featured
   }
 
   .art-hero-image > a {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -248,20 +254,24 @@ const featuredImage = featured
     line-height: 0.95;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 800px) and (orientation: portrait) {
     .art-hero-grid {
       width: 100%;
       grid-template-columns: 1fr;
+      grid-template-rows: auto minmax(10rem, 1fr);
     }
 
     .art-hero-copy {
       width: min(100% - 2rem, 46rem);
       margin-inline: auto;
-      padding-right: 0;
+      padding: 1.25rem 0;
     }
 
+    .art-hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); max-width: 14ch; }
+    .art-hero-copy > p:not(.eyebrow) { font-size: 1rem; }
+
     .art-hero-image {
-      min-height: 32rem;
+      min-height: 10rem;
       margin: 0;
     }
   }
@@ -290,5 +300,23 @@ const featuredImage = featured
       align-items: flex-start;
       flex-direction: column;
     }
+  }
+
+  @media (orientation: landscape) and (max-height: 600px) {
+    .art-hero-copy { padding-block: 1rem; }
+    .art-hero h1 { max-width: 14ch; margin-top: .5rem; }
+  }
+
+  @media (orientation: landscape) and (max-width: 700px) and (max-height: 600px) {
+    .art-hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+    .art-hero-copy { padding: .25rem 1rem .25rem 0; }
+    .art-hero h1 { font-size: clamp(1.5rem, 8dvh, 2rem); }
+    .art-hero-copy > p:not(.eyebrow) { margin-top: .5rem; font-size: .85rem; line-height: 1.4; }
+    .art-hero-copy .editorial-button { margin-top: .5rem; }
+  }
+
+  @media (orientation: landscape) and (max-width: 600px) {
+    /* Match the narrower mobile .page-wrap gutter. */
+    .art-hero-image { margin-right: -.625rem; }
   }
 </style>
