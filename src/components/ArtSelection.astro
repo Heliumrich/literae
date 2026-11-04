@@ -1,0 +1,121 @@
+---
+import Fleur from './Fleur.astro';
+import { fetchArtSelection } from '../lib/artworks-server';
+import { fileIdOf, getAssetURL, getArtworkTitle } from '../lib/directus';
+import { ART_BASE } from '../lib/site-links';
+const selection = await fetchArtSelection();
+---
+{
+  selection.length > 0 && (
+    <section class="art-preview" aria-labelledby="selection-title">
+      <div class="page-wrap">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Contempler</p>
+            <h2 id="selection-title">Sélections d’œuvres intemporelles</h2>
+          </div>
+          <a href={`${ART_BASE}/oeuvres/selection`} class="editorial-link">Voir notre sélection →</a>
+        </div>
+        <div class="art-row">
+          {selection.map((work, index) => {
+            const image = getAssetURL(fileIdOf(work.image), "medium");
+            return (
+              <a href={`${ART_BASE}/oeuvres/${work.slug}`} class="art-card">
+                <div class="art-image">
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={getArtworkTitle(work)}
+                      width="540"
+                      height="680"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
+                  ) : (
+                    <Fleur class="size-16 text-gold opacity-40" />
+                  )}
+                </div>
+                <h3>{getArtworkTitle(work)}</h3>
+                {work.year && <p>{work.year}</p>}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+<style>
+  .art-preview {
+    padding: clamp(4.5rem, 8vw, 7rem) 0;
+    border-block: 1px solid var(--border);
+    background: var(--card);
+  }
+
+  .art-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .art-card {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .art-image {
+    display: grid;
+    aspect-ratio: 4 / 5;
+    place-items: center;
+    overflow: hidden;
+    background: var(--bg-secondary);
+  }
+
+  .art-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.88);
+    transition: filter 220ms ease, transform 420ms ease;
+  }
+
+  .art-card:hover .art-image img {
+    filter: saturate(1);
+    transform: scale(1.025);
+  }
+
+  .art-card h3 {
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+
+  .art-card p {
+    margin-top: 0.25rem;
+    color: var(--text-subtle);
+    font-size: 0.78rem;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .section-heading h2 {
+    margin-top: .6rem;
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    line-height: .95;
+  }
+
+  @media (max-width: 1000px) {
+    .art-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .section-heading { flex-direction: column; align-items: start; }
+  }
+</style>

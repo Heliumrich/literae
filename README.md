@@ -99,9 +99,11 @@ Les fiches musicales affichent les descriptions Markdown, les tags et les liens 
 
 Pour les collections avec un statut, seuls les éléments `published` sont intégrés ; les ouvrages utilisent le champ `archived` et seuls les livres non archivés sont inclus. Les collections sont lues par pages de 100 éléments afin d’accompagner leur croissance. Les requêtes identiques sont mutualisées pendant le build.
 
-Les images restent servies par Directus avec les transformations `thumbnail`, `medium`, `large` et `xlarge`. Le fichier original n’est demandé que depuis la visionneuse lorsque **Qualité originale** est activée.
+Les images restent servies par Directus avec les transformations `thumbnail`, `medium`, `large` et `xlarge`. Le fichier original n’est demandé que depuis la visionneuse lorsque **Qualité originale** est activée. Ce choix s’applique immédiatement, persiste dans `localStorage` et est partagé entre `literae.ch` et `art.literae.ch` par un cookie de préférence.
 
-Le catalogue des œuvres alterne les artistes dans l’ordre alphabétique de leur nom affiché (A à Z, tri français) : une œuvre de chacun, puis la suivante, jusqu’à épuisement de toutes les œuvres. Les œuvres d’un même artiste restent classées par ajout récent. Cet ordre est calculé au build et conservé dans le JSON statique ; les résultats filtrés sont également triés et alternés avant pagination. Les vignettes présentent l’œuvre entière dans un cadre carré.
+Le catalogue des œuvres propose deux vues statiques : `/oeuvres/selection` (champ entier Directus `artworks.sort` croissant, œuvres non classées à la suite) et `/oeuvres/nouveautes` (date d’ajout décroissante). `/oeuvres` utilise la sélection par défaut. Un changement de tri conserve recherche et tags, et revient à la première page. Le même tri est appliqué au build et aux résultats filtrés avant pagination. Toutes ces variantes ont `/oeuvres` comme canonique ; seul ce dernier figure dans le sitemap. Les vignettes présentent l’œuvre entière dans un cadre carré.
+
+`ArtSelection.astro` partage les cinq œuvres choisies entre l’accueil principal et l’accueil d’art ; leurs liens « Voir notre sélection » ouvrent le catalogue dans l’ordre manuel. Un changement d’ordre dans Directus nécessite un rebuild, comme les autres contenus du CMS.
 
 La visionneuse navigable du catalogue et des collections d’une personnalité précharge uniquement l’image suivante dans la qualité sélectionnée. Depuis une fiche d’œuvre, elle utilise une vue épurée, sans légende ni navigation. Le bouton **Épique**, réservé aux œuvres attribuées à Gustave Doré, applique une courbe en S avec un filtre SVG côté navigateur ; les fichiers Directus et les téléchargements restent inchangés.
 

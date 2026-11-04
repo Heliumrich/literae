@@ -1,5 +1,5 @@
 import { PAGE_SIZE } from "./catalog";
-import { alternateArtists } from "./artworks";
+import { artworkOrder, artworkOrderPath, orderArtworks } from "./artworks";
 import { formatPersonRoles, parsePersonTypes } from "./people";
 import { hydrateThumbs } from "./thumbs";
 import { setLightboxGallery } from "./lightbox";
@@ -23,8 +23,9 @@ export type CatalogItem = {
   title: string;
   subtitle?: string | null;
   year?: string | number | null;
+  sort?: number | null;
+  date_created?: string | null;
   artist?: string | null;
-  artistKey?: string;
   epic?: boolean;
   thumb: string | null;
   medium?: string | null;
@@ -92,6 +93,7 @@ export function initCatalog(opts: Options) {
   const catalogGrid = grid;
 
   let items: CatalogItem[] = [];
+  const order = artworkOrder(location.pathname);
   const initial = readFilterParams(search);
   let mode: FilterMode = initial.mode;
   let page = initial.page;
@@ -108,7 +110,7 @@ export function initCatalog(opts: Options) {
       types.length === 0 || types.some((type) => item.types?.includes(type)),
     );
     const list = opts.kind === "artwork"
-      ? alternateArtists(filtered, (item) => item.artistKey || item.artist || "unknown", (item) => item.artist)
+      ? orderArtworks(filtered, order)
       : filtered;
     const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
     if (page > pages) page = pages;
@@ -118,7 +120,8 @@ export function initCatalog(opts: Options) {
       page === 1 &&
       !search?.value.trim() &&
       selectedTags().length === 0 &&
-      types.length === 0;
+      types.length === 0 &&
+      (opts.kind !== "artwork" || catalogGrid.dataset.order === order);
     if (!keepSsr) {
       catalogGrid.removeAttribute("data-ssr");
       catalogGrid.innerHTML = slice.map((item, i) => cardHtml(item, opts.kind, i < 8)).join("");
@@ -153,6 +156,14 @@ export function initCatalog(opts: Options) {
       page,
       extra: { types: types.length ? types.join(",") : null },
     });
+    document.querySelectorAll<HTMLAnchorElement>('[data-artwork-order]').forEach(link => {
+      const next = link.dataset.artworkOrder === 'nouveautes' ? 'nouveautes' : 'selection';
+      const url = new URL(artworkOrderPath(next), location.origin);
+      url.search = location.search;
+      url.searchParams.delete('p');
+      link.href = url.href;
+    });
+    document.documentElement.removeAttribute('data-art-catalog-pending');
   }
 
   bindCatalogChrome({
@@ -209,5 +220,8 @@ export function initCatalog(opts: Options) {
       }));
       render();
     })
-    .catch(() => {});
+    .catch(() => {
+      document.documentElement.removeAttribute('data-art-catalog-pending');
+      if (status) status.textContent = 'Les filtres n’ont pas pu être chargés. Rechargez la page pour réessayer.';
+    });
 }

@@ -25,6 +25,8 @@
   --radius-xl: 28px;
 }
 
+:root { --site-header-height: calc(4.75rem + 1px); }
+
 :root,
 [data-theme="light"] {
   --bg: #f1eadc;
@@ -474,6 +476,8 @@
   padding-top: 0.08em;
   color: var(--accent);
 }
+
+.site-header-row { height: calc(var(--site-header-height) - 1px); }
 
 /* ––– Le livre vivant : langage éditorial partagé ––– */
 .site-header {
@@ -1289,4 +1293,55 @@
   .placeholder-status span {
     background: Highlight;
   }
+}
+
+/* The original-quality request can take longer; keep its progress visible. */
+.lightbox-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: .6rem 1rem;
+  border-radius: 3px;
+  background: rgba(10, 8, 6, .85);
+  color: #fffaf0;
+  font-family: var(--type-ui);
+  font-size: .85rem;
+  pointer-events: none;
+}
+
+.catalog-order {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: .15rem;
+  padding-left: .7rem;
+  border-left: 1px solid var(--border);
+  font-family: var(--type-ui);
+  font-size: .72rem;
+}
+
+.catalog-order-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 .65rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.catalog-order-link.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.artwork-catalog .catalog-search input { min-width: 0; }
+
+@media (max-width: 600px) {
+  .artwork-catalog .catalog-toolbar { flex-wrap: wrap; }
+  .artwork-catalog .catalog-search { flex-basis: 100%; }
+  .artwork-catalog .catalog-order { flex: 1; border-left: 0; padding-left: 0; }
+  .artwork-catalog .catalog-filter-button { min-height: 2.75rem; }
 }

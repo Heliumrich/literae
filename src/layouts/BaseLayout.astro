@@ -8,12 +8,14 @@ interface Props {
   title?: string;
   description?: string;
   gallery?: boolean;
+  canonicalPath?: string;
 }
 
 const {
   title = "Literae",
   description = "Literae – un lieu pour lire la Sainte Écriture, contempler l’art chrétien, prier avec les mots de l’Église, et marcher au rythme de l’année liturgique.",
   gallery = false,
+  canonicalPath: explicitCanonicalPath,
 } = Astro.props;
 
 const fullTitle = title === "Literae" ? title : `${title} – Literae`;
@@ -23,7 +25,7 @@ const isArtPath =
   pathname === "/art" ||
   pathname.startsWith("/oeuvres") ||
   pathname.startsWith("/personalites");
-const canonicalPath = pathname === "/art" ? "/" : pathname;
+const canonicalPath = explicitCanonicalPath || (pathname === "/art" ? "/" : pathname);
 const canonical = new URL(canonicalPath, `${isArtPath ? ART_ORIGIN : MAIN_ORIGIN}/`).href;
 ---
 

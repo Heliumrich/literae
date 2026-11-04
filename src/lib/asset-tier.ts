@@ -1,8 +1,8 @@
 export type AssetTier = "medium" | "large" | "xlarge" | "original";
 
 /** Choisit le preset Directus selon l’écran. Qualité max → original. */
-export function assetTier(): AssetTier {
-  if (document.documentElement.getAttribute("data-quality") === "max") {
+export function assetTier(allowOriginal = true): AssetTier {
+  if (allowOriginal && document.documentElement.getAttribute("data-quality") === "max") {
     return "original";
   }
   const dpr = window.devicePixelRatio || 1;
@@ -15,8 +15,8 @@ export function assetTier(): AssetTier {
 
 export function pickAssetSrc(el: {
   dataset: DOMStringMap;
-}): string {
-  const tier = assetTier();
+}, allowOriginal = true): string {
+  const tier = assetTier(allowOriginal);
   return (
     el.dataset[tier] ||
     el.dataset.large ||
