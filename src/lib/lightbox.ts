@@ -298,8 +298,10 @@ export function openLightbox(el: HTMLElement) {
   detailMode = el.dataset.lightboxMode === "detail";
   const scope = el.closest("[data-lightbox-gallery]") ||
     (!catalogGallery.length ? el.closest(".catalog-grid") : null);
-  gallery = detailMode ? [current] : scope
-    ? [...scope.querySelectorAll<HTMLElement>("[data-lightbox]")].map(fromEl).filter(hasImage)
+  const serialized = scope?.querySelector<HTMLScriptElement>('script[data-lightbox-items]');
+  gallery = detailMode ? [current] : serialized
+    ? (JSON.parse(serialized.textContent || '[]') as LightboxItem[]).filter(hasImage)
+    : scope ? [...scope.querySelectorAll<HTMLElement>("[data-lightbox]")].map(fromEl).filter(hasImage)
     : catalogGallery;
   index = gallery.findIndex((item) =>
     Boolean(current.original && item.original === current.original) ||

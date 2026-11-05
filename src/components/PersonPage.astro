@@ -1,0 +1,360 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArtworkCard from './ArtworkCard.astro';
+import Fleur from './Fleur.astro';
+import BookCard from './books/BookCard.astro';
+import { MAIN_BASE } from '../lib/site-links';
+import type { LibraryBook } from '../lib/books';
+import { fileIdOf, getAssetURL, getArtworkTitle, looksLikeHtml } from '../lib/directus';
+import { parsePersonTypes, personTypeLabel } from '../lib/people';
+import { isDoreArtwork } from '../lib/artworks';
+import { PERSON_WORKS_PER_PAGE } from '../lib/person-pages';
+
+interface Props { person: any; createdWorks: any[]; depictedWorks: any[]; books: LibraryBook[]; page?: number }
+const { person, createdWorks, depictedWorks, books, page = 1 } = Astro.props;
+const pages = Math.ceil(createdWorks.length / PERSON_WORKS_PER_PAGE);
+const visibleWorks = createdWorks.slice((page - 1) * PERSON_WORKS_PER_PAGE, page * PERSON_WORKS_PER_PAGE);
+const galleryItems = createdWorks.map(work => ({
+  alt: getArtworkTitle(work), href: `/oeuvres/${work.slug}`,
+  medium: getAssetURL(fileIdOf(work.image), 'medium'),
+  large: getAssetURL(fileIdOf(work.image), 'large'),
+  xlarge: getAssetURL(fileIdOf(work.image), 'xlarge'),
+  original: getAssetURL(fileIdOf(work.image)), originalWidth: work.image?.width,
+  epic: isDoreArtwork(work),
+}));
+const pageHref = (number: number) => `/personalites/${person.slug}${number > 1 ? `/page/${number}` : ''}#created-collection`;
+const photoSrc = getAssetURL(fileIdOf(person.photo), "medium");
+const photoLarge = getAssetURL(fileIdOf(person.photo), "large");
+const types = parsePersonTypes(person.type);
+const tags = Array.isArray(person.tags)
+  ? person.tags
+  : typeof person.tags === "string"
+    ? person.tags.split(",").map((tag: string) => tag.trim()).filter(Boolean)
+    : [];
+const dates =
+  person.birth_year || person.death_year
+    ? [person.birth_year || "?", person.death_year || ""].join(" – ")
+    : null;
+---
+
+<BaseLayout
+  gallery
+  title={page > 1 ? `${person.name} – Œuvres, page ${page}` : person.name}
+  description={person.short_description || `Notice de ${person.name}`}
+>
+  <main>
+    <div class="page-wrap">
+      <a href="/personalites" class="detail-back">← Toutes les personnalités</a>
+
+      <article class="person-hero">
+        <div class="person-portrait">
+          {
+            photoSrc ? (
+              <img
+                src={photoLarge || photoSrc}
+                alt={person.name}
+                width="900"
+                height="1200"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            ) : (
+              <div>
+                <Fleur class="text-gold" />
+                <span>Portrait non disponible</span>
+              </div>
+            )
+          }
+        </div>
+
+        <div class="person-intro">
+          <p class="eyebrow person-roles">
+            {types.length > 0 ? types.map((type, index) => (
+              <>
+                {index > 0 && (index === types.length - 1 ? " et " : ", ")}
+                <a href={`/personalites?types=${type}`}>{personTypeLabel(type)}</a>
+              </>
+            )) : "Personnalité"}
+          </p>
+          <h1>{person.name}</h1>
+          {person.name_latin && <p class="person-latin">{person.name_latin}</p>}
+          {dates && <p class="person-dates">{dates}</p>}
+          {person.short_description && (
+            <p class="person-lead">{person.short_description}</p>
+          )}
+
+          {tags.length > 0 && (
+            <ul class="person-taxonomy">
+              {tags.map((tag: string) => (
+                <li><a href={`/personalites?tags=${encodeURIComponent(tag)}`}>{tag}</a></li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </article>
+
+      {
+        person.biography && (
+          <details class="biography">
+            <summary><span><span class="eyebrow">Parcours</span><span class="biography-heading">Biographie</span></span><span class="biography-arrow" aria-hidden="true">⌄</span></summary>
+            {looksLikeHtml(person.biography) ? (
+              <div class="rich-text biography-text" set:html={person.biography} />
+            ) : (
+              <p class="rich-text biography-text whitespace-pre-line">{person.biography}</p>
+            )}
+          </details>
+        )
+      }
+    </div>
+
+    {
+      createdWorks.length > 0 && (
+        <section class="person-works" aria-labelledby="created-title">
+          <div class="page-wrap">
+            <div class="works-head" id="created-collection">
+              <div>
+                <p class="eyebrow">Dans la collection</p>
+                <h2 id="created-title">Œuvres de {person.name}</h2>
+              </div>
+              <p>{createdWorks.length} {createdWorks.length > 1 ? "œuvres" : "œuvre"}</p>
+            </div>
+            <div class="catalog-grid" data-lightbox-gallery>
+              <script is:inline type="application/json" data-lightbox-items set:html={JSON.stringify(galleryItems).replace(/</g, '\\u003c')} />
+              {visibleWorks.map((work: any, index: number) => (
+                <ArtworkCard work={work} index={index} />
+              ))}
+            </div>
+            {pages > 1 && <nav class="catalog-pager" aria-label="Pagination des œuvres">
+              {Array.from({ length: pages }, (_, index) => index + 1).map(number => (
+                <a href={pageHref(number)} class:list={['catalog-page', { 'is-active': number === page }]}
+                  aria-label={`Page ${number}`} aria-current={number === page ? 'page' : undefined}>{number}</a>
+              ))}
+            </nav>}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      depictedWorks.length > 0 && (
+        <section class="person-works depicted" aria-labelledby="depicted-title">
+          <div class="page-wrap">
+            <div class="works-head">
+              <div>
+                <p class="eyebrow">Iconographie</p>
+                <h2 id="depicted-title">{person.name} dans les œuvres</h2>
+              </div>
+              <p>{depictedWorks.length} représentations</p>
+            </div>
+            <div class="catalog-grid" data-lightbox-gallery>
+              {depictedWorks.map((work: any, index: number) => (
+                <ArtworkCard work={work} index={index} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+    {books.length > 0 && (
+      <section class="person-works" aria-labelledby="books-title">
+        <div class="page-wrap">
+          <div class="works-head">
+            <div><p class="eyebrow">Dans la bibliothèque</p><h2 id="books-title">Ouvrages de {person.name}</h2></div>
+            <p>{books.length} ouvrage{books.length > 1 ? 's' : ''}</p>
+          </div>
+          <div class="book-grid">{books.map((book: LibraryBook) => <BookCard book={book} base={MAIN_BASE} />)}</div>
+        </div>
+      </section>
+    )}
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    padding-top: var(--page-start);
+  }
+
+  .detail-back {
+    color: var(--text-subtle);
+    font-family: var(--type-ui);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .person-hero {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.62fr) minmax(0, 1.38fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: center;
+    padding: var(--intro-end) 0 clamp(4.5rem, 9vw, 8rem);
+  }
+
+  .person-portrait {
+    display: grid;
+    aspect-ratio: 3 / 4;
+    place-items: center;
+    overflow: hidden;
+    background: var(--bg-secondary);
+  }
+
+  .person-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.8);
+  }
+
+  .person-portrait > div {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    color: var(--text-subtle);
+    font-family: var(--type-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .person-portrait :global(svg) {
+    width: 5rem;
+    opacity: 0.45;
+  }
+
+  .person-intro h1 {
+    max-width: 12ch;
+    margin-top: 0.8rem;
+  }
+
+  .person-roles a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+    text-underline-offset: 0.25em;
+  }
+
+  .person-roles a:hover,
+  .person-roles a:focus-visible {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  .person-latin {
+    margin-top: 0.8rem;
+    color: var(--text-subtle);
+    font-style: italic;
+  }
+
+  .person-dates {
+    margin-top: 0.8rem;
+    color: var(--gold);
+    font-family: var(--type-display);
+    font-size: 1.5rem;
+  }
+
+  .person-lead {
+    max-width: 40rem;
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.6;
+  }
+
+  .person-taxonomy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 2rem;
+  }
+
+  .person-taxonomy a {
+    display: inline-flex;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-muted);
+    font-family: var(--type-ui);
+    font-size: 0.65rem;
+    text-decoration: none;
+  }
+
+  .person-taxonomy a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .biography {
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .biography summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .biography summary::-webkit-details-marker { display: none; }
+  .biography summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 6px; }
+  .biography summary:hover { color: var(--accent); }
+  .biography-heading { display: block; margin-top: .4rem; font-size: clamp(2.2rem, 4vw, 3.5rem); }
+  .biography-arrow { color: var(--gold); font-size: 1.7rem; transition: transform .15s; }
+  .biography[open] .biography-arrow { transform: rotate(180deg); }
+  .biography[open] .biography-text { margin-top: 2rem; }
+
+  .biography-text {
+    max-width: 47rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .person-works {
+    padding: clamp(4rem, 8vw, 7rem) 0;
+    border-top: 1px solid var(--border);
+    background: color-mix(in oklab, var(--card) 50%, var(--bg));
+  }
+
+  .person-works.depicted {
+    background: var(--bg);
+  }
+
+  .works-head {
+    scroll-margin-top: 6rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: clamp(0.75rem, 2vw, 2rem);
+  }
+
+  .works-head h2 {
+    margin-top: 0.6rem;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    overflow-wrap: anywhere;
+  }
+
+  .works-head > p {
+    color: var(--text-subtle);
+    font-family: var(--type-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .person-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .person-portrait {
+      width: min(100%, 24rem);
+    }
+  }
+</style>

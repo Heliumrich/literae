@@ -1,0 +1,7 @@
+---
+import PersonPage from '../../../../components/PersonPage.astro';
+import { personWorksPagePaths } from '../../../../lib/person-pages';
+export const prerender = true;
+export const getStaticPaths = personWorksPagePaths;
+---
+<PersonPage {...Astro.props} />

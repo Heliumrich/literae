@@ -107,6 +107,8 @@ Le catalogue des œuvres propose deux vues statiques : `/oeuvres/selection` (cha
 
 La visionneuse propose les boutons de zoom, la molette, le pincement tactile et le déplacement par glissement. Le pourcentage est calculé par rapport aux dimensions de l’original, transmises par Directus au build dans le HTML et le JSON du catalogue, sans télécharger l’original. Sans métadonnée, il utilise les dimensions de l’image chargée. Une tentative de zoom au-delà de la résolution de la version optimisée charge l’original pour cette œuvre uniquement, sans modifier la préférence globale. Cet original est conservé au dézoom, puis cet état est effacé au changement d’œuvre ou au départ de la page. Les listes utilisent deux bandeaux suivant le thème ; la fiche d’une œuvre conserve des commandes flottantes et toute la surface pour l’image.
 
+Les collections d’œuvres sur les fiches des artistes sont paginées par 20, avec des pages statiques `/personalites/{slug}/page/{numero}`. La navigation fonctionne sans JavaScript et la visionneuse conserve l’ensemble de la collection, dont les seules métadonnées sont intégrées à la page.
+
 La visionneuse navigable du catalogue et des collections d’une personnalité précharge uniquement l’image suivante dans la qualité sélectionnée. Depuis une fiche d’œuvre, elle utilise une vue épurée, sans légende ni navigation. Le bouton **Épique**, réservé aux œuvres attribuées à Gustave Doré, applique une courbe en S avec un filtre SVG côté navigateur ; les fichiers Directus et les téléchargements restent inchangés.
 
 ## Bibliothèque
