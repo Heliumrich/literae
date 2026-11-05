@@ -81,8 +81,7 @@ const gestures = [
       <p>
         Nous mettons tout en œuvre pour vérifier les droits de chaque image de la
         galerie d’art et de chaque ouvrage de la bibliothèque. Si vous constatez
-        un problème concernant ces droits, merci de nous contacter à
-        <a href="mailto:contact@literae.ch">contact@literae.ch</a>.
+        un problème concernant ces droits, merci de nous contacter à&nbsp;<a href="mailto:contact@literae.ch">contact@literae.ch</a>.
       </p>
     </section>
   </main>
@@ -103,8 +102,9 @@ const gestures = [
   }
 
   .about-hero h1 {
-    max-width: 11ch;
     margin-top: 1rem;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 1.08;
   }
 
   .about-lead {
@@ -151,10 +151,8 @@ const gestures = [
 
   .gesture-heading h2,
   .rights-section h2 {
-    max-width: 14ch;
-    margin-top: 0.8rem;
-    font-size: clamp(2.5rem, 4.8vw, 4.5rem);
-    line-height: 0.96;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.15;
   }
 
   .gesture-section {
@@ -164,16 +162,11 @@ const gestures = [
   }
 
   .gesture-heading {
-    display: grid;
-    grid-template-columns: minmax(10rem, 0.55fr) minmax(0, 1.45fr);
-    gap: 2rem;
-    align-items: end;
-    padding-bottom: 2.5rem;
+    padding-bottom: 2rem;
   }
 
   .gesture-heading h2 {
-    max-width: 14ch;
-    margin-top: 0;
+    margin-top: .75rem;
   }
 
   .gesture-register {
@@ -219,15 +212,13 @@ const gestures = [
   }
 
   .rights-section {
-    display: grid;
-    grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.35fr);
-    gap: clamp(3rem, 9vw, 9rem);
     padding-top: clamp(5rem, 9vw, 8rem);
     padding-bottom: clamp(5rem, 9vw, 8rem);
   }
 
   .rights-section p {
-    max-width: 42rem;
+    max-width: 48rem;
+    margin-top: 1.25rem;
     color: var(--text-muted);
     font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   }
@@ -235,9 +226,7 @@ const gestures = [
   .rights-section a { color: var(--accent); text-decoration: underline; }
 
   @media (max-width: 780px) {
-    .about-hero-grid,
-    .rights-section,
-    .gesture-heading {
+    .about-hero-grid {
       grid-template-columns: 1fr;
     }
 
