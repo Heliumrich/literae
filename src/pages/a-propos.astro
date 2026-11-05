@@ -9,7 +9,7 @@ const gestures = [
   {
     number: "I",
     title: "Lire",
-    text: "Mettre les traductions en regard, donner leur contexte et laisser apparaître les nuances de la lettre.",
+    text: "Découvrir les ouvrages de la tradition chrétienne et comparer les traductions de l’Écriture.",
     href: "/scriptorium",
   },
   {
@@ -35,12 +35,12 @@ const gestures = [
     <section class="about-hero">
       <div class="page-wrap about-hero-grid">
         <div>
-          <p class="eyebrow">À propos · Colophon</p>
+          <p class="eyebrow">À propos</p>
           <h1>Un atelier pour lire, contempler et prier.</h1>
           <p class="about-lead">
-            Literae est un projet catholique francophone indépendant. Il réunit des
-            textes, des images et des outils de lecture dans un même espace calme,
-            attentif à la transmission autant qu’à l’usage présent.
+            Literae est un projet catholique francophone indépendant, consacré à la
+            transmission du patrimoine chrétien. Sa bibliothèque, sa galerie d’art
+            et ses ressources de prière invitent à le découvrir et à l’approfondir.
           </p>
         </div>
         <aside class="motto" aria-label="Devise de Literae">
@@ -53,30 +53,11 @@ const gestures = [
       </div>
     </section>
 
-    <section class="page-wrap intent-section" aria-labelledby="intent-title">
-      <header>
-        <p class="eyebrow">L’intention</p>
-        <h2 id="intent-title">Faire place à une attention lente.</h2>
-      </header>
-      <div class="intent-copy">
-        <p class="drop-cap">
-          Le site n’est ni une encyclopédie exhaustive, ni une succession de contenus.
-          Il se construit comme un livre vivant : chaque œuvre, chaque traduction et
-          chaque prière doit pouvoir être rencontrée pour elle-même, puis reliée au reste.
-        </p>
-        <p>
-          La technique reste volontairement en retrait. Elle sert une lecture lisible,
-          une navigation stable et des ressources qui pourront grandir sans perdre leur
-          hiérarchie.
-        </p>
-      </div>
-    </section>
-
     <section class="gesture-section" aria-labelledby="gestures-title">
       <div class="page-wrap">
         <header class="gesture-heading">
           <p class="eyebrow">Trois gestes</p>
-          <h2 id="gestures-title">Une même manière d’habiter les textes et les images.</h2>
+          <h2 id="gestures-title">Découvrir le patrimoine chrétien.</h2>
         </header>
         <div class="gesture-register">
           {gestures.map((gesture) => (
@@ -95,34 +76,14 @@ const gestures = [
       </div>
     </section>
 
-    <section class="page-wrap colophon-section" aria-labelledby="colophon-title">
-      <div>
-        <p class="eyebrow">Le projet</p>
-        <h2 id="colophon-title">Un chantier ouvert, par strates.</h2>
-      </div>
-      <dl>
-        <div>
-          <dt>Contenus</dt>
-          <dd>Les œuvres, personnalités, prières, albums et artistes musicaux sont administrés dans un Directus public.</dd>
-        </div>
-        <div>
-          <dt>Écritures</dt>
-          <dd>Le comparateur s’appuie sur une base SQLite appelée à accueillir davantage de versions et de métadonnées.</dd>
-        </div>
-        <div>
-          <dt>Construction</dt>
-          <dd>Le site est généré avec Astro ; Svelte anime uniquement le pupitre de comparaison.</dd>
-        </div>
-        <div>
-          <dt>À venir</dt>
-          <dd>Le calendrier liturgique et la bibliothèque disposent de leurs espaces réservés.</dd>
-        </div>
-      </dl>
-      <div class="source-links">
-        <a href="https://github.com/Heliumrich/Literae" class="editorial-link">Code du site</a>
-        <a href="https://github.com/Heliumrich/FR-Bibles_JSON" class="editorial-link">Base biblique</a>
-        <a href="https://api.literae.ch" class="editorial-link">Données éditoriales</a>
-      </div>
+    <section class="page-wrap rights-section" aria-labelledby="rights-title">
+      <h2 id="rights-title">Droits d’auteur</h2>
+      <p>
+        Nous mettons tout en œuvre pour vérifier les droits de chaque image de la
+        galerie d’art et de chaque ouvrage de la bibliothèque. Si vous constatez
+        un problème concernant ces droits, merci de nous contacter à
+        <a href="mailto:contact@literae.ch">contact@literae.ch</a>.
+      </p>
     </section>
   </main>
 </BaseLayout>
@@ -188,31 +149,12 @@ const gestures = [
     text-transform: uppercase;
   }
 
-  .intent-section {
-    display: grid;
-    grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
-    gap: clamp(3rem, 9vw, 9rem);
-    padding-top: clamp(5rem, 9vw, 8rem);
-    padding-bottom: clamp(5rem, 9vw, 8rem);
-  }
-
-  .intent-section h2,
   .gesture-heading h2,
-  .colophon-section h2 {
-    max-width: 11ch;
+  .rights-section h2 {
+    max-width: 14ch;
     margin-top: 0.8rem;
     font-size: clamp(2.5rem, 4.8vw, 4.5rem);
     line-height: 0.96;
-  }
-
-  .intent-copy {
-    max-width: 42rem;
-    color: var(--text-muted);
-    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-  }
-
-  .intent-copy p + p {
-    margin-top: 1.5rem;
   }
 
   .gesture-section {
@@ -276,7 +218,7 @@ const gestures = [
     margin-top: 1rem;
   }
 
-  .colophon-section {
+  .rights-section {
     display: grid;
     grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.35fr);
     gap: clamp(3rem, 9vw, 9rem);
@@ -284,42 +226,17 @@ const gestures = [
     padding-bottom: clamp(5rem, 9vw, 8rem);
   }
 
-  .colophon-section dl {
-    border-top: 1px solid var(--text);
-  }
-
-  .colophon-section dl > div {
-    display: grid;
-    grid-template-columns: minmax(6rem, 0.35fr) minmax(0, 1.65fr);
-    gap: 1rem;
-    padding: 1.35rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .colophon-section dt {
-    color: var(--gold);
-    font-family: var(--type-ui);
-    font-size: 0.64rem;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-
-  .colophon-section dd {
+  .rights-section p {
+    max-width: 42rem;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
   }
 
-  .source-links {
-    display: flex;
-    grid-column: 2;
-    flex-wrap: wrap;
-    gap: 1rem 1.8rem;
-  }
+  .rights-section a { color: var(--accent); text-decoration: underline; }
 
   @media (max-width: 780px) {
     .about-hero-grid,
-    .intent-section,
-    .colophon-section,
+    .rights-section,
     .gesture-heading {
       grid-template-columns: 1fr;
     }
@@ -342,10 +259,6 @@ const gestures = [
 
     .gesture-register h3 + p {
       min-height: 0;
-    }
-
-    .source-links {
-      grid-column: 1;
     }
   }
 </style>
