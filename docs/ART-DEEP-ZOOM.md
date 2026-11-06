@@ -28,7 +28,9 @@ Pour un lot, `node scripts/art-deep-zoom.mjs batch <sources.json> <sortie>` pren
 
 Le relais utilise le même Node.js que le site et écoute sur `127.0.0.1:4392`. Il accepte uniquement la lecture des descripteurs, tuiles et aperçus dont les chemins respectent le format de publication. Utiliser une clé dédiée limitée à `s3:GetObject` sur le nouveau bucket pour le VPS. Stocker les cinq variables `ART_S3_*` dans `/etc/literae/art-media.env`, lisible par root uniquement. Ne jamais utiliser de préfixe `PUBLIC_` pour ces variables.
 
-Exemple de service systemd, en adaptant le chemin de Node, le dossier du site et son utilisateur sur le VPS.
+Sur `literae-vps`, `literae-art-media.service` démarre automatiquement. Son code et ses dépendances sont installés sous `/opt/literae-art-media`, indépendamment des builds du site. La clé S3 provisoire est dans `/etc/literae/art-media.env` (mode `0600`, propriétaire `root`). Pour la remplacer, éditer `ART_S3_KEY` et `ART_S3_SECRET` avec `sudoedit`, puis exécuter `sudo systemctl restart literae-art-media`. Tester ensuite un descripteur directement sur `http://127.0.0.1:4392/art-media/<clé>/image.dzi`, car une réponse depuis le cache Nginx ne valide pas les nouveaux identifiants.
+
+Configuration du service installé.
 
 ```ini
 [Unit]
@@ -37,19 +39,25 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-User=literae
-WorkingDirectory=/opt/literae
+DynamicUser=yes
+WorkingDirectory=/opt/literae-art-media
 EnvironmentFile=/etc/literae/art-media.env
-ExecStart=/usr/bin/node /opt/literae/scripts/art-media-server.mjs
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node /opt/literae-art-media/art-media-server.mjs
 Restart=on-failure
+RestartSec=3
 NoNewPrivileges=true
 PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+MemoryMax=256M
 
 [Install]
 WantedBy=multi-user.target
 ```
 
-Avec Nginx, ajouter la zone de cache au contexte `http`, puis le bloc `location` aux deux domaines `literae.ch` et `art.literae.ch`, qui servent chacun des aperçus. Le cache est partagé, avec éviction par le gestionnaire Nginx et une cible de **4 Gio**. `min_free` laisse une marge si le disque se remplit. Créer le répertoire avec les droits et le contexte SELinux du cache Nginx. Valider avec `nginx -t` avant rechargement. Si SELinux refuse le proxy loopback, vérifier les journaux d’audit et la politique réseau du service web.
+Nginx charge la zone de cache depuis `/etc/nginx/conf.d/00-literae-art-cache.conf`. Les deux hôtes HTTPS incluent `/etc/nginx/literae-art-media.inc` depuis `scriptorium.conf`. Le cache est partagé, avec éviction par le gestionnaire Nginx et une cible de **4 Gio**. `min_free` laisse 1 Gio de marge si le disque se remplit. Le répertoire utilise le contexte SELinux du cache Nginx. Valider toute modification avec `nginx -t` avant rechargement.
 
 ```nginx
 # Contexte http
@@ -59,9 +67,15 @@ proxy_cache_path /var/cache/nginx/literae-art levels=1:2 keys_zone=literae_art:8
 # Dans chacun des deux server HTTPS
 location ^~ /art-media/ {
     proxy_pass http://127.0.0.1:4392;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+    proxy_pass_request_headers off;
+    proxy_read_timeout 25s;
     proxy_cache literae_art;
     proxy_cache_key $uri;
     proxy_cache_lock on;
+    proxy_cache_lock_age 25s;
+    proxy_cache_lock_timeout 25s;
     proxy_cache_valid 200 365d;
     proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
     add_header X-Art-Cache $upstream_cache_status;
