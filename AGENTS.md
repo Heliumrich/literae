@@ -23,7 +23,7 @@ Consult these guides before working on related tasks:
 
 ## Library assets
 
-- Active EPUBs and book covers use Directus `local` storage; gallery media stays on `s3`.
+- Active EPUBs and book covers use Directus `local` storage. Gallery pyramids use a dedicated private S3 bucket and the `/art-media/` relay. See [the gallery procedure](docs/ART-DEEP-ZOOM.md).
 - Send the multipart `storage=local` field before the file. Uploads and migrations must be sequential; do not blindly retry an interrupted transfer on the same UUID.
 - A content change gets a new EPUB UUID. Moving identical bytes between storages preserves the UUID and storage filename.
 - Throttle S3 cleanup and check both collection references and live prerendered pages before deleting old files. CMS references alone are insufficient until the VPS has rebuilt.

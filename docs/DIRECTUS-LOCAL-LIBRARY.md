@@ -1,7 +1,8 @@
 # Stockage local de la bibliothèque
 
-Directus 12.2 conserve deux stockages : `s3` pour la galerie, `local` pour les
-fichiers actifs des livres. Le volume local existe déjà dans le compose fourni.
+Directus 12.2 conserve deux stockages : `s3` pour les anciens fichiers de la galerie,
+`local` pour les fichiers actifs des livres. Les pyramides Deep Zoom passent par
+leur propre bucket et leur propre relais. Le volume local existe déjà dans le compose fourni.
 Les dossiers de File Library restent `books/ebooks`, `books/dl_ebooks` et
 `books/images` ; ils ne constituent pas des répertoires physiques du stockage.
 

@@ -16,10 +16,7 @@ const pages = Math.ceil(createdWorks.length / PERSON_WORKS_PER_PAGE);
 const visibleWorks = createdWorks.slice((page - 1) * PERSON_WORKS_PER_PAGE, page * PERSON_WORKS_PER_PAGE);
 const galleryItems = createdWorks.map(work => ({
   alt: getArtworkTitle(work), href: `/oeuvres/${work.slug}`,
-  medium: getAssetURL(fileIdOf(work.image), 'medium'),
-  large: getAssetURL(fileIdOf(work.image), 'large'),
-  xlarge: getAssetURL(fileIdOf(work.image), 'xlarge'),
-  original: getAssetURL(fileIdOf(work.image)), originalWidth: work.image?.width,
+  preview: work.media.preview, dzi: work.media.dzi,
   epic: isDoreArtwork(work),
 }));
 const pageHref = (number: number) => `/personalites/${person.slug}${number > 1 ? `/page/${number}` : ''}#created-collection`;

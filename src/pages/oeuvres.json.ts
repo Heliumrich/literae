@@ -1,9 +1,7 @@
 import { fetchArtworkCatalog } from "../lib/artworks-server";
 import type { APIRoute } from "astro";
 import {
-  getAssetURL,
   getArtworkTitle,
-  fileIdOf,
 } from "../lib/directus";
 import { parseTags, searchHaystack, jsonItems } from "../lib/catalog";
 import { orderArtworks, isDoreArtwork } from "../lib/artworks";
@@ -25,12 +23,7 @@ export const GET: APIRoute = async () => {
       epic: isDoreArtwork(work),
       artist:
         work.artist && typeof work.artist === "object" ? work.artist.name : null,
-      thumb: getAssetURL(fileIdOf(work.image), "thumbnail"),
-      medium: getAssetURL(fileIdOf(work.image), "medium"),
-      large: getAssetURL(fileIdOf(work.image), "large"),
-      xlarge: getAssetURL(fileIdOf(work.image), "xlarge"),
-      original: getAssetURL(fileIdOf(work.image)),
-      originalWidth: work.image?.width || null,
+      ...work.media,
       tags,
       haystack: searchHaystack([
         work.title_french,

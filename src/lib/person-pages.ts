@@ -1,5 +1,6 @@
 import { fetchAllFromDirectus } from './directus';
 import { fetchBooks } from './books-server';
+import { fetchZoomArtworks } from './artworks-server';
 
 export const PERSON_WORKS_PER_PAGE = 20;
 
@@ -19,8 +20,8 @@ export async function personPaths() {
     fetchAllFromDirectus<any>(
       "artists?filter[status][_eq]=published&fields=*&sort=name",
     ),
-    fetchAllFromDirectus<any>(
-      "artworks?filter[status][_eq]=published&fields=id,slug,title_original,title_french,title_english,year,image.id,image.width,image.height,artist.id,artist.name,artist.type,artist.slug,depicted.artists_id.id&sort=-year",
+    fetchZoomArtworks(
+      "id,slug,title_original,title_french,title_english,year,artist.id,artist.name,artist.type,artist.slug,depicted.artists_id.id", '-year,id',
     ),
     fetchBooks(),
   ]);

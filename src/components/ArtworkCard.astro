@@ -2,8 +2,6 @@
 import Thumb from "./Thumb.astro";
 import { isDoreArtwork } from "../lib/artworks";
 import {
-  fileIdOf,
-  getAssetURL,
   getArtworkTitle,
 } from "../lib/directus";
 
@@ -14,8 +12,7 @@ interface Props {
 }
 
 const { work, index = 99, basePath = "/oeuvres" } = Astro.props;
-const id = fileIdOf(work.image);
-const src = getAssetURL(id, "thumbnail");
+const src = work.media.thumb;
 const title = getArtworkTitle(work);
 const artistName =
   work.artist && typeof work.artist === "object" ? work.artist.name : null;
@@ -34,11 +31,8 @@ const href = `${basePath}/${work.slug}`;
     data-epic={String(isDoreArtwork(work))}
     data-alt={title}
     data-href={href}
-    data-medium={getAssetURL(id, "medium") || ""}
-    data-large={getAssetURL(id, "large") || ""}
-    data-xlarge={getAssetURL(id, "xlarge") || ""}
-    data-original={getAssetURL(id) || ""}
-    data-original-width={work.image?.width}
+    data-preview={work.media.preview}
+    data-dzi={work.media.dzi}
   />
   <a href={href} class="catalog-card-copy">
     <h2>{title}</h2>

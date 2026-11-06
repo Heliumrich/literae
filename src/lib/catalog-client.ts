@@ -28,11 +28,8 @@ export type CatalogItem = {
   artist?: string | null;
   epic?: boolean;
   thumb: string | null;
-  medium?: string | null;
-  large?: string | null;
-  xlarge?: string | null;
-  original?: string | null;
-  originalWidth?: number | null;
+  preview?: string;
+  dzi?: string;
   tags: string[];
   types?: string[];
   haystack: string;
@@ -44,7 +41,7 @@ type Options = {
 };
 
 function lbAttrs(item: CatalogItem) {
-  return `data-lightbox data-epic="${item.epic === true}" data-alt="${escapeHtml(item.title)}" data-href="${escapeHtml(item.href)}" data-medium="${escapeHtml(item.medium || "")}" data-large="${escapeHtml(item.large || "")}" data-xlarge="${escapeHtml(item.xlarge || "")}" data-original="${escapeHtml(item.original || "")}" data-original-width="${item.originalWidth || ""}"`;
+  return `data-lightbox data-epic="${item.epic === true}" data-alt="${escapeHtml(item.title)}" data-href="${escapeHtml(item.href)}" data-preview="${escapeHtml(item.preview || "")}" data-dzi="${escapeHtml(item.dzi || "")}"`;
 }
 
 function cardHtml(item: CatalogItem, kind: "artwork" | "artist", eager = false) {
@@ -133,11 +130,8 @@ export function initCatalog(opts: Options) {
         list.map((item) => ({
           alt: item.title,
           href: item.href,
-          medium: item.medium,
-          large: item.large,
-          xlarge: item.xlarge,
-          original: item.original,
-          originalWidth: item.originalWidth,
+          preview: item.preview,
+          dzi: item.dzi,
           epic: item.epic,
         })),
       );

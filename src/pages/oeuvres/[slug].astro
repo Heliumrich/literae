@@ -2,10 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Fleur from "../../components/Fleur.astro";
 import { isDoreArtwork } from "../../lib/artworks";
+import { DEZOOMIFY_URL } from '../../lib/art-media';
+import { fetchZoomArtworks } from '../../lib/artworks-server';
 import {
-  fetchAllFromDirectus,
-  fileIdOf,
-  getAssetURL,
   getArtworkTitle,
   looksLikeHtml,
 } from "../../lib/directus";
@@ -13,8 +12,8 @@ import {
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const works = await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=*,image.id,image.width,image.height,artist.id,artist.slug,artist.name,artist.type,depicted.artists_id.id,depicted.artists_id.slug,depicted.artists_id.name,depicted.artists_id.type&sort=-date_created",
+  const works = await fetchZoomArtworks(
+    "id,slug,title_original,title_french,title_english,description,year,year_depicted,technique,dimensions,location,tags,artist.id,artist.slug,artist.name,artist.type,depicted.artists_id.id,depicted.artists_id.slug,depicted.artists_id.name,depicted.artists_id.type",
   );
   return works
     .filter((work) => work?.slug)
@@ -27,11 +26,6 @@ export async function getStaticPaths() {
 const { work } = Astro.props;
 const slug = String(work.slug);
 const title = getArtworkTitle(work);
-const imageId = fileIdOf(work.image);
-const imageMedium = getAssetURL(imageId, "medium");
-const imageLarge = getAssetURL(imageId, "large");
-const imageXlarge = getAssetURL(imageId, "xlarge");
-const imageOriginal = getAssetURL(imageId);
 const locationLines = String(work.location || "")
   .split(",")
   .map((line) => line.trim())
@@ -59,9 +53,9 @@ const titleOriginal =
         <div class="artwork-visual">
           <figure>
             {
-              imageLarge ? (
+              work.media ? (
                 <img
-                  src={imageLarge}
+                  src={work.media.preview}
                   alt={title}
                   width="1800"
                   height="1800"
@@ -76,11 +70,8 @@ const titleOriginal =
                   aria-label={`Agrandir : ${title}`}
                   data-alt={title}
                   data-href={`/oeuvres/${slug}`}
-                  data-medium={imageMedium || ""}
-                  data-large={imageLarge}
-                  data-xlarge={imageXlarge || ""}
-                  data-original={imageOriginal || ""}
-                  data-original-width={work.image?.width}
+                  data-preview={work.media.preview}
+                  data-dzi={work.media.dzi}
                 />
               ) : (
                 <div class="artwork-missing">
@@ -92,13 +83,7 @@ const titleOriginal =
           </figure>
           <div class="visual-actions">
             <p>Cliquer sur l’œuvre pour l’observer en plein écran.</p>
-            {
-              imageOriginal && (
-                <a href={`${imageOriginal}?download`} download>
-                  Télécharger l’original ↓
-                </a>
-              )
-            }
+            <a href={DEZOOMIFY_URL} target="_blank" rel="noopener noreferrer">Télécharger avec Dezoomify ↗</a>
           </div>
         </div>
 

@@ -2,7 +2,7 @@
 import { isDoreArtwork } from '../lib/artworks';
 import Fleur from './Fleur.astro';
 import { fetchArtSelection } from '../lib/artworks-server';
-import { fileIdOf, getAssetURL, getArtworkTitle } from '../lib/directus';
+import { getArtworkTitle } from '../lib/directus';
 import { ART_BASE } from '../lib/site-links';
 const selection = await fetchArtSelection();
 ---
@@ -19,7 +19,7 @@ const selection = await fetchArtSelection();
         </div>
         <div class="art-row" data-lightbox-gallery>
           {selection.map((work, index) => {
-            const image = getAssetURL(fileIdOf(work.image), "medium");
+            const image = work.media.thumb;
             return (
               <article class="art-card">
                 <div class="art-image">
@@ -38,10 +38,7 @@ const selection = await fetchArtSelection();
                     type="button" class="thumb-zoom" aria-label={`Agrandir : ${getArtworkTitle(work)}`}
                     data-lightbox data-alt={getArtworkTitle(work)} data-href={`${ART_BASE}/oeuvres/${work.slug}`}
                     data-epic={String(isDoreArtwork(work))}
-                    data-medium={image} data-large={getAssetURL(fileIdOf(work.image), 'large')}
-                    data-xlarge={getAssetURL(fileIdOf(work.image), 'xlarge')}
-                    data-original={getAssetURL(fileIdOf(work.image))}
-                    data-original-width={work.image?.width}
+                    data-preview={work.media.preview} data-dzi={work.media.dzi}
                   ><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6M7 10h6m-3-3v6"/></svg></button>}
                 </div>
                 <h3><a href={`${ART_BASE}/oeuvres/${work.slug}`}>{getArtworkTitle(work)}</a></h3>

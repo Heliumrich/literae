@@ -4,23 +4,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArtworkCard from "../../components/ArtworkCard.astro";
 import Fleur from "../../components/Fleur.astro";
 import Cross from "../../components/Cross.astro";
+import { fetchArtworkCatalog } from '../../lib/artworks-server';
 import {
-  fetchAllFromDirectus,
   fetchArtistsList,
-  fileIdOf,
-  getAssetURL,
   getArtworkTitle,
 } from "../../lib/directus";
 
 const people = await fetchArtistsList();
-const artworks = await fetchAllFromDirectus<any>(
-  "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image.id,image.width,image.height,tags,artist.name,artist.type,artist.slug&sort=-date_created",
-);
-const featured = artworks.find((work) => fileIdOf(work.image));
+const artworks = await fetchArtworkCatalog();
+const featured = artworks[0];
 const latest = artworks.slice(0, 8);
-const featuredImage = featured
-  ? getAssetURL(fileIdOf(featured.image), "large")
-  : null;
+const featuredImage = featured?.media.preview;
 ---
 
 <BaseLayout gallery title="Contempler" description="Le cabinet d’art chrétien de Literae">

@@ -32,7 +32,7 @@ Le site est conçu pour être statique partout où cela est possible.
 | Comparateur biblique | Unique îlot hydraté | Svelte |
 | Lecture des versets et navigation | Unique route serveur | Node.js + SQLite |
 
-Les métadonnées éditoriales de Directus sont lues pendant `npm run build`. Une modification de notice devient donc publique au prochain build, sans requête de métadonnées lors de la consultation des pages. Les images et les EPUB restent servis par Directus à la demande.
+Les métadonnées éditoriales de Directus sont lues pendant `npm run build`. Une modification de notice devient donc publique au prochain build, sans requête de métadonnées lors de la consultation des pages. Directus sert les EPUB et leurs couvertures. Un relais distinct sert les aperçus et les tuiles de la galerie.
 
 La page du comparateur est elle aussi prérendue. La liste des traductions et l’index des livres et chapitres sont extraits de SQLite au build et transmis à l’îlot Svelte. Le sélecteur de passage présente les livres par Testament, puis leurs chapitres, sans requête avant le choix du chapitre à lire. Seul `/api/bible/verses` ouvre `bible.db` à l’exécution.
 
@@ -88,7 +88,7 @@ Ne commitez jamais de fichier `.env` ni de jeton Directus.
 
 Les collections actuellement consommées sont :
 
-- `artworks` pour les œuvres, leurs images, titres, datations, notices et relations ;
+- `artworks` pour les œuvres, leurs titres, datations, notices et relations, avec `deep_zoom_key` pour l’image tuilée ;
 - `artists` pour les artistes, saints, souverains et écrivains ;
   les noms affichés sont normalisés au build par `withPersonTitles` (`people.ts`) : le type `saint` ajoute le titre sans modifier la fiche ni le slug. Toute requête de nom lié doit aussi sélectionner son champ `type` (par exemple `author.type` ou `depicted.artists_id.type`). Les biographies des fiches sont repliées par défaut ;
 - `prayers` pour les titres, textes français et latins, descriptions et étiquettes.
@@ -99,17 +99,17 @@ Les fiches musicales affichent les descriptions Markdown, les tags et les liens 
 
 Pour les collections avec un statut, seuls les éléments `published` sont intégrés ; les ouvrages utilisent le champ `archived` et seuls les livres non archivés sont inclus. Les collections sont lues par pages de 100 éléments afin d’accompagner leur croissance. Les requêtes identiques sont mutualisées pendant le build.
 
-Les images restent servies par Directus avec les transformations `thumbnail`, `medium`, `large` et `xlarge`. Le fichier original n’est demandé que depuis la visionneuse lorsque **Qualité originale** est activée. Ce choix s’applique immédiatement, persiste dans `localStorage` et est partagé entre `literae.ch` et `art.literae.ch` par un cookie de préférence.
+Les œuvres liées à une pyramide Deep Zoom utilisent des vignettes WebP et la visionneuse OpenSeadragon. Les images transitent par `/art-media/` depuis un bucket S3 privé. Le champ Directus, l’import d’originaux et le cache VPS sont décrits dans [Galerie Deep Zoom](docs/ART-DEEP-ZOOM.md).
 
 Le catalogue des œuvres propose deux vues statiques : `/oeuvres/selection` (champ entier Directus `artworks.sort` croissant, œuvres non classées à la suite) et `/oeuvres/nouveautes` (date d’ajout décroissante). `/oeuvres` utilise la sélection par défaut. Un changement de tri conserve recherche et tags, et revient à la première page. Le même tri est appliqué au build et aux résultats filtrés avant pagination. Toutes ces variantes ont `/oeuvres` comme canonique ; seul ce dernier figure dans le sitemap. Les vignettes présentent l’œuvre entière dans un cadre carré.
 
-`ArtSelection.astro` partage les cinq œuvres choisies entre l’accueil principal et l’accueil d’art ; leurs liens « Voir notre sélection » ouvrent le catalogue dans l’ordre manuel. Un changement d’ordre dans Directus nécessite un rebuild, comme les autres contenus du CMS.
+`ArtSelection.astro` partage les œuvres choisies qui disposent d’une pyramide entre l’accueil principal et l’accueil d’art. Le lien « Voir notre sélection » ouvre le catalogue dans l’ordre manuel. Un changement d’ordre dans Directus nécessite un rebuild, comme les autres contenus du CMS.
 
-La visionneuse propose les boutons de zoom, la molette, le pincement tactile et le déplacement par glissement. Le pourcentage est calculé par rapport aux dimensions de l’original, transmises par Directus au build dans le HTML et le JSON du catalogue, sans télécharger l’original. Sans métadonnée, il utilise les dimensions de l’image chargée. Une tentative de zoom au-delà de la résolution de la version optimisée charge l’original pour cette œuvre uniquement, sans modifier la préférence globale. Cet original est conservé au dézoom, puis cet état est effacé au changement d’œuvre ou au départ de la page. Les listes utilisent deux bandeaux suivant le thème ; la fiche d’une œuvre conserve des commandes flottantes et toute la surface pour l’image.
+La visionneuse propose les boutons de zoom, la molette, le pincement tactile et le déplacement par glissement. Le pourcentage se réfère aux dimensions du descripteur Deep Zoom. Les listes utilisent deux bandeaux suivant le thème. La fiche d’une œuvre conserve des commandes flottantes et toute la surface pour l’image.
 
 Les collections d’œuvres sur les fiches des artistes sont paginées par 20, avec des pages statiques `/personalites/{slug}/page/{numero}`. La navigation fonctionne sans JavaScript et la visionneuse conserve l’ensemble de la collection, dont les seules métadonnées sont intégrées à la page.
 
-La visionneuse navigable du catalogue et des collections d’une personnalité précharge uniquement l’image suivante dans la qualité sélectionnée. Depuis une fiche d’œuvre, elle utilise une vue épurée, sans légende ni navigation. Le bouton **Épique**, réservé aux œuvres attribuées à Gustave Doré, applique une courbe en S avec un filtre SVG côté navigateur ; les fichiers Directus et les téléchargements restent inchangés.
+La visionneuse du catalogue et des collections d’une personnalité précharge l’aperçu suivant. Depuis une fiche d’œuvre, elle utilise une vue épurée, sans légende ni navigation. Le bouton **Épique**, réservé aux œuvres attribuées à Gustave Doré, applique une courbe en S côté navigateur. Le lien Dezoomify permet de recomposer les tuiles sur l’appareil du visiteur.
 
 ## Bibliothèque
 

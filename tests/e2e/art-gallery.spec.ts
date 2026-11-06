@@ -13,83 +13,12 @@ const SELECTION = [
   'destruction-of-leviathan',
 ];
 
-// Exercise URL choice and loading states without requesting originals from S3.
+// Avoid external Directus assets in catalogue layout tests.
 test.beforeEach(async ({ context }) => {
   await context.route('https://api.literae.ch/assets/**', route => route.fulfill({ contentType: 'image/svg+xml', body: IMAGE }));
 });
 
 const cardLinks = (page: Page) => page.locator('#catalog-grid .catalog-card-copy').evaluateAll(links => links.map(link => link.getAttribute('href')));
-const quality = (page: Page) => page.getByRole('button', { name: 'Qualité originale', exact: true });
-
-test('la qualité change dans la lightbox ouverte et reste mémorisée entre les œuvres et après F5', async ({ page, request }) => {
-  const { items }: { items: CatalogItem[] } = await (await request.get('/oeuvres.json')).json();
-  const first = items.find(item => item.original)!;
-  const second = items.find(item => item.original && item.slug !== first.slug)!;
-  await page.goto(first.href);
-  const trigger = page.locator('[data-lightbox-mode="detail"]');
-  await trigger.click();
-  const viewer = page.locator('#lightbox');
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'false');
-  await expect(page.locator('.lightbox-img')).toHaveAttribute('src', /\?key=/);
-
-  let release!: () => void;
-  const pending = new Promise<void>(resolve => { release = resolve; });
-  await page.route(first.original!, async route => {
-    await pending;
-    await route.fulfill({ contentType: 'image/svg+xml', body: IMAGE });
-  });
-  await quality(page).click();
-  await expect(viewer).toBeVisible();
-  await expect(viewer).toHaveAttribute('aria-busy', 'true');
-  await expect(page.locator('.lightbox-status')).toHaveText('Chargement de l’original…');
-  await expect(page.locator('.lightbox-img')).toHaveAttribute('src', first.original!);
-  release();
-  await expect(viewer).toHaveAttribute('aria-busy', 'false');
-  await expect(page.locator('.lightbox-status')).toBeHidden();
-  await page.keyboard.press('Escape');
-
-  await page.goto(second.href);
-  await page.locator('[data-lightbox-mode="detail"]').click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.lightbox-img')).toHaveAttribute('src', second.original!);
-  await page.reload();
-  await page.locator('[data-lightbox-mode="detail"]').click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'true');
-  await quality(page).click();
-  await expect(viewer).toBeVisible();
-  await expect(page.locator('.lightbox-img')).toHaveAttribute('src', /\?key=/);
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'false');
-  await page.keyboard.press('Escape');
-  await page.goBack();
-  await page.locator('[data-lightbox-mode="detail"]').click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'false');
-});
-
-test('la préférence suit la navigation dans les galeries et entre les deux domaines', async ({ page, context }) => {
-  // Serve the built site under its real hostnames; all asset bytes remain mocked.
-  await context.route(/^https:\/\/(art\.)?literae\.ch\//, async route => {
-    const url = new URL(route.request().url());
-    const response = await route.fetch({ url: LOCAL + url.pathname + url.search });
-    await route.fulfill({ response });
-  });
-  await page.goto('https://literae.ch/oeuvres');
-  await expect(page.locator('#catalog-status')).toContainText('résultats');
-  await page.locator('#catalog-grid [data-lightbox]').first().click();
-  await quality(page).click();
-  await page.getByRole('button', { name: 'Œuvre suivante', exact: true }).click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.lightbox-img')).not.toHaveAttribute('src', /\?key=/);
-  await page.keyboard.press('Escape');
-  const href = await page.locator('#catalog-grid .catalog-card-copy').nth(2).getAttribute('href');
-  await page.goto('https://art.literae.ch' + href);
-  await page.locator('[data-lightbox-mode="detail"]').click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'true');
-  await quality(page).click();
-  await page.goto('https://literae.ch' + href);
-  await page.locator('[data-lightbox-mode="detail"]').click();
-  await expect(quality(page)).toHaveAttribute('aria-pressed', 'false');
-});
-
 test('les deux tris sont présents dans le HTML sans JavaScript et ont la même canonique', async ({ browser, request }) => {
   const { items }: { items: CatalogItem[] } = await (await request.get('/oeuvres.json')).json();
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -189,10 +118,13 @@ test('le seuil occupe le viewport et précède la sélection puis les derniers a
   }
 });
 
-test('les mêmes cinq œuvres sont sélectionnées sur les deux accueils', async ({ page }) => {
+test('les mêmes œuvres tuilées sont sélectionnées sur les deux accueils', async ({ page, request }) => {
+  const { items }: { items: CatalogItem[] } = await (await request.get('/oeuvres.json')).json();
+  const expected = SELECTION.filter(slug => items.some(item => item.slug === slug));
+  test.skip(!expected.length, 'Aucune œuvre de la sélection éditoriale n’est liée à une pyramide.');
   for (const path of ['/', '/art']) {
     await page.goto(path);
-    expect(await page.locator('.art-preview .art-card h3 a').evaluateAll(links => links.map(link => new URL((link as HTMLAnchorElement).href).pathname.split('/').pop()))).toEqual(SELECTION);
+    expect(await page.locator('.art-preview .art-card h3 a').evaluateAll(links => links.map(link => new URL((link as HTMLAnchorElement).href).pathname.split('/').pop()))).toEqual(expected);
     await expect(page.locator('.art-preview .editorial-link')).toHaveText('Voir notre sélection →');
     await expect(page.locator('.art-preview .editorial-link')).toHaveAttribute('href', 'https://art.literae.ch/oeuvres/selection');
   }

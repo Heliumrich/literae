@@ -33,6 +33,7 @@ export default defineConfig({
       rolldownOptions: { output: { entryFileNames: "scriptorium/bible-worker-[hash].js" } },
     },
     server: {
+      proxy: { '/art-media': 'http://127.0.0.1:4392' },
       watch: {
         ignored: [
           "**/data/**",

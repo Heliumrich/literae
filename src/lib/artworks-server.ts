@@ -1,10 +1,25 @@
-import { fetchAllFromDirectus, fetchFromDirectus } from './directus';
+import { readFileSync } from 'node:fs';
+import { fetchAllFromDirectus } from './directus';
+import { artworkMedia } from './art-media';
 
-export const ARTWORK_FIELDS = 'id,slug,sort,date_created,title_french,title_original,title_english,year,image.id,image.width,image.height,tags,artist.name,artist.type,artist.slug';
-export const fetchArtworkCatalog = () => fetchAllFromDirectus<any>(
-  `artworks?filter[status][_eq]=published&fields=${ARTWORK_FIELDS}&sort=-date_created,id`,
-  100, { required: true },
-);
+const ARTWORK_FIELDS = 'id,slug,sort,date_created,title_french,title_original,title_english,year,tags,artist.name,artist.type,artist.slug';
+const pilot = process.env.ART_MEDIA_PILOT_MANIFEST
+  ? new Map<string, string>(Object.entries(JSON.parse(readFileSync(process.env.ART_MEDIA_PILOT_MANIFEST, 'utf8'))))
+  : null;
+
+export async function fetchZoomArtworks(fields: string, sort = '-date_created,id') {
+  const links = pilot ? '' : '&filter[deep_zoom_key][_nnull]=true';
+  const rows = await fetchAllFromDirectus<any>(
+    `artworks?filter[status][_eq]=published${links}&fields=${fields}${pilot ? '' : ',deep_zoom_key'}&sort=${sort}`,
+    100, { required: true },
+  );
+  return rows.flatMap(work => {
+    const media = artworkMedia(pilot ? pilot.get(String(work.id)) : work.deep_zoom_key);
+    return media ? [{ ...work, media }] : [];
+  });
+}
+
+export const fetchArtworkCatalog = () => fetchZoomArtworks(ARTWORK_FIELDS);
 const SELECTION = [
   'fra-angelico-annonciation-prado',
   'the-vision-of-the-blessed-hermann-joseph',
@@ -13,8 +28,6 @@ const SELECTION = [
   'destruction-of-leviathan',
 ];
 export async function fetchArtSelection() {
-  const items = await fetchFromDirectus<any[]>(
-    `artworks?filter[status][_eq]=published&filter[slug][_in]=${SELECTION.join(',')}&fields=${ARTWORK_FIELDS}&limit=${SELECTION.length}`,
-  ) || [];
+  const items = await fetchArtworkCatalog();
   return SELECTION.flatMap(slug => items.filter(work => work.slug === slug));
 }

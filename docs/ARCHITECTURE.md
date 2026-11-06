@@ -1,6 +1,6 @@
 # Architecture statique
 
-Literae privilégie la génération statique. Les métadonnées de Directus sont une source de build pour les pages éditoriales ; les images et les fichiers EPUB restent servis par le CMS lors de leur consultation.
+Literae privilégie la génération statique. Directus fournit les métadonnées au build et sert les EPUB à la consultation. La galerie reçoit ses aperçus et ses tuiles depuis un relais séparé vers un bucket privé. Voir [Galerie Deep Zoom](ART-DEEP-ZOOM.md).
 
 ## Frontière d’exécution
 
@@ -23,7 +23,7 @@ La bibliothèque conserve ses notices statiques : `books-server.ts` lit les ouvr
 
 La musique conserve la même frontière : `music-server.ts` lit les artistes publiés et les albums avec leurs participations via `albums.artists`. Les relations sont croisées avec les artistes publiés, sans exposer les brouillons. Les descriptions Markdown sont rendues au build avec `micromark` (HTML brut et protocoles dangereux désactivés). `music-client.ts` filtre uniquement les catalogues JSON statiques et partage le rendu des cartes avec le pré-rendu. Les liens YouTube, Spotify et sites officiels sont des liens externes HTTP(S), sans SDK de lecture.
 
-Les listes et les fiches issues de Directus sont figées à chaque build. Après une modification du CMS, un nouveau `npm run build` publie le nouvel état. Les URLs d’assets Directus restent distantes afin de conserver les transformations d’images.
+Les listes et les fiches issues de Directus sont figées à chaque build. Après une modification du CMS, un nouveau `npm run build` publie le nouvel état. Les images de la galerie utilisent les URL de même origine sous `/art-media/`. Les autres assets conservent leurs URL Directus.
 
 En cas d’indisponibilité temporaire de Directus, le build conserve les fallbacks prévus pour les pages principales, mais il est préférable de contrôler le nombre de pages générées avant déploiement.
 

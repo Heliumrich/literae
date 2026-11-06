@@ -1,12 +1,10 @@
 ---
-import { fetchAllFromDirectus } from "../../../lib/directus";
+import { fetchZoomArtworks } from "../../../lib/artworks-server";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const works = await fetchAllFromDirectus<any>(
-    "artworks?filter[status][_eq]=published&fields=slug",
-  );
+  const works = await fetchZoomArtworks('id,slug');
   return works
     .filter((work) => work?.slug)
     .map((work) => ({ params: { slug: String(work.slug) } }));

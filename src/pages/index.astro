@@ -3,35 +3,14 @@ import ArtSelection from "../components/ArtSelection.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Fleur from "../components/Fleur.astro";
 import Cross from "../components/Cross.astro";
-import {
-  fetchFromDirectus,
-  fileIdOf,
-  getAssetURL,
-  getArtworkTitle,
-} from "../lib/directus";
+import { getArtworkTitle } from "../lib/directus";
+import { fetchArtworkCatalog } from '../lib/artworks-server';
 import { ART_BASE } from "../lib/site-links";
 import { fetchBooks } from '../lib/books-server';
 import BookCard from '../components/books/BookCard.astro';
 
-type Artwork = {
-  id: string | number;
-  slug: string;
-  title_french?: string | null;
-  title_original?: string | null;
-  title_english?: string | null;
-  year?: string | number | null;
-  image?: unknown;
-};
-
-const artworks =
-  (await fetchFromDirectus<Artwork[]>(
-    "artworks?filter[status][_eq]=published&fields=id,slug,title_french,title_original,title_english,year,image&sort=-date_created&limit=6",
-  )) || [];
-
-const featured = artworks.find((work) => fileIdOf(work.image));
-const featuredImage = featured
-  ? getAssetURL(fileIdOf(featured.image), "large")
-  : null;
+const [featured] = await fetchArtworkCatalog();
+const featuredImage = featured?.media.preview;
 const recentBooks = (await fetchBooks()).sort((a, b) => b.created.localeCompare(a.created)).slice(0, 4);
 
 const gestures = [

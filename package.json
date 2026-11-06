@@ -24,11 +24,13 @@
   "dependencies": {
     "@astrojs/node": "11.1.9",
     "@astrojs/svelte": "9.1.2",
+    "@aws-sdk/client-s3": "3.1164.0",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.4.4",
     "better-sqlite3": "13.0.3",
     "epubjs": "0.3.93",
     "micromark": "4.0.3",
+    "openseadragon": "6.1.1",
     "sql.js": "1.15.2",
     "svelte": "5.57.3",
     "tailwindcss": "4.3.3",
