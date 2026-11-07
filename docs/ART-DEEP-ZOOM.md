@@ -24,6 +24,25 @@ Pour `publish`, renseigner `ART_S3_ENDPOINT`, `ART_S3_REGION`, `ART_S3_BUCKET`, 
 
 Pour un lot, `node scripts/art-deep-zoom.mjs batch <sources.json> <sortie>` prend un JSON de correspondances **UUID Directus → chemin absolu de l’original**. Il traite une œuvre à la fois et inscrit chaque transfert terminé dans `ready.json` à la racine de la sortie. Ce fichier sert aussi de manifeste pilote. Relancer le lot après une interruption reprend les transferts incomplets. Lancer un seul lot par dossier de sortie.
 
+## Migration du catalogue existant
+
+Le dossier `G:\literae-art\workdir\migration` contient l’inventaire Directus, `correspondances.txt` (table tabulée des liaisons retenues), `a-verifier.txt` et `sans-correspondance.txt`. Les vignettes utilisées pour départager les fichiers servent uniquement de référence. La génération part du fichier local inscrit dans la liaison.
+
+Depuis `literae-web`, dans PowerShell 7, prévisualiser puis lancer le lot.
+
+```powershell
+.\scripts\migrate-art-media.ps1 -PlanOnly -Limit 10
+.\scripts\migrate-art-media.ps1
+```
+
+`-Limit 10` borne le nombre de nouvelles œuvres, et `-Manifest` permet de choisir un fichier tabulé ou un JSON UUID → chemin absolu. Par défaut, la commande lit `correspondances.txt` et prend les lignes `published` confirmées ou validées. Pour intégrer une vérification manuelle, ajouter une ligne complète avec l’UUID, le chemin de l’original et `validé` dans la colonne `état`. Les identifiants sont lus depuis le `login.txt` existant. Les fichiers de travail et le journal restent sur `G:`.
+
+Le journal `G:\literae-art\workdir\deepzoom\journal\<UUID>.json` enregistre la fiche, la source, le bucket et la clé avant le premier envoi. La migration valide toutes les tuiles attendues par le DZI, utilise un contrôle MD5 à l’envoi et compare les empreintes S3 à la reprise. Elle publie le descripteur en dernier et renseigne `deep_zoom_key` uniquement si le champ est encore vide. Si l’exécution est interrompue, relancer la même commande avec le même dossier de sortie. Si les tuiles sont déjà complètes, la reprise termine la liaison sans renvoi. Conserver le dossier de sortie et les chemins sources jusqu’à la fin du lot. Le script s’arrête sur la première erreur pour permettre de la corriger avant la suite.
+
+Reconstruire le site après un lot pour rendre visibles les nouvelles fiches liées. Pendant la migration, un seul processus doit écrire dans le dossier de sortie.
+
+Après le transfert, `./scripts/migrate-art-media.ps1 -Audit` contrôle les liaisons Directus et les empreintes des objets S3 des œuvres journalisées en lecture seule. Le rapport se trouve dans `G:\literae-art\workdir\deepzoom\audit-migration.json`.
+
 ## Relais sur AlmaLinux
 
 Le relais utilise le même Node.js que le site et écoute sur `127.0.0.1:4392`. Il accepte uniquement la lecture des descripteurs, tuiles et aperçus dont les chemins respectent le format de publication. Utiliser une clé dédiée limitée à `s3:GetObject` sur le nouveau bucket pour le VPS. Stocker les cinq variables `ART_S3_*` dans `/etc/literae/art-media.env`, lisible par root uniquement. Ne jamais utiliser de préfixe `PUBLIC_` pour ces variables.
