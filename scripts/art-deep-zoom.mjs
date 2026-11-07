@@ -205,8 +205,11 @@ async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === 'prepare' && args.length === 3) console.log(await prepare(...args));
   else if (command === 'publish' && args.length === 1) console.log(await publish(resolve(args[0])));
-  else if (command === 'batch' && args.length === 2) await batch(...args);
-  else throw new Error('Usage : node scripts/art-deep-zoom.mjs prepare <id Directus> <original> <sortie> | publish <dossier de pyramide> | batch <sources.json> <sortie>');
+  else if (command === 'upload' && args.length === 3) {
+    const directory = await prepare(...args);
+    console.log(await publish(directory, { verify: true }));
+  } else if (command === 'batch' && args.length === 2) await batch(...args);
+  else throw new Error('Usage : node scripts/art-deep-zoom.mjs prepare|upload <id Directus> <original> <sortie> | publish <dossier de pyramide> | batch <sources.json> <sortie>');
 }
 
 if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) main().catch(error => {
