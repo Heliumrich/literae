@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fetchAllFromDirectus } from './directus';
-import { artworkMedia } from './art-media';
+import { artworkMedia, FEATURED_ARTWORK_SLUG } from './art-media';
 
 const ARTWORK_FIELDS = 'id,slug,sort,date_created,title_french,title_original,title_english,year,tags,artist.name,artist.type,artist.slug';
 const pilot = process.env.ART_MEDIA_PILOT_MANIFEST
@@ -20,6 +20,10 @@ export async function fetchZoomArtworks(fields: string, sort = '-date_created,id
 }
 
 export const fetchArtworkCatalog = () => fetchZoomArtworks(ARTWORK_FIELDS);
+
+export function selectFeaturedArtwork(artworks: Awaited<ReturnType<typeof fetchArtworkCatalog>>) {
+  return artworks.find(work => work.slug === FEATURED_ARTWORK_SLUG) ?? artworks[0];
+}
 const SELECTION = [
   'fra-angelico-annonciation-prado',
   'the-vision-of-the-blessed-hermann-joseph',
