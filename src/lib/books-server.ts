@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { fetchAllFromDirectus, getAssetURL } from './directus';
 import { normalizeText, parseTags } from './catalog';
-import type { LibraryBook } from './books';
+import type { BookOrder, LibraryBook } from './books';
 import { bookEditions, type EditionLink } from './book-editions';
 
 type BookRow = {
@@ -27,9 +27,9 @@ function assetRevision(file: { id: string; modified_on: unknown; filesize: unkno
 }
 
 /** books has an archived flag, not the status/slug fields used by artworks. */
-export async function fetchBooks(): Promise<LibraryBook[]> {
+export async function fetchBooks(order: BookOrder = 'selection'): Promise<LibraryBook[]> {
   const rows = await fetchAllFromDirectus<BookRow>(`books?filter[archived][_eq]=false&fields=${BOOK_FIELDS}&sort=sort,title,id`, 100, { required: true });
-  return rows.filter(row => !row.archived && row.id && row.title).map(row => ({
+  const books: LibraryBook[] = rows.filter(row => !row.archived && row.id && row.title).map(row => ({
     id: String(row.id),
     slug: `${normalizeText(row.title).replaceAll(' ', '-') || 'livre'}-${String(row.id).slice(0, 8)}`,
     title: row.title, description: row.short_description || '',
@@ -41,4 +41,6 @@ export async function fetchBooks(): Promise<LibraryBook[]> {
     // EPUB contents are immutable: a new edition receives a new Directus UUID.
     editions: bookEditions(row.ebook_files, row.ebook_download_files, file => getAssetURL(file.id)!, row.title),
   }));
+  if (order === 'nouveautes') books.sort((a, b) => b.created.localeCompare(a.created));
+  return books;
 }

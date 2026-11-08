@@ -1,11 +1,14 @@
 ---
+import { bookPagePath, type BookOrder } from '../lib/books';
 interface Props {
   tags: string[];
   searchPlaceholder?: string;
   showView?: boolean;
   artworkOrder?: "selection" | "nouveautes";
+  bookOrder?: BookOrder;
 }
-const { tags, searchPlaceholder = "Rechercher…", showView = false, artworkOrder } = Astro.props;
+const { tags, searchPlaceholder = "Rechercher…", showView = false, artworkOrder, bookOrder } = Astro.props;
+const order = artworkOrder ?? bookOrder;
 ---
 
 <div class="catalog-toolbar">
@@ -23,19 +26,21 @@ const { tags, searchPlaceholder = "Rechercher…", showView = false, artworkOrde
     />
   </label>
 
-  {artworkOrder && (
-    <nav class="catalog-order" aria-label="Ordre des œuvres">
+  {order && (
+    <nav class="catalog-order" aria-label={bookOrder ? 'Ordre des ouvrages' : 'Ordre des œuvres'}>
       <a
-        href="/oeuvres/nouveautes"
-        data-artwork-order="nouveautes"
-        class:list={['catalog-order-link', { 'is-active': artworkOrder === 'nouveautes' }]}
-        aria-current={artworkOrder === 'nouveautes' ? 'page' : undefined}
+        href={bookOrder ? bookPagePath(1, 'nouveautes') : '/oeuvres/nouveautes'}
+        data-artwork-order={artworkOrder ? 'nouveautes' : undefined}
+        data-book-order={bookOrder ? 'nouveautes' : undefined}
+        class:list={['catalog-order-link', { 'is-active': order === 'nouveautes' }]}
+        aria-current={order === 'nouveautes' ? 'page' : undefined}
       >Nouveautés</a>
       <a
-        href="/oeuvres/selection"
-        data-artwork-order="selection"
-        class:list={['catalog-order-link', { 'is-active': artworkOrder === 'selection' }]}
-        aria-current={artworkOrder === 'selection' ? 'page' : undefined}
+        href={bookOrder ? bookPagePath(1, 'selection') : '/oeuvres/selection'}
+        data-artwork-order={artworkOrder ? 'selection' : undefined}
+        data-book-order={bookOrder ? 'selection' : undefined}
+        class:list={['catalog-order-link', { 'is-active': order === 'selection' }]}
+        aria-current={order === 'selection' ? 'page' : undefined}
       >Sélection</a>
     </nav>
   )}

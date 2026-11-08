@@ -1,7 +1,5 @@
 ---
 import BookCatalog from '../../../components/books/BookCatalog.astro';
-import { fetchBooks } from '../../../lib/books-server';
 export const prerender = true;
-const books = await fetchBooks();
 ---
-<BookCatalog books={books} />
+<BookCatalog />

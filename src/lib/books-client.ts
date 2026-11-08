@@ -1,5 +1,5 @@
 import { PAGE_SIZE } from './catalog';
-import { bookPagePath, bookCardHtml, type BookItem } from './books';
+import { bookPagePath, bookCardHtml, type BookItem, type BookOrder } from './books';
 import { bindCatalogChrome, filterCatalog, markActiveButtons, readFilterParams, renderPager, selectedTags,
   uncheckTags, updateFilterStatus, writeFilterParams, type CatalogView, type FilterMode } from './catalog-ui';
 
@@ -11,6 +11,7 @@ export function initBookCatalog() {
   const status = document.getElementById('catalog-status');
   const empty = document.getElementById('catalog-empty');
   if (!grid) return;
+  const order = grid.dataset.order as BookOrder | undefined;
   const initial = readFilterParams(search);
   let { page, view } = initial;
   if (!new URLSearchParams(location.search).has('p')) page = Number(grid.dataset.page) || 1;
@@ -22,7 +23,7 @@ export function initBookCatalog() {
   const collator = new Intl.Collator('fr', { sensitivity: 'base', numeric: true });
   function render() {
     const list = filterCatalog(items, search?.value || '', selectedTags(), mode);
-    // The static catalogue already follows Directus' editorial order.
+    // The static catalogue already follows the selected route's order.
     if (sort.value !== 'default') list.sort((a, b) => {
       const key = sort.value === 'author' ? 'author' : sort.value === 'tags' ? 'tags' : 'title';
       return collator.compare(String(a[key]), String(b[key])) || collator.compare(a.title, b.title);
@@ -37,13 +38,19 @@ export function initBookCatalog() {
     markActiveButtons('.view-btn', 'view', view);
     markActiveButtons('.mode-btn', 'mode', mode);
     updateFilterStatus(status, empty, list.length, 'Aucun ouvrage ne correspond.', `${list.length} ouvrage${list.length > 1 ? 's' : ''}`);
-    writeFilterParams({ search, mode, page, pathname: bookPagePath(page), extra: { view: view === 'list' ? view : null, sort: sort.value === 'default' ? null : sort.value } });
+    writeFilterParams({ search, mode, page, pathname: bookPagePath(page, order), extra: { view: view === 'list' ? view : null, sort: sort.value === 'default' ? null : sort.value } });
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (canonical) {
       canonical.href = new URL(bookPagePath(page), canonical.href).href;
       document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute('content', canonical.href);
     }
-    renderPager(pager, pages, page, next => `${bookPagePath(next)}${location.search}`);
+    renderPager(pager, pages, page, next => `${bookPagePath(next, order)}${location.search}`);
+    document.querySelectorAll<HTMLAnchorElement>('[data-book-order]').forEach(link => {
+      const url = new URL(link.href);
+      url.search = location.search;
+      url.searchParams.delete('sort');
+      link.href = url.href;
+    });
   }
   function resetPage() { page = 1; render(); }
   bindCatalogChrome({ search, pager, status, empty, onResetPage: resetPage,

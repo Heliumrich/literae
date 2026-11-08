@@ -3,8 +3,12 @@ import { escapeHtml } from './catalog-ui';
 
 export const LIBRARY_PATH = '/scriptorium/bibliotheque';
 
-export function bookPagePath(page: number) {
-  return page > 1 ? `${LIBRARY_PATH}/page/${page}` : LIBRARY_PATH;
+export const BOOK_ORDERS = ['selection', 'nouveautes'] as const;
+export type BookOrder = typeof BOOK_ORDERS[number];
+
+export function bookPagePath(page: number, order?: BookOrder) {
+  const base = order ? `${LIBRARY_PATH}/${order}` : LIBRARY_PATH;
+  return page > 1 ? `${base}/page/${page}` : base;
 }
 
 export type BookEdition = { id: string; label: string; url: string; downloadUrl: string; size: number };

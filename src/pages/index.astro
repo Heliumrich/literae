@@ -7,11 +7,12 @@ import { getArtworkTitle } from "../lib/directus";
 import { fetchArtworkCatalog } from '../lib/artworks-server';
 import { ART_BASE } from "../lib/site-links";
 import { fetchBooks } from '../lib/books-server';
+import { bookPagePath } from '../lib/books';
 import BookCard from '../components/books/BookCard.astro';
 
 const [featured] = await fetchArtworkCatalog();
 const featuredImage = featured?.media.preview;
-const recentBooks = (await fetchBooks()).sort((a, b) => b.created.localeCompare(a.created)).slice(0, 4);
+const selectedBooks = (await fetchBooks()).slice(0, 4);
 
 const gestures = [
   {
@@ -150,14 +151,14 @@ const gestures = [
 
     <ArtSelection />
 
-    {recentBooks.length > 0 && (
+    {selectedBooks.length > 0 && (
       <section class="recent-books" aria-labelledby="recent-books-title">
         <div class="page-wrap">
           <div class="section-heading compact">
-            <div><p class="eyebrow">Entrés dans la bibliothèque</p><h2 id="recent-books-title">Les dernières lectures.</h2></div>
-            <a href="/scriptorium/bibliotheque" class="editorial-link">Toute la bibliothèque →</a>
+            <div><p class="eyebrow">Bibliothèque</p><h2 id="recent-books-title">Sélections d’ouvrages essentiels</h2></div>
+            <a href={bookPagePath(1, 'selection')} class="editorial-link">Voir notre sélection →</a>
           </div>
-          <div class="book-grid">{recentBooks.map(book => <BookCard book={book} />)}</div>
+          <div class="book-grid">{selectedBooks.map(book => <BookCard book={book} />)}</div>
         </div>
       </section>
     )}
