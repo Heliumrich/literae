@@ -104,8 +104,17 @@
   h4,
   .font-display {
     font-family: var(--type-display);
-    text-wrap: balance;
     letter-spacing: -0.025em;
+  }
+
+  h1,
+  h2 {
+    overflow-wrap: break-word;
+  }
+
+  h3,
+  h4 {
+    text-wrap: balance;
   }
 
   p {
@@ -600,6 +609,24 @@
   color: var(--accent);
 }
 
+.selection-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.selection-heading > div {
+  min-width: 0;
+}
+
+.selection-heading h2 {
+  margin-top: .6rem;
+  font-size: clamp(1.6rem, 5vw, 4.5rem);
+  line-height: .95;
+}
+
 .page-intro {
   max-width: 46rem;
   padding: var(--page-start) 0 var(--intro-end);
@@ -638,7 +665,6 @@
 }
 
 .collection-header h1 {
-  max-width: 12ch;
   margin-top: 0.8rem;
 }
 
@@ -1130,6 +1156,10 @@
 
   main h1 {
     font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+
+  main .collection-header h1 {
+    font-size: clamp(2.4rem, 10vw, 4rem);
   }
 
   .collection-header-foot {

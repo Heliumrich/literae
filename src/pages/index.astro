@@ -154,8 +154,8 @@ const gestures = [
     {selectedBooks.length > 0 && (
       <section class="recent-books" aria-labelledby="recent-books-title">
         <div class="page-wrap">
-          <div class="section-heading compact">
-            <div><p class="eyebrow">Bibliothèque</p><h2 id="recent-books-title">Sélections d’ouvrages essentiels</h2></div>
+          <div class="selection-heading">
+            <div><p class="eyebrow">Bibliothèque</p><h2 id="recent-books-title">Sélection d’ouvrages essentiels</h2></div>
             <a href={bookPagePath(1, 'selection')} class="editorial-link">Voir notre sélection →</a>
           </div>
           <div class="book-grid">{selectedBooks.map(book => <BookCard book={book} />)}</div>
@@ -220,6 +220,7 @@ const gestures = [
 
   .hero h1 {
     max-width: 13ch;
+    text-wrap: balance;
     margin-top: 1.25rem;
     font-size: clamp(3.4rem, 6.6vw, 6.6rem);
     line-height: 0.88;
@@ -366,6 +367,7 @@ const gestures = [
 
   .section-heading h2 {
     max-width: 17ch;
+    text-wrap: balance;
     margin-top: 0.75rem;
     font-size: clamp(2.7rem, 5vw, 4.8rem);
     line-height: 0.95;
@@ -374,14 +376,6 @@ const gestures = [
   .section-heading > p {
     color: var(--text-muted);
     font-size: 1rem;
-  }
-
-  .section-heading.compact h2 {
-    font-size: clamp(2.4rem, 4vw, 3.6rem);
-  }
-
-  .section-heading.compact > a {
-    justify-self: end;
   }
 
   .gesture-list {
@@ -484,9 +478,6 @@ const gestures = [
       gap: 1.5rem;
     }
 
-    .section-heading.compact > a {
-      justify-self: start;
-    }
   }
 
   @media (max-width: 600px) {

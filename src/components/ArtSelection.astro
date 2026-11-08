@@ -10,10 +10,10 @@ const selection = await fetchArtSelection();
   selection.length > 0 && (
     <section class="art-preview" aria-labelledby="selection-title">
       <div class="page-wrap">
-        <div class="section-heading compact">
+        <div class="selection-heading">
           <div>
             <p class="eyebrow">Contempler</p>
-            <h2 id="selection-title">Sélections d’œuvres intemporelles</h2>
+            <h2 id="selection-title">Sélection d’œuvres intemporelles</h2>
           </div>
           <a href={`${ART_BASE}/oeuvres/selection`} class="editorial-link">Voir notre sélection →</a>
         </div>
@@ -109,24 +109,8 @@ const selection = await fetchArtSelection();
     font-size: 0.78rem;
   }
 
-  .section-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .section-heading h2 {
-    margin-top: .6rem;
-    font-size: clamp(2.6rem, 5vw, 4.5rem);
-    line-height: .95;
-  }
-
   @media (max-width: 1000px) {
     .art-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2.2rem; }
   }
 
-  @media (max-width: 600px) {
-    .section-heading { flex-direction: column; align-items: start; }
-  }
 </style>

@@ -120,7 +120,6 @@ const featuredImage = featured?.media.preview;
   }
 
   .art-hero h1 {
-    max-width: 9ch;
     margin-top: 1rem;
     font-size: clamp(2rem, min(7vw, 9dvh), 6.8rem);
   }
@@ -261,7 +260,7 @@ const featuredImage = featured?.media.preview;
       padding: 1.25rem 0;
     }
 
-    .art-hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); max-width: 14ch; }
+    .art-hero h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); }
     .art-hero-copy > p:not(.eyebrow) { font-size: 1rem; }
 
     .art-hero-image {
@@ -298,7 +297,7 @@ const featuredImage = featured?.media.preview;
 
   @media (orientation: landscape) and (max-height: 600px) {
     .art-hero-copy { padding-block: 1rem; }
-    .art-hero h1 { max-width: 14ch; margin-top: .5rem; }
+    .art-hero h1 { margin-top: .5rem; }
   }
 
   @media (orientation: landscape) and (max-width: 700px) and (max-height: 600px) {

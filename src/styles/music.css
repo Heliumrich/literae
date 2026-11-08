@@ -79,7 +79,7 @@
   .music-entry-links { grid-template-columns: 1fr; }
   .music-entry-links > a { padding: 1.25rem 0; }
   .music-entry-links > a + a { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
-  .music-home-intro h1 { font-size: clamp(3.5rem, 15vw, 5rem); }
+  .music-home-intro h1 { font-size: clamp(2rem, 8vw, 4.2rem); }
 }
 @media (max-width: 400px) {
   .music-grid { gap: 1.75rem 0.75rem; }
