@@ -1,10 +1,11 @@
 import { deepZoomKeyPattern } from '../../scripts/art-media-paths.mjs';
 
-export const HOME_FEATURED_ARTWORK_SLUG = 'ng-guido-reni-saint-jerome';
+export const HOME_FEATURED_ARTWORK_SLUG = 'ng-bartolome-esteban-murillo-christ-healing-the-paralytic-at-the-pool-of-bethesda';
 export const GALLERY_FEATURED_ARTWORK_SLUG = 'velazquez-couronnement-vierge';
 
 const heroImageHeights = new Map([
-  [HOME_FEATURED_ARTWORK_SLUG, 1541],
+  [HOME_FEATURED_ARTWORK_SLUG, 1288],
+  ['ng-guido-reni-saint-jerome', 1541],
   [GALLERY_FEATURED_ARTWORK_SLUG, 1597],
 ]);
 const heroWidths = [480, 768, 960, 1200, 1600, 2048];
