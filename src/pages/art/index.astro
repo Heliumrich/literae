@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import ArtworkCard from "../../components/ArtworkCard.astro";
 import Fleur from "../../components/Fleur.astro";
 import Cross from "../../components/Cross.astro";
-import { artworkHeroImage } from '../../lib/art-media';
+import { artworkHeroImage, GALLERY_FEATURED_ARTWORK_SLUG } from '../../lib/art-media';
 import { fetchArtworkCatalog, selectFeaturedArtwork } from '../../lib/artworks-server';
 import {
   fetchArtistsList,
@@ -13,7 +13,7 @@ import {
 
 const people = await fetchArtistsList();
 const artworks = await fetchArtworkCatalog();
-const featured = selectFeaturedArtwork(artworks);
+const featured = selectFeaturedArtwork(artworks, GALLERY_FEATURED_ARTWORK_SLUG);
 const latest = artworks.slice(0, 8);
 const featuredImage = artworkHeroImage(featured);
 const heroSizes = [

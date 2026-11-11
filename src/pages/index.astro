@@ -4,14 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Fleur from "../components/Fleur.astro";
 import Cross from "../components/Cross.astro";
 import { getArtworkTitle } from "../lib/directus";
-import { artworkHeroImage } from '../lib/art-media';
+import { artworkHeroImage, HOME_FEATURED_ARTWORK_SLUG } from '../lib/art-media';
 import { fetchArtworkCatalog, selectFeaturedArtwork } from '../lib/artworks-server';
 import { ART_BASE } from "../lib/site-links";
 import { fetchBooks } from '../lib/books-server';
 import { bookPagePath } from '../lib/books';
 import BookCard from '../components/books/BookCard.astro';
 
-const featured = selectFeaturedArtwork(await fetchArtworkCatalog());
+const featured = selectFeaturedArtwork(await fetchArtworkCatalog(), HOME_FEATURED_ARTWORK_SLUG);
 const featuredImage = artworkHeroImage(featured);
 const heroSizes = [
   '(orientation: portrait) and (max-width: 900px) 100vw',
@@ -271,7 +271,6 @@ const gestures = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
     filter: saturate(0.82) contrast(1.04);
   }
 
