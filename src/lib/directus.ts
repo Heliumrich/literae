@@ -104,17 +104,27 @@ export function getAssetURL(
   return key ? `${base}?key=${key}` : base;
 }
 
-export function getArtworkTitle(work: {
+type ArtworkTitles = {
   title_french?: string | null;
   title_original?: string | null;
   title_english?: string | null;
-}) {
-  return (
-    work.title_french ||
-    work.title_original ||
-    work.title_english ||
-    "Sans titre"
-  );
+};
+
+function artworkTitle(work: ArtworkTitles) {
+  return work.title_french || work.title_original || work.title_english || "Sans titre";
+}
+
+export function stripArtworkAttribution(title: string) {
+  return title.replace(/\s*\*\s*$/, "");
+}
+
+export function getArtworkTitle(work: ArtworkTitles) {
+  return stripArtworkAttribution(artworkTitle(work));
+}
+
+export function getArtworkArtist(work: ArtworkTitles & { artist?: { name?: string | null } | string | null }) {
+  const name = typeof work.artist === "object" ? work.artist?.name : null;
+  return name ? name + (/\*\s*$/.test(artworkTitle(work)) ? "*" : "") : null;
 }
 
 export function looksLikeHtml(value: string) {

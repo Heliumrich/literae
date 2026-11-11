@@ -1,6 +1,7 @@
 import { fetchArtworkCatalog } from "../lib/artworks-server";
 import type { APIRoute } from "astro";
 import {
+  getArtworkArtist,
   getArtworkTitle,
 } from "../lib/directus";
 import { parseTags, searchHaystack, jsonItems } from "../lib/catalog";
@@ -21,8 +22,7 @@ export const GET: APIRoute = async () => {
       title: getArtworkTitle(work),
       year: work.year ?? null,
       epic: isDoreArtwork(work),
-      artist:
-        work.artist && typeof work.artist === "object" ? work.artist.name : null,
+      artist: getArtworkArtist(work),
       ...work.media,
       tags,
       haystack: searchHaystack([

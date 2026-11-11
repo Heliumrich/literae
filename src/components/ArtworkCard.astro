@@ -2,6 +2,7 @@
 import Thumb from "./Thumb.astro";
 import { isDoreArtwork } from "../lib/artworks";
 import {
+  getArtworkArtist,
   getArtworkTitle,
 } from "../lib/directus";
 
@@ -14,8 +15,7 @@ interface Props {
 const { work, index = 99, basePath = "/oeuvres" } = Astro.props;
 const src = work.media.thumb;
 const title = getArtworkTitle(work);
-const artistName =
-  work.artist && typeof work.artist === "object" ? work.artist.name : null;
+const artistName = getArtworkArtist(work);
 const href = `${basePath}/${work.slug}`;
 ---
 

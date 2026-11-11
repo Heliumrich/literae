@@ -5,8 +5,10 @@ import { isDoreArtwork } from "../../lib/artworks";
 import { DEZOOMIFY_URL } from '../../lib/art-media';
 import { fetchZoomArtworks } from '../../lib/artworks-server';
 import {
+  getArtworkArtist,
   getArtworkTitle,
   looksLikeHtml,
+  stripArtworkAttribution,
 } from "../../lib/directus";
 
 export const prerender = true;
@@ -26,6 +28,7 @@ export async function getStaticPaths() {
 const { work } = Astro.props;
 const slug = String(work.slug);
 const title = getArtworkTitle(work);
+const artistName = getArtworkArtist(work);
 const locationLines = String(work.location || "")
   .split(",")
   .map((line) => line.trim())
@@ -40,8 +43,8 @@ const tags = Array.isArray(work.tags)
   : typeof work.tags === "string"
     ? work.tags.split(",").map((tag: string) => tag.trim()).filter(Boolean)
     : [];
-const titleOriginal =
-  work.title_original && work.title_original !== title ? work.title_original : null;
+const original = work.title_original ? stripArtworkAttribution(work.title_original) : null;
+const titleOriginal = original === title ? null : original;
 ---
 
 <BaseLayout gallery title={title} description={work.description?.slice?.(0, 160) || title}>
@@ -114,9 +117,9 @@ const titleOriginal =
                   <dt>Artiste</dt>
                   <dd>
                     {work.artist.slug ? (
-                      <a href={`/personalites/${work.artist.slug}`}>{work.artist.name}</a>
+                      <a href={`/personalites/${work.artist.slug}`}>{artistName}</a>
                     ) : (
-                      work.artist.name
+                      artistName
                     )}
                   </dd>
                 </div>
