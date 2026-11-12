@@ -1,4 +1,5 @@
 ---
+import { micromark } from 'micromark';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArtworkCard from './ArtworkCard.astro';
 import Fleur from './Fleur.astro';
@@ -12,6 +13,9 @@ import { PERSON_WORKS_PER_PAGE } from '../lib/person-pages';
 
 interface Props { person: any; createdWorks: any[]; depictedWorks: any[]; books: LibraryBook[]; page?: number }
 const { person, createdWorks, depictedWorks, books, page = 1 } = Astro.props;
+const biography = person.biography || '';
+const legacyBiography = looksLikeHtml(biography);
+const biographyHtml = legacyBiography ? biography : micromark(biography);
 const pages = Math.ceil(createdWorks.length / PERSON_WORKS_PER_PAGE);
 const visibleWorks = createdWorks.slice((page - 1) * PERSON_WORKS_PER_PAGE, page * PERSON_WORKS_PER_PAGE);
 const galleryItems = createdWorks.map(work => ({
@@ -92,14 +96,10 @@ const dates =
       </article>
 
       {
-        person.biography && (
+        biography && (
           <details class="biography">
             <summary><span><span class="eyebrow">Parcours</span><span class="biography-heading">Biographie</span></span><span class="biography-arrow" aria-hidden="true">⌄</span></summary>
-            {looksLikeHtml(person.biography) ? (
-              <div class="rich-text biography-text" set:html={person.biography} />
-            ) : (
-              <p class="rich-text biography-text whitespace-pre-line">{person.biography}</p>
-            )}
+            <div class:list={['rich-text biography-text', { 'biography-markdown': !legacyBiography }]} set:html={biographyHtml} />
           </details>
         )
       }
@@ -309,6 +309,8 @@ const dates =
     font-size: 1.05rem;
   }
 
+  .biography-markdown :global(p) { white-space: pre-line; }
+
   .person-works {
     padding: clamp(4rem, 8vw, 7rem) 0;
     border-top: 1px solid var(--border);
@@ -354,3 +356,4 @@ const dates =
     }
   }
 </style>
+
