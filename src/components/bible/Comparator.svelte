@@ -325,13 +325,13 @@
           {@const meta = column.meta}
           <article class="translation-page">
             <header class="translation-header">
-              <p class="translation-code">{column.code} · {meta?.language_label || 'Traduction'}</p>
-              <div class="translation-title">
-                <h3>{meta?.name_short || column.name}</h3>
+              <div class="translation-meta">
+                <p class="translation-code">{column.code} · {meta?.language_label || 'Traduction'}</p>
                 {#if libraryEditions[column.code]}
                   <a class="library-edition" href={libraryEditions[column.code].href}>{libraryEditions[column.code].label}</a>
                 {/if}
               </div>
+              <h3>{meta?.name_short || column.name}</h3>
               {#if meta && (meta.date_label || meta.authors_label || meta.source_label)}
                 <details class="edition-details" open={!compactLayout}>
                   <summary>Édition</summary>
@@ -658,15 +658,20 @@
     text-transform: uppercase;
   }
 
-  .translation-title {
+  .translation-meta {
     display: flex;
-    flex-wrap: wrap;
     align-items: baseline;
-    gap: .5rem 1rem;
-    margin-top: .45rem;
+    justify-content: space-between;
+    gap: .75rem;
   }
 
+  .translation-code { min-width: 0; }
+
+
   .library-edition {
+    min-width: 0;
+    margin-left: auto;
+    text-align: right;
     color: var(--accent);
     font-family: var(--type-ui);
     font-size: .7rem;
@@ -676,6 +681,7 @@
   }
 
   .translation-header h3 {
+    margin-top: .45rem;
     font-family: var(--type-display);
     font-size: clamp(0.95rem, calc(10cqw / var(--column-count)), 2.45rem);
     line-height: 1;
