@@ -1,4 +1,5 @@
 ---
+import { getBibleLibraryEditions } from "../../lib/bible-library-server";
 import ComparatorAppChrome from "../../components/bible/ComparatorAppChrome.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getOfflineBible } from "../../lib/offline/bible-build";
@@ -7,6 +8,7 @@ import { getBibleTranslations, getBibleNavigationBooks } from "../../lib/bible-s
 
 export const prerender = true;
 
+const libraryEditions = await getBibleLibraryEditions();
 const offlineBible = getOfflineBible();
 const translations = getBibleTranslations();
 const navigationBooks = getBibleNavigationBooks();
@@ -43,7 +45,7 @@ const navigationBooks = getBibleNavigationBooks();
           éclairer le texte, verset après verset.
         </p>
       </header>
-      <Comparator client:only="svelte" offlineBible={offlineBible} initialTranslations={translations} initialNavigationBooks={navigationBooks} />
+      <Comparator client:only="svelte" offlineBible={offlineBible} libraryEditions={libraryEditions} initialTranslations={translations} initialNavigationBooks={navigationBooks} />
     </div>
     <div class="comparator-bottom-space h-20 sm:h-28"></div>
   </main>

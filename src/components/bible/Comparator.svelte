@@ -15,6 +15,7 @@
   type Navigation = { prev: NavTarget | null; next: NavTarget | null };
 
   export let offlineBible: OfflineBible;
+  export let libraryEditions: Record<string, { href: string; label: string }> = {};
   export let initialTranslations: Translation[] = [];
   export let initialNavigationBooks: BibleCatalogBook[] = [];
 
@@ -325,7 +326,12 @@
           <article class="translation-page">
             <header class="translation-header">
               <p class="translation-code">{column.code} · {meta?.language_label || 'Traduction'}</p>
-              <h3>{meta?.name_short || column.name}</h3>
+              <div class="translation-title">
+                <h3>{meta?.name_short || column.name}</h3>
+                {#if libraryEditions[column.code]}
+                  <a class="library-edition" href={libraryEditions[column.code].href}>{libraryEditions[column.code].label}</a>
+                {/if}
+              </div>
               {#if meta && (meta.date_label || meta.authors_label || meta.source_label)}
                 <details class="edition-details" open={!compactLayout}>
                   <summary>Édition</summary>
@@ -652,8 +658,24 @@
     text-transform: uppercase;
   }
 
+  .translation-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem 1rem;
+    margin-top: .45rem;
+  }
+
+  .library-edition {
+    color: var(--accent);
+    font-family: var(--type-ui);
+    font-size: .7rem;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+
   .translation-header h3 {
-    margin-top: 0.45rem;
     font-family: var(--type-display);
     font-size: clamp(0.95rem, calc(10cqw / var(--column-count)), 2.45rem);
     line-height: 1;
