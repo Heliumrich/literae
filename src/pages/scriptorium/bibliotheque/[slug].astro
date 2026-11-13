@@ -1,4 +1,7 @@
 ---
+import AuthorDogmas from '../../../components/AuthorDogmas.astro';
+import { fetchAuthorDogmas } from '../../../lib/dogmas-server';
+import type { Dogma } from '../../../lib/dogmas';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import EpubReader from '../../../components/books/EpubReader.astro';
 import { fetchBooks } from '../../../lib/books-server';
@@ -6,10 +9,12 @@ import { ART_BASE } from '../../../lib/site-links';
 import type { LibraryBook } from '../../../lib/books';
 export const prerender = true;
 export async function getStaticPaths() {
-  return (await fetchBooks()).map(book => ({ params: { slug: book.slug }, props: { book } }));
+  const books = await fetchBooks();
+  const dogmas = await fetchAuthorDogmas(books.flatMap(book => book.author ? [book.author.id] : []));
+  return books.map(book => ({ params: { slug: book.slug }, props: { book, dogmas: book.author ? dogmas.get(book.author.id) || [] : [] } }));
 }
-interface Props { book: LibraryBook; }
-const { book } = Astro.props;
+interface Props { book: LibraryBook; dogmas: Dogma[]; }
+const { book, dogmas } = Astro.props;
 ---
 <BaseLayout title={book.title} description={book.description || `${book.title}, à lire dans la bibliothèque de Literae.`}>
   <main class="book-detail page-wrap">
@@ -19,6 +24,7 @@ const { book } = Astro.props;
         <p class="eyebrow">Lire · La bibliothèque</p>
         <h1>{book.title}</h1>
         {book.author && <p class="book-author"><a href={`${ART_BASE}/personalites/${book.author.slug}`}>{book.author.name}</a></p>}
+        {book.author && <AuthorDogmas points={dogmas} author={book.author.name} />}
         {book.description && <p class="book-lead">{book.description}</p>}
         {book.tags.length > 0 && <ul class="book-tags">{book.tags.map(tag => <li><a class="tag-pill" href={`/scriptorium/bibliotheque?tags=${encodeURIComponent(tag)}`}>{tag}</a></li>)}</ul>}
       </header>

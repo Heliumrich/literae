@@ -1,4 +1,5 @@
 import { fetchAllFromDirectus } from './directus';
+import { fetchAuthorDogmas } from './dogmas-server';
 import { fetchBooks } from './books-server';
 import { fetchZoomArtworks } from './artworks-server';
 
@@ -26,6 +27,7 @@ export async function personPaths() {
     fetchBooks(),
   ]);
 
+  const dogmas = await fetchAuthorDogmas(books.flatMap(book => book.author ? [book.author.id] : []));
   return people
     .filter((person) => person?.slug)
     .map((person) => {
@@ -34,6 +36,7 @@ export async function personPaths() {
         params: { slug: String(person.slug) },
         props: {
           person,
+          dogmas: dogmas.get(id) || [],
           createdWorks: works.filter((work) => relationId(work.artist) === id),
           depictedWorks: works.filter((work) => depictedIds(work).includes(id)),
           books: books.filter(book => book.author?.id === id),

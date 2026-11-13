@@ -1,4 +1,6 @@
 ---
+import AuthorDogmas from './AuthorDogmas.astro';
+import type { Dogma } from '../lib/dogmas';
 import { micromark } from 'micromark';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArtworkCard from './ArtworkCard.astro';
@@ -11,8 +13,8 @@ import { parsePersonTypes, personTypeLabel } from '../lib/people';
 import { isDoreArtwork } from '../lib/artworks';
 import { PERSON_WORKS_PER_PAGE } from '../lib/person-pages';
 
-interface Props { person: any; createdWorks: any[]; depictedWorks: any[]; books: LibraryBook[]; page?: number }
-const { person, createdWorks, depictedWorks, books, page = 1 } = Astro.props;
+interface Props { person: any; createdWorks: any[]; depictedWorks: any[]; books: LibraryBook[]; page?: number; dogmas: Dogma[] }
+const { person, createdWorks, depictedWorks, books, page = 1, dogmas } = Astro.props;
 const biography = person.biography || '';
 const legacyBiography = looksLikeHtml(biography);
 const biographyHtml = legacyBiography ? biography : micromark(biography);
@@ -84,6 +86,8 @@ const dates =
           {person.short_description && (
             <p class="person-lead">{person.short_description}</p>
           )}
+
+          {books.length > 0 && <AuthorDogmas points={dogmas} author={person.name} />}
 
           {tags.length > 0 && (
             <ul class="person-taxonomy">
