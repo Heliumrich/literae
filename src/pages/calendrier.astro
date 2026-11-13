@@ -1,21 +1,66 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PlaceholderPage from "../components/PlaceholderPage.astro";
 ---
 
 <BaseLayout
   title="Calendrier liturgique"
-  description="Le futur calendrier liturgique de Literae est en préparation."
+  description="Retrouvez les fêtes et les temps de l’année liturgique selon le Missel romain de 1962, avec l’Ordo FSSPX."
 >
-  <PlaceholderPage
-    eyebrow="Aujourd’hui"
-    title="L’année liturgique"
-    lead="Un calendrier pour situer chaque jour dans le temps de l’Église, retrouver les fêtes et laisser la lecture suivre le rythme de l’année."
-    note="Page réservée – mise en œuvre ultérieure"
-    items={[
-      "Le temps liturgique, la couleur du jour et le degré de célébration.",
-      "Les solennités, fêtes, mémoires et principaux repères du sanctoral.",
-      "Des liens vers les lectures, prières et œuvres associés à chaque temps.",
-    ]}
-  />
+  <main class="page-wrap calendar-page">
+    <header class="calendar-intro">
+      <p class="eyebrow">Aujourd’hui</p>
+      <h1>L’année liturgique</h1>
+      <p class="calendar-lead">Les fêtes et les temps de l’Église, selon le Missel romain de 1962.</p>
+    </header>
+
+    <section aria-label="Calendrier liturgique de l’Ordo FSSPX">
+      <div id="ordo"></div>
+      <noscript><p>Consultez le calendrier directement sur l’Ordo FSSPX via le lien ci-dessous.</p></noscript>
+      <p class="calendar-source"><a href="https://ordo.fsspx.org/fr" target="_blank" rel="noopener noreferrer">Consulter l’Ordo FSSPX <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a></p>
+    </section>
+  </main>
+
+  <!-- The official embed owns the calendar; only its public theme attribute is synced. -->
+  <script is:inline>
+    (() => {
+      const host = document.getElementById('ordo');
+      if (!host) return;
+      const syncTheme = () => host.setAttribute('data-ordo-theme',
+        document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+      syncTheme();
+      new MutationObserver(syncTheme).observe(document.documentElement, {
+        attributes: true, attributeFilter: ['data-theme'],
+      });
+    })();
+  </script>
+  <script is:inline defer src="https://ordo.fsspx.org/embed/lines.js?lang=fr"></script>
 </BaseLayout>
+
+<style>
+  .calendar-page { max-width: 46rem; padding-block: var(--page-start) 4rem; }
+  .calendar-intro { margin-bottom: 2rem; }
+  .calendar-intro h1 { margin-top: .6rem; font-size: clamp(2.5rem, 6vw, 4rem); }
+  .calendar-lead { margin-top: 1rem; color: var(--text-muted); }
+  .calendar-source { margin-top: 1.5rem; font-family: var(--type-ui); font-size: .8rem; color: var(--text-muted); }
+  .calendar-source a { text-decoration: underline; text-underline-offset: .2em; }
+
+  /* Public Ordo palette variables cross the shadow boundary; no internal selectors. */
+  #ordo {
+    /* Hidden tooltip text in the embed must not widen the mobile page. */
+    overflow-x: clip;
+    overflow-clip-margin: .3rem;
+    --ordo-paper: var(--bg);
+    --ordo-paper-sunk: var(--bg-secondary);
+    --ordo-paper-raised: var(--card);
+    --ordo-ink: var(--text);
+    --ordo-ink-soft: var(--text-muted);
+    --ordo-ink-faint: var(--text-muted);
+    --ordo-ink-titulus: var(--text-muted);
+    --ordo-rule: var(--border);
+    --ordo-rule-soft: var(--border);
+    --ordo-rule-strong: var(--gold);
+    --ordo-rubric: var(--accent);
+    --ordo-today: color-mix(in srgb, var(--gold) 12%, transparent);
+    --ordo-focus: var(--accent);
+  }
+</style>
