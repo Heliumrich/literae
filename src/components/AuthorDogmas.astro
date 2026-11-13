@@ -1,6 +1,6 @@
 ---
 import { micromark } from 'micromark';
-import { dogmaBand, dogmaLabels, dogmaGroups, signedGrade, type Dogma } from '../lib/dogmas';
+import { dogmaBand, dogmaLabels, dogmaGroups, type Dogma } from '../lib/dogmas';
 import DogmaIcon from './DogmaIcon.astro';
 interface Props { points: Dogma[]; author: string }
 const { points, author } = Astro.props;
@@ -16,12 +16,12 @@ const groups = dogmaGroups(points);
         const id = `dogma-${point.id}`;
         return <li class:list={['dogma-item', band]} style={`--dogma-strength:${Math.abs(point.grade) * 10}%`}>
           <button type="button" class="dogma-trigger" popovertarget={id} aria-controls={id} aria-expanded="false"
-            aria-label={`${point.title} : ${dogmaLabels[band]}, grade ${signedGrade(point.grade)}`}>
-            <DogmaIcon band={band} /><span>{point.title}</span><strong>{signedGrade(point.grade)}</strong>
+            aria-label={`${point.title} : ${dogmaLabels[band]}`}>
+            <DogmaIcon band={band} /><span>{point.title}</span>
           </button>
           <div id={id} class="dogma-popover" popover="auto" role="dialog" aria-labelledby={`${id}-title`}>
             <header><h3 id={`${id}-title`}>{point.title}</h3><button class="dogma-close" type="button" popovertarget={id} popovertargetaction="hide" aria-label="Fermer">×</button></header>
-            <p class="dogma-level"><DogmaIcon band={band} />{dogmaLabels[band]} <strong>{signedGrade(point.grade)}</strong></p>
+            <p class="dogma-level"><DogmaIcon band={band} />{dogmaLabels[band]} <strong>{Math.abs(point.grade)}</strong></p>
             {point.description && <div class="rich-text dogma-description" set:html={micromark(point.description)} />}
             {point.url && <a class="dogma-source" href={point.url} target="_blank" rel="noopener noreferrer">En savoir plus <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a>}
           </div>
@@ -58,8 +58,8 @@ const groups = dogmaGroups(points);
   .defender, .exemplary { --dogma-tone: color-mix(in srgb, var(--dogma-green-strong) var(--dogma-strength), var(--dogma-green-soft)); }
   .dogma-trigger { display: inline-flex; align-items: center; gap: .4rem; min-height: 2.25rem; max-width: 100%; padding: .3rem .5rem; border: 1px solid color-mix(in srgb, var(--dogma-tone) 40%, var(--border)); border-radius: 3px; background: color-mix(in srgb, var(--dogma-tone) 6%, var(--bg)); color: var(--text); font-size: .7rem; text-align: left; cursor: pointer; }
   .dogma-trigger span { overflow-wrap: anywhere; }
-  .dogma-trigger strong, .dogma-level strong, .dogma-trigger :global(svg), .dogma-level :global(svg) { color: var(--dogma-tone); flex-shrink: 0; }
-  .dogma-trigger strong { font-size: .8rem; font-variant-numeric: tabular-nums; }
+  .dogma-level strong, .dogma-trigger :global(svg), .dogma-level :global(svg) { color: var(--dogma-tone); flex-shrink: 0; }
+  .dogma-level strong { font-size: .8rem; font-variant-numeric: tabular-nums; }
   .dogma-trigger:hover, .dogma-trigger[aria-expanded="true"] { border-color: var(--dogma-tone); }
   .dogma-trigger:focus-visible, .dogma-close:focus-visible { outline: 2px solid var(--dogma-tone); outline-offset: 3px; }
   .dogma-popover { position: fixed; inset: auto; margin: 0; width: min(25rem, calc(100vw - 2rem)); max-height: min(65dvh, 32rem); overflow-y: auto; overscroll-behavior: contain; padding: 1rem; border: 1px solid color-mix(in srgb, var(--dogma-tone) 55%, var(--border)); border-radius: 4px; background: var(--card); color: var(--text); box-shadow: 0 .5rem 2rem #0003; font-family: var(--type-ui); }

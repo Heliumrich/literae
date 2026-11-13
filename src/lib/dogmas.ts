@@ -6,7 +6,6 @@ export const dogmaLabels: Record<DogmaBand, string> = {
   danger: 'Danger doctrinal majeur', caution: 'Point de vigilance', nuance: 'À nuancer',
   defender: 'Défense de la doctrine', exemplary: 'Défense exemplaire de la doctrine',
 };
-export const signedGrade = (grade: number) => grade > 0 ? `+${grade}` : grade < 0 ? `−${Math.abs(grade)}` : '0';
 
 /** Invalid grades and archived entries must never become visible editorial judgements. */
 export function normalizeDogma(value: unknown): Dogma | null {

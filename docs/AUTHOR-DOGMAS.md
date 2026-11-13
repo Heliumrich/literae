@@ -13,6 +13,7 @@ Une modification dans Directus nécessite un rebuild du site.
 Les grades positifs apparaissent d’abord, les points négatifs et les nuances ensuite.
 Cinq SVG distinguent les bandes −10…−6, −5…−1, 0, +1…+5 et +6…+10.
 Le rouge et le vert varient avec l’intensité du grade ; zéro reste ambré.
+Le chiffre apparaît uniquement dans la fiche ouverte, en valeur absolue sans signe.
 
 Les descriptions sont déjà dans le HTML. `dogmas-client.ts` améliore les popovers
 natifs du navigateur : aperçu au survol avec une souris, fixation au clic,

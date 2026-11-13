@@ -21,7 +21,8 @@ test.describe('ordinateur', () => {
         await page.goto(url);
         const { button } = await control(page, title);
         await expect(button).toBeVisible();
-        await expect(button.locator('strong')).toHaveText('−10');
+        await expect(button).not.toContainText(/\d/);
+        await expect(button.locator('strong')).toHaveCount(0);
         expect((await page.locator('.author-dogmas').boundingBox())!.height).toBeLessThan(150);
       }
     }
@@ -33,6 +34,7 @@ test.describe('ordinateur', () => {
     const { button, panel } = await control(page, 'Gallicanisme');
     await button.hover();
     await expect(panel).toBeVisible();
+    await expect(panel.locator('.dogma-level strong')).toHaveText('10');
     await expect(panel.locator('.dogma-close')).toBeHidden();
     await panel.locator('.dogma-source').hover();
     await page.waitForTimeout(300);
